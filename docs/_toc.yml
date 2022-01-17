@@ -7,7 +7,7 @@ parts:
   - file: module-00-01_Course-Schedule
   - file: module-00-02_Course-Assignments
   - file: module-00-03_Reading-List
-  - file: module-00-04_Getting-Started
+  - file: module-00-04_Computer-Setup
   - file: module-00-05_Final-Projects
   - file: module-00-06_Contributing
 - caption: Module 01

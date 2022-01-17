@@ -1,4 +1,3 @@
-<!-- #region -->
 # Syllabus
 Last updated: 9 October 2021</br>
 The content in this Jupyter Book is subject to change.
@@ -6,102 +5,24 @@ The content in this Jupyter Book is subject to change.
 ## ECON 108: Econometrics II
 TR: 9:00am-12:15pm, Online/Remote
 
-The purpose is to train the students in the tools and models useful for the econometric analysis of economic time-series. Students will learn to understand in depth and apply correctly the techniques. The course prepares to research in the field of time-series analysis and its applications.
-
-
 The goal of <u>computational modeling</u> in behavioral and psychological science is using mathematical models to characterize behavioral (or neural) data. Over the past decade, this practice has revolutionized social psychological science (and neuroscience) by allowing researchers to formalize theories as constrained mathematical models and test specific hypotheses to explain unobservable aspects of complex social cognitive processes and behaviors.
 
 This course comprises lecture-based, discussion-based, and lab-based instruction. At least one-third of class sessions will be hands-on. We will discuss relevant book chapters and journal articles, and work with simulated and real data using the [Python programming language](https://www.python.org/) (no prior programming experience necessary) as we survey some selected areas of research at the intersection of computational modeling and social behavior. These selected topics will span a broad set of social psychological abilities including (1) learning from and for others, (2) learning about others, and (3) social influence on decision-making and mental states.
 
 Together, we will expand your skillset for conducting research in psychological science, cognitive science, neuroscience, and/or data science. Although some background in psychology, research methods, and/or programming will be helpful, students with all levels of experience are welcome to enroll.
 
-## Course outline: 
-
-Please note that the following outline is preliminary and may be modified if needed.
-
-* Introduction to time series analysis, basic concepts and models
-    - time series vs cross-section
-    - stationarity and ergodicity
-    - white noise, martingales, martingale difference, AR, MA processes
-    - autocovariance, autocorrelation and partial autocorrelation
-* Review of the multivariate normal distribution
-* Review of maximum likelihood estimation
-    - log-likelihood function, score, Hessian
-    - identification
-    - optimization
-    - asymptoric properties
-    - quasi-maximum likelihood
-* ARMA models
-    - estimation
-    - model selection
-    - forecasting
-* Nonstationarity
-    - Unit root tests
-    - ARIMA models
-    - ARCH, GARCH models
-* VAR models
-    - estimation
-    - forecasting
-* State Space models
-    - Kalman filter
-    - identification
-    - estimation
-    - forecasting
-* Granger causality
-    - unconditional
-    - conditional
-* TBD other topics:
-    - structural models
-    - spectral analysis
-    - regime switching models
-    - Bayesian methods
-
 ## Why read this syllabus?
 
 The syllabus is your go-to resource document for the course. If you want to know about the requirements for the class, how you will be graded, or additional resources, you can find that information here. If you have questions about the policies for the class, you can find the answers here. In addition, the syllabus is a contract between you and me – by remaining in the class, you are agreeing to this contract. And you should always read a contract before agreeing to it! So please be sure to read the syllabus fully.
 
-## Required software
+## Required materials
 
-To get the most out of our course, we ask that you arrive with the following software already installed:
+Only a working computer (or laptop) with a webcam/microphone and reliable internet service are required! Although you can use other devices such as smartphones and tablets for some online coursework, please note that some tools do not work on tablets or smartphones. Book chapters, journal articles, and software are freely accessible and/or [openly licensed](https://en.wikipedia.org/wiki/Open_license) to all students (no purchase required). Why? Because everyone should have access to educational experiences and resources, and open educational resources work to eliminate barriers to this goal. Students can access all materials on [Canvas](https://georgetown.instructure.com/) or on the [course webpage](https://shawnrhoads.github.io/gu-psyc-347/). If there are any changes made to this syllabus, an email will be sent out accordingly.
 
-- Python 3 via Anaconda
-- A version control system: Git
-- A GitHub account
-- A modern text editor: VSCode
-- A modern browser: Chrome
-
-VSCode
-Go to https://code.visualstudio.com/ and click the download button, then run the .exe file.
-
-GitHub account
-Go to https://github.com/join/ and follow the on-screen instructions to create an account. It is a good idea to associate this with your university e-mail (if you have one) as this will entitle you to sign up for the GitHub Student Developer Pack which comes with some nice free bonuses.
-
-## Texbook and Readings
-The main reference for this courses is:
-
-
-## Format and expectations
-The course will be taught using a mixture of lectures and computational laboratory exercises.
-Students are expected to complete assigned readings/homeworks before class meetings, and work on course activities during class meetings.
-
-## Computing in Python
-
-The emphasis of the course is on methods and the analysis of data sets. The best way to
-understand time series concepts is to write computer programs implementing algorithms
-and estimation techniques discussed in class. Beside the didactic value, in practice modern
-time series methods require solid computational skills. The language used in this course
-is Julia.
-
-
-We will make extensive use of the open-source Python computing environment.
-
-Students with laptops should install Python with Anaconda 
- Instructions for doing so can be found here.
-
-The course does not assume familiarity with Python, but students should work through the tutorials
- before the course commences. In particular, students should work through the the exercises in the tutorial.
- 
- 
+We will use the following technological tools/applications on a regular basis. Please reach out to the instructor if you believe this will be an issue.
+-	Web conferencing: Zoom, webcam/microphone
+-	Web interfacing: Course website, Canvas
+-	Scientific programming: Python, Jupyter Notebook, Google Colaboratory
 
 ## Important course information
 
@@ -294,4 +215,3 @@ Did you know that Georgetown University has its own food pantry? They have non-p
 
 ## Acknowledgments
 I am grateful to <a target="_blank" rel="noopener noreferrer" href="https://deborahstearns.blogspot.com/">Dr. Deborah Sterns</a>, <a target="_blank" rel="noopener noreferrer" href="https://www.joscelinrocha.com/">Joscelin Rocha-Hidalgo</a>, and the <a target="_blank" rel="noopener noreferrer" href="https://cndls.georgetown.edu/">Georgetown Center for New Designs in Learning & Scholarship</a> (CNDLS) for allowing me to use their teaching resources throughout the development of this course. I am also grateful to <a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">Project Jupyter</a> for making it possible to create and share these materials in a Jupyter Book. I am also grateful to <a target="_blank" rel="noopener noreferrer" href="https://github.com/gllg4009">Lin Gan</a> for her contributions and feedback in making enhancements to these materials. The format of this course was largely inspired by the <a target="_blank" rel="noopener noreferrer" href="https://mindsummerschool.org/">MIND Computational Summer School</a>, <a target="_blank" rel="noopener noreferrer" href="https://academy.neuromatch.io/">Neuromatch Academy</a>, Dr. Maximilian Risenhuber's Computational Neuroscience course, Dr. Robert C. Wilson's <a target="_blank" rel="noopener noreferrer" href="http://u.arizona.edu/~bob/web_NSCS344/">Modeling the Mind course</a>, Dr. Luke J. Chang's <a target="_blank" rel="noopener noreferrer" href="https://dartbrains.org">DartBrains Jupyter Book</a>, the research conducted in Dr. Abigail A. Marsh's <a target="_blank" rel="noopener noreferrer" href="https://aamarsh.wordpress.com/lab/">Laboratory on Social and Affective Neuroscience</a>, and the countless conversations with my colleagues about the selected topics.
-<!-- #endregion -->

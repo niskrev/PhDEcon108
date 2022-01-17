@@ -14,12 +14,12 @@ The content in this Jupyter Book is subject to change.
 **Syllabus**: <a target="_blank" rel="noopener noreferrer" href="https://niskrev.github.io/phdecon108/module-00-00_Syllabus.html">Found here</a></br>
 **Schedule**: <a target="_blank" rel="noopener noreferrer" href="https://niskrev.github.io/phdecon/module-00-01_Course-Schedule.html">Found here</a>
 
-## Instructor information 👨‍🏫
+## Instructor information
 **Instructor**: Nikolay Iskrev<br>
 **Email**: niskrev(at)bportugal(dot)pt<br>
 **Website**: <a target="_blank" rel="noopener noreferrer" href="https://niskrev.github.io">niskrev.github.io</a></br>
 
-## Tutorials & Exercises 🏋️
+## Tutorials & Exercises
 
 ### Module 01 - Scientific Python
 
