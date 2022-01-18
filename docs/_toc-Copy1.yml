@@ -1,0 +1,14 @@
+format: jb-book
+root: index
+parts:
+- caption: Module 00
+  chapters:
+  - file: module-00-00_Syllabus
+  - file: module-00-01_Computer-Setup
+  - file: module-00-05_Final-Projects
+- caption: Module 01
+  chapters:
+  - file: module-01-00_Jupyter-Notebooks
+  - file: module-01-01_Intro-to-Python
+  - file: module-01-02_Working-with-Data
+  - file: module-01-03_Python-Exercises
