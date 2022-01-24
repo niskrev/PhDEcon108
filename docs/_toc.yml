@@ -5,3 +5,9 @@ parts:
   chapters:
   - file: module-00-00_Syllabus
   - file: module-00-01_Computer-Setup
+- caption: Data
+  chapters:
+    - file: 00-Data/00-Data
+    - file: 00-Data/01-ECB
+    - file: 00-Data/02-Eurostat
+    - file: 00-Data/03-FRED
