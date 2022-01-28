@@ -68,3 +68,35 @@ Go to https://code.visualstudio.com/ and click the download button, then run the
 
 ## Install Windows Terminal
 Go to https://docs.microsoft.com/en-us/windows/terminal/install and follow the instructions.
+* find the location of "Continuum/anaconda3/Scripts/activate.bat" and "Continuum/anaconda3/Menu/anaconda-navigator.ico" on your computer
+
+Click "Open JSON file" and add a new profile to the list of profiles, for example, 
+```
+            {
+                "colorScheme": "One Half Dark",
+                "commandline": "cmd.exe /K path-to-activate.bat",
+                "guid": "{4e4eeec3-d124-4292-b352-ed3751a91092}",
+                "hidden": false,
+                "icon": "path-to-anaconda-navigator.ico",
+                "name": "Anaconda prompt",
+                "startingDirectory": "C:\\Users\\your-user-name"
+            }
+```
+
+On my computer the profile looks like this
+```
+    "profiles": 
+    {
+        "defaults": {},
+        "list": 
+        [
+            {
+                "colorScheme": "One Half Dark",
+                "commandline": "cmd.exe /K C:\\Users\\eeu227\\AppData\\Local\\Continuum\\anaconda3\\Scripts\\activate.bat",
+                "guid": "{4e4eeec3-d124-4292-b352-ed3751a91092}",
+                "hidden": false,
+                "icon": "C:\\Users\\eeu227\\AppData\\Local\\Continuum\\anaconda3\\Menu\\anaconda-navigator.ico",
+                "name": "Anaconda prompt",
+                "startingDirectory": "C:\\Users\\eeu227"
+            }
+```            

@@ -1,6 +1,6 @@
 <!-- #region -->
 # Syllabus
-Last updated: 18 January 2022</br>
+Last updated: 28 January 2022</br>
 The content in this Jupyter Book is subject to change.
 
 ## Course description
@@ -59,24 +59,22 @@ There is no required textbook for this course. All necessary material (slides, l
 
 ## Important course information
 
-Course assignments will be posted on 
-
+Course assignments will be posted via Github.
 
 Class meetings will be held on Zoom. You will need a microphone and webcam (you need not always have your webcam on, but you will want to be able to be visible at times). 
 
 
 ## Course goals
 
-* Learn
-* Learn how to write code for time series data analysis using the Python and Jupyter Notebooks
-* Fit time series models to data and evaluate their performance, and interpret the results of social behavioral experiments
-
+* Obtain a basic knowledge of time series theory and methodology
+* Learn how to analyze time series data by exploratory analysis, model identification and fitting.
+* Learn how to use Python to perform such analysis, by using existing libraries, as well as by writing own code to implement specific time series tasks. 
 
 
 
 ## Grading
 
-Grades will be determined as follows: homework assignments (70%), midterm project (15%), final project (15%).
+Grades will be determined as follows: homework assignments (70%), midterm project (10%), final project (20%).
 
 ## Late Submissions
 No.
