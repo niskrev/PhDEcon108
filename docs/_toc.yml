@@ -1,27 +1,47 @@
 format: jb-book
 root: index
 parts:
-- caption: Module 00
+- caption: Introduction
   chapters:
-  - file: module-00-00_Syllabus
-  - file: module-00-01_Computer-Setup
+  - file: Syllabus
+  - file: Computer-Setup
 - caption: Lectures
   chapters:
   - file: 01-Lectures/01-Introduction/00-Introduction
     sections:
     - file: 01-Lectures/01-Introduction/01-Introduction
-      title: 1. Introduction
+      title: 1. Time series vs cross-section
     - file: 01-Lectures/01-Introduction/02-Time-series
-      title: 2. Time Series
+      title: 2. Time Series concepts and models
+  - file: 01-Lectures/02-Gaussian/00-Introduction
+    sections:
+    - file: 01-Lectures/02-Gaussian/01-Multivariate-normal-distribution
+      title: 1. Multivariate normal distribution
+  - file: 01-Lectures/03-MLE/00-Introduction
+    sections:
+    - file: 01-Lectures/03-MLE/01-MLE
+      title: 1. Maximum likelihood estimation
+- caption: Assignments
+  chapters:
+  - file: 03-Assignments/HW0/main
+    sections:
+    - file: 03-Assignments/HW0/README
+  - file: 03-Assignments/HW1/main
+    sections:
+    - file: 03-Assignments/HW1/README
+    - file: 03-Assignments/HW1/HW1-empty
+      title: HW1-empty
 - caption: Tutorials
   chapters:
   - file: 02-Tutorials/00-Python/00-Python
     title: 1. Python basics
     sections:
-    - file: 02-Tutorials/00-Python/01-Python-examples
-      title: Python examples I
-    - file: 02-Tutorials/00-Python/02-Python-examples-II
-      title: Python examples II
+    - file: 02-Tutorials/00-Python/01-Python-intro
+      title: Intro
+    - file: 02-Tutorials/00-Python/02-Python-functions
+      title: Functions
+    - file: 02-Tutorials/00-Python/03-Python-modules
+      title: Modules
   - file: 02-Tutorials/01-Numpy/00-Numpy
     title: 2. Numpy
     sections:
@@ -31,6 +51,7 @@ parts:
     title: 3. Pandas
     sections:
     - file: 02-Tutorials/02-Pandas/01-Pandas-examples-I
+      title: Intro
     - file: 02-Tutorials/02-Pandas/02-Pandas-for-time-series
 - caption: Data
   chapters:

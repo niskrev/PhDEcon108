@@ -7,7 +7,7 @@
 title: "" # The title of the book. Will be placed in the left navbar.
 author: Nikolay Iskrev # The author of the book
 copyright: '2022' # Copyright year to be placed in the footer
-logo: '_static/images/logo.png' # A path to the book logo
+logo: '_static/images/logo-econ108.png' # A path to the book logo
 description: Website for Econ 108
 #######################################################################################
 

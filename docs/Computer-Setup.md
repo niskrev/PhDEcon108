@@ -29,13 +29,21 @@ It also comes with a package manager `conda` used to keep packages up to date, a
     This updates the package manager itself. Next, update the the installed packages by typing
 
     `conda update --all`
-    
-    
+
+4. Watch the [Getting started with Anaconda individual edition video](https://www.anaconda.com/individual-tutorial) (Note: this requires creating an account with [anaconda.cloud](https://anaconda.cloud/))
+
+
 <!-- #endregion -->
 
 ## Installing Git
 
 If you are on a Mac or Linux machine you already have Git installed. If you are on Windows, you have to install it by following the instructions [here](https://gitforwindows.org).
+
+```{note}
+During the installation, I suggest going with the recommended options, except when asked for __Adjusting your PATH environment__, where I recommend that you select the last option: _Using Git and optional Unix tools from the Command Prompt_. This will let you use Unix style command when using the terminal.
+```
+
+![GitUnix](./_static/images/Capture.png)
 
 ### Configuring Git
 Open **Git Bash** and tell git your name and email address. 
@@ -100,3 +108,7 @@ On my computer the profile looks like this
                 "startingDirectory": "C:\\Users\\eeu227"
             }
 ```            
+
+## Directory structure
+
+In a directory of your choice (such as `C:\Users\YOUR-USER-NAME\Documents\`), create a new directory called `econ108` in which create an empty directory  called `homeworks`
