@@ -34,7 +34,7 @@ parts:
 - caption: Tutorials
   chapters:
   - file: 02-Tutorials/00-Python/00-Python
-    title: 1. Python basics
+    title: 1. Python
     sections:
     - file: 02-Tutorials/00-Python/01-Python-intro
       title: Intro
@@ -47,12 +47,21 @@ parts:
     sections:
     - file: 02-Tutorials/01-Numpy/01-Numpy-examples
       title: Numpy exampes I
+    - file: 02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions
+      title: Numpy exercises I
   - file: 02-Tutorials/02-Pandas/00-Pandas
     title: 3. Pandas
     sections:
     - file: 02-Tutorials/02-Pandas/01-Pandas-examples-I
       title: Intro
     - file: 02-Tutorials/02-Pandas/02-Pandas-for-time-series
+  - file: 02-Tutorials/03-Matplotlib/01-Resources
+    title: 4. Matplotlib
+  - file: 02-Tutorials/Other/Intro
+    sections:
+    - file: 02-Tutorials/Other/01-Command-line/Resources
+    - file: 02-Tutorials/Other/01-Command-line/01-The-Command-Line
+    - file: 02-Tutorials/Other/02-Git-and-Github/Resources
 - caption: Data
   chapters:
   - file: 00-Data/00-Data

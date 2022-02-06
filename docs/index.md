@@ -1,7 +1,5 @@
-<a target="_blank" rel="noopener noreferrer" href="https://niskrev.github.io/phdecon108">![Jupyter Book Badge](https://jupyterbook.org/badge.svg)</a> 
-
 # Econometrics II (Time Series Analysis) 
-Last updated: 9 October 2021</br>
+Last updated: 6 February 2022</br>
 The content in this Jupyter Book is subject to change. 
 
 ## Course information
