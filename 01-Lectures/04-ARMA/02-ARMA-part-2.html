@@ -1,0 +1,1442 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algebra of AR, MA models</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/04-ARMA/02-ARMA-part-2.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 0" href="../../03-Assignments/HW0/main.html" />
+    <link rel="prev" title="Linear Models" href="01-ARMA-part-1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Introduction.html">
+   ARMA models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/docs_presentation.html">
+     Contributing to PyMC documentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     README HW3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and Github
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   Overview
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/01-Lectures/04-ARMA/02-ARMA-part-2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/04-ARMA/02-ARMA-part-2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ma-models">
+   MA models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ar-models">
+   AR models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lag-operator">
+   Lag operator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ar-models-in-lag-operator-notation">
+     AR models in lag operator notation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ar-1">
+       AR(1)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ma-models-in-lag-operator-notation">
+     MA models in lag operator notation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ma-1">
+       MA(1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ma-models-are-u-unidentified-u">
+       MA models are
+       <u>
+        unidentified
+       </u>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Algebra of AR, MA models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ma-models">
+   MA models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ar-models">
+   AR models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lag-operator">
+   Lag operator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ar-models-in-lag-operator-notation">
+     AR models in lag operator notation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ar-1">
+       AR(1)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ma-models-in-lag-operator-notation">
+     MA models in lag operator notation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ma-1">
+       MA(1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ma-models-are-u-unidentified-u">
+       MA models are
+       <u>
+        unidentified
+       </u>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="algebra-of-ar-ma-models">
+<h1>Algebra of AR, MA models<a class="headerlink" href="#algebra-of-ar-ma-models" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_process</span> <span class="kn">import</span> <span class="n">arma_acovf</span><span class="p">,</span> <span class="n">ArmaProcess</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">toeplitz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;serif&#39;</span><span class="p">:[</span><span class="s1">&#39;Palatino&#39;</span><span class="p">]})</span>
+<span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;ytick.left&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="s2">&quot;xtick.bottom&quot;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="s2">&quot;ytick.major.size&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                     <span class="s2">&quot;ytick.major.width&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                     <span class="s2">&quot;xtick.major.size&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                     <span class="s2">&quot;xtick.major.width&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                     <span class="s2">&quot;ytick.direction&quot;</span><span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+                     <span class="s2">&quot;xtick.direction&quot;</span><span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.major.right&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.major.top&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.top&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.right&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">18</span>
+                    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ma-models">
+<h2>MA models<a class="headerlink" href="#ma-models" title="Permalink to this headline">¶</a></h2>
+<p><strong>Example</strong>:</p>
+<div class="math notranslate nohighlight">
+\[z_t = \varepsilon_t + 0.4 \varepsilon_{t-1}\]</div>
+<p>define in Python</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.4</span><span class="p">])</span>
+<span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># coefficient on z_t</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">theta</span><span class="p">]</span>  <span class="c1"># coefficients on e(t) and e(t-1)</span>
+<span class="n">ma1_process</span> <span class="o">=</span> <span class="n">ArmaProcess</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="n">ma</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ma1_process</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ArmaProcess
+AR: [1.0]
+MA: [1.0, 0.4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># what is ma1_process?</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">ma1_process</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>statsmodels.tsa.arima_process.ArmaProcess
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># what are ma1_process&#39;s attributes?</span>
+
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">ma1_process</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;acf&#39;,
+ &#39;acovf&#39;,
+ &#39;ar&#39;,
+ &#39;arcoefs&#39;,
+ &#39;arma2ar&#39;,
+ &#39;arma2ma&#39;,
+ &#39;arpoly&#39;,
+ &#39;arroots&#39;,
+ &#39;from_coeffs&#39;,
+ &#39;from_estimation&#39;,
+ &#39;from_roots&#39;,
+ &#39;generate_sample&#39;,
+ &#39;impulse_response&#39;,
+ &#39;invertroots&#39;,
+ &#39;isinvertible&#39;,
+ &#39;isstationary&#39;,
+ &#39;ma&#39;,
+ &#39;macoefs&#39;,
+ &#39;mapoly&#39;,
+ &#39;maroots&#39;,
+ &#39;nobs&#39;,
+ &#39;pacf&#39;,
+ &#39;periodogram&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma1_process</span><span class="o">.</span><span class="n">mapoly</span> <span class="c1"># MA polynomial</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[x \mapsto \text{1.0} + \text{0.4}\,x\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma1_process</span><span class="o">.</span><span class="n">maroots</span> <span class="c1"># MA roots</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.5])
+</pre></div>
+</div>
+</div>
+</div>
+<p>the MA root(s) solve the MA poly(nomial)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma_root</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span>
+<span class="mf">1.0</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">ma_root</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Consider a MA(2) model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">.3</span><span class="p">])</span> <span class="c1"># coefficients on e(t-1) and e(t-2)</span>
+<span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># coefficient on z_t</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">theta</span><span class="p">]</span>
+<span class="n">ma2_process</span> <span class="o">=</span> <span class="n">ArmaProcess</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="n">ma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma2_process</span><span class="o">.</span><span class="n">mapoly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[x \mapsto \text{1.0} + \text{0.6}\,x - \text{0.3}\,x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma2_process</span><span class="o">.</span><span class="n">maroots</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.081666,  3.081666])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma_root1</span> <span class="o">=</span> <span class="n">ma2_process</span><span class="o">.</span><span class="n">maroots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">expression1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ma_root1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ma_root1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>    
+<span class="n">expression1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6653345369377348e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-an-aside admonition">
+<p class="admonition-title"><strong>An aside</strong>: </p>
+<p>Numerically, it is often difficult to distinguish very small numbers from exectly 0. We can confirm that the value is almost zero using the following assertion:</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using numpy</span>
+<span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="kn">import</span> <span class="n">assert_almost_equal</span>   
+
+<span class="n">assert_almost_equal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">expression1</span><span class="p">,</span> <span class="n">err_msg</span><span class="o">=</span><span class="s2">&quot;expression1 is NOT almost equal to 0!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using standard python</span>
+<span class="n">very_small_number</span> <span class="o">=</span> <span class="mf">0.00000001</span>
+<span class="k">assert</span> <span class="n">expression1</span> <span class="o">&lt;</span> <span class="n">very_small_number</span><span class="p">,</span> <span class="s2">&quot;expression1 is NOT larger than the &#39;very_small_number&#39;!&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using standard python</span>
+<span class="n">very_small_number</span> <span class="o">=</span> <span class="mf">0.00000001</span>
+<span class="k">assert</span> <span class="n">expression1</span> <span class="o">&gt;</span> <span class="n">very_small_number</span><span class="p">,</span> <span class="s2">&quot;expression1 is NOT larger than the &#39;very_small_number&#39;!&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">57</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># using standard python</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">very_small_number</span> <span class="o">=</span> <span class="mf">0.00000001</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">expression1</span> <span class="o">&gt;</span> <span class="n">very_small_number</span><span class="p">,</span> <span class="s2">&quot;expression1 is NOT larger than the &#39;very_small_number&#39;!&quot;</span>
+
+<span class="ne">AssertionError</span>: expression1 is NOT larger than the &#39;very_small_number&#39;!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma_root2</span> <span class="o">=</span> <span class="n">ma2_process</span><span class="o">.</span><span class="n">maroots</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">expression2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ma_root2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ma_root2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">expression2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ar-models">
+<h2>AR models<a class="headerlink" href="#ar-models" title="Permalink to this headline">¶</a></h2>
+<p><strong>Example</strong>:</p>
+<div class="math notranslate nohighlight">
+\[z_t = 0.8 z_{t-1} + \varepsilon_t\]</div>
+<p>Define in Python</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">.8</span> <span class="c1"># coefficient on z(t-1)</span>
+<span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">alpha</span><span class="p">]</span> 
+<span class="n">ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># coefficient on e(t)</span>
+<span class="n">ar1_process</span> <span class="o">=</span> <span class="n">ArmaProcess</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="n">ma</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ar1_process</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ArmaProcess
+AR: [1.0, -0.8]
+MA: [1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar1_process</span><span class="o">.</span><span class="n">arpoly</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[x \mapsto \text{1.0} - \text{0.8}\,x\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar1_process</span><span class="o">.</span><span class="n">arroots</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.25])
+</pre></div>
+</div>
+</div>
+</div>
+<p>the AR root(s) solves the AR poly(nomial)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar_root</span> <span class="o">=</span> <span class="mf">1.25</span>
+<span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="p">(</span><span class="n">ar_root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.4</span><span class="p">,</span> <span class="mf">.1</span><span class="p">])</span> 
+<span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">alpha</span><span class="p">]</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
+<span class="n">ar2_process</span> <span class="o">=</span> <span class="n">ArmaProcess</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="n">ma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar2_process</span><span class="o">.</span><span class="n">arpoly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[x \mapsto \text{1.0} - \text{0.4}\,x - \text{0.1}\,x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar2_process</span><span class="o">.</span><span class="n">arroots</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-5.74165739,  1.74165739])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar_root1</span> <span class="o">=</span> <span class="n">ar2_process</span><span class="o">.</span><span class="n">arroots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">expression1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ar_root1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ar_root1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>    
+<span class="n">expression1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.440892098500626e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar_root2</span> <span class="o">=</span> <span class="n">ar2_process</span><span class="o">.</span><span class="n">arroots</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">expression2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.4</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ar_root2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ar_root2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>    
+<span class="n">expression2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.6653345369377348e-16
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lag-operator">
+<h2>Lag operator<a class="headerlink" href="#lag-operator" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>aka Backshift operator</p>
+</div>
+<div class="math notranslate nohighlight">
+\[ L z_{t} = z_{t-1} \]</div>
+<div class="math notranslate nohighlight">
+\[ L^2 z_{t} = L(L z_t) = Lz_{t-1} = z_{t-2} \]</div>
+<div class="math notranslate nohighlight">
+\[ L^n z_{t} = z_{t-n} \]</div>
+<ul class="simple">
+<li><p>polynomial of order <span class="math notranslate nohighlight">\(p\)</span> in the lag operator</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \alpha(L) = \alpha_0  + \alpha_1 L + \alpha_2 L^2 + \cdots + \alpha_p L^p\]</div>
+<ul class="simple">
+<li><p>weighted moving average of <span class="math notranslate nohighlight">\(z_t\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\alpha(L)z_t &amp;= z_t(\alpha_0  + \alpha_1 L + \alpha_2 L^2 + \cdots + \alpha_p L^p) \\
+             &amp;= \alpha_0 z_t + \alpha_1 z_{t-1} + \alpha_2 z_{t-2} + \cdots + \alpha_p z_{t-p}
+\end{align}
+\end{split}\]</div>
+<div class="section" id="ar-models-in-lag-operator-notation">
+<h3>AR models in lag operator notation<a class="headerlink" href="#ar-models-in-lag-operator-notation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ar-1">
+<h4>AR(1)<a class="headerlink" href="#ar-1" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[
+ z_{t} = \alpha z_{t-1} + \varepsilon_{t}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+(1- \alpha L) z_{t} = \varepsilon_{t}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \text{if } |\alpha|&lt; 1 \rightarrow z_{t} = \frac{1}{(1- \alpha L)}\varepsilon_{t}
+\]</div>
+<ul class="simple">
+<li><p>geometric series result</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \sum_{j=0}^{\infty} x^j = 1 + x + x^2+\cdots= \frac{1}{1-x}, \;\;\; \text{if } |x|&lt;1\]</div>
+<ul class="simple">
+<li><p>in our case <span class="math notranslate nohighlight">\(x = \alpha L\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{(1- \alpha L)} = \sum_{j=0}^{\infty} (\alpha L)^j = 1 + \alpha L + \alpha^2 L^2+\cdots\]</div>
+<div class="math notranslate nohighlight">
+\[
+ z_{t} = \frac{1}{(1- \alpha L)}\varepsilon_{t} = \varepsilon_{t} + \alpha \varepsilon_{t-1} + \alpha^2 \varepsilon_{t-2}+\cdots = \sum_{i=0}^{\infty} \alpha^i \varepsilon_{t-i}
+\]</div>
+<ul class="simple">
+<li><p>AR(1) is a MA(<span class="math notranslate nohighlight">\(\infty\)</span>)</p></li>
+</ul>
+<ul class="simple">
+<li><p>another derivation of the variance of AR(1)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+ z_{t} = \varepsilon_{t} + \alpha \varepsilon_{t-1} + \alpha^2 \varepsilon_{t-2}+\cdots 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \operatorname{var}(z_{t}) =  \operatorname{var}(\varepsilon_{t}) + \alpha^2  \operatorname{var}(\varepsilon_{t-1}) + \alpha^4 \operatorname{var}(\varepsilon_{t-2}) + \cdots = \sigma^2 \sum_{i=0}^{\infty} (\alpha^2)^i = \frac{\sigma^2}{1-\alpha^2}
+\]</div>
+<ul class="simple">
+<li><p>AR(1) is stationary if <span class="math notranslate nohighlight">\(|\alpha|&lt;1\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>equivalent to polynomilal</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\alpha(z) = 1 - \alpha z\]</div>
+<p>having all roots <span class="math notranslate nohighlight">\(|z|&gt;1\)</span> (outside the unit circle)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar1_process</span><span class="o">.</span><span class="n">arpoly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[x \mapsto \text{1.0} - \text{0.8}\,x\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar1_process</span><span class="o">.</span><span class="n">arroots</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.25])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ar1_process</span><span class="o">.</span><span class="n">arroots</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ar1_process</span><span class="o">.</span><span class="n">isstationary</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>AR(q) process is stationary if <u>all</u> roots <span class="math notranslate nohighlight">\(z\)</span> of the polynomial</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \alpha(z) = 1 - \alpha_1 z - \alpha_2 z^2 - \cdots - \alpha_q z^q\]</div>
+<p>are outside the unit circle (<span class="math notranslate nohighlight">\(|z|&lt;1\)</span>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar2_process</span><span class="o">.</span><span class="n">arpoly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[x \mapsto \text{1.0} - \text{0.4}\,x - \text{0.1}\,x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar2_process</span><span class="o">.</span><span class="n">arroots</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-5.74165739,  1.74165739])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ar2_process</span><span class="o">.</span><span class="n">arroots</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ar2_process</span><span class="o">.</span><span class="n">isstationary</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ma-models-in-lag-operator-notation">
+<h3>MA models in lag operator notation<a class="headerlink" href="#ma-models-in-lag-operator-notation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ma-1">
+<h4>MA(1)<a class="headerlink" href="#ma-1" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[
+z_{t} = \varepsilon_{t} + \theta  \varepsilon_{t-1} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+z_{t} = (1 + \theta  L) \varepsilon_{t} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\varepsilon_{t} = \frac{1}{(1 + \theta  L)} z_{t} = z_{t} - \theta z_{t-1} + \theta^2 z_{t-2}+\cdots = \sum_{i=0}^{\infty} (-\theta)^i z_{t-i}, \;\;\; \textbf{if } |\theta|&lt;1
+\]</div>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(|\theta|&lt;1\)</span> then <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> can be represented in terms of the current and past values of <span class="math notranslate nohighlight">\(z_t\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>the process is <strong>invertible</strong></p></li>
+</ul>
+<ul class="simple">
+<li><p>MA(1) process for <span class="math notranslate nohighlight">\(z_t\)</span> is a <strong>stable</strong> AR(1) process for <span class="math notranslate nohighlight">\(\varepsilon\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="ma-models-are-u-unidentified-u">
+<h4>MA models are <u>unidentified</u><a class="headerlink" href="#ma-models-are-u-unidentified-u" title="Permalink to this headline">¶</a></h4>
+<p><strong>MA(1)</strong></p>
+<ul class="simple">
+<li><p>model 1</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align} 
+z_{t} = \varepsilon_{t} &amp;+ \theta  \varepsilon_{t-1} ,  \; \operatorname{var} (\varepsilon_{t})=\sigma^2 \\
+&amp;\operatorname{var} (z) = \sigma^2 + \theta^2 \sigma^2\\
+&amp;\operatorname{cov}(z_t, z_{t-1}) = \theta \sigma^2\\
+&amp;\operatorname{cov}(z_t, z_{t-h}) = 0
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>model 2</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{z}_{t} = \hat{\varepsilon}_{t} + \frac{1}{\theta}  \hat{\varepsilon}_{t-1}, \;\;\; \operatorname{var} (\hat{\varepsilon}_{t})=\sigma^2 \theta^2
+\]</div>
+<p>equivalent to:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{z}_{t} = \theta \varepsilon_{t} +  \varepsilon_{t-1}, \;\;\; \operatorname{var} (\varepsilon_{t})=\sigma^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{var} (\hat{z}) = \theta^2 \sigma^2 + \frac{1}{\theta^2}\theta^2\sigma^2 = \theta^2 \sigma^2 + \sigma^2 =\operatorname{var} (z)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{cov}(\hat{z}_t, \hat{z}_{t-1}) = \frac{1}{\theta} \sigma^2 \theta^2 = \sigma^2 \theta = \operatorname{cov}(z_t, z_{t-1})
+\]</div>
+<ul class="simple">
+<li><p>model 1 and model 2 are indistinguishable from variances and autocovariances</p></li>
+<li><p>two different values of the parameters (<span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>) produce the same value of the likelihood</p></li>
+<li><p>if model 1 is invertable (<span class="math notranslate nohighlight">\(|\theta|&lt;1\)</span>), model 2 is not (<span class="math notranslate nohighlight">\(\frac{1}{|\theta|}&gt;1\)</span>)</p></li>
+<li><p>the invertible condition may be desirable to impose: think of <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> as an economic shock (e.g. TFP). From the data (<span class="math notranslate nohighlight">\(z\)</span>) we observe only the effect of the shock, <u>not</u> the shock itself. Inverability implies that the values of the shock can be recovered from past values of <span class="math notranslate nohighlight">\(z_t\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma1_process</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ArmaProcess([1.0], [1.0, 0.4], nobs=100) at 0x2297a713460
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma1_process</span><span class="o">.</span><span class="n">isinvertible</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is an example of a non-invertible MA(1) process</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_invertible_ma1_process</span> <span class="o">=</span> <span class="n">ArmaProcess</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">)</span>
+<span class="n">non_invertible_ma1_process</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ArmaProcess([1.0], [0.4, 1.0], nobs=100) at 0x2297e62ff10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare the covariances with the one of the MA(1) process defined above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_invertible_ma1_process</span><span class="o">.</span><span class="n">acovf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.16, 0.4 , 0.  ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ma1_process</span><span class="o">.</span><span class="n">acovf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.16, 0.4 , 0.  ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The non-invertible process is <strong>not</strong> invertible</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_invertible_ma1_process</span><span class="o">.</span><span class="n">isinvertible</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>For a AR(2) models with coefficients <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(\alpha_2\)</span>, the stability conditions are the following:
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-56520538-89d5-461c-90d9-3e87e514c658">
+<span class="eqno">(2)<a class="headerlink" href="#equation-56520538-89d5-461c-90d9-3e87e514c658" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\alpha_1 + \alpha_2 &amp;&lt; 1\\
+\alpha_2 - \alpha_1 &amp;&lt; 1\\
+-1&lt;\alpha_2 &amp;&lt;1
+\end{align}\]</div>
+<p>$$</p>
+<p>This is known as the stability triangle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># stability triangle</span>
+<span class="n">ar2_process</span><span class="o">.</span><span class="n">arcoefs</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">ar2_process</span><span class="o">.</span><span class="n">arcoefs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ar2_process</span><span class="o">.</span><span class="n">arcoefs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ar2_process</span><span class="o">.</span><span class="n">arcoefs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(True, True, True)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Lectures\04-ARMA"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01-ARMA-part-1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Linear Models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../03-Assignments/HW0/main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 0</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

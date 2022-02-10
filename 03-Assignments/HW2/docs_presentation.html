@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contributing to PyMC documentation</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW2/docs_presentation.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 3" href="../HW3/main.html" />
+    <link rel="prev" title="README HW2" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="main.html">
+   Homework 2
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Contributing to PyMC documentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../HW3/README.html">
+     README HW3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and Github
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   Overview
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW2/docs_presentation.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-overview-of-pymc-documentation">
+   An overview of PyMC documentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-idea-an-executable-book-made-from-blogposts">
+   The idea: an executable book made from blogposts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-implementation-jupyter-notebook-sphinx-extensions">
+   The implementation: jupyter notebook + sphinx (+ extensions)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem-too-much-docs">
+   The problem: too much docs?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#myst-markedly-structured-text">
+   MyST: Markedly Structured Text
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-markup">
+     Core markup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roles">
+     Roles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-referencing-roles">
+       Cross-referencing roles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#formatting-roles">
+       Formatting roles
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#directives">
+     Directives
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#figure">
+       Figure
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#admonitions">
+       Admonitions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#and-more">
+       And more!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-conventions">
+     Our conventions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Contributing to PyMC documentation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-overview-of-pymc-documentation">
+   An overview of PyMC documentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-idea-an-executable-book-made-from-blogposts">
+   The idea: an executable book made from blogposts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-implementation-jupyter-notebook-sphinx-extensions">
+   The implementation: jupyter notebook + sphinx (+ extensions)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem-too-much-docs">
+   The problem: too much docs?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#myst-markedly-structured-text">
+   MyST: Markedly Structured Text
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-markup">
+     Core markup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roles">
+     Roles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-referencing-roles">
+       Cross-referencing roles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#formatting-roles">
+       Formatting roles
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#directives">
+     Directives
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#figure">
+       Figure
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#admonitions">
+       Admonitions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#and-more">
+       And more!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#our-conventions">
+     Our conventions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="contributing-to-pymc-documentation">
+<span id="docs-presentation"></span><h1>Contributing to PyMC documentation<a class="headerlink" href="#contributing-to-pymc-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="an-overview-of-pymc-documentation">
+<h2>An overview of PyMC documentation<a class="headerlink" href="#an-overview-of-pymc-documentation" title="Permalink to this headline">¶</a></h2>
+<p>The PyMC documentation is generated from two different GitHub repositories,
+each containing different type of documentation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/pymc-devs/pymc">pymc</a>:
+The pymc repository contains most reference content in the form of docstrings
+(strings attached to the Python object they describe), some guides about
+core functionality and the contributing docs.</p></li>
+</ul>
+<ul class="simple" id="docs-pymc-examples-point">
+<li><p><a class="reference external" href="https://github.com/pymc-devs/pymc-examples">pymc-examples</a>:
+The pymc-examples repository contains a collection of over
+90 notebooks with usage examples, in depth-explanations and tutorials about
+PyMC.</p></li>
+</ul>
+<p>In this talk, we’ll focus on contributing to pymc-examples,
+which contains more and more diverse documentation.
+We’ll start with a description of the resource, its features
+and how they relate to our pedagogical goals and then
+dive into using those features to write clear,
+pretty and well referenced technical documentation.</p>
+</div>
+<div class="section" id="the-idea-an-executable-book-made-from-blogposts">
+<span id="docs-idea"></span><h2>The idea: an executable book made from blogposts<a class="headerlink" href="#the-idea-an-executable-book-made-from-blogposts" title="Permalink to this headline">¶</a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>We won’t explain how to set up a similar website, this would take another whole talk.</p>
+<p>We will give an overview of the features available and about why we chose those
+to then dive into our main goal for the talk: <em>How do you as a contributor
+to PyMC documentation take advantage of them</em></p>
+</div>
+<p>Our wishlist:</p>
+<ul class="simple">
+<li><p>Easy to write</p></li>
+<li><p>Easy to execute, both when writing pages and when reading them.
+We should be able to run the code years from now.</p></li>
+<li><p>Browsable via tags and categories</p></li>
+<li><p>Searchable by itself and searchable from the pymc library documentation</p></li>
+<li><p>Citable resource</p></li>
+<li><p>Awknowledge the authors (without making it the focus)</p></li>
+<li><p>Automatic table of contents</p></li>
+<li><p>Accessible</p></li>
+<li><p>DRY: do not repeat yourself. Things shared between several notebooks should be done
+once when possible.</p></li>
+</ul>
+</div>
+<div class="section" id="the-implementation-jupyter-notebook-sphinx-extensions">
+<h2>The implementation: jupyter notebook + sphinx (+ extensions)<a class="headerlink" href="#the-implementation-jupyter-notebook-sphinx-extensions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Easy to write</p>
+<ul>
+<li><p>Markdown</p></li>
+<li><p>supported via sphinx+myst-parser</p></li>
+</ul>
+</li>
+<li><p>Easy to execute, both when writing pages and when reading them.
+We should be able to run the code years from now.</p>
+<ul>
+<li><p>Jupyter notebook combined with binder and google colab badges on top of every page</p></li>
+<li><p>supported via sphinx+myst-nb and a custom html template for the badges</p></li>
+<li><p>the environment used to run them is stored automatically thanks to the watermark library</p></li>
+</ul>
+</li>
+<li><p>Browsable via tags and categories</p>
+<ul>
+<li><p>supported via sphinx+ablog</p></li>
+</ul>
+</li>
+<li><p>Searchable by itself and searchable from the pymc library documentation</p>
+<ul>
+<li><p>supported via sphinx+pydata-sphinx-theme+readthedocs</p></li>
+</ul>
+</li>
+<li><p>Citable resource</p>
+<ul>
+<li><p>supported via zenodo+custom template</p></li>
+</ul>
+</li>
+<li><p>Awknowledge the authors (without making it the focus)</p>
+<ul>
+<li><p>supported via ablog+custom template</p></li>
+</ul>
+</li>
+<li><p>Automatic table of contents</p>
+<ul>
+<li><p>supported via sphinx+pydata-sphinx-theme</p></li>
+</ul>
+</li>
+<li><p>Accessible</p>
+<ul>
+<li><p>pydata-sphinx-theme is working on the accessibility of the theme and will continue to do so</p></li>
+</ul>
+</li>
+<li><p>DRY: do not repeat yourself. Things shared between several notebooks should be done
+once when possible.</p>
+<ul>
+<li><p>Centralized citations thanks to sphinx-bibtex, they are referenced in the docs with 2 keywords</p></li>
+<li><p>Badges are automatic</p></li>
+<li><p>Tags and categories are automatic</p></li>
+<li><p>Table of contents is automatic</p></li>
+<li><p>The 2 last sections with license info and citation are generated from a centralized source,
+with only 2 lines needed per notebook</p></li>
+</ul>
+</li>
+</ul>
+<p>To sum up, thanks to the work of several amazing people (both seasoned PyMC contributors and
+new members working with us via Outreachy and <abbr title="Google Season of Docs">GSoD</abbr>) and the funds we raised
+during <a class="reference external" href="https://discourse.pymc.io/c/pymcon/2020talks/15">PyMCon</a> and GSoD
+we have changed most of our documentation infrastructure in the last 9 months.</p>
+<p>You can see a huge change already:</p>
+</div>
+<div class="section" id="the-problem-too-much-docs">
+<h2>The problem: too much docs?<a class="headerlink" href="#the-problem-too-much-docs" title="Permalink to this headline">¶</a></h2>
+<p>Our <strong>infrastructure</strong> supports all of the points above, but only a handful of notebooks
+have been updated to take advantage of them. So while we <em>could</em> have all that, we
+are still far from there!</p>
+</div>
+<div class="section" id="myst-markedly-structured-text">
+<h2>MyST: Markedly Structured Text<a class="headerlink" href="#myst-markedly-structured-text" title="Permalink to this headline">¶</a></h2>
+<p>As we have just said, we have already configured the infrastructure for all the points above,
+so you don’t need to worry about that. The rest of the webinar will be a myst quickstart
+targetted to contributing to pymc-examples.</p>
+<div class="section" id="core-markup">
+<h3>Core markup<a class="headerlink" href="#core-markup" title="Permalink to this headline">¶</a></h3>
+<p>MyST is a superset of ✨✨ <strong>Markdown</strong> ✨✨. Everything you know and love about markdown
+is valid MyST markup: italics, code blocks, links, headers, lists…</p>
+<p>However, markdown is too limited for technical writing and for resources
+containing many files. MyST fills this gap by bringing to markdown all
+the features of restructured text, a similar markup language designed
+for technical documentation. It does so by extending markdown with
+a few custom idioms and by supporting roles and directives (covered in the
+following subsections).</p>
+<p><strong>Targets</strong></p>
+<p>Targets are used to define custom anchors that you can refer to elsewhere
+in your documentation using roles.
+They generally go before section titles, but they can also point to
+lists or specific bullet points within a list.</p>
+<p>Targets are creating with <code class="docutils literal notranslate"><span class="pre">(target_id)=</span></code> right before the section or
+item we want them to point to. You can see the equal at the end as
+an indicator that we are making the target id equivalent to what comes after.
+Thus, referencing the target id becomes the same as referencing a section header
+or bullet point.</p>
+<p><strong>Math</strong></p>
+<p>Like Jupyter notebooks, MyST supports using <code class="docutils literal notranslate"><span class="pre">$</span></code> for inline latex math expressions,
+and <code class="docutils literal notranslate"><span class="pre">$$</span></code> for block expressions. Moreover, block mathematical expressions
+can be given ids in order to reference them elsewhere using roles. Thus:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>$$
+P(\theta|y) \propto P(y|\theta) P(\theta)
+$$ (eq:bayes)
+</pre></div>
+</div>
+<p>renders as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-bayes">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-bayes" title="Permalink to this equation">¶</a></span>\[
+P(\theta|y) \propto P(y|\theta) P(\theta)
+\]</div>
+<p>and can be referenced.</p>
+</div>
+<div class="section" id="roles">
+<h3>Roles<a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h3>
+<p>Roles provide a way to specify arbitrary <strong>inline</strong> features.
+Their base syntax is <code class="docutils literal notranslate"><span class="pre">{role-name}`role-content`</span></code> and can be divided
+in two subgroups: cross-referencing and formatting roles, with the
+cross-referencing use being far more important.</p>
+<div class="section" id="cross-referencing-roles">
+<h4>Cross-referencing roles<a class="headerlink" href="#cross-referencing-roles" title="Permalink to this headline">¶</a></h4>
+<p>Cross-referencing roles can be used in two ways:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{role-name}`target`</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{role-name}`custom</span> <span class="pre">text</span> <span class="pre">for</span> <span class="pre">link</span> <span class="pre">&lt;target&gt;`</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ref</span></code> and <code class="docutils literal notranslate"><span class="pre">numref</span></code> role is used to link to manually created targets, with <code class="docutils literal notranslate"><span class="pre">(id)=</span></code>,
+in figures… <code class="docutils literal notranslate"><span class="pre">ref</span></code> is replaced by the title of what we are linking to, <code class="docutils literal notranslate"><span class="pre">numref</span></code> (not valid
+for all objects) is replaced by its count.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code> role is used to link using the path to a file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">term</span></code> role is used to link to terms defined in <span class="xref std std-ref">our glossary</span>.</p></li>
+<li><p>python domain references: <code class="docutils literal notranslate"><span class="pre">mod</span></code> (module), <code class="docutils literal notranslate"><span class="pre">func</span></code> (function), <code class="docutils literal notranslate"><span class="pre">class</span></code> or <code class="docutils literal notranslate"><span class="pre">meth</span></code> (method)
+are used to link to python objects documented in the <span class="xref std std-ref">pymc:api</span>.</p>
+<ul>
+<li><p>These can also take a <code class="docutils literal notranslate"><span class="pre">~</span></code> character before the import path to show only the object,
+not its import path.</p></li>
+</ul>
+</li>
+<li><p>bibtex citation: <code class="docutils literal notranslate"><span class="pre">cite:p</span></code> and <code class="docutils literal notranslate"><span class="pre">cite:t</span></code> are used to cite the scientific literature
+and tell sphinx to keep a log of citations so we can generate the biblography automatically.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eq</span></code> for equation targets</p></li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{ref}`docs/idea`</span></code> is rendered as <a class="reference internal" href="#docs-idea"><span class="std std-ref">The idea: an executable book made from blogposts</span></a> and points to a title</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{ref}`the</span> <span class="pre">idea</span> <span class="pre">&lt;docs/idea&gt;`</span></code> is rendered as <a class="reference internal" href="#docs-idea"><span class="std std-ref">the idea</span></a> and points to a title</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{eq}`eq:bayes`</span></code> is rendered as <a class="reference internal" href="#equation-eq-bayes">(3)</a> and points to an equation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{ref}`pymc-examples</span> <span class="pre">bullet</span> <span class="pre">point</span> <span class="pre">&lt;docs/pymc-examples-point&gt;`</span></code> is rendered as
+<a class="reference internal" href="#docs-pymc-examples-point"><span class="std std-ref">pymc-examples bullet point</span></a>,
+and points to a bullet point using a custom text for the link.
+Here as we link to a bullet point we need to use custom text, sphinx can’t use the title itself
+as link text.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{class}`pymc.Normal`</span></code> is rendered as <code class="xref py py-class docutils literal notranslate"><span class="pre">pymc.Normal</span></code> and points to the documentation
+of the Normal class in PyMC</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{class}`~pymc.Normal`</span></code> is rendered as <code class="xref py py-class docutils literal notranslate"><span class="pre">Normal</span></code> and also points to
+the documentation of the Normal class in PyMC, but showing on <code class="docutils literal notranslate"><span class="pre">Normal</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{class}`normal</span> <span class="pre">distribution</span> <span class="pre">&lt;pymc.Normal&gt;`</span></code> is rendered as
+<code class="xref py py-class docutils literal notranslate"><span class="pre">normal</span> <span class="pre">distribution</span></code> and again, also points to the documentation
+of the Normal class in PyMC but showing custom text.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{term}`pymc:posterior`</span></code> is rendered as <span class="xref std std-term">pymc:posterior</span> and points to the posterior
+definition in the glossary.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We can also use cross references for external links. In such cases, the target needs to be
+prepended by the external website id, we do this with our term cross reference, indicating
+it should point to the PyMC docs.</p>
+<p>If the target doesn’t exist in the current website nor it is repeated among the external
+websites we have configured we can skip this prefix. We can therefore skip the prefix
+safely for links to python objects, and we have, the import path is already unique.</p>
+</div>
+</div>
+<div class="section" id="formatting-roles">
+<h4>Formatting roles<a class="headerlink" href="#formatting-roles" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">abbr</span></code> for abbreviations: <abbr title="Probabilistic Programming Language">PPL</abbr></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bdg-&lt;style&gt;</span></code> for badges: <a href="#id1"><span class="problematic" id="id2">:bdg-warning:`caution`</span></a>. <a class="reference external" href="https://sphinx-design.readthedocs.io/en/furo-theme/badges_buttons.html#badges">Reference</a> for valid styles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">octicon</span></code> for <a class="reference external" href="https://sphinx-design.readthedocs.io/en/furo-theme/badges_buttons.html#inline-icons">octicon</a> icons: <a href="#id3"><span class="problematic" id="id4">:octicon:`bookmark`</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fas</span></code>, <code class="docutils literal notranslate"><span class="pre">fab</span></code> and <code class="docutils literal notranslate"><span class="pre">far</span></code> for Font Awesome icons: <a href="#id5"><span class="problematic" id="id6">:fas:`dragon`</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="directives">
+<h3>Directives<a class="headerlink" href="#directives" title="Permalink to this headline">¶</a></h3>
+<p>Directives provide a way to specify arbitrary <strong>block/paragraph</strong> features.
+They are much more diverse and flexible than roles. Their base syntax is:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>:::{directivename} main-argument
+:kwarg1: value
+:kwarg2: value
+
+Main content of the directive, generally prose but not necessarily.
+:::
+</pre></div>
+</div>
+<p>Out of the 4 blocks (name, argument, keyword arguments and content), only the name
+is always required. Each directive has its own rules and
+required (or even forbidden sometimes) blocks.</p>
+<div class="section" id="figure">
+<h4>Figure<a class="headerlink" href="#figure" title="Permalink to this headline">¶</a></h4>
+<p>MyST provides a <code class="docutils literal notranslate"><span class="pre">figure-md</span></code> directive where we can add images with an id and a caption
+that gets rendered both in pure markdown (unrendered notebook) and in the website
+(where it looks nicer).</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>:::{figure-md} imposter
+
+![<span class="nt">imposter syndrome</span>](<span class="na">imposter.jpg</span>)
+
+This is a caption in <span class="gs">**Markdown**</span>! Captions must be single paragraph.
+:::
+</pre></div>
+</div>
+<div class="figure align-default" id="imposter">
+<img alt="The image shows two venn diagrams. The left side describes the imposter syndrome.There is a big yellow circle labeled&quot;what I think others know&quot;, inside it has a small blue circle labeled &quot;What I know&quot;.The right side describes the reality. The blue circle stays the same, but now,it is instead surrounded by many yellow circles of the same size that combinedcover the same area as the big yellow circle in the previous diagram. Now eachyellow circle represents what someone else knows, with no circle being smaller thanthe other." src="03-Assignments/HW2/imposter.jpg" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><a class="reference external" href="https://twitter.com/rundavidrun/status/587671657193455616">Image by David Whittaker</a></span><a class="headerlink" href="#imposter" title="Permalink to this image">¶</a></p>
+</div>
+<p>We really like the image in <a class="reference internal" href="#imposter"><span class="std std-numref">Fig. 1</span></a> and decided to use it here because we think that pymc-examples
+is a crystallization of this image. Nobody within the PyMC team know everything covered
+in the examples, the collection of examples was built by developers, power users, first
+time contributors and progressively ended up covering more and more, just like the
+yellow circles in the right diagram.</p>
+<p>It is also a wink to <a class="reference external" href="https://www.youtube.com/watch?v=tXWscUSYdBs">Melissa’s talk about sphinx</a>
+which you should look if you are interested in setting sphinx up for your project.</p>
+</div>
+<div class="section" id="admonitions">
+<h4>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h4>
+<p>Admonitions provide a way to highlight a block of content with special relevance.
+You can use it for warnings, tips or notes. The complete list
+of admonition styles are available at the <a class="reference external" href="https://jupyterbook.org/reference/cheatsheet.html#admonitions">jupyterbook website</a></p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>:::{tip}
+Here is an awesome tip if you use this example
+:::
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use admonitions for content you don’t want readers to miss, even if skimming only,
+chances are they will stop at the admonition blocks.</p>
+</div>
+</div>
+<div class="section" id="and-more">
+<h4>And more!<a class="headerlink" href="#and-more" title="Permalink to this headline">¶</a></h4>
+<p>There are still more directives, most of which you don’t need to contribute to pymc examples.
+In the next section we’ll go over our “jupyter style guide” and cover 3 more directives that
+are important for pymc-examples.</p>
+</div>
+</div>
+<div class="section" id="our-conventions">
+<h3>Our conventions<a class="headerlink" href="#our-conventions" title="Permalink to this headline">¶</a></h3>
+<p>To try and ensure some common style and formatting among all the examples
+even though it is a collaborative effort with many people contributing,
+we also have some extra conventions. They are outlined in our documentation,
+at the <span class="xref std std-ref">pymc:jupyter_style</span> page.</p>
+<!-- Must cover directives from the jupyter style guide: -->
+<!-- * post directive -->
+<!-- * bibliography -->
+<!-- * include -->
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03-Assignments\HW2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">README HW2</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../HW3/main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 3</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

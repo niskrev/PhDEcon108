@@ -1,0 +1,1057 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time series concepts and models</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/01-Introduction/02-Time-series.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Multivariate normal distribution" href="../02-Gaussian/00-Introduction.html" />
+    <link rel="prev" title="Time series vs. cross-section" href="01-Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Introduction.html">
+   Introduction
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/docs_presentation.html">
+     Contributing to PyMC documentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     README HW3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and Github
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   Overview
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/01-Lectures/01-Introduction/02-Time-series.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/01-Introduction/02-Time-series.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ergodic-stationarity">
+   Ergodic stationarity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stationarity">
+     Stationarity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ergodicity">
+     Ergodicity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dependence">
+   Dependence
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-z-1-and-z-2-are-dependent">
+     When
+     <span class="math notranslate nohighlight">
+      \(z_1\)
+     </span>
+     and
+     <span class="math notranslate nohighlight">
+      \(z_2\)
+     </span>
+     are dependent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     When
+     <span class="math notranslate nohighlight">
+      \(z_1\)
+     </span>
+     and
+     <span class="math notranslate nohighlight">
+      \(z_2\)
+     </span>
+     are dependent
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-models">
+   Time series models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#innovations">
+     Innovations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forms-of-in-dependence">
+     Forms of (in)dependence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-time-series-models">
+     Examples of time series models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Time series concepts and models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ergodic-stationarity">
+   Ergodic stationarity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stationarity">
+     Stationarity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ergodicity">
+     Ergodicity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dependence">
+   Dependence
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-z-1-and-z-2-are-dependent">
+     When
+     <span class="math notranslate nohighlight">
+      \(z_1\)
+     </span>
+     and
+     <span class="math notranslate nohighlight">
+      \(z_2\)
+     </span>
+     are dependent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     When
+     <span class="math notranslate nohighlight">
+      \(z_1\)
+     </span>
+     and
+     <span class="math notranslate nohighlight">
+      \(z_2\)
+     </span>
+     are dependent
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-models">
+   Time series models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#innovations">
+     Innovations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forms-of-in-dependence">
+     Forms of (in)dependence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-time-series-models">
+     Examples of time series models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="time-series-concepts-and-models">
+<h1>Time series concepts and models<a class="headerlink" href="#time-series-concepts-and-models" title="Permalink to this headline">¶</a></h1>
+<p><strong>Definition</strong>: A time series is a collection of random variables indexed by time , i.e.</p>
+<div class="math notranslate nohighlight" id="equation-equation-time-series">
+<span class="eqno">(1)<a class="headerlink" href="#equation-equation-time-series" title="Permalink to this equation">¶</a></span>\[ \{z_t: t =~ ..., -2, -1, ~0,~1, ~2,~ ... \} = \{z_t \}_{t=-\infty}^{\infty} \]</div>
+<p>In this class we will only deal with discrete time series, i.e. where <span class="math notranslate nohighlight">\(t\)</span> is discrete as above. This is common in macroeconomics. In finance, continuous time series are often more useful/relevant. Equation <a class="reference internal" href="#equation-equation-time-series">(1)</a> is also refered to stochastic process, or stochastic sequence (some authors reserve sequence for discrete and process – for continuous time series)</p>
+<ul class="simple">
+<li><p>unlike cross-sectional data, time series are ordered <u>sequentially</u> - there is <em>before</em> and <em>after</em> and observations can be close or far away from each other.</p></li>
+</ul>
+<ul>
+<li><p>In practice, we work with observed finite realizations of stochastic processes:</p>
+<div class="math notranslate nohighlight">
+\[\{ z_1, z_2, ..., z_T \} = \{z_t\}_{t=1}^T\]</div>
+</li>
+</ul>
+<ul class="simple">
+<li><p><strong>Note</strong>: we use <strong>time series</strong> for both the process and the realization</p></li>
+</ul>
+<ul class="simple">
+<li><p>the set <span class="math notranslate nohighlight">\(\{ z_1, z_2, ..., z_T \}\)</span> is characterized by its joint distribution.</p></li>
+</ul>
+<ul class="simple">
+<li><p>the distribution of the full stochastic process is specified if for an arbitrary set of indices we know the joint distribution of the respective set</p></li>
+</ul>
+<p><strong>Example</strong>: <span class="math notranslate nohighlight">\(\{z_t \}_{t=-\infty}^{\infty}\)</span> is a Gaussian process if any finite subset <span class="math notranslate nohighlight">\(\{ z_{t_1}, z_{t_2}, ..., z_{t_k} \}\)</span> has a joint Gaussian distribution.</p>
+<ul class="simple">
+<li><p>A time series sample <span class="math notranslate nohighlight">\(\{z_t\}_{t=1}^T\)</span> is a <u> single </u> draw from some distribution</p></li>
+</ul>
+<ul class="simple">
+<li><p>sample size of 1???</p></li>
+</ul>
+<ul class="simple">
+<li><p>how do we estimate moments (learn about the underlying distribution)?</p></li>
+</ul>
+<ul class="simple">
+<li><p>in cross-section: data points are independent draws from a common distribution</p>
+<ul>
+<li><p>in <span class="math notranslate nohighlight">\(z_i = \begin{bmatrix}y_i\\x_i\end{bmatrix} \)</span> there could be arbitrarily complicated dependence, but <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> are independent for <span class="math notranslate nohighlight">\(i \neq j\)</span></p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>sample averages estimate population means</p></li>
+</ul>
+<ul class="simple">
+<li><p>the equivalent in time series is observing muliple ensembles (paths) of the time series</p></li>
+</ul>
+<ul class="simple">
+<li><p>and computing <strong>ensemble averages</strong> for each <span class="math notranslate nohighlight">\(t\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{N} \sum_{n=1}^{N} z^{(n)}_{t}\]</div>
+<ul class="simple">
+<li><p>impossible with one observed path (e.g. one history of quarterly GDP numbers)</p></li>
+</ul>
+<ul class="simple">
+<li><p>can only compute averages over time</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \displaystyle{\frac{1}{T} \sum_{t=1}^{T} z_{t}}\]</div>
+<ul class="simple">
+<li><p>for <strong>time averages</strong> to estimate population means, we need ergodic stationarity</p></li>
+</ul>
+<div class="section" id="ergodic-stationarity">
+<h2>Ergodic stationarity<a class="headerlink" href="#ergodic-stationarity" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>With cross-sectional data we have identical distribution and independence</p></li>
+<li><p>the related concepts for time series are stationarity and ergodicity</p></li>
+</ul>
+<div class="section" id="stationarity">
+<h3>Stationarity<a class="headerlink" href="#stationarity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Definition</strong>: The process <span class="math notranslate nohighlight">\(\{z_t\}_{t=1}^T\)</span> is <em><strong>strictly (or strongly) stationary</strong></em> if its distribution is time invariant.</p>
+<p>This means that if we take an arbitraty set of time indices <span class="math notranslate nohighlight">\({t_1, t_2, .., t_k}\)</span> for some <span class="math notranslate nohighlight">\(k\)</span>, the joint distribution of <span class="math notranslate nohighlight">\(z_{t_1}, z_{t_2}, ,..., z_{t_k}\)</span> stays the same if we shift all indices by the same number of time units, i.e. it is the same as the joint distribution of  <span class="math notranslate nohighlight">\(z_{t'_1}, z_{t'_2}, ,..., z_{t'_k}\)</span> for <span class="math notranslate nohighlight">\(t' = t + h\)</span> for any <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p><strong>Definition</strong>:  The process <span class="math notranslate nohighlight">\(\{z_t\}_{t=1}^T\)</span> is <em><strong>covariance (or weakly) stationary</strong></em> if the first two moments of the joint distribution exist and are time invariant</p>
+<p>That is, the mean and covariance do not change with the time index:</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}z_t=\operatorname{const} &lt; \infty\]</div>
+<div class="math notranslate nohighlight">
+\[ \operatorname{cov}(z_t, z_{t+k}) =\operatorname{cov}(z_{t'}, z_{t'+k}) &lt; \infty\]</div>
+<p>for <span class="math notranslate nohighlight">\(t' = t+h\)</span>, <span class="math notranslate nohighlight">\(k \geq 0\)</span></p>
+<ul class="simple">
+<li><p>also wide-sense stationary</p></li>
+</ul>
+<ul class="simple">
+<li><p>with <span class="math notranslate nohighlight">\(k=0\)</span> the variance of <span class="math notranslate nohighlight">\(z_t\)</span> is constant</p></li>
+</ul>
+<p>set <span class="math notranslate nohighlight">\(t'=t-k\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[ \operatorname{cov}(z_t, z_{t+k}) =\operatorname{cov}(z_{t-k}, z_{t})\]</div>
+<ul class="simple">
+<li><p>stationarity is a form of constancy of the properties of the process</p></li>
+<li><p>needed in order to be able to learn something about those properties</p></li>
+<li><p>strong stationarity is usually too strong an assumption</p></li>
+<li><p>covariance stationarity is typically enough</p></li>
+</ul>
+<ul class="simple">
+<li><p>if the first two moments exist, strong stationarity  implies weak stationarity</p></li>
+</ul>
+<p><strong>Example</strong>: (strictly but not weakly stationary)</p>
+<p>iid <span class="math notranslate nohighlight">\(z_t\)</span> with a Cauchy distribution is strictly stationary but has no finite moments and is therefore not weakly stationary.</p>
+<ul class="simple">
+<li><p>strong and weak stationarity coincide when <span class="math notranslate nohighlight">\(z_t\)</span> is a Gaussian process</p></li>
+<li><p>with weak stationarity alone we can still learn first and second order moments (if not the full distribution)</p></li>
+</ul>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(z_t\)</span> is iid then it is strongly stationary</p></li>
+</ul>
+</div>
+<div class="section" id="ergodicity">
+<h3>Ergodicity<a class="headerlink" href="#ergodicity" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>independence of observations implies each contains <u>unique</u> information</p></li>
+</ul>
+<ul class="simple">
+<li><p>dependence means that some information is <u>shared</u></p></li>
+</ul>
+<ul class="simple">
+<li><p>for information to <u>accumulate</u> as sample size grows, some unique information must exist</p></li>
+</ul>
+<ul class="simple">
+<li><p>i.e. dependence must not be too strong</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>ergodicity</strong> is the property that more distant variables in the sequence are closer to being independent</p></li>
+</ul>
+<ul class="simple">
+<li><p>(<strong>Ergodic theorem</strong>) For ergodic and stationary processes, time averages converge to population means</p></li>
+</ul>
+<ul class="simple">
+<li><p>functions of ergodic and stationary processes are also ergodic and stationary</p></li>
+</ul>
+<ul class="simple">
+<li><p>time averages of such functions converge to respective population averages</p></li>
+</ul>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(\{z_i\}\)</span> is stationary and ergodic, then <span class="math notranslate nohighlight">\(\{z_i z_i\}\)</span> is also stationary and ergodic.<br>
+Therefore, the time averages of <span class="math notranslate nohighlight">\(z_t\)</span> and <span class="math notranslate nohighlight">\(z_i z_i\)</span> converge to <span class="math notranslate nohighlight">\(\operatorname{E}z_t\)</span> and <span class="math notranslate nohighlight">\(\operatorname{E}z_tz_t\)</span></p>
+<p><strong>Example</strong>: (stationary but not ergodic)</p>
+<div class="math notranslate nohighlight">
+\[ z_t = x_t + y\]</div>
+<p>with:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_t\)</span> iid, <span class="math notranslate nohighlight">\(\operatorname{E}x_t = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> independent of <span class="math notranslate nohighlight">\(x_t\)</span> and <span class="math notranslate nohighlight">\(\operatorname{E}y = 0\)</span>, <span class="math notranslate nohighlight">\(\operatorname{var}(y) &gt; 0\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>since <span class="math notranslate nohighlight">\(x_t\)</span> is iid:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \displaystyle{\frac{1}{T} \sum_{t=1}^{T} x_{t}} \longrightarrow \operatorname{E}x_t = 0\]</div>
+<ul class="simple">
+<li><p>since <span class="math notranslate nohighlight">\(y\)</span> is the same for all <span class="math notranslate nohighlight">\(t\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \displaystyle{\frac{1}{T} \sum_{t=1}^{T} y} \longrightarrow y\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[ \displaystyle{\frac{1}{T} \sum_{t=1}^{T} z_t} \longrightarrow y\]</div>
+<p>On the other hand, the (ensemble) mean of <span class="math notranslate nohighlight">\(z_t\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}z_t = \operatorname{E}x_t + \operatorname{E}y = 0\]</div>
+<p>This is because dependence between <span class="math notranslate nohighlight">\(z_t\)</span> and <span class="math notranslate nohighlight">\(z_{t-k}\)</span> does not decrease as <span class="math notranslate nohighlight">\(k\)</span> increases:</p>
+<div class="math notranslate nohighlight">
+\[ \operatorname{cov}(z_t, z_{t-k}) = \operatorname{var}(y) \]</div>
+<p>due to the independence among <span class="math notranslate nohighlight">\(x_t\)</span>, <span class="math notranslate nohighlight">\(x_{t-k}\)</span>, and <span class="math notranslate nohighlight">\(y\)</span></p>
+<p>The ergodic theorem is important, because it tells us that in time series, a single long sample becomes representative of the whole data-generating process similar to like in a cross section, a large iid sample becomes representative of the whole population</p>
+<p>This allows us to learn about the underlying process from empirical data</p>
+</div>
+</div>
+<div class="section" id="dependence">
+<h2>Dependence<a class="headerlink" href="#dependence" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>sample</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\{ z_1, z_2, ..., \}\]</div>
+<ul class="simple">
+<li><p>in cross section - independent</p></li>
+<li><p>in time series - dependent</p></li>
+</ul>
+<p>What does it mean for two variables <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_2\)</span> to be independent?</p>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(f(z_1, z_2)\)</span> be the joint distribution of <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_2\)</span>. If <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_2\)</span> are independent, then</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(z_1, z_2) = f(z_1)f(z_2)\]</div>
+<ul class="simple">
+<li><p>Moreover, from the definition of condition distribution</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(z_1 | z_2) = \frac{f(z_1, z_2)}{f(z_2)}  ~~\text{and}~~ f(z_2 | z_1) = \frac{f(z_1, z_2)}{f(z_1)} \]</div>
+<ul class="simple">
+<li><p>it follows that if <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_2\)</span> are independent,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(z_1 | z_2) = f(z_1) ~~\text{and}~~ f(z_2 | z_1) = f(z_2)\]</div>
+<div class="section" id="when-z-1-and-z-2-are-dependent">
+<h3>When <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_2\)</span> are dependent<a class="headerlink" href="#when-z-1-and-z-2-are-dependent" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>observing <span class="math notranslate nohighlight">\(z_2\)</span> tells us nothing about <span class="math notranslate nohighlight">\(z_1\)</span>, no new information is gained, beyond the one already contained in the marginal distribution of <span class="math notranslate nohighlight">\(z_1\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>This is a defining property of a random sample: each observation is independent from all other observations, and is therefore an unique source of information.</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>When <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_2\)</span> are dependent<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[f(z_1 | z_2) \neq f(z_1)\]</div>
+<ul class="simple">
+<li><p>observing <span class="math notranslate nohighlight">\(z_2\)</span> tells us something about <span class="math notranslate nohighlight">\(z_1\)</span>, and vice versa – <span class="math notranslate nohighlight">\(z_1\)</span> is informative about <span class="math notranslate nohighlight">\(z_2\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>if all <span class="math notranslate nohighlight">\(z\)</span>’s are mutually dependent, the larger the number of observations, the smaller is the information value of each individual observation, given all other observations.</p></li>
+</ul>
+<p>Time series models are largely models of the temporal dependence</p>
+<p>This has various important implications. One is that standard results from probability theory, such as the law of large numbers or the central limit theorem, are not directly applicable.
+Another is that we need to somehow model the temporal dependence</p>
+</div>
+</div>
+<div class="section" id="time-series-models">
+<h2>Time series models<a class="headerlink" href="#time-series-models" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>aim to capture complex temporal dependence</p></li>
+<li><p>build by combining processes with simple dependence structure - <strong>innovations</strong></p></li>
+</ul>
+<div class="section" id="innovations">
+<h3>Innovations<a class="headerlink" href="#innovations" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[ \{ \varepsilon_t \}, ~~~~ \operatorname{E} \varepsilon_t = 0\]</div>
+<ul class="simple">
+<li><p>Gaussian iid noise</p></li>
+<li><p>iid noise</p></li>
+<li><p>stationary martingale difference</p></li>
+<li><p>white noise</p></li>
+</ul>
+<p><strong>Definition:</strong> The innovation process <span class="math notranslate nohighlight">\(\{\varepsilon_t\}\)</span> is an <em><strong>(Gaussian) iid noise</strong></em> process if it is iid (and Gaussian)</p>
+<p>time series model for the observed data <span class="math notranslate nohighlight">\({x_t}\)</span> is a specification of the joint
+distributions (or possibly only the means and covariances) of a sequence of random
+variables <span class="math notranslate nohighlight">\(\{Z_t\}\)</span> of which <span class="math notranslate nohighlight">\(\{z_t\}\)</span> is postulated to be a realization.</p>
+<p><strong>Definition</strong>: The innovation process <span class="math notranslate nohighlight">\(\{\varepsilon_t\}\)</span> is a <em><strong>martingale difference</strong></em> process if</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\operatorname{E}\left( \varepsilon_t | \varepsilon_{t-1},\varepsilon_{t-2},... \right) &amp;= 0\\
+\end{aligned}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{E}\left( \varepsilon_t \right) = 0\)</span> (by LIE)</p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{cov}(\varepsilon_t, \varepsilon_{t-h}) =0 \)</span>, for all <span class="math notranslate nohighlight">\(h\neq0\)</span> (also by LIE)</p></li>
+</ul>
+<ul class="simple">
+<li><p>if also covariance stationary: <span class="math notranslate nohighlight">\( \operatorname{var}(\varepsilon_t) = \sigma^2_{t} = \sigma^2 \)</span></p></li>
+</ul>
+<p><strong>Definition</strong>: The innovation process <span class="math notranslate nohighlight">\(\{\varepsilon_t\}\)</span> is a <em><strong>white noise</strong></em> process if</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\operatorname{var}(\varepsilon_t)&amp;=\sigma^2 &lt; \infty\\
+\operatorname{cov}(\varepsilon_t, \varepsilon_{t-h}) &amp;= 0, ~~h \neq 0\\
+\end{aligned}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>stronger than covariance stationary (uncorrelated)</p></li>
+<li><p>weaker than iid noise (not necessarily independent or identically distributed)</p></li>
+<li><p>weaker than stationary martingale difference</p></li>
+<li><p>uncorrelated and Gaussian =&gt; Gaussian iid</p></li>
+</ul>
+</div>
+<div class="section" id="forms-of-in-dependence">
+<h3>Forms of (in)dependence<a class="headerlink" href="#forms-of-in-dependence" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>with iid innovations the future is completely independent from the past history</p>
+<ul>
+<li><p>the past contains no information about the future (completely unpredictable)</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Conditional distrbution equal to the unconditional one</p></li>
+</ul>
+<ul class="simple">
+<li><p>with m.d. innovations the the mean in the future is completely independent from the past history</p>
+<ul>
+<li><p>the past contains no information about the mean (the mean is unpredictable)</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>conditional mean equal the the unconditional mean</p></li>
+</ul>
+<ul class="simple">
+<li><p>for white noise innovations the the mean in the future is linearly independent from the past history</p>
+<ul>
+<li><p>linear functions of the past contain no information about the mean (the mean is linearly unpredictable)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="examples-of-time-series-models">
+<h3>Examples of time series models<a class="headerlink" href="#examples-of-time-series-models" title="Permalink to this headline">¶</a></h3>
+<p><strong>MA(1) model</strong></p>
+<div class="math notranslate nohighlight">
+\[ z_t = \varepsilon_t + \theta \varepsilon_{t-1} \]</div>
+<p><strong>AR (1) model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[z_t = \alpha z_{t-1} + \varepsilon_t\]</div>
+<p><strong>ARMA(1,1) model:</strong></p>
+<div class="math notranslate nohighlight">
+\[z_t = \alpha z_{t-1} + \varepsilon_t + \theta \varepsilon_{t-1}\]</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Lectures\01-Introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Time series vs. cross-section</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../02-Gaussian/00-Introduction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multivariate normal distribution</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

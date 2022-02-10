@@ -1,0 +1,3006 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pandas for time series data</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/02-Tutorials/02-Pandas/02-Pandas-for-time-series.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Matplotlib" href="../03-Matplotlib/01-Resources.html" />
+    <link rel="prev" title="Pandas" href="01-Pandas-examples-I.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/docs_presentation.html">
+     Contributing to PyMC documentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     README HW3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Pandas.html">
+   3. Pandas
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Other/02-Git-and-Github/Resources.html">
+     Git and Github
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   Overview
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/02-Tutorials/02-Pandas/02-Pandas-for-time-series.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/02-Tutorials/02-Pandas/02-Pandas-for-time-series.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Pandas for time series data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-datetime-index">
+   The datetime index
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#temporal-aggregation">
+   Temporal aggregation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivot-tables">
+   Pivot Tables
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformations">
+   Transformations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-transformation">
+     log-transformation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#percent-change-from-last-period">
+     percent change from last period
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#difference-relative-to-last-period">
+     difference relative to last period
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lagged-values-y-t-1">
+     lagged values
+     <span class="math notranslate nohighlight">
+      \(y(t-1)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lead-values-y-t-1">
+     lead values
+     <span class="math notranslate nohighlight">
+      \(y(t+1)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rolling-windows">
+     Rolling Windows
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Pandas for time series data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Pandas for time series data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-datetime-index">
+   The datetime index
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#temporal-aggregation">
+   Temporal aggregation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivot-tables">
+   Pivot Tables
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformations">
+   Transformations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-transformation">
+     log-transformation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#percent-change-from-last-period">
+     percent change from last period
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#difference-relative-to-last-period">
+     difference relative to last period
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lagged-values-y-t-1">
+     lagged values
+     <span class="math notranslate nohighlight">
+      \(y(t-1)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lead-values-y-t-1">
+     lead values
+     <span class="math notranslate nohighlight">
+      \(y(t+1)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rolling-windows">
+     Rolling Windows
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="pandas-for-time-series-data">
+<h1>Pandas for time series data<a class="headerlink" href="#pandas-for-time-series-data" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we’re going to introduce some of the basic Pandas functionality for working with time series</p>
+<p>We will cover how to:</p>
+<ul class="simple">
+<li><p>set datetime index to a dataframe</p></li>
+<li><p>filter data using dates</p></li>
+<li><p>temporally aggregate time series from higher to lower frequencies</p></li>
+<li><p>apply some common transformation (log, percent change, difference)</p></li>
+<li><p>apply rolling window calculations</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>generate some random data using numpy (see <a class="reference external" href="https://numpy.org/doc/stable/reference/random/index.html#random-quick-start">numpy doc</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># old way using the randn method (type `?np.random.normal` for more info) </span>
+
+<span class="n">n_periods</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_periods</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># new (recommended) way</span>
+
+<span class="n">n_periods</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_periods</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">loc=0</span></code>, <code class="docutils literal notranslate"><span class="pre">scale=1</span></code> are default values so they could be ommitted. We could also use the <code class="docutils literal notranslate"><span class="pre">rng.standard_normal(size=n_periods)</span></code> method</p>
+</div>
+</div>
+<div class="section" id="the-datetime-index">
+<h1>The datetime index<a class="headerlink" href="#the-datetime-index" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span> <span class="n">periods</span> <span class="o">=</span> <span class="n">n_periods</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">freq='D'</span></code> sets the frequency to daily. Some other useful for us options are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">freq='M'</span></code>  - month end frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freq='MS'</span></code> - month start frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freq='Q'</span></code>  - quarter end frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freq='QS'</span></code> - quarter start frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freq='Y'</span></code> or <code class="docutils literal notranslate"><span class="pre">freq='A'</span></code> - year end frequency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freq='YS'</span></code> or <code class="docutils literal notranslate"><span class="pre">freq='AS'</span></code> - year start frequency</p></li>
+</ul>
+<p>see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#timeseries-offset-aliases">pandas doc</a> for the full list of options</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">time_index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>-0.693954</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>-0.209926</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>0.044877</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>0.527820</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>0.923959</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pandas.core.indexes.datetimes.DatetimeIndex, pandas.core.series.Series)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Having a datetime index lets us perform time-aware selection and manipulations very easily</p>
+<ul class="simple">
+<li><p>for instance, we can get the observations from a given month</p></li>
+<li><p>and compute some statistics about them</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-04&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-04-01</th>
+      <td>0.072442</td>
+    </tr>
+    <tr>
+      <th>2022-04-02</th>
+      <td>2.313431</td>
+    </tr>
+    <tr>
+      <th>2022-04-03</th>
+      <td>-0.774668</td>
+    </tr>
+    <tr>
+      <th>2022-04-04</th>
+      <td>0.132488</td>
+    </tr>
+    <tr>
+      <th>2022-04-05</th>
+      <td>1.755500</td>
+    </tr>
+    <tr>
+      <th>2022-04-06</th>
+      <td>-2.213172</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>1.618603</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>1.433903</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>-1.297705</td>
+    </tr>
+    <tr>
+      <th>2022-04-10</th>
+      <td>1.274354</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the mean is </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the min and max values are </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the mean is 0.43151774216027733
+the min and max values are -2.2131721696816187 and 2.3134305670436035
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-an-aside admonition">
+<p class="admonition-title"><strong>An aside</strong>: </p>
+<p>These are examples of using <strong>f-strings</strong>.
+We can apply formatting to get a more readable output.
+The next cell shows how to print only two decimal places.</p>
+<p>See <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings">f-string doc</a> for more info</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the mean is </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the min and max values are </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-04&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the mean is 0.43
+the min and max values are -2.21 and 2.31
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>all data <strong>starting</strong> at given date (note that it is inclusive)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-03-31&#39;</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-03-31</th>
+      <td>0.168551</td>
+    </tr>
+    <tr>
+      <th>2022-04-01</th>
+      <td>0.072442</td>
+    </tr>
+    <tr>
+      <th>2022-04-02</th>
+      <td>2.313431</td>
+    </tr>
+    <tr>
+      <th>2022-04-03</th>
+      <td>-0.774668</td>
+    </tr>
+    <tr>
+      <th>2022-04-04</th>
+      <td>0.132488</td>
+    </tr>
+    <tr>
+      <th>2022-04-05</th>
+      <td>1.755500</td>
+    </tr>
+    <tr>
+      <th>2022-04-06</th>
+      <td>-2.213172</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>1.618603</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>1.433903</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>-1.297705</td>
+    </tr>
+    <tr>
+      <th>2022-04-10</th>
+      <td>1.274354</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>all data <strong>before</strong> a given date (note that is it inclusive)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2022-01-12&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>-0.693954</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>-0.209926</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>0.044877</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>0.527820</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>0.923959</td>
+    </tr>
+    <tr>
+      <th>2022-01-06</th>
+      <td>0.115014</td>
+    </tr>
+    <tr>
+      <th>2022-01-07</th>
+      <td>-0.206611</td>
+    </tr>
+    <tr>
+      <th>2022-01-08</th>
+      <td>0.791693</td>
+    </tr>
+    <tr>
+      <th>2022-01-09</th>
+      <td>-0.271810</td>
+    </tr>
+    <tr>
+      <th>2022-01-10</th>
+      <td>-0.125983</td>
+    </tr>
+    <tr>
+      <th>2022-01-11</th>
+      <td>-1.379321</td>
+    </tr>
+    <tr>
+      <th>2022-01-12</th>
+      <td>-0.972250</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>all data <strong>between</strong> two dates (note that is it inclusive on both ends)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022-01-12&#39;</span><span class="p">:</span><span class="s1">&#39;2022-02-12&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-12</th>
+      <td>-0.972250</td>
+    </tr>
+    <tr>
+      <th>2022-01-13</th>
+      <td>-1.053409</td>
+    </tr>
+    <tr>
+      <th>2022-01-14</th>
+      <td>-1.650255</td>
+    </tr>
+    <tr>
+      <th>2022-01-15</th>
+      <td>-1.251144</td>
+    </tr>
+    <tr>
+      <th>2022-01-16</th>
+      <td>0.725652</td>
+    </tr>
+    <tr>
+      <th>2022-01-17</th>
+      <td>2.123418</td>
+    </tr>
+    <tr>
+      <th>2022-01-18</th>
+      <td>-0.367741</td>
+    </tr>
+    <tr>
+      <th>2022-01-19</th>
+      <td>1.032479</td>
+    </tr>
+    <tr>
+      <th>2022-01-20</th>
+      <td>0.449727</td>
+    </tr>
+    <tr>
+      <th>2022-01-21</th>
+      <td>-1.204295</td>
+    </tr>
+    <tr>
+      <th>2022-01-22</th>
+      <td>-0.008893</td>
+    </tr>
+    <tr>
+      <th>2022-01-23</th>
+      <td>1.236906</td>
+    </tr>
+    <tr>
+      <th>2022-01-24</th>
+      <td>-1.444002</td>
+    </tr>
+    <tr>
+      <th>2022-01-25</th>
+      <td>0.987860</td>
+    </tr>
+    <tr>
+      <th>2022-01-26</th>
+      <td>0.121889</td>
+    </tr>
+    <tr>
+      <th>2022-01-27</th>
+      <td>1.140643</td>
+    </tr>
+    <tr>
+      <th>2022-01-28</th>
+      <td>1.076552</td>
+    </tr>
+    <tr>
+      <th>2022-01-29</th>
+      <td>0.184321</td>
+    </tr>
+    <tr>
+      <th>2022-01-30</th>
+      <td>-0.050446</td>
+    </tr>
+    <tr>
+      <th>2022-01-31</th>
+      <td>0.589317</td>
+    </tr>
+    <tr>
+      <th>2022-02-01</th>
+      <td>0.466329</td>
+    </tr>
+    <tr>
+      <th>2022-02-02</th>
+      <td>-1.049473</td>
+    </tr>
+    <tr>
+      <th>2022-02-03</th>
+      <td>1.206759</td>
+    </tr>
+    <tr>
+      <th>2022-02-04</th>
+      <td>-0.840185</td>
+    </tr>
+    <tr>
+      <th>2022-02-05</th>
+      <td>1.142660</td>
+    </tr>
+    <tr>
+      <th>2022-02-06</th>
+      <td>-1.486865</td>
+    </tr>
+    <tr>
+      <th>2022-02-07</th>
+      <td>1.243011</td>
+    </tr>
+    <tr>
+      <th>2022-02-08</th>
+      <td>0.489471</td>
+    </tr>
+    <tr>
+      <th>2022-02-09</th>
+      <td>-0.080931</td>
+    </tr>
+    <tr>
+      <th>2022-02-10</th>
+      <td>0.098374</td>
+    </tr>
+    <tr>
+      <th>2022-02-11</th>
+      <td>-0.368505</td>
+    </tr>
+    <tr>
+      <th>2022-02-12</th>
+      <td>-2.364454</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="temporal-aggregation">
+<h1>Temporal aggregation<a class="headerlink" href="#temporal-aggregation" title="Permalink to this headline">¶</a></h1>
+<p>This is when we move from a shorter to a longer period. For example, daily data can be aggregated to weekly, monthly, quarterly, annual. Typically, aggregation is done by taking the sum or the average</p>
+<p>See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html?highlight=resample#pandas.DataFrame.resample">pandas doc</a> for more info and examples of using the <code class="docutils literal notranslate"><span class="pre">resample</span></code> method</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-31</th>
+      <td>1.182088</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-9.062631</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>7.715243</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>4.315177</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-31</th>
+      <td>0.038132</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-0.323665</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>0.248879</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>0.431518</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>aggregation can be done also by taking the first/last observation of the higher frequency (daily here) data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-31</th>
+      <td>-0.693954</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>0.466329</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>-0.360594</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>0.072442</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-31</th>
+      <td>0.589317</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-1.773561</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>0.168551</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>1.274354</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>we can apply multiple functions at the same time using the <code class="docutils literal notranslate"><span class="pre">agg</span></code> method</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6" halign="left">data</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>sum</th>
+      <th>min</th>
+      <th>max</th>
+      <th>first</th>
+      <th>last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-31</th>
+      <td>0.038132</td>
+      <td>1.182088</td>
+      <td>-1.650255</td>
+      <td>2.123418</td>
+      <td>-0.693954</td>
+      <td>0.589317</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-0.323665</td>
+      <td>-9.062631</td>
+      <td>-2.364454</td>
+      <td>1.305562</td>
+      <td>0.466329</td>
+      <td>-1.773561</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>0.248879</td>
+      <td>7.715243</td>
+      <td>-2.146517</td>
+      <td>2.109419</td>
+      <td>-0.360594</td>
+      <td>0.168551</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>0.431518</td>
+      <td>4.315177</td>
+      <td>-2.213172</td>
+      <td>2.313431</td>
+      <td>0.072442</td>
+      <td>1.274354</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>we could have the monthly frequency index for the <strong>first day</strong> of the month using <code class="docutils literal notranslate"><span class="pre">df.resample('MS')</span></code></p>
+</div>
+</div>
+<div class="section" id="pivot-tables">
+<h1>Pivot Tables<a class="headerlink" href="#pivot-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>create a new monthly time series for 2 years</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monthly_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2022-12-31&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">monthly_index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">monthly_index</span><span class="p">)),</span>
+                          <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,],</span>
+                          <span class="n">index</span><span class="o">=</span><span class="n">monthly_index</span><span class="p">)</span>
+<span class="n">df_monthly</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-01-31</th>
+      <td>0.484735</td>
+    </tr>
+    <tr>
+      <th>2021-02-28</th>
+      <td>0.687497</td>
+    </tr>
+    <tr>
+      <th>2021-03-31</th>
+      <td>0.147638</td>
+    </tr>
+    <tr>
+      <th>2021-04-30</th>
+      <td>0.404760</td>
+    </tr>
+    <tr>
+      <th>2021-05-31</th>
+      <td>-0.883069</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_monthly</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span>
+<span class="n">df_monthly</span><span class="p">[</span><span class="s1">&#39;quarter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">quarter</span>
+<span class="n">df_monthly</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
+<span class="n">df_monthly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>month</th>
+      <th>quarter</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-01-31</th>
+      <td>0.484735</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-02-28</th>
+      <td>0.687497</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-03-31</th>
+      <td>0.147638</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-04-30</th>
+      <td>0.404760</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-05-31</th>
+      <td>-0.883069</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-06-30</th>
+      <td>-0.854109</td>
+      <td>6</td>
+      <td>2</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-07-31</th>
+      <td>-1.276728</td>
+      <td>7</td>
+      <td>3</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-08-31</th>
+      <td>0.254640</td>
+      <td>8</td>
+      <td>3</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-09-30</th>
+      <td>0.577472</td>
+      <td>9</td>
+      <td>3</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-10-31</th>
+      <td>-1.186852</td>
+      <td>10</td>
+      <td>4</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-11-30</th>
+      <td>-0.664026</td>
+      <td>11</td>
+      <td>4</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2021-12-31</th>
+      <td>-0.321033</td>
+      <td>12</td>
+      <td>4</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>2022-01-31</th>
+      <td>0.832603</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-0.773677</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>0.319106</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>-0.745475</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-05-31</th>
+      <td>0.898935</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-06-30</th>
+      <td>-0.431810</td>
+      <td>6</td>
+      <td>2</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-07-31</th>
+      <td>-1.345803</td>
+      <td>7</td>
+      <td>3</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-08-31</th>
+      <td>0.143264</td>
+      <td>8</td>
+      <td>3</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-09-30</th>
+      <td>-0.004844</td>
+      <td>9</td>
+      <td>3</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-10-31</th>
+      <td>1.102417</td>
+      <td>10</td>
+      <td>4</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-11-30</th>
+      <td>0.713127</td>
+      <td>11</td>
+      <td>4</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>2022-12-31</th>
+      <td>0.347538</td>
+      <td>12</td>
+      <td>4</td>
+      <td>2022</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>we can use the <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> method to see the data for each month by year</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df_monthly</span><span class="p">,</span> 
+               <span class="n">index</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> 
+               <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> 
+               <span class="n">values</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year</th>
+      <th>2021</th>
+      <th>2022</th>
+    </tr>
+    <tr>
+      <th>month</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.484735</td>
+      <td>0.832603</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.687497</td>
+      <td>-0.773677</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.147638</td>
+      <td>0.319106</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.404760</td>
+      <td>-0.745475</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-0.883069</td>
+      <td>0.898935</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-0.854109</td>
+      <td>-0.431810</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-1.276728</td>
+      <td>-1.345803</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.254640</td>
+      <td>0.143264</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.577472</td>
+      <td>-0.004844</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>-1.186852</td>
+      <td>1.102417</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>-0.664026</td>
+      <td>0.713127</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>-0.321033</td>
+      <td>0.347538</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>a more useful exmaple of <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> to to compute a summary statistic for some level of aggregattion</p></li>
+<li><p>for example average value by quarter</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df_monthly</span><span class="p">,</span> 
+               <span class="n">index</span><span class="o">=</span><span class="s1">&#39;quarter&#39;</span><span class="p">,</span> 
+               <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> 
+               <span class="n">values</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+               <span class="n">aggfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year</th>
+      <th>2021</th>
+      <th>2022</th>
+    </tr>
+    <tr>
+      <th>quarter</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.439957</td>
+      <td>0.126010</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.444139</td>
+      <td>-0.092783</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.148205</td>
+      <td>-0.402461</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.723971</td>
+      <td>0.721027</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>compare with using <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_monthly</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;quarter&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;quarter&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>data</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th>quarter</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">2021</th>
+      <th>1</th>
+      <td>0.439957</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.444139</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.148205</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.723971</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">2022</th>
+      <th>1</th>
+      <td>0.126010</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.092783</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.402461</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.721027</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="transformations">
+<h1>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="log-transformation">
+<h2>log-transformation<a class="headerlink" href="#log-transformation" title="Permalink to this headline">¶</a></h2>
+<p>the log is defined for positive values only. To assure that all values are positive, below I add a constant to the values in the data column. I also create a new dataframe and rename the column as <strong>y</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="n">new_df</span>  <span class="o">=</span> <span class="n">df</span> <span class="o">+</span> <span class="n">min_value</span> <span class="o">+</span> <span class="mf">0.1</span>  <span class="c1"># this adds min_value + 0.1 to all elements of the data column of df</span>
+<span class="n">new_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="n">new_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>1.770501</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>2.254528</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>2.509331</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>2.992274</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>3.388413</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## log of y</span>
+<span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-01    0.571262
+2022-01-02    0.812941
+2022-01-03    0.920016
+2022-01-04    1.096034
+2022-01-05    1.220362
+                ...   
+2022-04-06   -1.381180
+2022-04-07    1.406846
+2022-04-08    1.360555
+2022-04-09    0.154221
+2022-04-10    1.318767
+Freq: D, Name: y, Length: 100, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="percent-change-from-last-period">
+<h2>percent change from last period<a class="headerlink" href="#percent-change-from-last-period" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>0.273384</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>0.113019</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>0.192459</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>0.132387</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2022-04-06</th>
+      <td>-0.940454</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>15.248907</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>-0.045236</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>-0.700708</td>
+    </tr>
+    <tr>
+      <th>2022-04-10</th>
+      <td>2.204467</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 1 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="difference-relative-to-last-period">
+<h2>difference relative to last period<a class="headerlink" href="#difference-relative-to-last-period" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>0.484027</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>0.254804</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>0.482943</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>0.396138</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2022-04-06</th>
+      <td>-3.968672</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>3.831776</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>-0.184700</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>-2.731608</td>
+    </tr>
+    <tr>
+      <th>2022-04-10</th>
+      <td>2.572059</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 1 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="lagged-values-y-t-1">
+<h2>lagged values <span class="math notranslate nohighlight">\(y(t-1)\)</span><a class="headerlink" href="#lagged-values-y-t-1" title="Permalink to this headline">¶</a></h2>
+<p>shifts the index forward by a number of periods, one here</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>1.770501</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>2.254528</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>2.509331</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>2.992274</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2022-04-06</th>
+      <td>4.219954</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>0.251282</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>4.083058</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>3.898357</td>
+    </tr>
+    <tr>
+      <th>2022-04-10</th>
+      <td>1.166749</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 1 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="lead-values-y-t-1">
+<h2>lead values <span class="math notranslate nohighlight">\(y(t+1)\)</span><a class="headerlink" href="#lead-values-y-t-1" title="Permalink to this headline">¶</a></h2>
+<p>shifts the index backward</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>2.254528</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>2.509331</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>2.992274</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>3.388413</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>2.579468</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2022-04-06</th>
+      <td>4.083058</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>3.898357</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>1.166749</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>3.738808</td>
+    </tr>
+    <tr>
+      <th>2022-04-10</th>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 1 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>add the transformed <strong>y</strong> as new columns of the dataframe</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;log_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;pct_ch_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;diff_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y(t-1)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y(t+1)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">periods</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>log_y</th>
+      <th>pct_ch_y</th>
+      <th>diff_y</th>
+      <th>y(t-1)</th>
+      <th>y(t+1)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>1.770501</td>
+      <td>0.571262</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.254528</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>2.254528</td>
+      <td>0.812941</td>
+      <td>0.273384</td>
+      <td>0.484027</td>
+      <td>1.770501</td>
+      <td>2.509331</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>2.509331</td>
+      <td>0.920016</td>
+      <td>0.113019</td>
+      <td>0.254804</td>
+      <td>2.254528</td>
+      <td>2.992274</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>2.992274</td>
+      <td>1.096034</td>
+      <td>0.192459</td>
+      <td>0.482943</td>
+      <td>2.509331</td>
+      <td>3.388413</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>3.388413</td>
+      <td>1.220362</td>
+      <td>0.132387</td>
+      <td>0.396138</td>
+      <td>2.992274</td>
+      <td>2.579468</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>log_y</th>
+      <th>pct_ch_y</th>
+      <th>diff_y</th>
+      <th>y(t-1)</th>
+      <th>y(t+1)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-04-06</th>
+      <td>0.251282</td>
+      <td>-1.381180</td>
+      <td>-0.940454</td>
+      <td>-3.968672</td>
+      <td>4.219954</td>
+      <td>4.083058</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>4.083058</td>
+      <td>1.406846</td>
+      <td>15.248907</td>
+      <td>3.831776</td>
+      <td>0.251282</td>
+      <td>3.898357</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>3.898357</td>
+      <td>1.360555</td>
+      <td>-0.045236</td>
+      <td>-0.184700</td>
+      <td>4.083058</td>
+      <td>1.166749</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>1.166749</td>
+      <td>0.154221</td>
+      <td>-0.700708</td>
+      <td>-2.731608</td>
+      <td>3.898357</td>
+      <td>3.738808</td>
+    </tr>
+    <tr>
+      <th>2022-04-10</th>
+      <td>3.738808</td>
+      <td>1.318767</td>
+      <td>2.204467</td>
+      <td>2.572059</td>
+      <td>1.166749</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>drop mising values (NaN)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>log_y</th>
+      <th>pct_ch_y</th>
+      <th>diff_y</th>
+      <th>y(t-1)</th>
+      <th>y(t+1)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-02</th>
+      <td>2.254528</td>
+      <td>0.812941</td>
+      <td>0.273384</td>
+      <td>0.484027</td>
+      <td>1.770501</td>
+      <td>2.509331</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>2.509331</td>
+      <td>0.920016</td>
+      <td>0.113019</td>
+      <td>0.254804</td>
+      <td>2.254528</td>
+      <td>2.992274</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>2.992274</td>
+      <td>1.096034</td>
+      <td>0.192459</td>
+      <td>0.482943</td>
+      <td>2.509331</td>
+      <td>3.388413</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>3.388413</td>
+      <td>1.220362</td>
+      <td>0.132387</td>
+      <td>0.396138</td>
+      <td>2.992274</td>
+      <td>2.579468</td>
+    </tr>
+    <tr>
+      <th>2022-01-06</th>
+      <td>2.579468</td>
+      <td>0.947583</td>
+      <td>-0.238739</td>
+      <td>-0.808945</td>
+      <td>3.388413</td>
+      <td>2.257843</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>log_y</th>
+      <th>pct_ch_y</th>
+      <th>diff_y</th>
+      <th>y(t-1)</th>
+      <th>y(t+1)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-04-05</th>
+      <td>4.219954</td>
+      <td>1.439824</td>
+      <td>0.624970</td>
+      <td>1.623012</td>
+      <td>2.596942</td>
+      <td>0.251282</td>
+    </tr>
+    <tr>
+      <th>2022-04-06</th>
+      <td>0.251282</td>
+      <td>-1.381180</td>
+      <td>-0.940454</td>
+      <td>-3.968672</td>
+      <td>4.219954</td>
+      <td>4.083058</td>
+    </tr>
+    <tr>
+      <th>2022-04-07</th>
+      <td>4.083058</td>
+      <td>1.406846</td>
+      <td>15.248907</td>
+      <td>3.831776</td>
+      <td>0.251282</td>
+      <td>3.898357</td>
+    </tr>
+    <tr>
+      <th>2022-04-08</th>
+      <td>3.898357</td>
+      <td>1.360555</td>
+      <td>-0.045236</td>
+      <td>-0.184700</td>
+      <td>4.083058</td>
+      <td>1.166749</td>
+    </tr>
+    <tr>
+      <th>2022-04-09</th>
+      <td>1.166749</td>
+      <td>0.154221</td>
+      <td>-0.700708</td>
+      <td>-2.731608</td>
+      <td>3.898357</td>
+      <td>3.738808</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="rolling-windows">
+<h2>Rolling Windows<a class="headerlink" href="#rolling-windows" title="Permalink to this headline">¶</a></h2>
+<p>Another common transformation of time series data is computing rolling windows statistics, such as rolling average, rolling sum, and rolling standard deviation</p>
+<ul class="simple">
+<li><p>rolling average for window with size 7 (weakly average of daily data)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-01         NaN
+2022-01-02         NaN
+2022-01-03         NaN
+2022-01-04         NaN
+2022-01-05         NaN
+2022-01-06         NaN
+2022-01-07    3.106036
+2022-01-08    3.224076
+2022-01-09    3.271001
+Freq: D, Name: y, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>note that the first 6 observations are missing and the 7th one is the average of the first 7 values. Look at the following cell to make sure you undestand how the rolloing window values are computed</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">new_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.106035602883829
+3.2240756001112376
+3.271000970304381
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>and if we use the <code class="docutils literal notranslate"><span class="pre">center=True</span></code> option</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-01         NaN
+2022-01-02         NaN
+2022-01-03         NaN
+2022-01-04    3.106036
+2022-01-05    3.224076
+2022-01-06    3.271001
+Freq: D, Name: y, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>rolling sum for window with size 7 (weakly average of daily data)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-01          NaN
+2022-01-02          NaN
+2022-01-03          NaN
+2022-01-04          NaN
+2022-01-05          NaN
+2022-01-06          NaN
+2022-01-07    21.742249
+2022-01-08    22.568529
+2022-01-09    22.897007
+Freq: D, Name: y, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>rolling standard deviation for window with size 7 (weakly average of daily data)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">window_size</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-01-01         NaN
+2022-01-02         NaN
+2022-01-03         NaN
+2022-01-04         NaN
+2022-01-05         NaN
+2022-01-06         NaN
+2022-01-07    0.447562
+2022-01-08    0.643618
+2022-01-09    0.648062
+Freq: D, Name: y, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html?highlight=rolling#pandas.DataFrame.rolling">pandas_doc</a> for more info and examples of using the <code class="docutils literal notranslate"><span class="pre">rolling</span></code> method</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02-Tutorials\02-Pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01-Pandas-examples-I.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Pandas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../03-Matplotlib/01-Resources.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matplotlib</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
