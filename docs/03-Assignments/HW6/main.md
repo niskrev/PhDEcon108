@@ -1,4 +1,4 @@
-# Homework 0
+# Homework 6
 
 :::{tableofcontents}
 :::

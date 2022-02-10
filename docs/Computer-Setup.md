@@ -18,17 +18,27 @@ It also comes with a package manager `conda` used to keep packages up to date, a
 1. Go to [Anaconda homepage](https://www.anaconda.com/distribution/) and download the graphical installer for Anaconda Individual Edition for your operating system.
 2. Install Anaconda with Python 3.9 following the on-screen instructions.
 
+```{important} 
+Accepts the defaults and take note of the location where Anaconda will be installed. This will help you with the setup of Windows Terminal (see below).
+```
+
 3. Open the **Anaconda prompt** and type
 
-    `conda update conda`
+```
+conda update conda
+```
 
-    Press `y` to procees and after it is done type again
+* Press `y` to procees and after it is done type again
 
-    `conda update conda`
+```
+conda update conda
+```
     
-    This updates the package manager itself. Next, update the the installed packages by typing
+* This updates the package manager itself. Next, update the the installed packages by typing
 
-    `conda update --all`
+```
+conda update --all
+```
 
 4. Watch the [Getting started with Anaconda individual edition video](https://www.anaconda.com/individual-tutorial) (Note: this requires creating an account with [anaconda.cloud](https://anaconda.cloud/))
 
@@ -48,19 +58,29 @@ During the installation, I suggest going with the recommended options, except wh
 ### Configuring Git
 Open **Git Bash** and tell git your name and email address. 
 
-`git config --global user.name "YOUR NAME"`
+```
+git config --global user.name "YOUR NAME"
+```
 
-`git config --global user.email "YOUR EMAIL ADDRESS"`
+```
+git config --global user.email "YOUR EMAIL ADDRESS"
+```
     
 Other sensible settings, the first has to do with the way Git recognizes and encodes line endings, and the second is about what to do when there are changes to a file coming from two or more different computers
 
-`git config --global core.autocrlf true`
+```
+git config --global core.autocrlf true
+```
 
-`git config --global pull.rebase false`
+```
+git config --global pull.rebase false
+```
     
 The `--global` flags means that these specifications work for all of your repositories. You can check your settings with
 
-`git config --list`
+```
+git config --list
+```
 
 
 ## Set up a GitHub account
@@ -68,6 +88,8 @@ Go to [http://github.com/](http://github.com/) to get an account. You should reg
 
 ### Set up your token
 You will need to set up a token to be used to access GitHub via the command line. To do so, follow [these instructions](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+## Complete the [Official Intro to Github lesson](https://lab.github.com/githubtraining/introduction-to-github)
 
 
 ## Install VSCode

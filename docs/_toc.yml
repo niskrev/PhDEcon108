@@ -21,6 +21,12 @@ parts:
     sections:
     - file: 01-Lectures/03-MLE/01-MLE
       title: 1. Maximum likelihood estimation
+  - file: 01-Lectures/04-ARMA/00-Introduction
+    sections:
+    - file: 01-Lectures/04-ARMA/01-ARMA-part-1
+      title: 1. Introduction to AR and MA models
+    - file: 01-Lectures/04-ARMA/02-ARMA-part-2
+      title: 2. Algebra of AR and MA models
 - caption: Assignments
   chapters:
   - file: 03-Assignments/HW0/main
@@ -31,6 +37,32 @@ parts:
     - file: 03-Assignments/HW1/README
     - file: 03-Assignments/HW1/HW1-empty
       title: HW1-empty
+  - file: 03-Assignments/HW2/main
+    sections:
+    - file: 03-Assignments/HW2/README
+    - file: 03-Assignments/HW2/docs_presentation
+  - file: 03-Assignments/HW3/main
+    sections:
+    - file: 03-Assignments/HW3/README
+#  - file: 03-Assignments/HW4/main
+#    sections:
+#    - file: 03-Assignments/HW4/README
+#  - file: 03-Assignments/HW5/main
+#    sections:
+#    - file: 03-Assignments/HW5/README
+#  - file: 03-Assignments/HW6/main
+#    sections:
+#    - file: 03-Assignments/HW6/README
+#  - file: 03-Assignments/HW7/main
+#    sections:
+#    - file: 03-Assignments/HW7/README
+#  - file: 03-Assignments/HW8/main
+#    sections:
+#    - file: 03-Assignments/HW8/README
+- caption: Projects
+  chapters:
+  - file: 04-Projects/01-Midterm/main
+  - file: 04-Projects/02-Final/main
 - caption: Tutorials
   chapters:
   - file: 02-Tutorials/00-Python/00-Python
@@ -60,13 +92,12 @@ parts:
   - file: 02-Tutorials/Other/Intro
     sections:
     - file: 02-Tutorials/Other/01-Command-line/Resources
-    - file: 02-Tutorials/Other/01-Command-line/01-The-Command-Line
     - file: 02-Tutorials/Other/02-Git-and-Github/Resources
 - caption: Data
   chapters:
   - file: 00-Data/00-Data
-    title: 1. APIs
-    sections:
-    - file: 00-Data/01-ECB
-    - file: 00-Data/02-Eurostat
-    - file: 00-Data/03-FRED
+#    title: 1. APIs
+#    sections:
+#    - file: 00-Data/01-ECB
+#    - file: 00-Data/02-Eurostat
+#    - file: 00-Data/03-FRED

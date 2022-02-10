@@ -4,10 +4,9 @@
 
 ### Part I. HICP data from SDW
 
-The Harmonised Index of Consumer Prices (HICP) is constructed by aggregating price subindices of different item groups, which in turn have their own subgroups, etc. For example, the __FOOD AND NON-ALCOHOLIC BEVERAGES__ category has 2 subgroups: __Food__ and __Non-alcoholic beverages__.In turn, __Food__ has items such as __Bread and cereals__, __Meat__, __Fish__, etc. You can find a listing of all items in the table _HICP Code List Description_ at the ECB's SDW site [here](https://sdw.ecb.europa.eu/datastructure.do?conceptMnemonic=ICP_ITEM&datasetinstanceid=122#cl)
+The Harmonised Index of Consumer Prices (HICP) is constructed by aggregating price subindices of different item groups, which in turn have their own subgroups, etc. For example, the __FOOD AND NON-ALCOHOLIC BEVERAGES__ category has 2 subgroups: __Food__ and __Non-alcoholic beverages__. In turn, __Food__ has items such as __Bread and cereals__, __Meat__, __Fish__, etc. You can find a listing of all items in the table _HICP Code List Description_ at the ECB's SDW site [here](https://sdw.ecb.europa.eu/datastructure.do?conceptMnemonic=ICP_ITEM&datasetinstanceid=122#cl)
 
-## Tasks
-* For the item group assigned to you, get the codes of <u>all</u> available level 3 subindices. For example, in the case of the __Food__ and __Non-alcoholic beverages__ category, find all indices of the type `01XX00`. For the the __ALCOHOLIC BEVERAGES, TOBACCO__ category, find all indices of the type `02XX00`. And so on.
+* For the item group assigned to you, get the codes of <u>all</u> available level 3 subindices. For example, in the case of the __FOOD AND NON-ALCOHOLIC BEVERAGES__ category, find all indices of the type `01XX00`. For the the __ALCOHOLIC BEVERAGES, TOBACCO__ category, find all indices of the type `02XX00`. And so on.
 * download monthly inflation data (annual rate of change) for the euro area (geo=U2) for each subindex you found.
 
 Hint: The SDW site has different search options. The series you are looking for will have a description that will be something like this

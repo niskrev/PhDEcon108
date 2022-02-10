@@ -6,9 +6,6 @@ The content in this Jupyter Book is subject to change.
 ## Course description
 This is a course in time series econometrics with a focus on the models and methods used in empirical macroeconomics. The emphasis of the course will be on applying these tools in practice, rather than on than underlying econometric theory. To that end, we will try to implement everything covered in lectures by writing computer programs. The language of instruction used in the course is [Python](https://www.python.org/). No previous programming experience with Python is assumed. However, students are expected to quickly familiarize themselves with the basics of the language by working through the material and completing the exercises that will be provided. The course will be taught using a mixture of online lectures and hands-on programming sessions.
 
-## Teaching methods
-Lectures and interactive sessions
-
 ## Course outline
 Please note that the following outline is preliminary and may be modified if needed.
 
@@ -62,8 +59,6 @@ There is no required textbook for this course. All necessary material (slides, l
 
 ## Important course information
 
-Course assignments will be posted via Github.
-
 Class meetings will be held on Zoom. You will need a microphone and webcam (you need not always have your webcam on, but you will want to be able to be visible at times). 
 
 
@@ -77,7 +72,7 @@ Class meetings will be held on Zoom. You will need a microphone and webcam (you 
 
 ## Grading
 
-Grades will be determined as follows: homework assignments (70%), midterm project (10%), final project (20%).
+Grades will be determined as follows: homework assignments (55%), midterm project (15%), final project (30%).
 
 ## Late Submissions
 No.

@@ -7,9 +7,9 @@
 
 ## Submission
 
-* nothing to submit!
+* explained in the instructions above
 
-## Notes:
+## Notes
 * complete the first task __before__ the Friday class. In class we will try to resolve any remaining issues you may have.
 * complete the second task __after__ the Friday class. 
 * this assignment is not graded

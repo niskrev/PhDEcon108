@@ -1,1 +1,4 @@
 # Multivariate normal distribution
+
+:::{tableofcontents}
+:::

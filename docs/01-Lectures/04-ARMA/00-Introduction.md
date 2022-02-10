@@ -1,4 +1,4 @@
-# Homework 0
+# ARMA models
 
 :::{tableofcontents}
 :::

@@ -1,132 +1,37 @@
 # Command line
 
-## Useful links
-
-[Software Carpentry lessons on the unix shell](https://swcarpentry.github.io/shell-novice/)
-
-
-
-
 ## Cheat sheet
 
 The shell allows us to interact with our filesystem in a variety of ways:
 navigating through our folders, creating new files, editing existing ones, etc.
-We can also run software from the terminal. For example, you might be familiar
-with running a Jupyter Notebook from the terminal, or using `conda`
-environments.
 
-You might be wondering: why bother even using a shell when we have software
-(specifically, Graphical User Interfaces, or GUIs) that can let us do all these
-things for us? There's a lot of reasons for this (see
-[here](https://ux.stackexchange.com/questions/101990/why-are-terminal-consoles-still-used)
-for some discussion), but one short answer is that using the terminal is a
-standardized, efficient, and expressive way of completing general purpose tasks.
-The downside is that it comes with a bit of a learning curve. Once you get over
-the hump, though, you'll find yourself leaning more into the terminal than any
-GUI. The goal of this workshop is to get you on your way past the learning
-curve.
+### Working with files
 
-### Basic Commands
-
-
-Let's start with some basic bash commands. Try entering these into the prompt,
-and see what happens:
-
-> Note: at any point, you can press `TAB` to autocomplete a partially completed
-> input. 
-
-* `whoami`: Print the current user.
-* `pwd`: Print the **p**resent **w**orking **d**irectory.
-* `ls`: List the files in the working directory.
-
-
-### Changing Directories
-
-The command for changing location is **cd**, for  **c**hange **d**irectory.
-
-1. `cd ..`: This is moving to one directory above our current location.
-2. `cd solutions`: This is moving to the `solutions` folder (if you're not in
-   the `Bash-Git` folder, use some other folder name).
-3. `cd`: No extra input! What folder do you move to? How can you check?
-4. Navigate back to the `Bash-Git` folder using `cd` and a chain of folders.
-5. `cd ~`: What location do you end up in? This is the **home** directory -
-   we've already been here! The tilde `~` is just shorthand for this special
-   location.
-
-A chain of folders that specifies a location is called a **file path**. There
-are two ways of specifying file paths:
-
-* **Absolute file paths** are relative to the **root directory**, which is the
-  uppermost level of a file system. Absolute file paths always start with a
-  forward slash `/`.
-* **Relative file paths** are relative to your working directory. These paths
-  start with no forward slash or a `./` (the period is shorthand for the working
-  directory).
-
-In specifying file paths, you can use the `~` as a shorthand for your home
-directory.
-
-### Creating Directories and Files
-
-Now, we know how to navigate folders. How can we create new folders, and files?
-Try the following commands:
-
-* `mkdir test`: This will make a new directory called `test`. Try a different
-  folder name. How can you check to see if the folder was created?
-* `touch test.txt`: This will create a file named `test.txt`.
-* `cp`: Copy and paste. There are two arguments here: the source and the
-  destination. 
-  * Trying copying `test.txt` to the `solutions` folder.
-* `cp -r`: Bash commands sometimes come with **flags**, which are additional
-  specifications to how we run the command. Flags are always preceded by one or
-  two dashes. The `-r` flag for `cp` indicates we should do a recursive copy.
-  This is specifically for folders, which may have multiple copies to do.
-  * Copy the `test` folder to the `solutions` folder.
-* `mv`: Moving a file is just like copying, but it does not leave a version in
-  the source.
-  * Create a file called `test2.txt` and move it to the `img` folder.
-* `rm`: Removing a file. Use the `-rf` flag for folders: this is the `-r` flag
-  (recursive) and `-f` flag (force the removal) combined.
-  * Navigate to `solutions`, and remove `test.txt` and `test`.
-  * Navigate to `img`, and remove `test2.txt`.
-
-### FILE COMMANDS
-
+```{note}
+Pressing the `TAB` key will autocomplete a partially completed input 
+```
 
 | command                    | Description                                         |
 |----------------------------|-----------------------------------------------------|
-|`ls`                           | lists your files in current directory, ls <dir> to print files in a specific directory|
+|`ls`                           | lists your files in current directory |
+| `ls <dir>`                    | to print files in a specific directory|
 |`ls -l`                         | lists your files in 'long format', which contains the exact size of the file, who owns the file and who has the right to look at it, and when it was last modified|
 |`ls -a`                         | lists all files in 'long format', including hidden files (name beginning with '.')|
-|`tree`                         | show directories and subdirectories in easilly readable file tree|
 |`touch <filename>`              | creates or updates (edit) your file|
-|`cat <filename>`                | displays file raw content (will not be interpreted)|
+|`cat <filename>`                | displays file raw content|
 |`cat -n <filename>`             | shows number of lines|
-|`nl <file.sh>`                 | shows number of lines in file|
-|`cat filename1 > filename2`     | Copy filename1 to filename2|
+|`nl <filename>`                 | shows number of lines in file|
 |`cat filename1 >> filename2`    | merge two files texts together |
 |`more <filename>`               | shows the first part of a file (move with space and type q to quit)|
 |`head <filename>`               | outputs the first lines of file (default: 10 lines)|
 |`tail <filename>`               | outputs the last lines of file (useful with -f option) (default: 10 lines)|
-|`mv <filename1> <dest>`         | moves a file to destination, behavior will change based on 'dest' type (dir: file is placed into dir; file: file will replace dest (tip: useful for renaming))|
+|`mv <filename1> <dest>`         | moves a file to destination, can be used for renaming files when `<dest>` is the new filename|
 |`cp <filename1> <dest>`         | copies a file|
 |`rm <filename>`                 | removes a file|
-|`find . -name <name> <type>`    | searches for a file or a directory in the current directory and all its sub-directories by its name|
-|`diff <filename1> <filename2>`  | compares files, and shows where they differ|
-|`wc <filename>`                 | tells you how many lines, words and characters there are in a file. Use -lwc (lines, word, character) to ouput only 1 of those informations|
-|`sort <filename>`              | sorts the contents of a text file line by line in alphabetical order, use -n for numeric sort and -r for reversing order.|
-|`sort -t -k <filename>`         | sorts the contents on specific sort key field starting from 1, using the field separator t.|
-|`rev`                           | reverse string characters (hello becomes olleh)|
-|`grep <pattern> <filenames>`    | looks for the string in the files|
-|`grep -r <pattern> <dir>`       | search recursively for pattern in directory|
-|`head -n file_name | tail +n`   | Print nth line from file.|
-|`head -y lines.txt | tail +x`   | want to display all the lines from x to y. This includes the xth and yth lines.|
-|`sed 's/<pattern>/<replacement>/g' <filename>` | replace pattern in file with replacement value to std output the character after s (/) is the delimeter |
-|`sed -i 's/<pattern>/<replacement>/g' <filename>` ! replace pattern in file with replacement value in place|
-|`echo "this" | sed 's/is/at/g'` | replace pattern from input stream with replacement value|
+|`head -n file_name \| tail +n`   | Print nth line from file.|
+|`head -y lines.txt \| tail +x`   | want to display all the lines from x to y. This includes the xth and yth lines.|
 
-
-
+### Working with Directories
 
 | command                    | Description                                         |
 |----------------------------|-----------------------------------------------------|
@@ -140,25 +45,39 @@ Try the following commands:
 |`pwd`                       | tells you where you currently are                   |    
 |`cd ~`                      | changes to home.                                    |      
 
-### Viewing and Editing Files
 
-How can we view files? This depends on the type of file we're working with,
-which is specified by the extension. Most files we'll work with are composed of
-some kind of text such as `.txt` files, `.py` files, `.R` files, etc. Here are
-some approaches to view their contents quickly:
+There are two ways of specifying file paths:
 
-* `cat`: View all the contents of a file. This command is short for
-  "concatenate", because it can be applied to multiple files.
-  * Try using `cat` on one of the files in this directory.
-* `less`: This is useful when your file is too big for `cat`, and you quickly
-  just want to see a small portion of it.
-  * Try using `less` on one of the file in this directory.
+* **Absolute file paths** are relative to the **root directory**, which is the
+  uppermost level of a file system. Absolute file paths always start with a
+  forward slash `/`.
+* **Relative file paths** are relative to your working directory. These paths
+  start with no forward slash or a `./` (the period is shorthand for the working
+  directory).
+
+In specifying file paths, you can use the `~` as a shorthand for your home
+directory.
+
+
+### Other useful commands
+
+| command                    | Description                                         |
+|----------------------------|-----------------------------------------------------|
+|`find . -name <name> <type>`    | searches for a file or a directory in the current directory and all its sub-directories by its name|
+|`diff <filename1> <filename2>`  | compares files, and shows where they differ|
+|`wc <filename>`                 | tells you how many lines, words and characters there are in a file. Use -lwc (lines, word, character) to ouput only 1 of those informations|
+|`sort <filename>`              | sorts the contents of a text file line by line in alphabetical order, use -n for numeric sort and -r for reversing order.|
+|`sort -t -k <filename>`         | sorts the contents on specific sort key field starting from 1, using the field separator t.|
+|`grep <pattern> <filenames>`    | looks for the string in the files|
+|`grep -r <pattern> <dir>`       | search recursively for pattern in directory|
+
+
+
+### Editing Files
 
 To edit a file (assuming VS Code is installed) use `code filename`
 
+## Useful links
 
-### Reference: Keyboard Shortcuts
+[Software Carpentry lessons on the unix shell](https://swcarpentry.github.io/shell-novice/)
 
-
-* Up/down arrow keys: cycle through previous commands.
-* `Ctrl-C`: Abort process.
