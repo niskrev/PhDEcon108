@@ -14,4 +14,5 @@ I will provide a list of possible articles for you to consider, but you're free 
 * [Testing for Multiple-Horizon Predictability: Direct Regression Based versus Implication Based](https://academic.oup.com/rfs/article/33/9/4403/5620729#206846062)
     * matlab
     * more from same author [here](https://sites.google.com/view/kelixu/research?authuser=0)
+    * [here](https://sites.google.com/view/aubreybcpoon/research?authuser=0)
 --->

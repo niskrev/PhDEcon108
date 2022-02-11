@@ -7,7 +7,7 @@ The content in this Jupyter Book is subject to change.
 **Prerequisitese**: Econometrics I (PhDEcon104)</br>
 **Dates**: February 14 - May 27, 2022</br>
 **Meetings**: Monday 11h30-13h00 and Friday 15h00-16h30</br>
-**Location**: Online</br>
+**Location**: Online (zoom)</br>
 **Syllabus**: [Found here](./Syllabus.md)
 
 

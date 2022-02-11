@@ -14,4 +14,5 @@ Here are some more options:
 * [AutoTS](https://github.com/winedarksea/AutoTS) 
 * [Sktime](https://www.sktime.org/en/stable/)
 * [PyAF](https://github.com/antoinecarme/pyaf)
+* [another list](https://awesomeopensource.com/projects/python/time-series)
 --->

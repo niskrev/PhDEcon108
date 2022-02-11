@@ -69,7 +69,6 @@ Class meetings will be held on Zoom. You will need a microphone and webcam (you 
 * Learn how to use Python to perform such analysis, by using existing libraries, as well as by writing own code to implement specific time series tasks.
 * Learn useful research tools and practices.
 
-
 ## Grading
 
 Grades will be determined as follows: homework assignments (55%), midterm project (15%), final project (30%).
