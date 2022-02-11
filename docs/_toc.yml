@@ -32,18 +32,18 @@ parts:
   - file: 03-Assignments/HW0/main
     sections:
     - file: 03-Assignments/HW0/README
-  - file: 03-Assignments/HW1/main
-    sections:
-    - file: 03-Assignments/HW1/README
-    - file: 03-Assignments/HW1/HW1-empty
-      title: HW1-empty
-  - file: 03-Assignments/HW2/main
-    sections:
-    - file: 03-Assignments/HW2/README
-    - file: 03-Assignments/HW2/docs_presentation
-  - file: 03-Assignments/HW3/main
-    sections:
-    - file: 03-Assignments/HW3/README
+#  - file: 03-Assignments/HW1/main
+#    sections:
+#    - file: 03-Assignments/HW1/README
+#    - file: 03-Assignments/HW1/HW1-empty
+#      title: HW1-empty
+#  - file: 03-Assignments/HW2/main
+#    sections:
+#    - file: 03-Assignments/HW2/README
+#    - file: 03-Assignments/HW2/docs_presentation
+#  - file: 03-Assignments/HW3/main
+#    sections:
+#    - file: 03-Assignments/HW3/README
 #  - file: 03-Assignments/HW4/main
 #    sections:
 #    - file: 03-Assignments/HW4/README

@@ -82,9 +82,10 @@ The `--global` flags means that these specifications work for all of your reposi
 git config --list
 ```
 
+### Read [this](https://github.com/git-guides/) short introduction to Git
 
 ## Set up a GitHub account
-Go to [http://github.com/](http://github.com/) to get an account. You should register with your academic email address so you get free private repositories as academics. You should also think carefully about picking your user name. There is a good chance other people in your professional life will see this.
+Go to [http://github.com/](http://github.com/) to get an account. You should register with your academic email address so you get free private repositories as academics. 
 
 ### Set up your token
 You will need to set up a token to be used to access GitHub via the command line. To do so, follow [these instructions](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).

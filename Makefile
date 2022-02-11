@@ -8,3 +8,6 @@ clean:
 
 open:
 		CMD /C start docs\_build\html\index.html
+
+export:
+		cd docs/&& ghp-import -n -p -f _build/html
