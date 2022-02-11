@@ -11,7 +11,7 @@
 | deactivate the currently active environment | `conda deactivate` |
 | install a package in the currently active environment | `conda install <NAME-OF-PACKAGE-TO-INSTALL>` |
 | list existing environments | `conda env list` |
-| list the packages installed in an environment | `conda list --name <NAME-OF-THE-ENV` ` |
+| list the packages installed in an environment | `conda list --name <NAME-OF-THE-ENV>` |
 | delete an environment | `conda remove --name <NAME-OF-ENV-TO-DELETE> --all` |
  
 
