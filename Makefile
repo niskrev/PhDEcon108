@@ -10,4 +10,4 @@ open:
 		CMD /C start docs\_build\html\index.html
 
 export:
-		cd docs/&& ghp-import -n -p -f _build/html
+		ghp-import -n -p -f docs\_build\html
