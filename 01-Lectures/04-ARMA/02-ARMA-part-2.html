@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Homework 0" href="../../03-Assignments/HW0/main.html" />
-    <link rel="prev" title="Linear Models" href="01-ARMA-part-1.html" />
+    <link rel="prev" title="Introduction to AR and MA models" href="01-ARMA-part-1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -223,67 +223,6 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
-   Homework 1
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
-     README HW1
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
-     HW1-empty
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
-   Homework 2
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
-     README HW2
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW2/docs_presentation.html">
-     Contributing to PyMC documentation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
-   Homework 3
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
-     README HW3
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -312,8 +251,8 @@
   <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
    1. Python
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -339,8 +278,8 @@
   <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
    2. Numpy
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -361,8 +300,8 @@
   <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
    3. Pandas
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -388,8 +327,8 @@
   <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
    Other tools
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -643,13 +582,8 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_process</span> <span class="kn">import</span> <span class="n">arma_acovf</span><span class="p">,</span> <span class="n">ArmaProcess</span>
 <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">toeplitz</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;serif&#39;</span><span class="p">:[</span><span class="s1">&#39;Palatino&#39;</span><span class="p">]})</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -669,13 +603,8 @@
                      <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">18</span>
                     <span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -856,6 +785,33 @@ MA: [1.0, 0.4]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  here is what happens when the assertion is false</span>
+<span class="n">assert_almost_equal</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="n">expression1</span><span class="p">,</span> <span class="n">err_msg</span><span class="o">=</span><span class="s2">&quot;expression1 is NOT almost equal to 0!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+Input In [69], in &lt;module&gt;
+      1 #  here is what happens when the assertion is false
+----&gt; 2 assert_almost_equal(0.01,expression1, err_msg=&quot;expression1 is NOT almost equal to 0!&quot;)
+
+File ~\AppData\Local\Continuum\anaconda3\envs\teaching\lib\site-packages\numpy\testing\_private\utils.py:599, in assert_almost_equal(actual, desired, decimal, err_msg, verbose)
+    597     pass
+    598 if abs(desired - actual) &gt;= 1.5 * 10.0**(-decimal):
+--&gt; 599     raise AssertionError(_build_err_msg())
+
+AssertionError: 
+Arrays are not almost equal to 7 decimals expression1 is NOT almost equal to 0!
+ ACTUAL: 0.01
+ DESIRED: 4.440892098500626e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using standard python</span>
 <span class="n">very_small_number</span> <span class="o">=</span> <span class="mf">0.00000001</span>
 <span class="k">assert</span> <span class="n">expression1</span> <span class="o">&lt;</span> <span class="n">very_small_number</span><span class="p">,</span> <span class="s2">&quot;expression1 is NOT larger than the &#39;very_small_number&#39;!&quot;</span>
@@ -865,7 +821,7 @@ MA: [1.0, 0.4]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using standard python</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here is what happens when the assertion is false</span>
 <span class="n">very_small_number</span> <span class="o">=</span> <span class="mf">0.00000001</span>
 <span class="k">assert</span> <span class="n">expression1</span> <span class="o">&gt;</span> <span class="n">very_small_number</span><span class="p">,</span> <span class="s2">&quot;expression1 is NOT larger than the &#39;very_small_number&#39;!&quot;</span>
 </pre></div>
@@ -874,8 +830,8 @@ MA: [1.0, 0.4]
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">57</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># using standard python</span>
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">71</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># here is what happens when the assertion is false</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">very_small_number</span> <span class="o">=</span> <span class="mf">0.00000001</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">expression1</span> <span class="o">&gt;</span> <span class="n">very_small_number</span><span class="p">,</span> <span class="s2">&quot;expression1 is NOT larger than the &#39;very_small_number&#39;!&quot;</span>
 
@@ -1028,16 +984,16 @@ MA: [1.0]
 </div>
 <div class="section" id="lag-operator">
 <h2>Lag operator<a class="headerlink" href="#lag-operator" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>aka Backshift operator</p>
-</div>
 <div class="math notranslate nohighlight">
 \[ L z_{t} = z_{t-1} \]</div>
 <div class="math notranslate nohighlight">
 \[ L^2 z_{t} = L(L z_t) = Lz_{t-1} = z_{t-2} \]</div>
 <div class="math notranslate nohighlight">
 \[ L^n z_{t} = z_{t-n} \]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>aka Backshift operator</p>
+</div>
 <ul class="simple">
 <li><p>polynomial of order <span class="math notranslate nohighlight">\(p\)</span> in the lag operator</p></li>
 </ul>
@@ -1353,8 +1309,8 @@ z_{t} = \varepsilon_{t} &amp;+ \theta  \varepsilon_{t-1} ,  \; \operatorname{var
 </div>
 <p>For a AR(2) models with coefficients <span class="math notranslate nohighlight">\(\alpha_1\)</span> and <span class="math notranslate nohighlight">\(\alpha_2\)</span>, the stability conditions are the following:
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-56520538-89d5-461c-90d9-3e87e514c658">
-<span class="eqno">(2)<a class="headerlink" href="#equation-56520538-89d5-461c-90d9-3e87e514c658" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dec8c2cf-0c80-4da2-9da9-3ae2389c510d">
+<span class="eqno">(2)<a class="headerlink" href="#equation-dec8c2cf-0c80-4da2-9da9-3ae2389c510d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \alpha_1 + \alpha_2 &amp;&lt; 1\\
 \alpha_2 - \alpha_1 &amp;&lt; 1\\
 -1&lt;\alpha_2 &amp;&lt;1
@@ -1408,7 +1364,7 @@ $$</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Linear Models</p>
+            <p class="prev-next-title">Introduction to AR and MA models</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../../03-Assignments/HW0/main.html" title="next page">
