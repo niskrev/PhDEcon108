@@ -7,8 +7,9 @@ __Note__: The package you present should not be one of those used in this course
 
 I will provide a list of possible packages for you to consider, but you're free to use others. In any case, you will have to send me a brief description of what you propose to do, and I will approve each project. There can be no two projects using the same package, and the approval will be given on a first-come-first-served basis.
 
-<!---
 For an overview/comparison of many python packages for time series, see [here](https://siebert-julien.github.io/time-series-analysis-python/overview.html) ([paper](https://arxiv.org/abs/2104.07406))
+
+<!---
 
 Here are some more options:
 * [AutoTS](https://github.com/winedarksea/AutoTS) 
