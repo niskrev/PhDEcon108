@@ -31,7 +31,7 @@ where `XXXXXXX` is the name of the particular item you are looking for.
 * Download from [Eurostat](https://ec.europa.eu/eurostat) all available time series data for __Gross domestic product at market prices__ for the __Euro area - 19 countries (from 2015)__
 The series should be __Seasonally and calendar adjusted__ and the units should be __Chain linked volumes (2010), million euro__.
 * import with pandas and create a dataframe with a datetime index matching the timing of the series you downloaded
-* save as a csv file undeer the name "Real-GDP-EA.csv"
+* save as a csv file under the name "Real-GDP-EA.csv"
 * create a new datafame containing the GDP data and the inflation indices from the first task.
 * save as a csv file named "merged-GDP-inflation.csv"
 
