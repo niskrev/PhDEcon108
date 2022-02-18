@@ -7,12 +7,15 @@
 | Description | Command |
 |---------|-------------|
 | create a new conda environment | `conda create --name <NAME-OF-YOUR-ENV` |
+| create a new conda environment from `environment.yml` file | `conda env create -f environment.yml` |
+| update an environment after updating the .yml file (no space in `--prune`) | `conda env update  --file environment.yml  --prune` |
 | activate an existing conda environment | `conda activate <NAME-OF-YOUR-ENV` |
 | deactivate the currently active environment | `conda deactivate` |
 | install a package in the currently active environment | `conda install <NAME-OF-PACKAGE-TO-INSTALL>` |
 | list existing environments | `conda env list` |
 | list the packages installed in an environment | `conda list --name <NAME-OF-THE-ENV>` |
 | delete an environment | `conda remove --name <NAME-OF-ENV-TO-DELETE> --all` |
+
  
 
 
