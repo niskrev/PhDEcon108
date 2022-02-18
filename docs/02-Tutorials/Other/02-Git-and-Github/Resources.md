@@ -22,3 +22,4 @@
 * [The Turing Way on Git](https://the-turing-way.netlify.app/reproducible-research/vcs.html#rr-vcs)
 * [The Turing Way on GitHub](https://the-turing-way.netlify.app/collaboration/github-novice.html)
 * [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html) (This is tailored to users of R, but much of the content is of general interest.)
+* See [here](https://www.earthdatascience.org/courses/intro-to-earth-data-science/git-github/github-collaboration/update-github-repositories-with-changes-by-others/) on how to ensure your Github fork is up to date
