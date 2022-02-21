@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maximum likelihood estimation</title>
+    <title>Homework 1</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,8 +42,6 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,12 +49,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/03-MLE/01-MLE.html" />
+    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW1/HW1-empty.html" />
     <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ARMA models" href="../04-ARMA/00-Introduction.html" />
-    <link rel="prev" title="Review of maximum likelihood estimation" href="00-Introduction.html" />
+    <link rel="next" title="Midterm project" href="../../04-Projects/01-Midterm/main.html" />
+    <link rel="prev" title="README HW1" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,9 +118,9 @@
   Lectures
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/01-Introduction/00-Introduction.html">
    Introduction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -132,19 +130,19 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/01-Introduction.html">
      1. Time series vs cross-section
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/02-Time-series.html">
      2. Time Series concepts and models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/02-Gaussian/00-Introduction.html">
    Multivariate normal distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -154,31 +152,31 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+    <a class="reference internal" href="../../01-Lectures/02-Gaussian/01-Multivariate-normal-distribution.html">
      1. Multivariate normal distribution
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="00-Introduction.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/03-MLE/00-Introduction.html">
    Review of maximum likelihood estimation
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/03-MLE/01-MLE.html">
      1. Maximum likelihood estimation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04-ARMA/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/04-ARMA/00-Introduction.html">
    ARMA models
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -188,12 +186,12 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../04-ARMA/01-ARMA-part-1.html">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/01-ARMA-part-1.html">
      1. Introduction to AR and MA models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../04-ARMA/02-ARMA-part-2.html">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/02-ARMA-part-2.html">
      2. Algebra of AR and MA models
     </a>
    </li>
@@ -205,9 +203,9 @@
   Assignments
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+  <a class="reference internal" href="../HW0/main.html">
    Homework 0
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -217,29 +215,29 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+    <a class="reference internal" href="../HW0/README.html">
      README HW0
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="main.html">
    Homework 1
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+    <a class="reference internal" href="README.html">
      README HW1
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      HW1-empty
     </a>
    </li>
@@ -425,7 +423,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/01-Lectures/03-MLE/01-MLE.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW1/HW1-empty.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -450,7 +448,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/03-MLE/01-MLE.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03-Assignments/HW1/HW1-empty.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -473,41 +471,19 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series-model">
-   Time series model
+  <a class="reference internal nav-link" href="#part-i-hicp-data-from-sdw">
+   Part I. HICP data from SDW
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-maximum-likelihood-estimator-mle">
-   The maximum likelihood estimator (MLE)
+  <a class="reference internal nav-link" href="#part-ii-gdp-data-from-eurostat">
+   Part II. GDP data from EUROSTAT
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rationale-for-mle">
-     Rationale for MLE
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#score">
-     Score
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#observed-fisher-information">
-     Observed Fisher information
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#expected-fisher-information">
-     Expected Fisher information
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#consistency-and-asymptotic-normality-of-mle">
-     Consistency and asymptotic normality of MLE
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-combine-gdp-and-inflation-data">
+   PART III Combine GDP and inflation data
+  </a>
  </li>
 </ul>
 
@@ -519,7 +495,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Maximum likelihood estimation</h1>
+                <h1>Homework 1</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -530,41 +506,19 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series-model">
-   Time series model
+  <a class="reference internal nav-link" href="#part-i-hicp-data-from-sdw">
+   Part I. HICP data from SDW
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-maximum-likelihood-estimator-mle">
-   The maximum likelihood estimator (MLE)
+  <a class="reference internal nav-link" href="#part-ii-gdp-data-from-eurostat">
+   Part II. GDP data from EUROSTAT
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rationale-for-mle">
-     Rationale for MLE
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#score">
-     Score
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#observed-fisher-information">
-     Observed Fisher information
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#expected-fisher-information">
-     Expected Fisher information
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#consistency-and-asymptotic-normality-of-mle">
-     Consistency and asymptotic normality of MLE
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-combine-gdp-and-inflation-data">
+   PART III Combine GDP and inflation data
+  </a>
  </li>
 </ul>
 
@@ -575,107 +529,129 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="maximum-likelihood-estimation">
-<h1>Maximum likelihood estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="time-series-model">
-<h2>Time series model<a class="headerlink" href="#time-series-model" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>a specification of the joint distribution of <span class="math notranslate nohighlight">\(\{z_𝑡\}\)</span></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ p(\mathbf{z}; \boldsymbol \theta) \]</div>
-<p><strong>definition:</strong> Likelihood function</p>
-<div class="math notranslate nohighlight">
-\[ \mathcal{L}(\boldsymbol \theta | \mathbf{z}) = p(\mathbf{z}; \boldsymbol \theta)  \]</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The likelihood function is identical in functional form to the PDF of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>, <span class="math notranslate nohighlight">\(p(\mathbf{z};\boldsymbol \theta)\)</span>, but is interpreted as a function of <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span>, for a given value of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>, rather than as a function of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> for a given value of <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span>.</p>
-</div>
-<p><strong>definition:</strong> Log-likelihood function</p>
-<div class="math notranslate nohighlight">
-\[ \ell(\boldsymbol \theta | \mathbf{z}) =  \operatorname{log}(\mathcal{L}(\boldsymbol \theta | \mathbf{z})\]</div>
-</div>
-<div class="section" id="the-maximum-likelihood-estimator-mle">
-<h2>The maximum likelihood estimator (MLE)<a class="headerlink" href="#the-maximum-likelihood-estimator-mle" title="Permalink to this headline">¶</a></h2>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\hat {\boldsymbol \theta} &amp;= \underset{\boldsymbol \theta}{\mathrm{argmax}}~~\mathcal{L}(\boldsymbol \theta | \mathbf{z}) \\
-                          &amp;= \underset{\boldsymbol \theta}{\mathrm{argmax}}~~\ell(\boldsymbol \theta | \mathbf{z}) 
-\end{align}                          
-\end{split}\]</div>
-<div class="section" id="rationale-for-mle">
-<h3>Rationale for MLE<a class="headerlink" href="#rationale-for-mle" title="Permalink to this headline">¶</a></h3>
-<p>For a given <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span>, the value of <span class="math notranslate nohighlight">\(p(\mathbf{z}; \boldsymbol \theta) d \mathbf{z}\)</span> evaluated at the observed sample <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> tells us what is the probability of observing a sample in a small neighborhood around the actual <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> for that value of <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span>. Compared to the MLE <span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span>, any other value of <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> is associated with a pdf that assigns a lower probability of observing such a sample. Therefore, <span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span> is the value most supported by the observed sample.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Difference between ML <strong>estimator</strong> and ML <strong>estimate</strong>:</p>
-<ul class="simple">
-<li><p>estimator: <span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span> as a function of a generic sample <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p></li>
-<li><p>estimate: the value <span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span> at a particular sample <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="homework-1">
+<h1>Homework 1<a class="headerlink" href="#homework-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="part-i-hicp-data-from-sdw">
+<h2>Part I. HICP data from SDW<a class="headerlink" href="#part-i-hicp-data-from-sdw" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pandas (and other libraries you may want to use)</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="score">
-<h3>Score<a class="headerlink" href="#score" title="Permalink to this headline">¶</a></h3>
-<div class="math notranslate nohighlight">
-\[ \boldsymbol S_{T}(\boldsymbol \theta) = \frac{\partial}{\partial \boldsymbol \theta } \ell(\boldsymbol \theta | \mathbf{z})  \]</div>
-<ul class="simple">
-<li><p>describes the steepness of log-likelihood function</p></li>
-</ul>
-<ul class="simple">
-<li><p>MLE <span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span> solves</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ \boldsymbol S_{T}(\hat {\boldsymbol \theta}) = \boldsymbol 0 \]</div>
 </div>
-<div class="section" id="observed-fisher-information">
-<h3>Observed Fisher information<a class="headerlink" href="#observed-fisher-information" title="Permalink to this headline">¶</a></h3>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\boldsymbol I_{T}(\hat {\boldsymbol \theta})  &amp;= -\frac{\partial}{\partial \boldsymbol \theta } \boldsymbol S_{T}(\boldsymbol \theta) |_{\hat {\boldsymbol \theta}} \\
-&amp;= -\frac{\partial^2}{\partial \boldsymbol \theta \partial \boldsymbol \theta'} \ell(\boldsymbol \theta | \mathbf{z})|_{\hat {\boldsymbol \theta}}
-\end{align}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>describes the curvature of the log-likelihood function at the maximum <span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span></p></li>
-</ul>
-<ul class="simple">
-<li><p>measures how much information about <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> we have at the MLE.</p></li>
-</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the data files you downloaded from SDW</span>
+</pre></div>
 </div>
-<div class="section" id="expected-fisher-information">
-<h3>Expected Fisher information<a class="headerlink" href="#expected-fisher-information" title="Permalink to this headline">¶</a></h3>
-<div class="math notranslate nohighlight">
-\[\mathcal{I}_{T}(\boldsymbol \theta)  = \operatorname{E}\left[ \boldsymbol S_{T}(\boldsymbol \theta)  \boldsymbol S_{T}(\boldsymbol \theta)' \right] \]</div>
-<div class="math notranslate nohighlight">
-\[\mathcal{I}_{T}(\boldsymbol \theta)  = -\operatorname{E}\left[ \frac{\partial}{\partial \boldsymbol \theta } \boldsymbol S_{T}(\boldsymbol \theta)\right] = \operatorname{E}\left[ \boldsymbol I_{T}(\boldsymbol \theta)   \right]\]</div>
-<ul class="simple">
-<li><p>expected curvature of the log-likelihood function</p></li>
-</ul>
-<ul class="simple">
-<li><p>measures how much information about <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> we can expect to have</p></li>
-</ul>
 </div>
-<div class="section" id="consistency-and-asymptotic-normality-of-mle">
-<h3>Consistency and asymptotic normality of MLE<a class="headerlink" href="#consistency-and-asymptotic-normality-of-mle" title="Permalink to this headline">¶</a></h3>
-<p><strong>Assumption</strong>: <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> is a draw from <span class="math notranslate nohighlight">\( p(\mathbf{z}; \boldsymbol \theta_0)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol \theta_0\)</span> - <em>true</em> value of <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span> is consitent estimator of <span class="math notranslate nohighlight">\(\boldsymbol \theta_0\)</span></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ \hat {\boldsymbol \theta} \longrightarrow \boldsymbol \theta_0 \]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat {\boldsymbol \theta}\)</span> is asymptotically normally distributed</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ \sqrt{T} \left(\hat {\boldsymbol \theta} - \boldsymbol \theta_0 \right) \longrightarrow \mathcal{N}\left(\boldsymbol 0, \mathcal{I}^{-1}_{\infty}(\boldsymbol \theta_0) \right) \]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[\mathcal{I}_{\infty}(\boldsymbol \theta) = \underset{T\rightarrow \infty}{\operatorname{lim}} \frac{1}{T}\mathcal{I}_{T}(\boldsymbol \theta)\]</div>
-<div class="math notranslate nohighlight">
-\[ \hat {\boldsymbol \theta} \overset{a}{\sim} \mathcal{N}\left(\boldsymbol \theta_0, \frac{1}{T}\mathcal{I}^{-1}_{\infty}(\boldsymbol \theta_0) \right) \]</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print as a list the codes of the subindices you downloaded.</span>
+<span class="c1"># For example, if you download items from the __FOOD AND NON-ALCOHOLIC BEVERAGES__ category, </span>
+<span class="c1"># list all codes type `01XX00` you were able to download. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a single dataframe combining data for all HICP subindices you downloaded</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make other changes to the dataframe - set datetime index, rename the columns (up to you, but shortening very long names may be a good idea)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the type of the index of the dataframe</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the data types of the columns in the dataframe</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save as a csv file under the name of the item group</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute and print the means and standard deviations for each series for the full period</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute and print the means and standard deviations for each calendar month for each series</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># redo the above for the period between January 2017 and December 2021</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="part-ii-gdp-data-from-eurostat">
+<h2>Part II. GDP data from EUROSTAT<a class="headerlink" href="#part-ii-gdp-data-from-eurostat" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the data files you downloaded from EUROSTAT</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dataframe with a datetime index matching the timing of the series you downloaded</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save as a csv file under the name &quot;Real-GDP-EA.csv&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="part-iii-combine-gdp-and-inflation-data">
+<h2>PART III Combine GDP and inflation data<a class="headerlink" href="#part-iii-combine-gdp-and-inflation-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new datafame containing the GDP data and the inflation indices from the first task.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#save as a csv file named &quot;merged-GDP-inflation.csv&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -693,7 +669,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01-Lectures\03-MLE"
+            path: "./03-Assignments\HW1"
         },
         predefinedOutput: true
     }
@@ -705,17 +681,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="00-Introduction.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Review of maximum likelihood estimation</p>
+            <p class="prev-next-title">README HW1</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../04-ARMA/00-Introduction.html" title="next page">
+    <a class='right-next' id="next-link" href="../../04-Projects/01-Midterm/main.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ARMA models</p>
+        <p class="prev-next-title">Midterm project</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
