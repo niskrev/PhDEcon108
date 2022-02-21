@@ -14,6 +14,14 @@ docs/_build/
 docs/_work/
 docs/_scratch
 
+docs/01-Lectures/02-Gaussian/
+!docs/01-Lectures/02-Gaussian/00-Introduction.md
+!docs/01-Lectures/02-Gaussian/01-01-Multivariate-normal-distribution.ipynb
+
+docs/01-Lectures/03-MLE/
+!docs/01-Lectures/03-MLE/00-Introduction.md
+!docs/01-Lectures/03-MLE/01-MLE.ipynb
+
 
 docs/01-Lectures/04-ARMA/
 !docs/01-Lectures/04-ARMA/01-ARMA-part-1.ipynb
