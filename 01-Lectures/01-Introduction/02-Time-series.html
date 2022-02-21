@@ -698,7 +698,9 @@
 </ul>
 <div class="math notranslate nohighlight">
 \[ \frac{1}{N} \sum_{n=1}^{N} z^{(n)}_{t}\]</div>
-<ul class="simple">
+<figure><center><img src=".\images\Erg1.png"></center><figure><figure><center><img src=".\images\Erg2.png"></center><figure><p>Ensamble average with n=100</p>
+<figure><center><img src=".\images\Erg_mean_n_100.png"></center><figure><p>Ensamble average with n=10000</p>
+<figure><center><img src=".\images\Erg_mean_n_100.png"></center><figure><ul class="simple">
 <li><p>impossible with one observed path (e.g. one history of quarterly GDP numbers)</p></li>
 </ul>
 <ul class="simple">
@@ -749,8 +751,6 @@
 <ul class="simple">
 <li><p>strong and weak stationarity coincide when <span class="math notranslate nohighlight">\(z_t\)</span> is a Gaussian process</p></li>
 <li><p>with weak stationarity alone we can still learn first and second order moments (if not the full distribution)</p></li>
-</ul>
-<ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(z_t\)</span> is iid then it is strongly stationary</p></li>
 </ul>
 </div>
@@ -780,8 +780,8 @@
 <ul class="simple">
 <li><p>time averages of such functions converge to respective population averages</p></li>
 </ul>
-<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(\{z_i\}\)</span> is stationary and ergodic, then <span class="math notranslate nohighlight">\(\{z_i z_i\}\)</span> is also stationary and ergodic.<br>
-Therefore, the time averages of <span class="math notranslate nohighlight">\(z_t\)</span> and <span class="math notranslate nohighlight">\(z_i z_i\)</span> converge to <span class="math notranslate nohighlight">\(\operatorname{E}z_t\)</span> and <span class="math notranslate nohighlight">\(\operatorname{E}z_tz_t\)</span></p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(\{z_t\}\)</span> is stationary and ergodic, then <span class="math notranslate nohighlight">\(\{z_t z_t\}\)</span> is also stationary and ergodic.<br>
+Therefore, the time averages of <span class="math notranslate nohighlight">\(z_t\)</span> and <span class="math notranslate nohighlight">\(z_t z_t\)</span> converge to <span class="math notranslate nohighlight">\(\operatorname{E}z_t\)</span> and <span class="math notranslate nohighlight">\(\operatorname{E}z_tz_t\)</span></p>
 <p><strong>Example</strong>: (stationary but not ergodic)</p>
 <div class="math notranslate nohighlight">
 \[ z_t = x_t + y\]</div>
@@ -813,6 +813,10 @@ Therefore, the time averages of <span class="math notranslate nohighlight">\(z_t
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The ergodic theorem is important because it implies that, in time series settings, a single long sample becomes representative of the whole data-generating process similar to how, in a cross section, a large iid sample becomes representative of the whole population.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A related (to ergodicity) property is called <em>mixing</em>. Defining formally either one is beyond the scope of this course. Informally, a useful way to think about the difference between mixing and ergodicity can be found in Ch 14.7 of B. Hansens’s <em>Econometrics</em>: mixing means that more distant elements of the time series sequence are closer to being independent, while ergodicity means that this is true only on average. Therefore, mixing implies ergodicity, but ergodicity does not imply mixing.</p>
 </div>
 </div>
 </div>
