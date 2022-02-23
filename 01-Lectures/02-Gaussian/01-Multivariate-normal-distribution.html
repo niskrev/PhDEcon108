@@ -779,14 +779,15 @@ p(\mathbf{z}_2)  = \int_{\mathbf{z}_1} p(\mathbf{z}_1, \mathbf{z}_2) \text{d} \m
 p(\mathbf{z}_1 | \mathbf{z}_2) = \mathcal{N}(\underbrace{\boldsymbol \mu_1 + \mathbf{\Sigma}_{1 2} \mathbf{\Sigma}^{-1}_{2 2} (\mathbf{z}_2 - \boldsymbol \mu_2)}_{\operatorname{E}(\mathbf{z}_1 | \mathbf{z}_2)}, \underbrace{\mathbf{\Sigma}_{1 1} - \mathbf{\Sigma}_{1 2}\mathbf{\Sigma}_{2 2}^{-1}\mathbf{\Sigma}_{2 1}}_{\operatorname{cov}(\mathbf{z}_1 | \mathbf{z}_2)}) %\\
 %p(\mathbf{z}_2 | \mathbf{z}_1) = \mathcal{N}(\boldsymbol \mu_2 + \mathbf{\Sigma}_{2 1} \mathbf{\Sigma}^{-1}_{1 1} (\mathbf{z}_1 - \boldsymbol \mu_1), \mathbf{\Sigma}_{2 2} - \mathbf{\Sigma}_{2 1}\mathbf{\Sigma}_{1 1}^{-1}\mathbf{\Sigma}_{1 2}) 
 \end{split}\]</div>
-<p>Let
-$<span class="math notranslate nohighlight">\(
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
      \mathbf{Q} = \mathbf{\Sigma}^{-1} = 
     \begin{bmatrix}
          \mathbf{Q}_{1 1} &amp; \mathbf{Q}_{1 2} \\
          \mathbf{Q}_{2 1} &amp; \mathbf{Q}_{2 2}
     \end{bmatrix}
-\)</span>$</p>
+\end{split}\]</div>
 <p>Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -813,8 +814,9 @@ p(\mathbf{z}_1 | \mathbf{z}_2) = \mathcal{N}(\boldsymbol \mu_1 , \mathbf{\Sigma}
 \[
 p(\mathbf{z}_1, A \mathbf{z}_1 + B\mathbf{z}_2) \sim \mathcal{N}(\boldsymbol \mu, \mathbf{\Sigma}).
 \]</div>
-<p>with:
-$<span class="math notranslate nohighlight">\(
+<p>with:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \boldsymbol \mu = 
     \begin{bmatrix}
         \boldsymbol \mu_1 \\
@@ -826,7 +828,7 @@ $<span class="math notranslate nohighlight">\(
          \mathbf{\Sigma}_{1 1} &amp; \mathbf{\Sigma}_{1 1} A' \\
         A\mathbf{\Sigma}_{1 1} &amp; A\mathbf{\Sigma}_{1 1}A' + B\mathbf{\Sigma}_{2 2}B'
     \end{bmatrix}
-\)</span>$</p>
+\end{split}\]</div>
 </div>
 <div class="section" id="information">
 <h3>Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h3>
@@ -842,8 +844,9 @@ $<span class="math notranslate nohighlight">\(
 \[
 p(z_1, z_2) \sim \mathcal{N}(\boldsymbol \mu, \mathbf{\Sigma}).
 \]</div>
-<p>where:
-$<span class="math notranslate nohighlight">\(
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \boldsymbol \mu = 
     \begin{bmatrix}
         \mu_1 \\
@@ -855,7 +858,7 @@ $<span class="math notranslate nohighlight">\(
          \sigma^2_{1} &amp; \rho \sigma_{1}\sigma_2  \\
          \rho \sigma_{1}\sigma_2 &amp; \sigma^2_{2}
     \end{bmatrix}
-\)</span>$</p>
+\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -928,7 +931,9 @@ p(z_1 | z_2) &amp;= \mathcal{N}\left(\mu_1 + \frac{\rho \sigma_{1}\sigma_2}{\sig
 <div class="math notranslate nohighlight">
 \[p(z_1|z_2=1) = \mathcal{N}(0.1, 0.99)\]</div>
 <p>Reduction of the uncertainty about <span class="math notranslate nohighlight">\(z_1\)</span> by 1%</p>
-<p>Let <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> be jointly Gaussian, and partitioned as (<span class="math notranslate nohighlight">\(z_1\)</span> is a scalar) $<span class="math notranslate nohighlight">\(\mathbf{z} = [z_1, \mathbf{z}_2] \)</span>$</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> be jointly Gaussian, and partitioned as (<span class="math notranslate nohighlight">\(z_1\)</span> is a scalar)</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{z} = [z_1, \mathbf{z}_2] \]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol \mu = 
@@ -943,14 +948,16 @@ p(z_1 | z_2) &amp;= \mathcal{N}\left(\mu_1 + \frac{\rho \sigma_{1}\sigma_2}{\sig
          \mathbf{\Sigma}_{2 1} &amp; \mathbf{\Sigma}_{2 2}
     \end{bmatrix}
 \end{split}\]</div>
-<p>Then
-$<span class="math notranslate nohighlight">\(
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 p(z_1 | \mathbf{z}_2) = \mathcal{N}(\underbrace{\mu_1 - \mathbf{\Sigma}_{1 2} \mathbf{\Sigma}^{-1}_{2 2} \boldsymbol \mu_2}_{\beta_0} + \underbrace{\mathbf{\Sigma}_{1 2} \mathbf{\Sigma}^{-1}_{2 2}}_{\mathbf{\beta}'_1} \mathbf{z}_2, \underbrace{\Sigma_{1 1} - \mathbf{\Sigma}_{1 2}\mathbf{\Sigma}_{2 2}^{-1}\mathbf{\Sigma}_{2 1}}_{\sigma^2}) %\\
-\)</span>$</p>
-<p>therefore,
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>therefore,</p>
+<div class="math notranslate nohighlight">
+\[
 z_1 = \beta_0 + \mathbf{\beta}'_1 \mathbf{z}_2 + \varepsilon  \;\;\; \text{where } \varepsilon \sim \mathcal{N}(0, \sigma^2)
-\)</span>$</p>
+\]</div>
 </div>
 <div class="section" id="conditional-in-dependence">
 <h3>Conditional (in)dependence<a class="headerlink" href="#conditional-in-dependence" title="Permalink to this headline">¶</a></h3>
