@@ -514,6 +514,26 @@
      Conditional
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independence">
+     Independence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information">
+     Information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bivariate-normal">
+     Bivariate Normal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-in-dependence">
+     Conditional (in)dependence
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -521,6 +541,11 @@
    Missing values
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-examples">
+     Some examples
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#observed-elements-mathbf-z-1-unobserved-elements-mathbf-z-2">
      observed elements
@@ -597,6 +622,26 @@
      Conditional
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independence">
+     Independence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information">
+     Information
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bivariate-normal">
+     Bivariate Normal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-in-dependence">
+     Conditional (in)dependence
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -604,6 +649,11 @@
    Missing values
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-examples">
+     Some examples
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#observed-elements-mathbf-z-1-unobserved-elements-mathbf-z-2">
      observed elements
@@ -729,22 +779,264 @@ p(\mathbf{z}_2)  = \int_{\mathbf{z}_1} p(\mathbf{z}_1, \mathbf{z}_2) \text{d} \m
 p(\mathbf{z}_1 | \mathbf{z}_2) = \mathcal{N}(\underbrace{\boldsymbol \mu_1 + \mathbf{\Sigma}_{1 2} \mathbf{\Sigma}^{-1}_{2 2} (\mathbf{z}_2 - \boldsymbol \mu_2)}_{\operatorname{E}(\mathbf{z}_1 | \mathbf{z}_2)}, \underbrace{\mathbf{\Sigma}_{1 1} - \mathbf{\Sigma}_{1 2}\mathbf{\Sigma}_{2 2}^{-1}\mathbf{\Sigma}_{2 1}}_{\operatorname{cov}(\mathbf{z}_1 | \mathbf{z}_2)}) %\\
 %p(\mathbf{z}_2 | \mathbf{z}_1) = \mathcal{N}(\boldsymbol \mu_2 + \mathbf{\Sigma}_{2 1} \mathbf{\Sigma}^{-1}_{1 1} (\mathbf{z}_1 - \boldsymbol \mu_1), \mathbf{\Sigma}_{2 2} - \mathbf{\Sigma}_{2 1}\mathbf{\Sigma}_{1 1}^{-1}\mathbf{\Sigma}_{1 2}) 
 \end{split}\]</div>
-<ul class="simple">
-<li><p>independence</p></li>
-</ul>
+<p>Let
+$<span class="math notranslate nohighlight">\(
+     \mathbf{Q} = \mathbf{\Sigma}^{-1} = 
+    \begin{bmatrix}
+         \mathbf{Q}_{1 1} &amp; \mathbf{Q}_{1 2} \\
+         \mathbf{Q}_{2 1} &amp; \mathbf{Q}_{2 2}
+    \end{bmatrix}
+\)</span>$</p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\operatorname{E}(\mathbf{z}_1 | \mathbf{z}_2) &amp;= \boldsymbol \mu_1 + \mathbf{Q}^{-1}_{1 1} \mathbf{Q}_{1 2}  (\mathbf{z}_2 - \boldsymbol \mu_2) \\
+\operatorname{cov}(\mathbf{z}_1 | \mathbf{z}_2) &amp;= \mathbf{Q}_{1 1}^{-1}
+\end{align}
+\end{split}\]</div>
+<br>
+<p><span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> is called the precision matrix.</p>
+</div>
+<div class="section" id="independence">
+<h3>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split} 
 \text{if} \;\; \mathbf{\Sigma}_{1 2}= \boldsymbol 0\\
 p(\mathbf{z}_1 | \mathbf{z}_2) = \mathcal{N}(\boldsymbol \mu_1 , \mathbf{\Sigma}_{1 1}) = p(\mathbf{z}_1)
 \end{split}\]</div>
-<ul class="simple">
-<li><p>information</p></li>
-</ul>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{z}_1 \sim  \mathcal{N}(\boldsymbol \mu_1 , \mathbf{\Sigma}_{1 1})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{z}_2 \sim \mathcal{N}(\boldsymbol \mu_2 , \mathbf{\Sigma}_{2 2})\)</span> are independent then</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{z}_1 + \mathbf{z}_2 \sim \mathcal{N}(\boldsymbol \mu_1 + \mu_2, \mathbf{\Sigma}_{1 1} + \mathbf{\Sigma}_{2 2}) \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mathbf{z}_1, A \mathbf{z}_1 + B\mathbf{z}_2) \sim \mathcal{N}(\boldsymbol \mu, \mathbf{\Sigma}).
+\]</div>
+<p>with:
+$<span class="math notranslate nohighlight">\(
+\boldsymbol \mu = 
+    \begin{bmatrix}
+        \boldsymbol \mu_1 \\
+      A \boldsymbol \mu_1 + B\boldsymbol \mu_2
+    \end{bmatrix}
+  \; \; \text{and} \; \;
+    \mathbf{\Sigma} = 
+    \begin{bmatrix}
+         \mathbf{\Sigma}_{1 1} &amp; \mathbf{\Sigma}_{1 1} A' \\
+        A\mathbf{\Sigma}_{1 1} &amp; A\mathbf{\Sigma}_{1 1}A' + B\mathbf{\Sigma}_{2 2}B'
+    \end{bmatrix}
+\)</span>$</p>
+</div>
+<div class="section" id="information">
+<h3>Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[\operatorname{cov}(\mathbf{z}_1 | \mathbf{z}_2) = \mathbf{\Sigma}_{1 1} - \mathbf{\Sigma}_{1 2}\mathbf{\Sigma}_{2 2}^{-1}\mathbf{\Sigma}_{2 1} \geq \boldsymbol 0\]</div>
 <ul class="simple">
 <li><p>stronger correlation =&gt; more information from <span class="math notranslate nohighlight">\(\mathbf{z}_1\)</span> about <span class="math notranslate nohighlight">\(\mathbf{z}_2\)</span> (and from <span class="math notranslate nohighlight">\(\mathbf{z}_2\)</span> about <span class="math notranslate nohighlight">\(\mathbf{z}_1\)</span>)</p></li>
 </ul>
+</div>
+<div class="section" id="bivariate-normal">
+<h3>Bivariate Normal<a class="headerlink" href="#bivariate-normal" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+p(z_1, z_2) \sim \mathcal{N}(\boldsymbol \mu, \mathbf{\Sigma}).
+\]</div>
+<p>where:
+$<span class="math notranslate nohighlight">\(
+\boldsymbol \mu = 
+    \begin{bmatrix}
+        \mu_1 \\
+        \mu_2
+    \end{bmatrix}
+  \; \; \text{and} \; \;
+    \mathbf{\Sigma} = 
+    \begin{bmatrix}
+         \sigma^2_{1} &amp; \rho \sigma_{1}\sigma_2  \\
+         \rho \sigma_{1}\sigma_2 &amp; \sigma^2_{2}
+    \end{bmatrix}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(z_1 | z_2) &amp;= \mathcal{N}\left(\mu_1 + \frac{\rho \sigma_{1}\sigma_2}{\sigma^2_{2}} (z_2 - \mu_2), \sigma^2_{1} - \frac{(\rho \sigma_{1}\sigma_2)^2}{\sigma^2_{2}}\right) \\
+&amp;= \mathcal{N}\left(\mu_1 + \frac{\rho \sigma_{1}}{\sigma_{2}} (z_2 - \mu_2), (1 - \rho^2)\sigma_1^2\right)
+\end{align}
+\end{split}\]</div>
+<p><strong>Example:</strong>  <span class="math notranslate nohighlight">\(\sigma_1 = \sigma_2=1\)</span>, <span class="math notranslate nohighlight">\(\mu_1=\mu_2 = 0\)</span> <br><br></p>
+<p><strong>case 1</strong>      <span class="math notranslate nohighlight">\(\rho=.9\)</span></p>
+<div class="math notranslate nohighlight">
+\[p(z_1) = \mathcal{N}(0, 1)\]</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho</span><span class="o">=</span><span class="mf">.9</span>
+<span class="n">sigma1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">mu1</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="n">mu2</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="p">(</span>
+<span class="n">mu1</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">mu2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">sigma1</span><span class="o">*</span><span class="n">sigma2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigma2</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> 
+<span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">sigma1</span><span class="o">*</span><span class="n">sigma2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">sigma2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9, 0.18999999999999995)
+</pre></div>
+</div>
+</div>
+</div>
+<p>If <span class="math notranslate nohighlight">\(z_2=1\)</span></p>
+<div class="math notranslate nohighlight">
+\[p(z_1|z_2=1) = \mathcal{N}(0.9, 0.19)\]</div>
+<p>Information about <span class="math notranslate nohighlight">\(z_1\)</span> from observing <span class="math notranslate nohighlight">\(z_2\)</span></p>
+<div class="math notranslate nohighlight">
+\[\operatorname{var}(z_1) - \operatorname{var}(z_1 | z_2) = 1 - 0.19 = 0.81  \]</div>
+<p>Reduction of the uncertainty about <span class="math notranslate nohighlight">\(z_1\)</span> by 81%</p>
+<p><strong>case 2</strong>      <span class="math notranslate nohighlight">\(\rho=.1\)</span>, <span class="math notranslate nohighlight">\(\sigma_1 = \sigma_2=1\)</span>, <span class="math notranslate nohighlight">\(\mu_1=\mu_2 = 0\)</span> <br><br></p>
+<div class="math notranslate nohighlight">
+\[p(z_1) = \mathcal{N}(0, 1)\]</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho</span><span class="o">=</span><span class="mf">.1</span>
+<span class="n">sigma1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">mu1</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">mu2</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="p">(</span>
+<span class="n">mu1</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">mu2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">sigma1</span><span class="o">*</span><span class="n">sigma2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sigma2</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> 
+<span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">sigma1</span><span class="o">*</span><span class="n">sigma2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">sigma2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.1, 0.99)
+</pre></div>
+</div>
+</div>
+</div>
+<p>If <span class="math notranslate nohighlight">\(z_2=1\)</span></p>
+<div class="math notranslate nohighlight">
+\[p(z_1|z_2=1) = \mathcal{N}(0.1, 0.99)\]</div>
+<p>Reduction of the uncertainty about <span class="math notranslate nohighlight">\(z_1\)</span> by 1%</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> be jointly Gaussian, and partitioned as (<span class="math notranslate nohighlight">\(z_1\)</span> is a scalar) $<span class="math notranslate nohighlight">\(\mathbf{z} = [z_1, \mathbf{z}_2] \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol \mu = 
+    \begin{bmatrix}
+         \mu_1 \\
+      \boldsymbol \mu_2
+    \end{bmatrix}
+  \; \; \text{and} \; \;
+    \mathbf{\Sigma} = 
+    \begin{bmatrix}
+         \Sigma_{1 1} &amp; \mathbf{\Sigma}_{1 2} \\
+         \mathbf{\Sigma}_{2 1} &amp; \mathbf{\Sigma}_{2 2}
+    \end{bmatrix}
+\end{split}\]</div>
+<p>Then
+$<span class="math notranslate nohighlight">\(
+p(z_1 | \mathbf{z}_2) = \mathcal{N}(\underbrace{\mu_1 - \mathbf{\Sigma}_{1 2} \mathbf{\Sigma}^{-1}_{2 2} \boldsymbol \mu_2}_{\beta_0} + \underbrace{\mathbf{\Sigma}_{1 2} \mathbf{\Sigma}^{-1}_{2 2}}_{\mathbf{\beta}'_1} \mathbf{z}_2, \underbrace{\Sigma_{1 1} - \mathbf{\Sigma}_{1 2}\mathbf{\Sigma}_{2 2}^{-1}\mathbf{\Sigma}_{2 1}}_{\sigma^2}) %\\
+\)</span>$</p>
+<p>therefore,
+$<span class="math notranslate nohighlight">\(
+z_1 = \beta_0 + \mathbf{\beta}'_1 \mathbf{z}_2 + \varepsilon  \;\;\; \text{where } \varepsilon \sim \mathcal{N}(0, \sigma^2)
+\)</span>$</p>
+</div>
+<div class="section" id="conditional-in-dependence">
+<h3>Conditional (in)dependence<a class="headerlink" href="#conditional-in-dependence" title="Permalink to this headline">¶</a></h3>
+<p>Two random variables <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_2\)</span> are <strong>conditionally</strong> independent given <span class="math notranslate nohighlight">\(\mathbf{z}_3\)</span> if</p>
+<div class="math notranslate nohighlight">
+\[p(z_1, z_2 | \mathbf{z}_3) = p(z_1 | \mathbf{z}_3) p(z_2 | \mathbf{z}_3) \tag{1}\]</div>
+<p>If <span class="math notranslate nohighlight">\(z_1\)</span>, <span class="math notranslate nohighlight">\(z_2\)</span> and <span class="math notranslate nohighlight">\(\mathbf{z}_3\)</span> are jointly Gaussian, then <a class="reference external" href="#equation-time-series">(1)</a> is true <strong>iff</strong></p>
+<div class="math notranslate nohighlight">
+\[\{\mathbf{\Sigma}^{-1}\}_{1,2} = \mathbf{Q}_{1,2} = 0\]</div>
+<p>More generally, <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> are conditionally independent given the remaining elements of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> (denote them with <span class="math notranslate nohighlight">\(\mathbf{z}_{-ij}\)</span>) iff</p>
+<div class="math notranslate nohighlight">
+\[Q_{i,j} = 0\]</div>
+<p>And the conditional correlation between <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{corr}(z_i, z_j | \mathbf{z}_{-ij}) = -\frac{Q_{i,j}}{\sqrt{Q_{i,i} Q_{jj}}}\]</div>
+<p>also known as <em>partial correlation</em> between <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span></p>
+<p><strong>Example 1</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbf{Q} = 
+    \begin{bmatrix}
+         1  &amp;  -0.4  &amp;  0  \\
+        -0.4 &amp;  1.16  &amp;  -0.4 \\
+         0  &amp;  -0.4  &amp; 1
+    \end{bmatrix}
+\end{split}\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbf{\Sigma} = 
+    \begin{bmatrix}
+         1.19047619 &amp; 0.47619048 &amp; 0.19047619  \\
+         0.47619048 &amp; 1.19047619 &amp; 0.47619048 \\
+         0.19047619 &amp; 0.47619048 &amp; 1.19047619
+    \end{bmatrix}
+\end{split}\]</div>
+<p>therefore, <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_3\)</span> are unconditionally dependent, but conditionally (given <span class="math notranslate nohighlight">\(z_2\)</span>) independent</p>
+<p><strong>Example 2</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbf{\Sigma} = 
+    \begin{bmatrix}
+         1.09 &amp; 0.3  &amp; 0.    \\
+         0.3  &amp; 1.09 &amp; 0.3  \\
+         0    &amp; 0.3  &amp; 1.09
+    \end{bmatrix}
+\end{split}\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbf{Q} = 
+    \begin{bmatrix}
+          1.  &amp; -0.3 &amp;  0.08  \\
+        -0.3  &amp; 1.08 &amp; -0.3 \\
+        0.08  &amp;  -0.3  &amp; 1
+    \end{bmatrix}
+\end{split}\]</div>
+<p>therefore, <span class="math notranslate nohighlight">\(z_1\)</span> and <span class="math notranslate nohighlight">\(z_3\)</span> are unconditionally independent, but conditionally (given <span class="math notranslate nohighlight">\(z_2\)</span>) dependent</p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_process</span> <span class="kn">import</span> <span class="n">arma_acovf</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">toeplitz</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">acov1</span> <span class="o">=</span> <span class="n">arma_acovf</span><span class="p">(</span><span class="n">ar</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.4</span><span class="p">],</span> <span class="n">ma</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nobs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sigma2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Sigma1</span> <span class="o">=</span> <span class="n">toeplitz</span><span class="p">(</span><span class="n">acov1</span><span class="p">)</span>
+<span class="n">acov2</span> <span class="o">=</span> <span class="n">arma_acovf</span><span class="p">(</span><span class="n">ar</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,],</span> <span class="n">ma</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">.3</span><span class="p">],</span> <span class="n">nobs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sigma2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Sigma2</span> <span class="o">=</span> <span class="n">toeplitz</span><span class="p">(</span><span class="n">acov2</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma1</span><span class="p">[:</span><span class="mi">3</span><span class="p">][:,:</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma2</span><span class="p">[:</span><span class="mi">3</span><span class="p">][:,:</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.   -0.4   0.  ]
+ [-0.4   1.16 -0.4 ]
+ [ 0.   -0.4   1.  ]]
+[[ 0.9993 -0.2976  0.0819]
+ [-0.2976  1.0812 -0.2976]
+ [ 0.0819 -0.2976  0.9993]]
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="missing-values">
@@ -789,6 +1081,8 @@ z_{T-2}\\
 *\\
 \end{array}\right]
 \end{split}\]</div>
+<div class="section" id="some-examples">
+<h3>Some examples<a class="headerlink" href="#some-examples" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>mixed frequency</p>
 <ul>
@@ -813,6 +1107,7 @@ z_{T-2}\\
 </ul>
 </li>
 </ul>
+</div>
 <div class="section" id="observed-elements-mathbf-z-1-unobserved-elements-mathbf-z-2">
 <h3>observed elements <span class="math notranslate nohighlight">\(\mathbf{z}_{1}\)</span>, unobserved elements <span class="math notranslate nohighlight">\(\mathbf{z}_{2}\)</span><a class="headerlink" href="#observed-elements-mathbf-z-1-unobserved-elements-mathbf-z-2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -872,10 +1167,13 @@ z_{3}\\
 \[
 p(\mathbf{z}_2 | \mathbf{z}_1) = \mathcal{N}(\underbrace{\boldsymbol \mu_2 + \mathbf{\Sigma}_{2 1} \mathbf{\Sigma}^{-1}_{1 1} (\mathbf{z}_1 - \boldsymbol \mu_1)}_{\operatorname{E}(\mathbf{z}_2 | \mathbf{z}_1)}, \underbrace{\mathbf{\Sigma}_{2 2} - \mathbf{\Sigma}_{2 1}\mathbf{\Sigma}_{1 1}^{-1}\mathbf{\Sigma}_{1 2}}_{\operatorname{cov}(\mathbf{z}_2 | \mathbf{z}_1)}) 
 \]</div>
+<p>if <span class="math notranslate nohighlight">\(\mathbf{z}_1\)</span> is the past and <span class="math notranslate nohighlight">\(\mathbf{z}_2\)</span> is the future,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\operatorname{E}(\mathbf{z}_2 | \mathbf{z}_1)\)</span> - optimal forecast of <span class="math notranslate nohighlight">\(\mathbf{z}_{2}\)</span> given <span class="math notranslate nohighlight">\(\mathbf{z}_{1}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\operatorname{cov}(\mathbf{z}_2 | \mathbf{z}_1)\)</span> - variance of the optimal forecast</p></li>
 </ul>
+<p>where optimality is in the sense of minimizing the MSE</p>
+<p>in general, <span class="math notranslate nohighlight">\(\operatorname{E}(\mathbf{z}_2 | \mathbf{z}_1)\)</span> is our best guess of <span class="math notranslate nohighlight">\(\mathbf{z}_{2}\)</span> given <span class="math notranslate nohighlight">\(\mathbf{z}_{1}\)</span>, and <span class="math notranslate nohighlight">\(\operatorname{cov}(\mathbf{z}_2 | \mathbf{z}_1)\)</span> is the associated uncertainty</p>
 </div>
 </div>
 </div>
