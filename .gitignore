@@ -26,3 +26,12 @@ docs/01-Lectures/03-MLE/
 docs/01-Lectures/04-ARMA/
 !docs/01-Lectures/04-ARMA/01-ARMA-part-1.ipynb
 !docs/01-Lectures/04-ARMA/02-ARMA-part-2.ipynb
+
+docs/00-Data/
+!docs/00-Data/00-Data.md
+
+
+docs/03-Assignments/
+docs/03-Assignments/HW0/*
+docs/03-Assignments/HW1/*
+
