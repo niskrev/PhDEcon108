@@ -37,10 +37,12 @@ parts:
     - file: 03-Assignments/HW1/README
     - file: 03-Assignments/HW1/HW1-empty
       title: HW1-empty
-#  - file: 03-Assignments/HW2/main
-#    sections:
-#    - file: 03-Assignments/HW2/README
-#    - file: 03-Assignments/HW2/docs_presentation
+  - file: 03-Assignments/HW2/main
+    sections:
+    - file: 03-Assignments/HW2/README
+    - file: 03-Assignments/HW2/HW2-part1.ipynb
+    - file: 03-Assignments/HW2/HW2-part2.ipynb
+    - file: 03-Assignments/HW2/HW2-part3.ipynb
 #  - file: 03-Assignments/HW3/main
 #    sections:
 #    - file: 03-Assignments/HW3/README
