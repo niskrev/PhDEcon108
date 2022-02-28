@@ -1,0 +1,1064 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download data from FRED</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/00-Data/03-FRED.html" />
+    <link rel="shortcut icon" href="../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Download data from EUROSTAT" href="02-Eurostat.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Lectures/01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Lectures/01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Lectures/01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Lectures/02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Lectures/02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Lectures/03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Lectures/03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Lectures/04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Lectures/04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Lectures/04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Tutorials/Other/03-Conda/Resources.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Data.html">
+   1. APIs
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-ECB.html">
+     Download data from ECB’s SDW
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-Eurostat.html">
+     Download data from EUROSTAT
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Download data from FRED
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/00-Data/03-FRED.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/00-Data/03-FRED.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Download data from FRED</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="download-data-from-fred">
+<h1>Download data from FRED<a class="headerlink" href="#download-data-from-fred" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>you need to get a FRED api key from <a class="reference external" href="https://fred.stlouisfed.org/docs/api/api_key.html">here</a></p></li>
+<li><p>the fresapi package is in the econ108 environment</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fredapi</span> <span class="kn">import</span> <span class="n">Fred</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fred</span> <span class="o">=</span> <span class="n">Fred</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;your_fred_api_key&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From <a class="reference external" href="https://fred.stlouisfed.org/">FRED</a></p>
+<ul class="simple">
+<li><p>Real Gross Domestic Product (GDPC1)
+Billions of Chained 2012 Dollars,
+Seasonally Adjusted Annual Rate</p></li>
+</ul>
+<p><a class="reference external" href="https://fred.stlouisfed.org/series/GDPC1">link to series</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">fred</span><span class="o">.</span><span class="n">get_series</span><span class="p">(</span><span class="s2">&quot;GDPC1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GDPC1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GDPC1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1947-01-01</th>
+      <td>2034.450</td>
+    </tr>
+    <tr>
+      <th>1947-04-01</th>
+      <td>2029.024</td>
+    </tr>
+    <tr>
+      <th>1947-07-01</th>
+      <td>2024.834</td>
+    </tr>
+    <tr>
+      <th>1947-10-01</th>
+      <td>2056.508</td>
+    </tr>
+    <tr>
+      <th>1948-01-01</th>
+      <td>2087.442</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Some more options…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">fred</span><span class="o">.</span><span class="n">get_series_first_release</span><span class="p">(</span><span class="s1">&#39;GDPC1&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>date
+2020-10-01    18780.325
+2021-01-01    19087.568
+2021-04-01    19358.176
+2021-07-01    19465.195
+2021-10-01    19805.962
+Name: value, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">fred</span><span class="o">.</span><span class="n">get_series_latest_release</span><span class="p">(</span><span class="s1">&#39;GDPC1&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-10-01    18767.778
+2021-01-01    19055.655
+2021-04-01    19368.310
+2021-07-01    19478.893
+2021-10-01    19810.572
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">fred</span><span class="o">.</span><span class="n">get_series_as_of_date</span><span class="p">(</span><span class="s1">&#39;GDP&#39;</span><span class="p">,</span> <span class="s1">&#39;6/1/2014&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>realtime_start</th>
+      <th>date</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1992-12-22</td>
+      <td>1946-01-01</td>
+      <td>199.7</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1996-01-19</td>
+      <td>1946-01-01</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1997-05-07</td>
+      <td>1946-01-01</td>
+      <td>210.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1999-10-28</td>
+      <td>1946-01-01</td>
+      <td>NaT</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1992-12-22</td>
+      <td>1946-04-01</td>
+      <td>207.7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2837</th>
+      <td>2014-01-30</td>
+      <td>2013-10-01</td>
+      <td>17102.5</td>
+    </tr>
+    <tr>
+      <th>2838</th>
+      <td>2014-02-28</td>
+      <td>2013-10-01</td>
+      <td>17080.7</td>
+    </tr>
+    <tr>
+      <th>2839</th>
+      <td>2014-03-27</td>
+      <td>2013-10-01</td>
+      <td>17089.6</td>
+    </tr>
+    <tr>
+      <th>2846</th>
+      <td>2014-04-30</td>
+      <td>2014-01-01</td>
+      <td>17149.6</td>
+    </tr>
+    <tr>
+      <th>2847</th>
+      <td>2014-05-29</td>
+      <td>2014-01-01</td>
+      <td>17101.3</td>
+    </tr>
+  </tbody>
+</table>
+<p>2168 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fred</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;potential gdp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>series id</th>
+      <th>GDPPOT</th>
+      <th>NGDPPOT</th>
+      <th>GDPC1CTMLR</th>
+      <th>NROU</th>
+      <th>NROUST</th>
+      <th>GDPC1MDLR</th>
+      <th>GDPC1RMLR</th>
+      <th>GDPC1RHLR</th>
+      <th>GDPC1CTLLR</th>
+      <th>GDPC1CTHLR</th>
+      <th>GDPC1RLLR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>id</th>
+      <td>GDPPOT</td>
+      <td>NGDPPOT</td>
+      <td>GDPC1CTMLR</td>
+      <td>NROU</td>
+      <td>NROUST</td>
+      <td>GDPC1MDLR</td>
+      <td>GDPC1RMLR</td>
+      <td>GDPC1RHLR</td>
+      <td>GDPC1CTLLR</td>
+      <td>GDPC1CTHLR</td>
+      <td>GDPC1RLLR</td>
+    </tr>
+    <tr>
+      <th>realtime_start</th>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+    </tr>
+    <tr>
+      <th>realtime_end</th>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+      <td>2022-02-28 00:00:00</td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td>Real Potential Gross Domestic Product</td>
+      <td>Nominal Potential Gross Domestic Product</td>
+      <td>Longer Run FOMC Summary of Economic Projection...</td>
+      <td>Noncyclical Rate of Unemployment</td>
+      <td>Natural Rate of Unemployment (Short-Term) (DIS...</td>
+      <td>Longer Run FOMC Summary of Economic Projection...</td>
+      <td>Longer Run FOMC Summary of Economic Projection...</td>
+      <td>Longer Run FOMC Summary of Economic Projection...</td>
+      <td>Longer Run FOMC Summary of Economic Projection...</td>
+      <td>Longer Run FOMC Summary of Economic Projection...</td>
+      <td>Longer Run FOMC Summary of Economic Projection...</td>
+    </tr>
+    <tr>
+      <th>observation_start</th>
+      <td>1949-01-01 00:00:00</td>
+      <td>1949-01-01 00:00:00</td>
+      <td>2009-02-18 00:00:00</td>
+      <td>1949-01-01 00:00:00</td>
+      <td>1949-01-01 00:00:00</td>
+      <td>2015-06-17 00:00:00</td>
+      <td>2009-02-18 00:00:00</td>
+      <td>2009-02-18 00:00:00</td>
+      <td>2009-02-18 00:00:00</td>
+      <td>2009-02-18 00:00:00</td>
+      <td>2009-02-18 00:00:00</td>
+    </tr>
+    <tr>
+      <th>observation_end</th>
+      <td>2031-10-01 00:00:00</td>
+      <td>2031-10-01 00:00:00</td>
+      <td>2021-12-15 00:00:00</td>
+      <td>2031-10-01 00:00:00</td>
+      <td>2031-10-01 00:00:00</td>
+      <td>2021-12-15 00:00:00</td>
+      <td>2021-12-15 00:00:00</td>
+      <td>2021-12-15 00:00:00</td>
+      <td>2021-12-15 00:00:00</td>
+      <td>2021-12-15 00:00:00</td>
+      <td>2021-12-15 00:00:00</td>
+    </tr>
+    <tr>
+      <th>frequency</th>
+      <td>Quarterly</td>
+      <td>Quarterly</td>
+      <td>Not Applicable</td>
+      <td>Quarterly</td>
+      <td>Quarterly</td>
+      <td>Not Applicable</td>
+      <td>Not Applicable</td>
+      <td>Not Applicable</td>
+      <td>Not Applicable</td>
+      <td>Not Applicable</td>
+      <td>Not Applicable</td>
+    </tr>
+    <tr>
+      <th>frequency_short</th>
+      <td>Q</td>
+      <td>Q</td>
+      <td>NA</td>
+      <td>Q</td>
+      <td>Q</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>NA</td>
+      <td>NA</td>
+    </tr>
+    <tr>
+      <th>units</th>
+      <td>Billions of Chained 2012 Dollars</td>
+      <td>Billions of Dollars</td>
+      <td>Fourth Quarter to Fourth Quarter Percent Change</td>
+      <td>Percent</td>
+      <td>Percent</td>
+      <td>Fourth Quarter to Fourth Quarter Percent Change</td>
+      <td>Fourth Quarter to Fourth Quarter Percent Change</td>
+      <td>Fourth Quarter to Fourth Quarter Percent Change</td>
+      <td>Fourth Quarter to Fourth Quarter Percent Change</td>
+      <td>Fourth Quarter to Fourth Quarter Percent Change</td>
+      <td>Fourth Quarter to Fourth Quarter Percent Change</td>
+    </tr>
+    <tr>
+      <th>units_short</th>
+      <td>Bil. of Chn. 2012 $</td>
+      <td>Bil. of $</td>
+      <td>Fourth Qtr. to Fourth Qtr. % Chg.</td>
+      <td>%</td>
+      <td>%</td>
+      <td>Fourth Qtr. to Fourth Qtr. % Chg.</td>
+      <td>Fourth Qtr. to Fourth Qtr. % Chg.</td>
+      <td>Fourth Qtr. to Fourth Qtr. % Chg.</td>
+      <td>Fourth Qtr. to Fourth Qtr. % Chg.</td>
+      <td>Fourth Qtr. to Fourth Qtr. % Chg.</td>
+      <td>Fourth Qtr. to Fourth Qtr. % Chg.</td>
+    </tr>
+    <tr>
+      <th>seasonal_adjustment</th>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+      <td>Not Seasonally Adjusted</td>
+    </tr>
+    <tr>
+      <th>seasonal_adjustment_short</th>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+      <td>NSA</td>
+    </tr>
+    <tr>
+      <th>last_updated</th>
+      <td>2021-07-01 17:45:02-05:00</td>
+      <td>2021-07-01 17:45:02-05:00</td>
+      <td>2021-12-15 14:08:07-06:00</td>
+      <td>2021-02-01 14:37:05-06:00</td>
+      <td>2021-02-01 14:37:07-06:00</td>
+      <td>2021-12-15 14:08:15-06:00</td>
+      <td>2021-12-15 14:08:34-06:00</td>
+      <td>2021-12-15 14:08:16-06:00</td>
+      <td>2021-12-15 14:08:39-06:00</td>
+      <td>2021-12-15 14:08:38-06:00</td>
+      <td>2021-12-15 14:08:39-06:00</td>
+    </tr>
+    <tr>
+      <th>popularity</th>
+      <td>72</td>
+      <td>58</td>
+      <td>27</td>
+      <td>71</td>
+      <td>60</td>
+      <td>14</td>
+      <td>7</td>
+      <td>7</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>notes</th>
+      <td>Real potential GDP is the CBO’s estimate of th...</td>
+      <td>None</td>
+      <td>The longer-run projections are the rates of gr...</td>
+      <td>Starting with the July, 2021 report: An Update...</td>
+      <td>This series last appeared in the February, 202...</td>
+      <td>The longer-run projections are the rates of gr...</td>
+      <td>The longer-run projections are the rates of gr...</td>
+      <td>The longer-run projections are the rates of gr...</td>
+      <td>The longer-run projections are the rates of gr...</td>
+      <td>The longer-run projections are the rates of gr...</td>
+      <td>The longer-run projections are the rates of gr...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./00-Data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02-Eurostat.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Download data from EUROSTAT</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

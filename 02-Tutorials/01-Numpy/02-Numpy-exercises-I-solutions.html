@@ -377,10 +377,32 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../00-Data/00-Data.html">
-   Data
+   1. APIs
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/01-ECB.html">
+     Download data from ECB’s SDW
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/02-Eurostat.html">
+     Download data from EUROSTAT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/03-FRED.html">
+     Download data from FRED
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -583,9 +605,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.88592535, -0.77276728, -0.01767689, -1.86392179],
-       [ 0.35194025, -2.02238909,  0.5823947 , -2.45644634],
-       [ 0.19810642,  0.01451006, -2.60087683, -0.61825309]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.36323624, -0.20826751,  0.87220195, -3.46160731],
+       [ 1.26269768,  0.59731609,  1.33465626,  0.66234854],
+       [ 0.44599276,  1.49964705,  0.35788761, -0.21845582]])
 </pre></div>
 </div>
 </div>
@@ -605,9 +627,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.86392179, -0.01767689, -0.77276728,  0.88592535],
-       [-2.45644634,  0.5823947 , -2.02238909,  0.35194025],
-       [-0.61825309, -2.60087683,  0.01451006,  0.19810642]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-3.46160731,  0.87220195, -0.20826751, -0.36323624],
+       [ 0.66234854,  1.33465626,  0.59731609,  1.26269768],
+       [-0.21845582,  0.35788761,  1.49964705,  0.44599276]])
 </pre></div>
 </div>
 </div>
@@ -627,9 +649,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.19810642,  0.01451006, -2.60087683, -0.61825309],
-       [ 0.35194025, -2.02238909,  0.5823947 , -2.45644634],
-       [ 0.88592535, -0.77276728, -0.01767689, -1.86392179]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.44599276,  1.49964705,  0.35788761, -0.21845582],
+       [ 1.26269768,  0.59731609,  1.33465626,  0.66234854],
+       [-0.36323624, -0.20826751,  0.87220195, -3.46160731]])
 </pre></div>
 </div>
 </div>
@@ -649,9 +671,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.61825309, -2.60087683,  0.01451006,  0.19810642],
-       [-2.45644634,  0.5823947 , -2.02238909,  0.35194025],
-       [-1.86392179, -0.01767689, -0.77276728,  0.88592535]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.21845582,  0.35788761,  1.49964705,  0.44599276],
+       [ 0.66234854,  1.33465626,  0.59731609,  1.26269768],
+       [-3.46160731,  0.87220195, -0.20826751, -0.36323624]])
 </pre></div>
 </div>
 </div>
@@ -670,7 +692,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-2.02238909,  0.5823947 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.59731609, 1.33465626]])
 </pre></div>
 </div>
 </div>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data</title>
+    <title>Download data from EUROSTAT</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -49,12 +49,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://niskrev.github.io/econ108/00-Data/00-Data.html" />
+    <link rel="canonical" href="https://niskrev.github.io/econ108/00-Data/02-Eurostat.html" />
     <link rel="shortcut icon" href="../_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Download data from ECB’s SDW" href="01-ECB.html" />
-    <link rel="prev" title="Conda" href="../02-Tutorials/Other/03-Conda/Resources.html" />
+    <link rel="next" title="Download data from FRED" href="03-FRED.html" />
+    <link rel="prev" title="Download data from ECB’s SDW" href="01-ECB.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -378,7 +378,7 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="00-Data.html">
    1. APIs
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
@@ -386,14 +386,14 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="01-ECB.html">
      Download data from ECB’s SDW
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02-Eurostat.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Download data from EUROSTAT
     </a>
    </li>
@@ -445,9 +445,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/00-Data/00-Data.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/00-Data/02-Eurostat.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -465,6 +465,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/00-Data/02-Eurostat.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -477,7 +494,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data</h1>
+                <h1>Download data from EUROSTAT</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -488,12 +505,283 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="data">
-<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
-<p>under construction …</p>
-<!---
-This section contains examples of how to download time series data from official data providers
----><div class="toctree-wrapper compound">
+  <div class="tex2jax_ignore mathjax_ignore section" id="download-data-from-eurostat">
+<h1>Download data from EUROSTAT<a class="headerlink" href="#download-data-from-eurostat" title="Permalink to this headline">¶</a></h1>
+<p>see Eurostat <a class="reference external" href="https://ec.europa.eu/eurostat/web/json-and-unicode-web-services/getting-started/query-builder">query builder</a></p>
+<ul class="simple">
+<li><p>for HICP “prc_hicp_midx”</p></li>
+<li><p>for rGDP “namq_10_gdp”</p></li>
+<li><p>for Employment “namq_10_a10_e”</p></li>
+<li><p>for Unemployment “une_rt_m”</p></li>
+<li><p>etc.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">COMMON_URL</span> <span class="o">=</span> <span class="s2">&quot;http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select &quot;hicp&quot; or &quot;gdp&quot;</span>
+<span class="n">variable_to_fetch</span> <span class="o">=</span> <span class="s1">&#39;gdp&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geo</span> <span class="o">=</span> <span class="s2">&quot;EA19&quot;</span>
+
+<span class="k">if</span> <span class="n">variable_to_fetch</span> <span class="o">==</span> <span class="s1">&#39;gdp&#39;</span><span class="p">:</span>
+    <span class="n">ind_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;namq_10_gdp?na_item=B1GQ&amp;sinceTimePeriod=1995Q1&amp;precision=1&amp;geo=</span><span class="si">{</span><span class="n">geo</span><span class="si">}</span><span class="s2">&amp;unit=CLV10_MEUR&amp;s_adj=SCA&quot;</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;Qs&#39;</span>
+<span class="k">elif</span> <span class="n">variable_to_fetch</span> <span class="o">==</span> <span class="s1">&#39;hicp&#39;</span><span class="p">:</span>
+    <span class="n">ind_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;prc_hicp_midx?sinceTimePeriod=1996M01&amp;precision=3&amp;geo=</span><span class="si">{</span><span class="n">geo</span><span class="si">}</span><span class="s2">&amp;unit=I96&amp;coicop=CP00&quot;</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;MS&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">COMMON_URL</span><span class="si">}{</span><span class="n">ind_url</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">response</span>  <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">series_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>    
+                      <span class="p">)</span>
+<span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_dictionary</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;version&#39;, &#39;label&#39;, &#39;href&#39;, &#39;source&#39;, &#39;updated&#39;, &#39;extension&#39;, &#39;class&#39;, &#39;value&#39;, &#39;dimension&#39;, &#39;id&#39;, &#39;size&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_dictionary</span><span class="p">[</span><span class="s1">&#39;dimension&#39;</span><span class="p">][</span><span class="s1">&#39;unit&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;label&#39;: &#39;unit&#39;,
+ &#39;category&#39;: {&#39;index&#39;: {&#39;CLV10_MEUR&#39;: 0},
+  &#39;label&#39;: {&#39;CLV10_MEUR&#39;: &#39;Chain linked volumes (2010), million euro&#39;}}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check geo</span>
+<span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">response_dictionary</span><span class="p">[</span><span class="s2">&quot;dimension&quot;</span><span class="p">][</span><span class="s2">&quot;geo&quot;</span><span class="p">][</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;EA19&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">response_dictionary</span><span class="p">[</span><span class="s2">&quot;dimension&quot;</span><span class="p">][</span><span class="s2">&quot;time&quot;</span><span class="p">][</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="s2">&quot;index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">response_dictionary</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="p">:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">time</span><span class="p">,</span> <span class="n">values</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">time</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>value</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1995-01-01</th>
+      <td>1837419.9</td>
+    </tr>
+    <tr>
+      <th>1995-04-01</th>
+      <td>1847658.7</td>
+    </tr>
+    <tr>
+      <th>1995-07-01</th>
+      <td>1851717.6</td>
+    </tr>
+    <tr>
+      <th>1995-10-01</th>
+      <td>1858277.7</td>
+    </tr>
+    <tr>
+      <th>1996-01-01</th>
+      <td>1861887.8</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>2569399.0</td>
+    </tr>
+    <tr>
+      <th>2021-01-01</th>
+      <td>2564113.0</td>
+    </tr>
+    <tr>
+      <th>2021-04-01</th>
+      <td>2620528.3</td>
+    </tr>
+    <tr>
+      <th>2021-07-01</th>
+      <td>2679880.7</td>
+    </tr>
+    <tr>
+      <th>2021-10-01</th>
+      <td>2687644.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>108 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>value</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2020-10-01</th>
+      <td>2569399.0</td>
+    </tr>
+    <tr>
+      <th>2021-01-01</th>
+      <td>2564113.0</td>
+    </tr>
+    <tr>
+      <th>2021-04-01</th>
+      <td>2620528.3</td>
+    </tr>
+    <tr>
+      <th>2021-07-01</th>
+      <td>2679880.7</td>
+    </tr>
+    <tr>
+      <th>2021-10-01</th>
+      <td>2687644.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 
@@ -522,17 +810,17 @@ This section contains examples of how to download time series data from official
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../02-Tutorials/Other/03-Conda/Resources.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01-ECB.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Conda</p>
+            <p class="prev-next-title">Download data from ECB’s SDW</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="01-ECB.html" title="next page">
+    <a class='right-next' id="next-link" href="03-FRED.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Download data from ECB’s SDW</p>
+        <p class="prev-next-title">Download data from FRED</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
