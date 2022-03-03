@@ -9,13 +9,26 @@ I will provide a list of possible packages for you to consider, but you're free 
 
 For an overview/comparison of many python packages for time series, see [here](https://siebert-julien.github.io/time-series-analysis-python/overview.html) ([paper](https://arxiv.org/abs/2104.07406))
 
-<!---
 
 Here are some more options:
+* [Stumpy](https://stumpy.readthedocs.io/en/latest/index.html)
 * [AutoTS](https://github.com/winedarksea/AutoTS) 
 * [Sktime](https://www.sktime.org/en/stable/)
 * [PyAF](https://github.com/antoinecarme/pyaf)
 * [Greykite](https://linkedin.github.io/greykite/)(from Linked-In)
 * [Kats](https://github.com/facebookresearch/Kats)(from Facebook)
 * [another list](https://awesomeopensource.com/projects/python/time-series)
---->
+* [scikit-hts](https://scikit-hts.readthedocs.io/en/latest/) see [Australian tourism hierarchy example](https://otexts.com/fpp2/hts.html)
+
+
+What you need to do:
+
+(1) Choose/find a package that does something that is interesting to you
+
+(2) Read through the documentation, paying attention to how easy it is to install it, and whether it has easy-to-follow examples for how to use it.
+
+(3) Let me know what you chose and what example you will present with it (should be using a data set that is not part of the package)
+
+(4) Develop an example in a jupyter notebook within a folder containing all necessary files (data, python modules you wrote, etc) for it to be self-contained. That includes an environment file used to create a conda environment with the package you illustrate and all its dependencies. Anyone with a conda installation of python should be able to create a new conda environment in which to execute your notebook/other codes and get the same results.
+
+(5) Submit as a link to a github repository in your github page.
