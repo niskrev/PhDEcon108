@@ -24,7 +24,11 @@ Here are some more options:
 What you need to do:
 
 (1) Choose/find a package that does something that is interesting to you
+
 (2) Read through the documentation, paying attention to how easy it is to install it, and whether it has easy-to-follow examples for how to use it.
+
 (3) Let me know what you chose and what example you will present with it (should be using a data set that is not part of the package)
-(4) Develop an example in a jupyter notebook within a folder containing all necessary files (data, python modules you wrote, etc) for it to be self-contained. That includes an environment file used to create a conda environment with the package you illustrate and all its dependencies. Anyone with a conda installation of python should be able to create a new conda environment to execute your notebook/other codes in and get the same results.
+
+(4) Develop an example in a jupyter notebook within a folder containing all necessary files (data, python modules you wrote, etc) for it to be self-contained. That includes an environment file used to create a conda environment with the package you illustrate and all its dependencies. Anyone with a conda installation of python should be able to create a new conda environment in which to execute your notebook/other codes and get the same results.
+
 (5) Submit as a link to a github repository in your github page.
