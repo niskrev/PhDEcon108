@@ -7,6 +7,8 @@ I will provide a list of possible articles for you to consider, but you're free 
     
 <!---
 ## A list of possible replications studies
+* [Identification and estimation of Gaussian affine term structure models](https://doi.org/10.1016/j.jeconom.2012.01.035)
+    * matlab
 
 * [Reconciled Estimates of Monthly GDP in the US](https://www.tandfonline.com/doi/full/10.1080/07350015.2022.2044336)
     * matlab
@@ -23,7 +25,6 @@ I will provide a list of possible articles for you to consider, but you're free 
     * SPF
 * [Forecast Rationality Tests in the Presence of Instabilities, With Applications to Federal Reserve and Survey Forecasts](https://onlinelibrary.wiley.com/doi/full/10.1002/jae.2440)
     * matlab
-
 
 * [Testing for Multiple-Horizon Predictability: Direct Regression Based versus Implication Based](https://academic.oup.com/rfs/article/33/9/4403/5620729#206846062)
     * matlab
