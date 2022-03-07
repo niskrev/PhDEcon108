@@ -31,7 +31,7 @@ __Hint:__ [check this out](https://matplotlib.org/stable/gallery/subplots_axes_a
 
 (1) Read/work through the examples in [Numpy tutorials](https://niskrev.github.io/PhDEcon108/02-Tutorials/01-Numpy/00-Numpy.html)
 
-(2) See notebook `HW3-part-2-2.ipynb`
+(2) See notebook [HW3-part-2-2.ipynb](./HW3-part2-2.ipynb)
 
 
 ## Part 3
