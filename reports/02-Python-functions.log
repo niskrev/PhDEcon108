@@ -20,10 +20,10 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 greetings(name='James bond', 'pt')
 ------------------
 
-[1;36m  File [1;32m"C:\Users\eeu227\AppData\Local\Temp/ipykernel_13264/3848852848.py"[1;36m, line [1;32m1[0m
+[1;36m  File [1;32m"C:\Users\eeu227\AppData\Local\Temp/ipykernel_46024/3848852848.py"[1;36m, line [1;32m1[0m
 [1;33m    greetings(name='James bond', 'pt')[0m
 [1;37m                                ^[0m
 [1;31mSyntaxError[0m[1;31m:[0m positional argument follows keyword argument
 
-SyntaxError: positional argument follows keyword argument (Temp/ipykernel_13264/3848852848.py, line 1)
+SyntaxError: positional argument follows keyword argument (Temp/ipykernel_46024/3848852848.py, line 1)
 

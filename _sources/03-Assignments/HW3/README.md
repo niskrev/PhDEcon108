@@ -33,7 +33,6 @@ __Hint:__ [check this out](https://matplotlib.org/stable/gallery/subplots_axes_a
 
 (2) See notebook [HW3-part-2-2.ipynb](./HW3-part2-2.ipynb)
 
-
 ## Part 3
 
 Write down what difficulties, questions, or points of confusion you had or still have about this or previous assignments.
