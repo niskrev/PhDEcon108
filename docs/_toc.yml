@@ -43,9 +43,10 @@ parts:
     - file: 03-Assignments/HW2/HW2-part1.ipynb
     - file: 03-Assignments/HW2/HW2-part2.ipynb
     - file: 03-Assignments/HW2/HW2-part3.ipynb
-#  - file: 03-Assignments/HW3/main
-#    sections:
-#    - file: 03-Assignments/HW3/README
+  - file: 03-Assignments/HW3/main
+    sections:
+    - file: 03-Assignments/HW3/README
+    - file: 03-Assignments/HW3/HW3-part2-2.ipynb
 #  - file: 03-Assignments/HW4/main
 #    sections:
 #    - file: 03-Assignments/HW4/README
