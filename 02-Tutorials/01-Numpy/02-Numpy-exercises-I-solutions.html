@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Pandas" href="../02-Pandas/00-Pandas.html" />
+    <link rel="next" title="Multivariate Normal in Python" href="03-Multivariate-Normal.html" />
     <link rel="prev" title="Numpy examples" href="01-Numpy-examples.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -171,6 +171,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../../01-Lectures/03-MLE/01-MLE.html">
      1. Maximum likelihood estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-Lectures/03-MLE/02-Gaussian-MLE.html">
+     2. Maximum likelihood estimation of Gaussian models
     </a>
    </li>
   </ul>
@@ -366,6 +371,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Numpy exercises I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-Multivariate-Normal.html">
+     Multivariate Normal in Numpy
     </a>
    </li>
   </ul>
@@ -659,9 +669,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.23150863,  1.30704682,  1.09265173,  0.19149709],
-       [-1.41544455, -1.6025989 , -0.31035073, -0.20137481],
-       [ 1.05596632, -0.84234288, -0.84075079,  0.02206145]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.04637095,  1.01089346, -0.30513843,  0.96100342],
+       [ 0.69230133,  0.10917745, -1.09820103, -0.24534091],
+       [ 1.40597458, -0.45822039,  1.89481657, -0.4125007 ]])
 </pre></div>
 </div>
 </div>
@@ -681,9 +691,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.19149709,  1.09265173,  1.30704682,  0.23150863],
-       [-0.20137481, -0.31035073, -1.6025989 , -1.41544455],
-       [ 0.02206145, -0.84075079, -0.84234288,  1.05596632]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.96100342, -0.30513843,  1.01089346, -1.04637095],
+       [-0.24534091, -1.09820103,  0.10917745,  0.69230133],
+       [-0.4125007 ,  1.89481657, -0.45822039,  1.40597458]])
 </pre></div>
 </div>
 </div>
@@ -703,9 +713,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.05596632, -0.84234288, -0.84075079,  0.02206145],
-       [-1.41544455, -1.6025989 , -0.31035073, -0.20137481],
-       [ 0.23150863,  1.30704682,  1.09265173,  0.19149709]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.40597458, -0.45822039,  1.89481657, -0.4125007 ],
+       [ 0.69230133,  0.10917745, -1.09820103, -0.24534091],
+       [-1.04637095,  1.01089346, -0.30513843,  0.96100342]])
 </pre></div>
 </div>
 </div>
@@ -725,9 +735,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.02206145, -0.84075079, -0.84234288,  1.05596632],
-       [-0.20137481, -0.31035073, -1.6025989 , -1.41544455],
-       [ 0.19149709,  1.09265173,  1.30704682,  0.23150863]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.4125007 ,  1.89481657, -0.45822039,  1.40597458],
+       [-0.24534091, -1.09820103,  0.10917745,  0.69230133],
+       [ 0.96100342, -0.30513843,  1.01089346, -1.04637095]])
 </pre></div>
 </div>
 </div>
@@ -746,7 +756,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.6025989 , -0.31035073]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.10917745, -1.09820103]])
 </pre></div>
 </div>
 </div>
@@ -785,10 +795,10 @@
             <p class="prev-next-title">Numpy examples</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../02-Pandas/00-Pandas.html" title="next page">
+    <a class='right-next' id="next-link" href="03-Multivariate-Normal.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pandas</p>
+        <p class="prev-next-title">Multivariate Normal in Python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
