@@ -27,6 +27,10 @@ I will provide a list of possible articles for you to consider, but you're free 
 * [Heterogeneity, Inattention, and Bayesian Updates](https://www.aeaweb.org/articles?id=10.1257/mac.20180235)
     * matlab
     * expectations
+* [Uncertainty measures from partially rounded probabilistic forecast surveys](https://qeconomics.org/ojs/forth/1703/1703-4.pdf)
+    * stata [code](https://qeconomics.org/ojs/forth/1703/QE1703_code_and_data.zip)
+    * expectations (SPF)
+
 <!---
     * more from same author [here](https://sites.google.com/view/kelixu/research?authuser=0)
     * [here](https://sites.google.com/view/aubreybcpoon/research?authuser=0)
