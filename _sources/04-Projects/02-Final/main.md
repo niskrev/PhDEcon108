@@ -24,7 +24,9 @@ I will provide a list of possible articles for you to consider, but you're free 
     * matlab
 * [Testing for Multiple-Horizon Predictability: Direct Regression Based versus Implication Based](https://academic.oup.com/rfs/article/33/9/4403/5620729#206846062)
     * matlab
-
+* [Heterogeneity, Inattention, and Bayesian Updates](https://www.aeaweb.org/articles?id=10.1257/mac.20180235)
+    * matlab
+    * expectations
 <!---
     * more from same author [here](https://sites.google.com/view/kelixu/research?authuser=0)
     * [here](https://sites.google.com/view/aubreybcpoon/research?authuser=0)
