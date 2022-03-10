@@ -37,4 +37,5 @@ Online replication materials in economic journals:
 * [Journal of Monetary Economics](https://www.sciencedirect.com/journal/journal-of-monetary-economics)
 * [Review of Economic Dynamics](https://www.journals.elsevier.com/review-of-economic-dynamics)
 * [The Review of Economics and Statistics](https://direct.mit.edu/rest)
+* [Quantitative Economics](https://qeconomics.org/ojs/index.php/qe)
 * etc.
