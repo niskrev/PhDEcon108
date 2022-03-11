@@ -24,6 +24,12 @@ I will provide a list of possible articles for you to consider, but you're free 
     * matlab
 * [Testing for Multiple-Horizon Predictability: Direct Regression Based versus Implication Based](https://academic.oup.com/rfs/article/33/9/4403/5620729#206846062)
     * matlab
+* [Heterogeneity, Inattention, and Bayesian Updates](https://www.aeaweb.org/articles?id=10.1257/mac.20180235)
+    * matlab
+    * expectations
+* [Uncertainty measures from partially rounded probabilistic forecast surveys](https://qeconomics.org/ojs/forth/1703/1703-4.pdf)
+    * stata [code](https://qeconomics.org/ojs/forth/1703/QE1703_code_and_data.zip)
+    * expectations (SPF)
 
 <!---
     * more from same author [here](https://sites.google.com/view/kelixu/research?authuser=0)
@@ -37,4 +43,5 @@ Online replication materials in economic journals:
 * [Journal of Monetary Economics](https://www.sciencedirect.com/journal/journal-of-monetary-economics)
 * [Review of Economic Dynamics](https://www.journals.elsevier.com/review-of-economic-dynamics)
 * [The Review of Economics and Statistics](https://direct.mit.edu/rest)
+* [Quantitative Economics](https://qeconomics.org/ojs/index.php/qe)
 * etc.

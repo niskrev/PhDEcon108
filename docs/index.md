@@ -1,5 +1,5 @@
 # Econometrics II (Time Series Analysis) 
-Last updated: 7 March 2022</br>
+Last updated: 10 March 2022</br>
 The content in this Jupyter Book is subject to change. 
 
 ## Course information

@@ -21,6 +21,8 @@ parts:
     sections:
     - file: 01-Lectures/03-MLE/01-MLE
       title: 1. Maximum likelihood estimation
+    - file: 01-Lectures/03-MLE/02-Gaussian-MLE
+      title: 2. Maximum likelihood estimation of Gaussian models
   - file: 01-Lectures/04-ARMA/00-Introduction
     sections:
     - file: 01-Lectures/04-ARMA/01-ARMA-part-1
@@ -46,7 +48,7 @@ parts:
   - file: 03-Assignments/HW3/main
     sections:
     - file: 03-Assignments/HW3/README
-    - file: 03-Assignments/HW3/HW3-part2-2.ipynb
+    - file: 03-Assignments/HW3/HW3-part2-2
 #  - file: 03-Assignments/HW4/main
 #    sections:
 #    - file: 03-Assignments/HW4/README
@@ -77,6 +79,8 @@ parts:
       title: Functions
     - file: 02-Tutorials/00-Python/03-Python-modules
       title: Modules
+    - file: 02-Tutorials/00-Python/04-Python-working-with-paths-and-files
+      title: Paths
   - file: 02-Tutorials/01-Numpy/00-Numpy
     title: 2. Numpy
     sections:
@@ -84,6 +88,8 @@ parts:
       title: Numpy exampes I
     - file: 02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions
       title: Numpy exercises I
+    - file: 02-Tutorials/01-Numpy/03-Multivariate-Normal.ipynb
+      title: Multivariate Normal in Numpy
   - file: 02-Tutorials/02-Pandas/00-Pandas
     title: 3. Pandas
     sections:
