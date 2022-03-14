@@ -19,7 +19,7 @@ Here are some more options:
 * [Kats](https://github.com/facebookresearch/Kats)(from Facebook)
 * [another list](https://awesomeopensource.com/projects/python/time-series)
 * [scikit-hts](https://scikit-hts.readthedocs.io/en/latest/) see [Australian tourism hierarchy example](https://otexts.com/fpp2/hts.html)
-* [great expectations](https://docs.greatexpectations.io/docs/) (potentially useful package to know about, not specifically for time series data)
+* [great expectations](https://docs.greatexpectations.io/docs/)(potentially useful package to know about, not specifically for time series data)
 
 
 What you need to do:
