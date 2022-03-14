@@ -669,7 +669,7 @@
 </div>
 </div>
 </div>
-<p>Using <span class="math notranslate nohighlight">\(\varepsilon_0\)</span>, generate <span class="math notranslate nohighlight">\(z_0\)</span> from the stationary distribution of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>. Then, using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, generate the remaining 3 realizations of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p>
+<p>Using <span class="math notranslate nohighlight">\(\varepsilon_0\)</span>, generate <span class="math notranslate nohighlight">\(z_0\)</span> from the stationary distribution of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span>. Then, using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, generate the remaining 99 realizations of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
@@ -721,7 +721,10 @@ z_{T}
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>There are other ways to quickly build such matrices. If you are interested, check the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.toeplitz.html">documentation</a> of the <code class="docutils literal notranslate"><span class="pre">toeplitz()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code> package</p>
+</div>
 <p>Verify that the equality <span class="math notranslate nohighlight">\(\mathbf{z} = \boldsymbol B^{-1} \boldsymbol\varepsilon\)</span> holds</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
