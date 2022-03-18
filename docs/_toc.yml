@@ -29,6 +29,8 @@ parts:
       title: 1. Introduction to AR and MA models
     - file: 01-Lectures/04-ARMA/02-ARMA-part-2
       title: 2. Algebra of AR and MA models
+    - file: 01-Lectures/04-ARMA/03-ARMA-part-3
+      title: 3. ARMA models
 - caption: Assignments
   chapters:
   - file: 03-Assignments/HW0/main
@@ -49,10 +51,12 @@ parts:
     sections:
     - file: 03-Assignments/HW3/README
     - file: 03-Assignments/HW3/HW3-part2-2
-#  - file: 03-Assignments/HW4/main
-#    sections:
-#    - file: 03-Assignments/HW4/README
-#  - file: 03-Assignments/HW5/main
+  - file: 03-Assignments/HW4/main
+    sections:
+    - file: 03-Assignments/HW4/README
+    - file: 03-Assignments/HW4/HW4-part-1
+    - file: 03-Assignments/HW4/HW4-part-2
+# - file: 03-Assignments/HW5/main
 #    sections:
 #    - file: 03-Assignments/HW5/README
 #  - file: 03-Assignments/HW6/main
