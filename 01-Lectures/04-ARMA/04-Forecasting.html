@@ -1189,14 +1189,14 @@ z_t  &amp;= \frac{\boldsymbol \beta(L)}{\boldsymbol \alpha(L)} \varepsilon_t = \
 \end{split}\]</div>
 <p>we have
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6da9e16a-ff26-406e-a58c-1fcdba78764a">
-<span class="eqno">(3)<a class="headerlink" href="#equation-6da9e16a-ff26-406e-a58c-1fcdba78764a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e8faa4b5-4806-4b41-bb38-ca50ee268c38">
+<span class="eqno">(3)<a class="headerlink" href="#equation-e8faa4b5-4806-4b41-bb38-ca50ee268c38" title="Permalink to this equation">¶</a></span>\[\begin{align}
 z_{T+h}  = \varepsilon_{T+h} + \phi_1 \varepsilon_{T+h-1} + \phi_2 \varepsilon_{T+h-2} + \cdots + \phi_h \varepsilon_{T} + \phi_{h+1} \varepsilon_{T-1} + \phi_{h+2} \varepsilon_{T-2} + \cdots 
 \end{align}\]</div>
 <div class="math notranslate nohighlight">
 \[and \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a26ada14-c05a-41f4-9eec-31076b562d8b">
-<span class="eqno">(4)<a class="headerlink" href="#equation-a26ada14-c05a-41f4-9eec-31076b562d8b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b5e13d5a-08f0-41ec-aad5-7c46070b3752">
+<span class="eqno">(4)<a class="headerlink" href="#equation-b5e13d5a-08f0-41ec-aad5-7c46070b3752" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \operatorname{E}_T z_{T+h}  = \phi_h \operatorname{E}_T  \varepsilon_{T} + \phi_{h+1} \operatorname{E}_T \varepsilon_{T-1} + \phi_{h+2} \operatorname{E}_T \varepsilon_{T-2} + \cdots 
 \end{align}\]</div>
 <p>$$</p>
@@ -1717,81 +1717,9 @@ computed</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;z&#39;</span><span class="p">]]</span>
-<span class="n">data</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>z</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1964-01-31</th>
-      <td>-1.157550</td>
-    </tr>
-    <tr>
-      <th>1964-02-29</th>
-      <td>-0.752039</td>
-    </tr>
-    <tr>
-      <th>1964-03-31</th>
-      <td>0.208199</td>
-    </tr>
-    <tr>
-      <th>1964-04-30</th>
-      <td>0.788618</td>
-    </tr>
-    <tr>
-      <th>1964-05-31</th>
-      <td>-0.276091</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2021-12-31</th>
-      <td>-1.983945</td>
-    </tr>
-    <tr>
-      <th>2022-01-31</th>
-      <td>-3.883839</td>
-    </tr>
-    <tr>
-      <th>2022-02-28</th>
-      <td>-2.971514</td>
-    </tr>
-    <tr>
-      <th>2022-03-31</th>
-      <td>-2.339958</td>
-    </tr>
-    <tr>
-      <th>2022-04-30</th>
-      <td>-1.031274</td>
-    </tr>
-  </tbody>
-</table>
-<p>700 rows × 1 columns</p>
-</div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
