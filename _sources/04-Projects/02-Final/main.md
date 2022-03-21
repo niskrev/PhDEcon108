@@ -31,6 +31,9 @@ I will provide a list of possible articles for you to consider, but you're free 
     * stata [code](https://qeconomics.org/ojs/forth/1703/QE1703_code_and_data.zip)
     * expectations (SPF)
 
+* [Proper Scoring Rules for Evaluating Density Forecasts with Asymmetric Loss Functions](https://www.tandfonline.com/doi/full/10.1080/07350015.2022.2035229?scroll=top&needAccess=true)    
+    * matlab
+
 <!---
     * more from same author [here](https://sites.google.com/view/kelixu/research?authuser=0)
     * [here](https://sites.google.com/view/aubreybcpoon/research?authuser=0)

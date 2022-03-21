@@ -1,0 +1,2138 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forecasting</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/04-ARMA/04-Forecasting.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 0" href="../../03-Assignments/HW0/main.html" />
+    <link rel="prev" title="ARMA models" href="03-ARMA-part-3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/02-Gaussian-MLE.html">
+     2. Maximum likelihood estimation of Gaussian models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Introduction.html">
+   ARMA models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-ARMA-part-3.html">
+     3. ARMA models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3. Forecasting with ARMA models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part1.html">
+     HW 2 Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part2.html">
+     HW 2 Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part3.html">
+     HW 2 Part 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     Readme HW3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/HW3-part2-2.html">
+     HW 3 Part 2-2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW4/main.html">
+   Homework 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/README.html">
+     README HW4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-1.html">
+     Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-2.html">
+     Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/04-Python-working-with-paths-and-files.html">
+     Paths
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/03-Multivariate-Normal.html">
+     Multivariate Normal in Numpy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/03-Conda/Resources.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   1. APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/01-ECB.html">
+     Download data from ECB’s SDW
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/02-Eurostat.html">
+     Download data from EUROSTAT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/03-FRED.html">
+     Download data from FRED
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/01-Lectures/04-ARMA/04-Forecasting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/04-ARMA/04-Forecasting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-process-z-t-t-infty-infty">
+   Time series process
+   <span class="math notranslate nohighlight">
+    \(\{z_t \}_{t=-\infty}^{\infty}\)
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#point-forecast">
+     Point forecast
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting-for-ar-1-model">
+   Forecasting for AR(1) model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-squared-error-of-the-forecasts-mse">
+     Mean squared error of the forecasts (MSE)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting-for-ar-model">
+   Forecasting for AR§ model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting-for-ma-q-and-arma-p-q-models">
+   Forecasting for MA(q) and ARMA(p,q) models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ma-q">
+     MA(q)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arma-p-q">
+   ARMA(p, q)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gaussian-time-series-model">
+   Gaussian time series model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prediction-operator">
+   Prediction operator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arma-forecasting-in-python">
+     ARMA forecasting in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-sample-forecast-evaluation">
+   In-sample forecast evaluation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#out-of-sample-oos-forecast-evaluation">
+   Out-of-sample (OOS) forecast evaluation
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Forecasting</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-process-z-t-t-infty-infty">
+   Time series process
+   <span class="math notranslate nohighlight">
+    \(\{z_t \}_{t=-\infty}^{\infty}\)
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#point-forecast">
+     Point forecast
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting-for-ar-1-model">
+   Forecasting for AR(1) model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-squared-error-of-the-forecasts-mse">
+     Mean squared error of the forecasts (MSE)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting-for-ar-model">
+   Forecasting for AR§ model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting-for-ma-q-and-arma-p-q-models">
+   Forecasting for MA(q) and ARMA(p,q) models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ma-q">
+     MA(q)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arma-p-q">
+   ARMA(p, q)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gaussian-time-series-model">
+   Gaussian time series model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prediction-operator">
+   Prediction operator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arma-forecasting-in-python">
+     ARMA forecasting in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-sample-forecast-evaluation">
+   In-sample forecast evaluation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#out-of-sample-oos-forecast-evaluation">
+   Out-of-sample (OOS) forecast evaluation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="forecasting">
+<h1>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this headline">¶</a></h1>
+<p>Time series models are (largely) models of the temporal dependence observed in time series data</p>
+<ul class="simple">
+<li><p>the future depends of the past</p></li>
+<li><p>the past is informative about the future</p></li>
+</ul>
+<p>One motivation behind fitting models to a time series is to forecast future unobserved observations - which would not be possible without a model.</p>
+<p>Prediction is interesting for a variety of reasons. First, it is one of the
+few rationalizations for time-series to be a subject of its own, divorced from
+economics.</p>
+<div class="section" id="time-series-process-z-t-t-infty-infty">
+<h2>Time series process <span class="math notranslate nohighlight">\(\{z_t \}_{t=-\infty}^{\infty}\)</span><a class="headerlink" href="#time-series-process-z-t-t-infty-infty" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol Z^{\infty} = \begin{bmatrix}\vdots \\ z_{-k} \\z_{-k+1}\\\vdots  \\z_{-1}\\z_0\\z_1\\\vdots\\z_T\\z_{T+1}\\\vdots\end{bmatrix} \end{split}\]</div>
+<p>Consider <span class="math notranslate nohighlight">\(z_{T+1}\)</span></p>
+<ul class="simple">
+<li><p>at time <span class="math notranslate nohighlight">\(T\)</span> it is a random variable with some (marginal) distribution</p></li>
+</ul>
+<ul class="simple">
+<li><p>and a conditional distribution, given  <span class="math notranslate nohighlight">\(\mathbf{z} = \{z_t \}_{t=1}^{T}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ p(z_{T+1} |  \mathbf{z} ) \]</div>
+<ul class="simple">
+<li><p>describes all knowledge of <span class="math notranslate nohighlight">\(z_{T+1}\)</span> given <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>called <strong>predictive distribution</strong></p></li>
+</ul>
+<p>similarly for <span class="math notranslate nohighlight">\(z_{T+h}\)</span></p>
+<div class="math notranslate nohighlight">
+\[ p(z_{T+h} |  \mathbf{z} ) \]</div>
+<div class="section" id="point-forecast">
+<h3>Point forecast<a class="headerlink" href="#point-forecast" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>What is our best guess <span class="math notranslate nohighlight">\(z^{f}_{T+h}\)</span> of <span class="math notranslate nohighlight">\(z_{T+h}\)</span> given information availalbe as of <span class="math notranslate nohighlight">\(T\)</span>?</p></li>
+</ul>
+<ul class="simple">
+<li><p>Depends on how we define “best”, i.e. what the optimality criterion is</p></li>
+</ul>
+<ul class="simple">
+<li><p>if the goal is to minimize the <strong>expected (mean) square error</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{E} \left((z_{T+h} - z^{f}_{T+h})^2 | \mathbf{z}\right) \]</div>
+<p>the best point forecast is</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(z_{T+h} | \mathbf{z}) = \operatorname{E}_T (z_{T+h}) \]</div>
+<ul class="simple">
+<li><p>for other loss functions, the optimal forecast is another characteristics of the predictive distribution (e.g. the median)</p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( p(z_{T+h} |  \mathbf{z} ) \)</span> and <span class="math notranslate nohighlight">\(\operatorname{E}(z_{T+h} | \mathbf{z})\)</span> are unknown</p></li>
+<li><p>we use models to approximate them</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="forecasting-for-ar-1-model">
+<h2>Forecasting for AR(1) model<a class="headerlink" href="#forecasting-for-ar-1-model" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+z_{t} = \alpha z_{t-1} + \varepsilon_{t}
+\]</div>
+<ul class="simple">
+<li><p>at time <span class="math notranslate nohighlight">\(T\)</span> we observe <span class="math notranslate nohighlight">\(z_{1}, z_{2}, \cdots, z_{T}\)</span> and want to forecast <span class="math notranslate nohighlight">\(z_{T+h}\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h = 1\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+z_{T+1} = \alpha z_{T} + \varepsilon_{T+1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(z_{T+1} | z_{1}, z_{2}, \cdots, z_{T} ) =  \operatorname{E}(z_{T+1} | z_{T} ) = \alpha z_{T}  \]</div>
+<p>why?</p>
+<p>the information in past <span class="math notranslate nohighlight">\(z\)</span>’s is the same as information in past <span class="math notranslate nohighlight">\(\varepsilon\)</span>’s, and <span class="math notranslate nohighlight">\(\varepsilon_{T+1}\)</span> is <strong>unpredictable</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h = 2 \)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+z_{T+2} &amp;= \alpha z_{T+1} + \varepsilon_{T+2}\\
+        &amp;= \alpha^2 z_{T} + \alpha \varepsilon_{T+1} + \varepsilon_{T+2}\\
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(z_{T+2} | z_{1}, z_{2}, \cdots, z_{T} ) =  \operatorname{E}(z_{T+2} | z_{T} ) = \alpha^2 z_{T}  \]</div>
+<ul class="simple">
+<li><p>for any <span class="math notranslate nohighlight">\(h &gt; 0\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(z_{T+h} | z_{1}, z_{2}, \cdots, z_{T} ) =  \operatorname{E}(z_{T+h} | z_{T} ) = \alpha^h z_{T}  \]</div>
+<ul class="simple">
+<li><p>as <span class="math notranslate nohighlight">\(h\longrightarrow \infty\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(z_{T+h} | z_{T} ) \longrightarrow 0 = \operatorname{E}(z_{t})  \]</div>
+<p>first-order Markov process:</p>
+<div class="math notranslate nohighlight">
+\[ p(z_{T+1} |  z_{1}, z_{2}, \cdots, z_{T} ) = p(z_{T+1} |  z_{T} )  \]</div>
+<p><span class="math notranslate nohighlight">\(z_{T+1}\)</span> and <span class="math notranslate nohighlight">\(z_{1:T-1}\)</span> are independent, conditional on <span class="math notranslate nohighlight">\(z_{T}\)</span></p>
+<p>higher-order Markov processes (AR§):</p>
+<p><span class="math notranslate nohighlight">\(z_{T+1}\)</span> and <span class="math notranslate nohighlight">\(z_{1:T-p}\)</span> are independent, conditional on <span class="math notranslate nohighlight">\(z_{T-p+1:T}\)</span></p>
+<div class="section" id="mean-squared-error-of-the-forecasts-mse">
+<h3>Mean squared error of the forecasts (MSE)<a class="headerlink" href="#mean-squared-error-of-the-forecasts-mse" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h=1\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+ \operatorname{E}  \left( (z_{T+1} - z^{f}_{T+1})^2 \right) &amp;=  
+\operatorname{Var}\left( z_{T+1} - \operatorname{E}(z_{T+1} | z_{T} ) \right)\\ &amp;= \operatorname{Var}\left(z_{T+1} - \alpha z_{T} \right)\\ &amp; = \operatorname{Var}\left(\varepsilon_{T+1} \right)\\ 
+&amp; = \sigma^2
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h&gt;1\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+ \operatorname{E}  \left( (z_{T+h} - z^{f}_{T+h})^2 \right) &amp;= \operatorname{Var}\left(z_{T+h} - \alpha^h z_{T} \right)\\ &amp; = \operatorname{Var}\left(\varepsilon_{T+h} + \alpha \varepsilon_{T+h-1} + \cdots, + \alpha^{h-1}\varepsilon_{T+1}\right)\\ 
+&amp; = \sigma^2 \left( 1 + \alpha^2 + \cdots + \alpha^{2(h-1)} \right)
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>as <span class="math notranslate nohighlight">\(h\longrightarrow \infty\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+ \operatorname{E}  \left( (z_{T+h} - z^{f}_{T+h})^2 \right)  \longrightarrow  \frac{\sigma^2}{(1 - \alpha^2)} = \operatorname{Var}(z_{t})
+\end{align}
+\]</div>
+</div>
+</div>
+<div class="section" id="forecasting-for-ar-model">
+<h2>Forecasting for AR§ model<a class="headerlink" href="#forecasting-for-ar-model" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+z_{t} = \alpha_1 z_{t-1} + \alpha_2 z_{t-2} + \cdots + \alpha_p z_{t-p} + \varepsilon_{t}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h = 1\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+z_{T+1} = \alpha_1 z_{T} + \alpha_2 z_{T-1} + \cdots + \alpha_p z_{T+1-p} + \varepsilon_{T+1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(z_{T+1} | z_{1}, z_{2}, \cdots, z_{T} ) =  \operatorname{E}(z_{T+1} | z_{T+1-p}, \cdots,z_{T-1}  ,z_{T} ) = \alpha_1 z_{T} + \alpha_2 z_{T-1} + \cdots + \alpha_p z_{T+1-p}  \]</div>
+<p>for <span class="math notranslate nohighlight">\(h&gt;1\)</span>, it is easier to use a VAR(1) representation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\underset{\mathbf{z}_t}{\underbrace{\left[\begin{array}{c}
+z_{t}\\
+z_{t-1}\\
+\vdots\\
+z_{t-p+1}
+\end{array}\right]}}
+=
+\underset{\boldsymbol A}{\underbrace{\left[\begin{array}{cccccccc}
+\alpha_1 &amp; \alpha_2 &amp; \cdots &amp; \alpha_{p-1} &amp; \alpha_p\\
+1 &amp;  0 &amp; \cdots &amp; 0 &amp; 0\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0  &amp; 0  &amp; \cdots &amp; 1 &amp; 0
+\end{array}\right]}}
+\underset{\mathbf{z}_{t-1}}{\underbrace{\left[\begin{array}{c}
+z_{t-1}\\
+z_{t-2}\\
+\vdots\\
+z_{t-p}
+\end{array}\right]}}
++
+\underset{\boldsymbol \varepsilon_{t}}{\underbrace{\left[\begin{array}{c}
+\varepsilon_{t}\\
+0\\
+\vdots\\
+0
+\end{array}\right]}}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{z}_{T+1}  &amp;= \boldsymbol A \mathbf{z}_{T} + \boldsymbol \varepsilon_{T+1}\\
+\operatorname{E}(\mathbf{z}_{T+1} | \mathbf{z}_{T} )  &amp;= \boldsymbol A \mathbf{z}_{T}
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} )  = \boldsymbol A^h \mathbf{z}_{T}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{z}_{T+h}  - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} )  = \boldsymbol A^{h-1} \boldsymbol \varepsilon_{T+1} + \boldsymbol A^{h+2} \boldsymbol \varepsilon_{T+2}+ \cdots + \boldsymbol \varepsilon_{T+h}
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{e} = [1, 0, 0, \cdots, 0]'\)</span> be a <span class="math notranslate nohighlight">\(p\)</span> dimensional vector (first column of a <span class="math notranslate nohighlight">\(p \times p\)</span> identity matrix). Then</p>
+<div class="math notranslate nohighlight">
+\[z_{T+h} = \mathbf{e}' \mathbf{z}_{T+h}  \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E}(z_{T+h} | \mathbf{z}_{T} )  = \mathbf{e}'  \boldsymbol A^h \mathbf{z}_{T}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E} \left[ \left( \mathbf{z}_{T+h}  - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} ) \right)^2 \right] = (\boldsymbol A^{h-1} \boldsymbol \varepsilon_{T+1} + \boldsymbol A^{h+2} \boldsymbol \varepsilon_{T-2}+ \cdots + \boldsymbol \varepsilon_{T+h})^2
+\]</div>
+<ul class="simple">
+<li><p>the MSE of the forecast:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{e}' \operatorname{E} \left[ \left( \mathbf{z}_{T+h}  - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} ) \right)^2 \right] \mathbf{e} = \sigma^2 \left( a_{h-1}^2 + a_{h-2}^2 + \cdots + 1 \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_i = \mathbf{e}' \boldsymbol A^{i}  \mathbf{e} \)</span></p>
+</div>
+<div class="section" id="forecasting-for-ma-q-and-arma-p-q-models">
+<h2>Forecasting for MA(q) and ARMA(p,q) models<a class="headerlink" href="#forecasting-for-ma-q-and-arma-p-q-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ma-q">
+<h3>MA(q)<a class="headerlink" href="#ma-q" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[ z_t = \varepsilon_{t} + \beta_1 \varepsilon_{t-1} + \cdots + \beta_q \varepsilon_{t-q} \]</div>
+<div class="math notranslate nohighlight">
+\[ z_{T+1} = \varepsilon_{T+1} + \beta_1 \varepsilon_{T} + \cdots + \beta_q \varepsilon_{T-q+1} \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{E}_{T} z_{T+1} &amp;= \operatorname{E}_{T} \varepsilon_{T+1} + \beta_1 \operatorname{E}_{T} \varepsilon_{T} + \cdots + \beta_q \operatorname{E}_{T} \varepsilon_{T-q+1} \\
+&amp;= \beta_1 \operatorname{E}_{T} \varepsilon_{T} + \cdots + \beta_q \operatorname{E}_{T} \varepsilon_{T-q+1} 
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\operatorname{E}_{T} z_{T+2} &amp;= \beta_2 \operatorname{E}_{T} \varepsilon_{T} + \cdots + \beta_q \operatorname{E}_{T} \varepsilon_{T-q+2} \;\;\; (h=2)
+\end{align}
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\operatorname{E}_{T} z_{T+q} &amp;=  \beta_q \operatorname{E}_{T} \varepsilon_{T} \;\;\;\; (h=q)
+\end{align}
+\]</div>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(h&gt;q\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\operatorname{E}_{T} z_{T+h} =  0
+\end{align}
+\]</div>
+<p>by <strong>invertability</strong> of MA(q):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+z_t &amp;= \boldsymbol \beta(L) \varepsilon_t\\
+\varepsilon_t  &amp;= \frac{1}{\boldsymbol \beta(L)} = \boldsymbol \alpha(L)z_t \\ 
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{E}_T \varepsilon_T &amp;=  \operatorname{E}_T \boldsymbol \alpha(L) z_T \\ 
+&amp;=  \operatorname{E}_T (z_T + \alpha_1 z_{T-1} + \alpha_2 z_{T-2} + \cdots )\\ 
+&amp;= z_T + \alpha_1 z_{T-1} + \alpha_2 z_{T-2} + \cdots + \alpha_{T-1} z_{1}
+\end{align}
+\end{split}\]</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tools.sm_exceptions</span> <span class="kn">import</span> <span class="n">ConvergenceWarning</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">ConvergenceWarning</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_process</span> <span class="kn">import</span> <span class="n">arma_acovf</span><span class="p">,</span> <span class="n">ArmaProcess</span>
+
+<span class="kn">import</span> <span class="nn">statsmodels.tsa.api</span> <span class="k">as</span> <span class="nn">smt</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>getting <span class="math notranslate nohighlight">\(\alpha_i\)</span> in Python</strong></p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">.3</span><span class="p">])</span> <span class="c1"># coefficients on e(t-1) and e(t-2)</span>
+<span class="n">ar</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># coefficient on z_t</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">beta</span><span class="p">]</span>
+<span class="n">ma2_process</span> <span class="o">=</span> <span class="n">ArmaProcess</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="n">ma</span><span class="p">)</span>
+
+<span class="n">ma2_process</span><span class="o">.</span><span class="n">arma2ar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1">#statsmodels.tsa.arima_process.arma_impulse_response(ma=[1.0,], ar=[1, .6, -.3], leads=10)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.   , -0.6  ,  0.66 , -0.576,  0.544, -0.499,  0.462, -0.427,
+        0.395, -0.365,  0.338, -0.312,  0.289, -0.267,  0.247, -0.228,
+        0.211, -0.195,  0.18 , -0.167,  0.154, -0.142,  0.132, -0.122,
+        0.112, -0.104,  0.096, -0.089,  0.082, -0.076,  0.07 , -0.065,
+        0.06 , -0.055,  0.051, -0.047,  0.044, -0.041,  0.037, -0.035,
+        0.032, -0.03 ,  0.027, -0.025,  0.023, -0.022,  0.02 , -0.018,
+        0.017, -0.016,  0.015, -0.014,  0.012, -0.012,  0.011, -0.01 ,
+        0.009, -0.008,  0.008, -0.007,  0.007, -0.006,  0.006, -0.005,
+        0.005, -0.005,  0.004, -0.004,  0.004, -0.003,  0.003, -0.003,
+        0.003, -0.002,  0.002, -0.002,  0.002, -0.002,  0.002, -0.001,
+        0.001, -0.001,  0.001, -0.001,  0.001, -0.001,  0.001, -0.001,
+        0.001, -0.001,  0.001, -0.001,  0.001, -0.   ,  0.   , -0.   ,
+        0.   , -0.   ,  0.   , -0.   ])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>the MSE of forecast:</p></li>
+<li><p>h = 2</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+z_{T+2} &amp;= \varepsilon_{T+2} + \beta_1  \varepsilon_{T+1} + \beta_2  \varepsilon_{T} + \cdots + \beta_q \operatorname{E}_{T} \varepsilon_{T-q+2} \\
+\operatorname{E}_{T} z_{T+2} &amp;= \beta_2 \operatorname{E}_{T} \varepsilon_{T} + \cdots + \beta_q \operatorname{E}_{T} \varepsilon_{T-q+2} 
+\end{align}
+\end{split}\]</div>
+<p>If <span class="math notranslate nohighlight">\(\operatorname{E}_{T} \varepsilon_{T} \approx  \varepsilon_{T}\)</span>, <span class="math notranslate nohighlight">\(\operatorname{E}_{T} \varepsilon_{T-1} \approx  \varepsilon_{T-1}\)</span>, etc:</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E} \left[ \left( z_{T+2}  - \operatorname{E}(z_{T+2} | \mathbf{z}_{T} ) \right)^2 \right] \mathbf{e} = \sigma^2 \left( 1 + \beta_{1}^2\right)
+\]</div>
+<ul class="simple">
+<li><p>general <span class="math notranslate nohighlight">\(h\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E} \left[ \left( z_{T+h}  - \operatorname{E}(z_{T+h} | \mathbf{z}_{T} ) \right)^2 \right] \mathbf{e} = \sigma^2 \left( 1 + \beta_{1}^2 + \beta_{2}^2 + \cdots + \beta_{h-1}^2 \right)
+\]</div>
+</div>
+</div>
+<div class="section" id="arma-p-q">
+<h2>ARMA(p, q)<a class="headerlink" href="#arma-p-q" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+z_t &amp;= \alpha_1 z_{t-1}  + \cdots + \alpha_p z_{t-p} + \varepsilon_{t} + \beta_1 \varepsilon_{t-1} + \cdots + \beta_q \varepsilon_{t-q}
+\end{align}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+z_{T+1} = \alpha_1 z_{T} + \cdots + \alpha_p z_{T-p+1} + \varepsilon_{T+1} + \beta_1 \varepsilon_{T} + \cdots + \beta_q \varepsilon_{T-q+1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\operatorname{E}_{T} z_{T+1} &amp;= \alpha_1 z_{T}  + \cdots + \alpha_p z_{T-p+1}  + \beta_1 \operatorname{E}_{T} \varepsilon_{T} + \cdots + \beta_q \operatorname{E}_{T} \varepsilon_{T-q+1} 
+\end{align}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E}_{T} z_{T+2} = \alpha_1 \operatorname{E}_{T} z_{T+1} + \alpha_2 z_{T} + \cdots + \alpha_p z_{T-p+2} + \beta_2 \operatorname{E}_{T} \varepsilon_{T} + \cdots + \beta_q \operatorname{E}_{T} \varepsilon_{T-q+2}
+\]</div>
+<ul class="simple">
+<li><p>obtain <span class="math notranslate nohighlight">\(\operatorname{E}_{T} \varepsilon_{T}\)</span>, <span class="math notranslate nohighlight">\(\operatorname{E}_{T} \varepsilon_{T-1}\)</span> etc as in the MA(q) case</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\boldsymbol \alpha(L) z_t &amp;= \boldsymbol \beta(L) \varepsilon_t\\
+\varepsilon_t  &amp;= \frac{\boldsymbol \alpha(L)}{\boldsymbol \beta(L)}z_t = \boldsymbol \psi(L)z_t \\ 
+\end{align}
+\end{split}\]</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.8</span><span class="p">])</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">alpha</span><span class="p">]</span> <span class="c1"># coefficient on z(t) and z(t-1)</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">beta</span><span class="p">]</span>  <span class="c1"># coefficients on e(t) and e(t-1)</span>
+<span class="n">arma11_process</span> <span class="o">=</span> <span class="n">ArmaProcess</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="n">ma</span><span class="p">)</span>
+
+<span class="n">arma11_process</span><span class="o">.</span><span class="n">arma2ar</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.   , -0.9  ,  0.09 , -0.009,  0.001, -0.   ,  0.   , -0.   ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the <span class="math notranslate nohighlight">\(MA(\infty)\)</span> representation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\boldsymbol \alpha(L) z_t &amp;= \boldsymbol \beta(L) \varepsilon_t\\
+z_t  &amp;= \frac{\boldsymbol \beta(L)}{\boldsymbol \alpha(L)} \varepsilon_t = \boldsymbol \phi(L) \varepsilon_t
+\end{align}
+\end{split}\]</div>
+<p>we have
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6da9e16a-ff26-406e-a58c-1fcdba78764a">
+<span class="eqno">(3)<a class="headerlink" href="#equation-6da9e16a-ff26-406e-a58c-1fcdba78764a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+z_{T+h}  = \varepsilon_{T+h} + \phi_1 \varepsilon_{T+h-1} + \phi_2 \varepsilon_{T+h-2} + \cdots + \phi_h \varepsilon_{T} + \phi_{h+1} \varepsilon_{T-1} + \phi_{h+2} \varepsilon_{T-2} + \cdots 
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[and \]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-a26ada14-c05a-41f4-9eec-31076b562d8b">
+<span class="eqno">(4)<a class="headerlink" href="#equation-a26ada14-c05a-41f4-9eec-31076b562d8b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\operatorname{E}_T z_{T+h}  = \phi_h \operatorname{E}_T  \varepsilon_{T} + \phi_{h+1} \operatorname{E}_T \varepsilon_{T-1} + \phi_{h+2} \operatorname{E}_T \varepsilon_{T-2} + \cdots 
+\end{align}\]</div>
+<p>$$</p>
+<ul class="simple">
+<li><p>the MSE of forecast :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E} \left[ \left( z_{T+h}  - \operatorname{E}(z_{T+h} | \mathbf{z}_{T} ) \right)^2 \right] = \sigma^2 \left( 1 + \phi_{1}^2 + \phi_{2}^2 + \cdots + \phi_{h-1}^2 \right)
+\]</div>
+<p>assuming (as for MA(q)) <span class="math notranslate nohighlight">\(\operatorname{E}_{T} \varepsilon_{T} \approx  \varepsilon_{T}\)</span>, <span class="math notranslate nohighlight">\(\operatorname{E}_{T} \varepsilon_{T-1} \approx  \varepsilon_{T-1}\)</span>, etc:</p>
+<ul class="simple">
+<li><p>in general <span class="math notranslate nohighlight">\(\operatorname{E}(z_{T+h} | \mathbf{z}) \)</span> is unknown and non-linear function of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="gaussian-time-series-model">
+<h2>Gaussian time series model<a class="headerlink" href="#gaussian-time-series-model" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+p(\underbrace{z_1, z_2, \cdots, z_T}_{\mathbf{z}_1}, \underbrace{z_{T+1},\cdots, z_{T+h}}_{\mathbf{z}_2}) = p(\mathbf{z}_1, \mathbf{z}_2) \sim \mathcal{N}(\boldsymbol \mu, \mathbf{\Sigma}).
+\]</div>
+<p>Then,</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mathbf{z}_2 | \mathbf{z}_1) = \mathcal{N}(\boldsymbol \mu_2 + \mathbf{\Sigma}_{2 1} \mathbf{\Sigma}^{-1}_{1 1} (\mathbf{z}_1 - \boldsymbol \mu_1), \mathbf{\Sigma}_{2 2} - \mathbf{\Sigma}_{2 1}\mathbf{\Sigma}_{1 1}^{-1}\mathbf{\Sigma}_{1 2}) 
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{E}(\mathbf{z}_2 | \mathbf{z}_1) = \boldsymbol \mu_2 + \mathbf{\Sigma}_{2 1} \mathbf{\Sigma}^{-1}_{1 1} (\mathbf{z}_1 - \boldsymbol \mu_1)\;\;\;\;\;\)</span>              <strong>optimal forecast</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{cov}(\mathbf{z}_2 | \mathbf{z}_1) = \mathbf{\Sigma}_{2 2} - \mathbf{\Sigma}_{2 1}\mathbf{\Sigma}_{1 1}^{-1}\mathbf{\Sigma}_{1 2}\;\;\;\;\;\;\;\;\;\)</span> <strong>MSE of the optimal forecast</strong></p></li>
+</ul>
+<ul class="simple">
+<li><p>we can restrict “best” to apply to linear functions only: <strong>best linear predictor</strong> of <span class="math notranslate nohighlight">\(z_{T+h}\)</span> given <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+z^{f}_{T+h} = \beta_0 + \mathbf{\beta}'_1 \mathbf{z} \tag{1}
+\]</div>
+<ul class="simple">
+<li><p>if the loss is the MSE, the  <strong>best linear predictor</strong> is (1) with</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\beta_0 &amp;= \operatorname{E} z_{T+h} - \operatorname{Cov} (z_{T+h},\mathbf{z})  \operatorname{Cov} (\mathbf{z},\mathbf{z})^{-1} \operatorname{E} \mathbf{z}\\ 
+\mathbf{\beta}_1 &amp;= \operatorname{Cov} (z_{T+h},\mathbf{z})  \operatorname{Cov} (\mathbf{z},\mathbf{z})^{-1} 
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="prediction-operator">
+<h2>Prediction operator<a class="headerlink" href="#prediction-operator" title="Permalink to this headline">¶</a></h2>
+<p>the <strong>best linear prediction</strong> of random variable <span class="math notranslate nohighlight">\(y\)</span> given a random vector <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\operatorname{P}(y|\mathbf{z}) &amp;= \mu_{y} + \phi' \left(\mathbf{z} - \mu_{\mathbf{z}}\right)\\
+\text{}\\
+\text{with}\\
+\text{}\\
+\phi' &amp;=  \operatorname{cov}(y,\mathbf{z})' \operatorname{cov}(\mathbf{z},\mathbf{z})^{-1} 
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>has lowest MSE loss</p></li>
+</ul>
+<p>the <strong>MSE</strong> of <span class="math notranslate nohighlight">\(\operatorname{P}(y|\mathbf{z})\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E}\left[\left(y - \operatorname{P}(y|\mathbf{z}) \right)^2\right] = \operatorname{var}(y) -  \operatorname{cov}(y,\mathbf{z})' \operatorname{cov}(\mathbf{z},\mathbf{z})^{-1} \operatorname{cov}(y,\mathbf{z})
+\]</div>
+<p><strong>properties of <span class="math notranslate nohighlight">\(\operatorname{P}(y|\mathbf{z})\)</span> :</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{E} \left(y - \operatorname{P}(y|\mathbf{z}) \right) = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{E} \left((y - \operatorname{P}(y|\mathbf{z}))\mathbf{z} \right) = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{P}\left(z_i|\mathbf{z}) \right) = z_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{P}\left(y|\mathbf{z}) \right) = \operatorname{E} y\)</span>, if <span class="math notranslate nohighlight">\(\operatorname{cov}(y,\mathbf{z})=0\)</span></p></li>
+</ul>
+<div class="section" id="arma-forecasting-in-python">
+<h3>ARMA forecasting in Python<a class="headerlink" href="#arma-forecasting-in-python" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>generate data from ARMA(1,1)</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">T</span><span class="o">=</span><span class="mi">700</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">arma11_process</span><span class="o">.</span><span class="n">generate_sample</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">distrvs</span><span class="o">=</span><span class="n">gen</span><span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>estimate</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arma_model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">trend</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">arma_results</span> <span class="o">=</span> <span class="n">arma_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arma_results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                      y   No. Observations:                  700
+Model:                 ARIMA(1, 0, 1)   Log Likelihood                -998.176
+Date:                Mon, 21 Mar 2022   AIC                           2002.351
+Time:                        10:22:36   BIC                           2016.005
+Sample:                             0   HQIC                          2007.629
+                                - 700                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1          0.8075      0.027     29.733      0.000       0.754       0.861
+ma.L1          0.0199      0.047      0.423      0.672      -0.072       0.112
+sigma2         1.0126      0.058     17.456      0.000       0.899       1.126
+===================================================================================
+Ljung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):                 2.05
+Prob(Q):                              0.98   Prob(JB):                         0.36
+Heteroskedasticity (H):               1.06   Skew:                             0.06
+Prob(H) (two-sided):                  0.66   Kurtosis:                         2.76
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>forecast the next 5 values</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arma_results</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.816, -0.659, -0.532, -0.43 , -0.347])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>get forecasts and CI</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcast_res</span> <span class="o">=</span> <span class="n">arma_results</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+<span class="n">fcast_res</span><span class="o">.</span><span class="n">summary_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>y</th>
+      <th>mean</th>
+      <th>mean_se</th>
+      <th>mean_ci_lower</th>
+      <th>mean_ci_upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.815737</td>
+      <td>1.006267</td>
+      <td>-2.787985</td>
+      <td>1.156510</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.658719</td>
+      <td>1.306041</td>
+      <td>-3.218512</td>
+      <td>1.901073</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.531925</td>
+      <td>1.468926</td>
+      <td>-3.410966</td>
+      <td>2.347116</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.429537</td>
+      <td>1.566040</td>
+      <td>-3.498920</td>
+      <td>2.639846</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.346857</td>
+      <td>1.626246</td>
+      <td>-3.534241</td>
+      <td>2.840527</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>working with dates</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1964&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="n">T</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>
+<span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-12-31</th>
+      <td>-1.983945</td>
+    </tr>
+    <tr>
+      <th>2022-01-31</th>
+      <td>-3.883839</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-2.971514</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>-2.339958</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>-1.031274</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arma_model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">trend</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">arma_results</span> <span class="o">=</span> <span class="n">arma_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fcast_res</span> <span class="o">=</span> <span class="n">arma_results</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">fcast</span> <span class="o">=</span> <span class="n">fcast_res</span><span class="o">.</span><span class="n">summary_frame</span><span class="p">()</span>
+<span class="n">fcast</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>z</th>
+      <th>mean</th>
+      <th>mean_se</th>
+      <th>mean_ci_lower</th>
+      <th>mean_ci_upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-05-31</th>
+      <td>-0.815737</td>
+      <td>1.006267</td>
+      <td>-2.787985</td>
+      <td>1.156510</td>
+    </tr>
+    <tr>
+      <th>2022-06-30</th>
+      <td>-0.658719</td>
+      <td>1.306041</td>
+      <td>-3.218512</td>
+      <td>1.901073</td>
+    </tr>
+    <tr>
+      <th>2022-07-31</th>
+      <td>-0.531925</td>
+      <td>1.468926</td>
+      <td>-3.410966</td>
+      <td>2.347116</td>
+    </tr>
+    <tr>
+      <th>2022-08-31</th>
+      <td>-0.429537</td>
+      <td>1.566040</td>
+      <td>-3.498920</td>
+      <td>2.639846</td>
+    </tr>
+    <tr>
+      <th>2022-09-30</th>
+      <td>-0.346857</td>
+      <td>1.626246</td>
+      <td>-3.534241</td>
+      <td>2.840527</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>plot forecasts</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot the data (here we are subsetting it to get a better look at the forecasts)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2018&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="c1"># Construct the forecasts</span>
+<span class="n">fcast</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">fcast</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">fcast</span><span class="p">[</span><span class="s1">&#39;mean_ci_lower&#39;</span><span class="p">],</span> <span class="n">fcast</span><span class="p">[</span><span class="s1">&#39;mean_ci_upper&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span>
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04-Forecasting_87_0.png" src="../../_images/04-Forecasting_87_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="in-sample-forecast-evaluation">
+<h2>In-sample forecast evaluation<a class="headerlink" href="#in-sample-forecast-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>use</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{T} \sum_{t=0}^{T-1} \left( z_{t+1} - \hat{z}^{f}_{t+1} \right)^2 \]</div>
+<p>as an estimate of the MSE</p>
+<div class="math notranslate nohighlight">
+\[ \operatorname{E}  \left( (z_{t+1} - z^{f}_{t+1})^2 \right)\]</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;forecast&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arma_results</span><span class="o">.</span><span class="n">forecasts</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;forecast errors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arma_results</span><span class="o">.</span><span class="n">forecasts_error</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>z</th>
+      <th>forecast</th>
+      <th>forecast errors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-12-31</th>
+      <td>-1.983945</td>
+      <td>-0.373014</td>
+      <td>-1.610931</td>
+    </tr>
+    <tr>
+      <th>2022-01-31</th>
+      <td>-3.883839</td>
+      <td>-1.634070</td>
+      <td>-2.249770</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-2.971514</td>
+      <td>-3.180953</td>
+      <td>0.209439</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>-2.339958</td>
+      <td>-2.395378</td>
+      <td>0.055420</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>-1.031274</td>
+      <td>-1.888448</td>
+      <td>0.857174</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">arma_results</span><span class="o">.</span><span class="n">forecasts_error</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0138467224702907
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arma_results</span><span class="o">.</span><span class="n">mse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0138467224702907
+</pre></div>
+</div>
+</div>
+</div>
+<p>In-sample forecasts are based on model estimated using the full sample</p>
+<ul class="simple">
+<li><p>in AR(1) model</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\hat{z}^{f}_{t+1} = \hat{\alpha} z_{t}\]</div>
+<p>introduces information from the future relative to the time (<span class="math notranslate nohighlight">\(t&lt;T\)</span>) when forecasts are produced</p>
+</div>
+<div class="section" id="out-of-sample-oos-forecast-evaluation">
+<h2>Out-of-sample (OOS) forecast evaluation<a class="headerlink" href="#out-of-sample-oos-forecast-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>parameter estimates of the forecasting model use only information available at the time when the forecast is
+computed</p>
+<ul class="simple">
+<li><p>fit the model on a training sample <span class="math notranslate nohighlight">\(z_1, \cdots, z_t\)</span> for some <span class="math notranslate nohighlight">\(t=t_0&lt;T\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>produce forecast <span class="math notranslate nohighlight">\(\hat{z}^{f}_{t+1}\)</span> from the end of that sample</p></li>
+</ul>
+<ul class="simple">
+<li><p>compare to true value <span class="math notranslate nohighlight">\(z_{t+1}\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>expand the sample to include the next observation, and repeat until <span class="math notranslate nohighlight">\(t=T-1\)</span></p></li>
+</ul>
+<p>The OOS estimate of MSE</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{T-t_0} \sum_{t=t_0-1}^{T-1} \left( z_{t+1} - \hat{z}^{f}_{t+1} \right)^2 \]</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;z&#39;</span><span class="p">]]</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1964-01-31</th>
+      <td>-1.157550</td>
+    </tr>
+    <tr>
+      <th>1964-02-29</th>
+      <td>-0.752039</td>
+    </tr>
+    <tr>
+      <th>1964-03-31</th>
+      <td>0.208199</td>
+    </tr>
+    <tr>
+      <th>1964-04-30</th>
+      <td>0.788618</td>
+    </tr>
+    <tr>
+      <th>1964-05-31</th>
+      <td>-0.276091</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-12-31</th>
+      <td>-1.983945</td>
+    </tr>
+    <tr>
+      <th>2022-01-31</th>
+      <td>-3.883839</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>-2.971514</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>-2.339958</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>-1.031274</td>
+    </tr>
+  </tbody>
+</table>
+<p>700 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup forecasts</span>
+<span class="n">nforecasts</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">forecasts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Get the number of initial training observations</span>
+<span class="n">nobs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">n_init_training</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nobs</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># Create model for initial training sample, fit parameters</span>
+<span class="n">init_training_endog</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">n_init_training</span><span class="p">]</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">init_training_endog</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">trend</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Save initial forecast</span>
+<span class="n">forecasts</span><span class="p">[</span><span class="n">init_training_endog</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="n">nforecasts</span><span class="p">)</span>
+
+<span class="c1"># Step through the rest of the sample</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_init_training</span><span class="p">,</span> <span class="n">nobs</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># Update the results by appending the next observation</span>
+    <span class="n">updated_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">t</span><span class="p">:</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">updated_data</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Save the new set of forecasts</span>
+    <span class="n">forecasts</span><span class="p">[</span><span class="n">updated_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="n">nforecasts</span><span class="p">)</span>
+
+<span class="c1"># Combine all forecasts into a dataframe</span>
+<span class="n">forecasts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">forecasts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2010-08-31</th>
+      <th>2010-09-30</th>
+      <th>2010-10-31</th>
+      <th>2010-11-30</th>
+      <th>2010-12-31</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2010-09-30</th>
+      <td>1.632432</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2010-10-31</th>
+      <td>NaN</td>
+      <td>0.928112</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2010-11-30</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.127096</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2010-12-31</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.271923</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2011-01-31</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.60945</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:,</span> <span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2021-11-30</th>
+      <th>2021-12-31</th>
+      <th>2022-01-31</th>
+      <th>2022-02-28</th>
+      <th>2022-03-31</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-12-31</th>
+      <td>-0.373446</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-01-31</th>
+      <td>NaN</td>
+      <td>-1.62698</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-02-28</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-3.185304</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-03-31</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-2.400559</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2022-04-30</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.891933</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct the forecast errors</span>
+<span class="n">forecast_errors</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">forecast_errors</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">n_init_training</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">c</span><span class="p">]</span>
+    
+<span class="n">forecast_errors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">forecast_errors</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">flattened</span> <span class="o">=</span> <span class="n">forecast_errors</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">flatten</span><span class="p">)</span>
+<span class="n">flattened</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">flattened</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;horizon&#39;</span><span class="p">)</span>
+<span class="n">flattened</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>horizon</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2010-08-31</th>
+      <td>-0.496213</td>
+    </tr>
+    <tr>
+      <th>2010-09-30</th>
+      <td>-0.757934</td>
+    </tr>
+    <tr>
+      <th>2010-10-31</th>
+      <td>1.392945</td>
+    </tr>
+    <tr>
+      <th>2010-11-30</th>
+      <td>-0.523532</td>
+    </tr>
+    <tr>
+      <th>2010-12-31</th>
+      <td>-0.075812</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecast_errors</span> <span class="o">=</span> <span class="n">flattened</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the root mean square error</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="p">(</span><span class="n">forecast_errors</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rmse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0117784839655213
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Lectures\04-ARMA"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="03-ARMA-part-3.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">ARMA models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../03-Assignments/HW0/main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 0</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
