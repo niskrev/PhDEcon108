@@ -31,6 +31,8 @@ parts:
       title: 2. Algebra of AR and MA models
     - file: 01-Lectures/04-ARMA/03-ARMA-part-3
       title: 3. ARMA models
+    - file: 01-Lectures/04-ARMA/04-Forecasting
+      title: 3. Forecasting with ARMA models
 - caption: Assignments
   chapters:
   - file: 03-Assignments/HW0/main
@@ -56,9 +58,10 @@ parts:
     - file: 03-Assignments/HW4/README
     - file: 03-Assignments/HW4/HW4-part-1
     - file: 03-Assignments/HW4/HW4-part-2
-# - file: 03-Assignments/HW5/main
-#    sections:
-#    - file: 03-Assignments/HW5/README
+  - file: 03-Assignments/HW5/main
+    sections:
+    - file: 03-Assignments/HW5/README
+    - file: 03-Assignments/HW5/HW5-part-1
 #  - file: 03-Assignments/HW6/main
 #    sections:
 #    - file: 03-Assignments/HW6/README
