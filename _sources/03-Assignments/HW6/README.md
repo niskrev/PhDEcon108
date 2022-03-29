@@ -7,7 +7,7 @@ __Important:__ If you struggle with any part of this assignments, raise an issue
 
 ### Part 1
 
-Load the data from data/data.txt in your HW6 directory. Using the first 500 observations (training sample) and the `ARIMA` function of statsmodels, estimate ARMA(p,q) models for all combinations of AR and MA lags of between 0 and 4, with and without a constant. Find out and report which specifications minimize the AIC and the BIC criteria. Plot the ACFs and PACFs of the residuals of those specifications in a 2x2 plot with titles indicating the order and whether a constant is included.
+Load the data from data/data.txt in your HW6 directory (check the `loadtxt()` function in `numpy`). Using the first 500 observations (training sample) and the `ARIMA` function of statsmodels, estimate ARMA(p,q) models for all combinations of AR and MA lags of between 0 and 4, with and without a constant. Find out and report which specifications minimize the AIC and the BIC criteria. Plot the ACFs and PACFs of the residuals of those specifications in a 2x2 plot with titles indicating the order and whether a constant is included.
 
 
 ### Part 2
