@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>README HW5</title>
+    <title>Homework 7</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,12 +51,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW5/README.html" />
+    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW7/README.html" />
     <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="HW 5 part 1" href="HW5-part-1.html" />
-    <link rel="prev" title="Homework 5" href="main.html" />
+    <link rel="next" title="Midterm project" href="../../04-Projects/01-Midterm/main.html" />
+    <link rel="prev" title="Homework 6" href="../HW6/README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -358,23 +358,23 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="main.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../HW5/main.html">
    Homework 5
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../HW5/README.html">
      README HW5
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="HW5-part-1.html">
+    <a class="reference internal" href="../HW5/HW5-part-1.html">
      HW 5 part 1
     </a>
    </li>
@@ -385,8 +385,8 @@
    Homework 6
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../HW7/README.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Homework 7
   </a>
  </li>
@@ -602,7 +602,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW5/README.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW7/README.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -669,7 +669,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>README HW5</h1>
+                <h1>Homework 7</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -715,31 +715,28 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="readme-hw5">
-<h1>README HW5<a class="headerlink" href="#readme-hw5" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="homework-7">
+<h1>Homework 7<a class="headerlink" href="#homework-7" title="Permalink to this headline">¶</a></h1>
 <p><strong>Important:</strong> If you struggle with any part of this assignments, raise an issue in the repo (see the section below on how to submit)</p>
 <div class="section" id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="part-1">
 <h3>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
-<p>See notebook <a class="reference internal" href="HW5-part-1.html"><span class="doc std std-doc">HW5-part-1.ipynb</span></a></p>
+<p>a) Generate N=1000 samples of T = 100 observations from a Gaussian zero-mean AR(1) process with <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.9. Using <code class="docutils literal notranslate"><span class="pre">adfuller()</span></code> function with 1 lag and no constant or time trend, test each sample for unit root. Print the % of times the null (of unit root) is rejected.</p>
+<p>b) Using the code you developed for (a) write a function which accepts  N, T, and alpha as parameters and prints those values (T=, N=, alpha=) and the percent of rejections of the null hypothesis</p>
+<p>c) Run the function for N=1000 and all combinations of T=[100, 500, 1000], and alpha = [.9, 0.95, 0.99] and print the results as a table.</p>
 </div>
 <div class="section" id="part-2">
 <h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
-<p>Write a python script (a text file with .py extension) which runs the simulation and prints on the screen the results for estimation biases and MSEs for a given set of values for: <span class="math notranslate nohighlight">\(\alpha_0\)</span>, <span class="math notranslate nohighlight">\(\alpha_1\)</span>, <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <code class="docutils literal notranslate"><span class="pre">n_rep</span></code>, and <code class="docutils literal notranslate"><span class="pre">n_obs</span></code>. That is, you should be able to execute</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">MC_ar1</span><span class="o">.</span><span class="n">py</span> <span class="mi">1</span> <span class="mf">0.5</span> <span class="mf">1.5</span> <span class="mi">500</span> <span class="mi">100</span>
-</pre></div>
-</div>
-<p>and obtain the same results as before (use the same seed as in Part 1). Here <code class="docutils literal notranslate"><span class="pre">MC_ar1.py</span></code> is the name of the python module you will create (chose a different name if you want).</p>
-<p><strong>Important:</strong> First create a file which does the above for values of <span class="math notranslate nohighlight">\(\alpha_0\)</span>, <span class="math notranslate nohighlight">\(\alpha_1\)</span>, etc, that are specified in the file itself, and test it with the values from Part 1. On Friday we will see how to turn those parameters into command-line arguments that can be chosen when the program is run in the terminal.</p>
+<p>Load the data from data/data.txt in your HW7 directory Test for unit root using ADF, DFGLS, and Phillips-Perron tests, selecting the specification (constant, trend, number of lags) as you see fit (you should plot it). Test for stationarity using the KPSS test. What conclusion do you draw about the series? Given the specification you decide is most plausible, estimate the model parameters.</p>
 </div>
 <div class="section" id="part-3">
 <h3>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
-<p>Write down what difficulties, questions, or points of confusion (if any) you had about this assignments.</p>
+<p>Write down what difficulties, questions, or points of confusion (if any) you had about this assignment.</p>
 </div>
 <div class="section" id="submission">
 <h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h3>
-<p>Submit as a folder with name <strong>HW5</strong> in your repository at <a class="reference external" href="https://github.com/PhDEcon108">https://github.com/PhDEcon108</a>. In addition to the the two notebooks, the folder should contain a <a class="reference external" href="http://README.md">README.md</a> file describing the content of the repository. It should also have a section where you write your answer to Part 3.</p>
+<p>Submit as a python script <code class="docutils literal notranslate"><span class="pre">part1.py</span></code> in the folder <strong>HW7</strong> in your repository at <a class="reference external" href="https://github.com/PhDEcon108">https://github.com/PhDEcon108</a>.  When run in the terminal with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">part1.py</span></code> it should print in the terminal the the table from c). Submit part 2 as a notebook, containing plot, code for the tests you perform and text for the conclusions you draw. The folder should contain a <a class="reference external" href="http://README.md">README.md</a> file describing the content of the repository and your answer to Part 3.</p>
 </div>
 </div>
 </div>
@@ -757,7 +754,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03-Assignments\HW5"
+            path: "./03-Assignments\HW7"
         },
         predefinedOutput: true
     }
@@ -769,17 +766,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="main.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../HW6/README.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Homework 5</p>
+            <p class="prev-next-title">Homework 6</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="HW5-part-1.html" title="next page">
+    <a class='right-next' id="next-link" href="../../04-Projects/01-Midterm/main.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">HW 5 part 1</p>
+        <p class="prev-next-title">Midterm project</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
