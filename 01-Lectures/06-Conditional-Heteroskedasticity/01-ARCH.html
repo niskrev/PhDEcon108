@@ -1,0 +1,1674 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARCH</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/06-Conditional-Heteroskedasticity/01-ARCH.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 0" href="../../03-Assignments/HW0/main.html" />
+    <link rel="prev" title="Conditional Heteroskedasticity" href="00-Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/02-Gaussian-MLE.html">
+     2. Maximum likelihood estimation of Gaussian models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/03-ARMA-part-3.html">
+     3. ARMA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/04-Forecasting.html">
+     3. Forecasting with ARMA models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05-Nonstationarity/00-Introduction.html">
+   Non-stationarity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Nonstationarity/01-Unit-root.html">
+     1. Non-stationarity and unit root processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Introduction.html">
+   Conditional Heteroskedasticity
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1. ARCH processes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part1.html">
+     HW 2 Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part2.html">
+     HW 2 Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part3.html">
+     HW 2 Part 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     Readme HW3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/HW3-part2-2.html">
+     HW 3 Part 2-2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW4/main.html">
+   Homework 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/README.html">
+     README HW4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-1.html">
+     Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-2.html">
+     Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW5/main.html">
+   Homework 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/README.html">
+     README HW5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/HW5-part-1.html">
+     HW 5 part 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW6/README.html">
+   Homework 6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW7/README.html">
+   Homework 7
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/04-Python-working-with-paths-and-files.html">
+     Paths
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/03-Multivariate-Normal.html">
+     Multivariate Normal in Numpy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/03-Conda/Resources.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   1. APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/01-ECB.html">
+     Download data from ECB’s SDW
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/02-Eurostat.html">
+     Download data from EUROSTAT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/03-FRED.html">
+     Download data from FRED
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/01-Lectures/06-Conditional-Heteroskedasticity/01-ARCH.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/06-Conditional-Heteroskedasticity/01-ARCH.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-heteroskedasticity">
+   Conditional heteroskedasticity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-time-series-model">
+     Gaussian time series model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#autoregressive-conditional-heteroskedasticity-arch-models">
+   Autoregressive conditional heteroskedasticity (ARCH) models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arch-1">
+     ARCH(1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arch-q">
+     ARCH(q)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimation">
+     Estimation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pure-volatility-models">
+       Pure volatility models
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-varying-mean">
+       Time-varying mean
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arch-models-in-python">
+     ARCH models in Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estimate-arch-1">
+       Estimate ARCH(1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#forecasting">
+       Forecasting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#specifying-model-for-the-conditional-mean">
+       Specifying model for the conditional mean
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>ARCH</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-heteroskedasticity">
+   Conditional heteroskedasticity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-time-series-model">
+     Gaussian time series model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#autoregressive-conditional-heteroskedasticity-arch-models">
+   Autoregressive conditional heteroskedasticity (ARCH) models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arch-1">
+     ARCH(1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arch-q">
+     ARCH(q)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimation">
+     Estimation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pure-volatility-models">
+       Pure volatility models
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-varying-mean">
+       Time-varying mean
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arch-models-in-python">
+     ARCH models in Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estimate-arch-1">
+       Estimate ARCH(1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#forecasting">
+       Forecasting
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#specifying-model-for-the-conditional-mean">
+       Specifying model for the conditional mean
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="arch">
+<h1>ARCH<a class="headerlink" href="#arch" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="conditional-heteroskedasticity">
+<h2>Conditional heteroskedasticity<a class="headerlink" href="#conditional-heteroskedasticity" title="Permalink to this headline">¶</a></h2>
+<p>Time series models are (largely) models of the temporal dependence observed in time series data</p>
+<ul class="simple">
+<li><p>the future depends of the past</p></li>
+<li><p>the past is informative about the future</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ p(z_{t+h} | z_{t}, z_{t-1}, \cdots) \neq p(z_{t+h})\]</div>
+<p>Central objective of time series modeling is characterizing temporal dependence, i.e. characterizing</p>
+<div class="math notranslate nohighlight">
+\[ p(z_{t+h} | z_{t}, z_{t-1}, \cdots) \]</div>
+<p>or characterizing some of its moments, such as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{E}(z_{t+h} | z_{t}, z_{t-1}, \cdots) = \operatorname{E}_{t}(z_{t+h})  \\
+\operatorname{var}(z_{t+h} | z_{t}, z_{t-1}, \cdots) = \operatorname{var}_{t}(z_{t+h})
+\end{align}
+\end{split}\]</div>
+<p>So far, we have seen models for the conditional mean.</p>
+<ul class="simple">
+<li><p>for example, in <span class="math notranslate nohighlight">\(z_t = \alpha z_{t-1} + \varepsilon_t\)</span> the conditional mean is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(z_{t+1} | z_{t}, z_{t-1}, \cdots) = \operatorname{E}(z_{t+1} | z_{t}) = \alpha z_t \]</div>
+<p>changes with <span class="math notranslate nohighlight">\(z_t\)</span></p>
+<p>However, the assumptions about <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> imply that <span class="math notranslate nohighlight">\(\operatorname{var}(z_{t+h} | z_{t}, z_{t-1}, \cdots) \)</span> is a constant (independent of <span class="math notranslate nohighlight">\(z_t, z_{t-1}, \cdots\)</span>)</p>
+<ul class="simple">
+<li><p>for example, in <span class="math notranslate nohighlight">\(z_t = \alpha z_{t-1} + \varepsilon_t\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{var}(z_{t+1} | z_{t}, z_{t-1}, \cdots) = \operatorname{var}(\varepsilon_{t+1} | z_{t}) = \operatorname{var}(\varepsilon_{t+1}) = \sigma^2
+\]</div>
+<p>independent of <span class="math notranslate nohighlight">\(z_t\)</span></p>
+<div class="section" id="gaussian-time-series-model">
+<h3>Gaussian time series model<a class="headerlink" href="#gaussian-time-series-model" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[
+p(\underbrace{z_1, z_2, \cdots, z_T}_{\mathbf{z}_1}, \underbrace{z_{T+1},\cdots, z_{T+h}}_{\mathbf{z}_2}) = p(\mathbf{z}_1, \mathbf{z}_2) \sim \mathcal{N}(\boldsymbol \mu, \mathbf{\Sigma}).
+\]</div>
+<p>Forecasts</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mathbf{z}_2 | \mathbf{z}_1) = \mathcal{N}(\boldsymbol \mu_2 + \mathbf{\Sigma}_{2 1} \mathbf{\Sigma}^{-1}_{1 1} (\mathbf{z}_1 - \boldsymbol \mu_1), \mathbf{\Sigma}_{2 2} - \mathbf{\Sigma}_{2 1}\mathbf{\Sigma}_{1 1}^{-1}\mathbf{\Sigma}_{1 2}) 
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{E}(\mathbf{z}_2 | \mathbf{z}_1) = \boldsymbol \mu_2 + \mathbf{\Sigma}_{2 1} \mathbf{\Sigma}^{-1}_{1 1} (\mathbf{z}_1 - \boldsymbol \mu_1)\;\;\;\;\;\)</span>    <strong>function of <span class="math notranslate nohighlight">\(\mathbf{z}_1\)</span></strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{cov}(\mathbf{z}_2 | \mathbf{z}_1) = \mathbf{\Sigma}_{2 2} - \mathbf{\Sigma}_{2 1}\mathbf{\Sigma}_{1 1}^{-1}\mathbf{\Sigma}_{1 2}\;\;\;\;\;\;\;\;\;\)</span>  <strong>constant</strong></p></li>
+</ul>
+<p>More generally, if</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\varepsilon_{t} = z_{t} - \operatorname{E}(z_{t} | z_{t-1}, z_{t-2}, \cdots) 
+\end{align}
+\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(\varepsilon_{t} | z_{t-1}, z_{t-2}, \cdots) = 0\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(\varepsilon^2_{t} | z_{t-1}, z_{t-2}, \cdots) = \operatorname{var}(\varepsilon_{t} | z_{t-1}, z_{t-2}, \cdots) = \operatorname{var}(z_{t} | z_{t-1}, z_{t-2}, \cdots)\]</div>
+<p>For <span class="math notranslate nohighlight">\(\operatorname{var}(z_{t} | z_{t-1}, z_{t-2}, \cdots)\)</span> to vary with <span class="math notranslate nohighlight">\((z_{t-1}, z_{t-2}, \cdots)\)</span>, we need <span class="math notranslate nohighlight">\(\operatorname{var}(\varepsilon_{t} | z_{t-1}, z_{t-2}, \cdots)\)</span> to be a function of <span class="math notranslate nohighlight">\((z_{t-1}, z_{t-2}, \cdots)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\operatorname{var}(\varepsilon_{t} | z_{t-1}, z_{t-2}, \cdots) &amp;= \operatorname{E}(\varepsilon^2_{t} | z_{t-1}, z_{t-2}, \cdots) = h(z_{t-1}, z_{t-2}, \cdots) = \sigma^2_t\\
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(h(.)\)</span> is non-negative</p>
+<p>and therefore</p>
+<div class="math notranslate nohighlight">
+\[ \operatorname{var}(z_{t} | z_{t-1}, z_{t-2}, \cdots) = \sigma^2_t\]</div>
+<p><strong>conditional heteroskedasticity</strong> models are models for <span class="math notranslate nohighlight">\(\sigma^2_t\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma^2_t = \sigma^2\)</span> - homoskedasticity</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2_t \neq \sigma^2\)</span> - heteroskedasticity</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="autoregressive-conditional-heteroskedasticity-arch-models">
+<h2>Autoregressive conditional heteroskedasticity (ARCH) models<a class="headerlink" href="#autoregressive-conditional-heteroskedasticity-arch-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arch-1">
+<h3>ARCH(1)<a class="headerlink" href="#arch-1" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\sigma^2_t = \omega_0 + \omega_1 \varepsilon^2_{t-1}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\omega_0&gt;0\)</span>, <span class="math notranslate nohighlight">\(\omega_1 \geq 0 \)</span> (for <span class="math notranslate nohighlight">\(\sigma^2_t\)</span> to be positive)</p></li>
+<li><p>large shocks (<span class="math notranslate nohighlight">\(\varepsilon_{t-1}\)</span>) are expected to be followed by other large shocks ( large <span class="math notranslate nohighlight">\(\operatorname{var}(\varepsilon_{t} | z_{t-1}, z_{t-2}, \cdots)\)</span> )</p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(\varepsilon_{t}\)</span> is innovation process (unpredictable)</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}_{t-1}(\varepsilon_{t}) = 0\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}_{t-1}(\varepsilon^2_{t}) = \operatorname{var}_{t-1}(\varepsilon_{t}) = \sigma_t^2= \omega_0 + \omega_1 \varepsilon^2_{t-1}\]</div>
+<p>and defining <span class="math notranslate nohighlight">\(\nu_t = \varepsilon^2_{t} - \operatorname{E}_{t-1}(\varepsilon^2_{t}) \)</span></p>
+<div class="math notranslate nohighlight">
+\[\varepsilon^2_{t}= \omega_0 + \omega_1 \varepsilon^2_{t-1} + \nu_t\]</div>
+<p>From</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(\varepsilon_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \cdots) = \operatorname{E}(\varepsilon_{t} | z_{t-1}, z_{t-2}, \cdots) = 0\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{var}(\varepsilon_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \cdots) = \operatorname{var}(\varepsilon_{t} | z_{t-1}, z_{t-2}, \cdots) = \omega_0 + \omega_1 \varepsilon^2_{t-1}\]</div>
+<p>follows</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(\varepsilon^2_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \cdots) = \operatorname{var}(\varepsilon_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \cdots) = \sigma_t^2= \omega_0 + \omega_1 \varepsilon^2_{t-1}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\varepsilon^2_{t}= \omega_0 + \omega_1 \varepsilon^2_{t-1} + \nu_t, \;\;\; \text{where} \;\; \nu_t = \varepsilon^2_{t} - \operatorname{E}(\varepsilon^2_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \cdots) \]</div>
+<div class="math notranslate nohighlight">
+\[
+\nu_t = \varepsilon^2_{t} - \operatorname{E}(\varepsilon^2_{t} | \varepsilon_{t-1}, \varepsilon_{t-2}, \cdots) = \sigma^2_t(\epsilon_t^2 - 1)
+\]</div>
+<div class="math notranslate nohighlight">
+\[\varepsilon^2_{t}= \omega_0 + \omega_1 \varepsilon^2_{t-1} + \nu_t\]</div>
+<ul class="simple">
+<li><p>AR(1) model for <span class="math notranslate nohighlight">\(\varepsilon^2_{t}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon^2_{t}\)</span> are positively autocorrelated (<span class="math notranslate nohighlight">\(\varepsilon_{t}\)</span> are uncorrelated)</p></li>
+<li><p>stationarity: <span class="math notranslate nohighlight">\(\omega_1&lt;1\)</span></p></li>
+<li><p>unconditional mean of <span class="math notranslate nohighlight">\(\varepsilon^2_{t}\)</span> :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \operatorname{E} \varepsilon^2_{t} = \frac{\omega_0}{1-\omega_1} \]</div>
+<ul class="simple">
+<li><p>unconditional variance of <span class="math notranslate nohighlight">\(\varepsilon_{t}\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{E} \varepsilon_{t} = 0 \Rightarrow \operatorname{var}(\varepsilon_{t}) = \operatorname{E} \varepsilon^2_{t} = \frac{\omega_0}{1-\omega_1} = \sigma^2\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\varepsilon_{t}\)</span> and <span class="math notranslate nohighlight">\(z_t\)</span> are <strong>stationary</strong> (unconditional moments are time-invariant)</p></li>
+<li><p>large (relative to <span class="math notranslate nohighlight">\(\sigma^2\)</span>) shocks expected after large (relative to <span class="math notranslate nohighlight">\(\sigma^2\)</span>) shocks</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \varepsilon^2_{t} - \sigma^2 = \omega_0 + \omega_1 (\varepsilon^2_{t-1} - \sigma^2) + \nu_t\]</div>
+</div>
+<div class="section" id="arch-q">
+<h3>ARCH(q)<a class="headerlink" href="#arch-q" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\sigma^2_t = \omega_0 + \sum_{i}^{q }\omega_i \varepsilon^2_{t-i}\]</div>
+<p>as before</p>
+<div class="math notranslate nohighlight">
+\[\varepsilon^2_{t}= \omega_0 + \sum_{i}^{q}\omega_i \varepsilon^2_{t-i} + \nu_t\]</div>
+<ul class="simple">
+<li><p>AR(q) model for <span class="math notranslate nohighlight">\(\varepsilon^2_{t}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="estimation">
+<h3>Estimation<a class="headerlink" href="#estimation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="pure-volatility-models">
+<h4>Pure volatility models<a class="headerlink" href="#pure-volatility-models" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[ z_t = \mu +  \varepsilon_t\]</div>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[e_t \overset{iid}{\sim} (0, 1)\]</div>
+<p>Then, we can write</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\varepsilon_t &amp;= \sigma_t e_t\\\\
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\varepsilon_t &amp;= \sigma_t \epsilon_t\\\\
+&amp; \text{and}\\\\
+\frac{z_t}{\sigma_t} &amp;=\epsilon_t 
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(e_t \overset{iid}{\sim} \mathcal{N}(0, 1)\)</span> the conditional density of <span class="math notranslate nohighlight">\(z_t\)</span> is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+z_t |z_{t-1}, \cdots, z_1 \sim \mathcal{N}(\mu, \sigma^2_t)
+\]</div>
+<p>because at time <span class="math notranslate nohighlight">\(t-1\)</span>, <span class="math notranslate nohighlight">\(\sigma_t\)</span> is known, i.e. a constant</p>
+<ul class="simple">
+<li><p>and the conditional log-likelihood of <span class="math notranslate nohighlight">\(z_t\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\ell_t(\boldsymbol \theta) = -\frac{1}{2}\operatorname{ln}2\pi - \frac{1}{2}\operatorname{ln}\sigma_t - \frac{z_t-\mu}{2 \sigma_t^2}
+\]</div>
+<ul class="simple">
+<li><p>the likelihood of <span class="math notranslate nohighlight">\(\{z_1, z_2, \cdots, z_{T}\}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\ell(\boldsymbol \theta | \mathbf{z}) = \sum_{t=1}^{T} \ell_t(\boldsymbol \theta)  \]</div>
+</div>
+<div class="section" id="time-varying-mean">
+<h4>Time-varying mean<a class="headerlink" href="#time-varying-mean" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[ z_t = \mu_t +  \varepsilon_t\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu_t = \operatorname{E}_{t-1} z_t\)</span></p></li>
+<li><p>for example</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mu_t = \alpha_0 + \alpha_1 z_{t-1}\]</div>
+<ul class="simple">
+<li><p>conditional log-likelihood of <span class="math notranslate nohighlight">\(z_t\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\ell_t(\boldsymbol \theta) = -\frac{1}{2}\operatorname{ln}2\pi - \frac{1}{2}\operatorname{ln}\sigma_t - \frac{z_t-\mu_t}{2 \sigma_t^2}
+\]</div>
+<ul class="simple">
+<li><p>the likelihood of <span class="math notranslate nohighlight">\(\{z_1, z_2, \cdots, z_{T}\}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\ell(\boldsymbol \theta | \mathbf{z}) = \sum_{t=1}^{T} \ell_t(\boldsymbol \theta)  \]</div>
+</div>
+</div>
+<div class="section" id="arch-models-in-python">
+<h3>ARCH models in Python<a class="headerlink" href="#arch-models-in-python" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arch</span> <span class="kn">import</span> <span class="n">arch_model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s1">&#39;FCI_EIKON_long.db&#39;</span><span class="p">)</span>
+
+<span class="n">query</span> <span class="o">=</span><span class="s1">&#39;SELECT * FROM &quot;Eikon-daily&quot; WHERE variable==&quot;STOXXE&quot;&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">euro_stoxx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">euro_stoxx</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;EURO STOXX INDEX&#39;</span><span class="p">]</span>
+
+<span class="n">euro_stoxx_returns</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">euro_stoxx</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()[</span><span class="s1">&#39;2004&#39;</span><span class="p">:]</span>
+<span class="n">euro_stoxx_returns</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;EURO STOXX Returns&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">euro_stoxx_returns</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;EURO STOXX Returns&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/01-ARCH_7_0.png" src="../../_images/01-ARCH_7_0.png" />
+</div>
+</div>
+<div class="section" id="estimate-arch-1">
+<h4>Estimate ARCH(1)<a class="headerlink" href="#estimate-arch-1" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arch1</span> <span class="o">=</span> <span class="n">arch_model</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">euro_stoxx_returns</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">vol</span><span class="o">=</span><span class="s1">&#39;ARCH&#39;</span><span class="p">)</span>
+<span class="n">arch1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>Constant Mean</strong>(<strong>constant: </strong>yes,
+<strong>no. of exog: </strong>0,
+<strong>volatility: </strong>ARCH(p: 1),
+<strong>distribution: </strong>Normal distribution,
+<strong>ID: </strong> 0x2a8f1847f70)</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">arch1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">update_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
+            Current function value: 7748.798771475143
+            Iterations: 6
+            Function evaluations: 33
+            Gradient evaluations: 6
+                      Constant Mean - ARCH Model Results                      
+==============================================================================
+Dep. Variable:     EURO STOXX Returns   R-squared:                       0.000
+Mean Model:             Constant Mean   Adj. R-squared:                  0.000
+Vol Model:                       ARCH   Log-Likelihood:               -7748.80
+Distribution:                  Normal   AIC:                           15503.6
+Method:            Maximum Likelihood   BIC:                           15523.0
+                                        No. Observations:                 4749
+Date:                Mon, Apr 04 2022   Df Residuals:                     4748
+Time:                        17:29:15   Df Model:                            1
+                                 Mean Model                                 
+============================================================================
+                 coef    std err          t      P&gt;|t|      95.0% Conf. Int.
+----------------------------------------------------------------------------
+mu             0.0424  1.852e-02      2.288  2.212e-02 [6.082e-03,7.869e-02]
+                            Volatility Model                            
+========================================================================
+                 coef    std err          t      P&gt;|t|  95.0% Conf. Int.
+------------------------------------------------------------------------
+omega          1.2266  7.797e-02     15.731  9.201e-56 [  1.074,  1.379]
+alpha[1]       0.2872  4.632e-02      6.201  5.596e-10 [  0.196,  0.378]
+========================================================================
+
+Covariance estimator: robust
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/01-ARCH_11_0.png" src="../../_images/01-ARCH_11_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="forecasting">
+<h4>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">reindex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h.01</th>
+      <th>h.02</th>
+      <th>h.03</th>
+      <th>h.04</th>
+      <th>h.05</th>
+      <th>h.06</th>
+      <th>h.07</th>
+      <th>h.08</th>
+      <th>h.09</th>
+      <th>h.10</th>
+      <th>h.11</th>
+      <th>h.12</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-03-30</th>
+      <td>1.672126</td>
+      <td>1.706939</td>
+      <td>1.716939</td>
+      <td>1.719811</td>
+      <td>1.720636</td>
+      <td>1.720873</td>
+      <td>1.720941</td>
+      <td>1.720961</td>
+      <td>1.720967</td>
+      <td>1.720968</td>
+      <td>1.720969</td>
+      <td>1.720969</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span><span class="o">.</span><span class="n">mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h.01</th>
+      <th>h.02</th>
+      <th>h.03</th>
+      <th>h.04</th>
+      <th>h.05</th>
+      <th>h.06</th>
+      <th>h.07</th>
+      <th>h.08</th>
+      <th>h.09</th>
+      <th>h.10</th>
+      <th>h.11</th>
+      <th>h.12</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-03-30</th>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+      <td>0.042386</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arch.univariate</span> <span class="kn">import</span> <span class="n">ARCH</span>
+
+<span class="n">arch7</span> <span class="o">=</span> <span class="n">arch1</span>
+<span class="n">arch7</span><span class="o">.</span><span class="n">volatility</span> <span class="o">=</span> <span class="n">ARCH</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">arch7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>Constant Mean</strong>(<strong>constant: </strong>yes,
+<strong>no. of exog: </strong>0,
+<strong>volatility: </strong>ARCH(p: 7),
+<strong>distribution: </strong>Normal distribution,
+<strong>ID: </strong> 0x2a8f1847f70)</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">arch7</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">update_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
+            Current function value: 7018.71525122455
+            Iterations: 19
+            Function evaluations: 216
+            Gradient evaluations: 19
+</pre></div>
+</div>
+<img alt="../../_images/01-ARCH_16_1.png" src="../../_images/01-ARCH_16_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="specifying-model-for-the-conditional-mean">
+<h4>Specifying model for the conditional mean<a class="headerlink" href="#specifying-model-for-the-conditional-mean" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dcpi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;HICP_unadj_ANR_clean.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">infl_pt</span> <span class="o">=</span> <span class="n">dcpi</span><span class="p">[[</span><span class="s1">&#39;PT&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">infl_pt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Inflation, PT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Inflation, PT&#39;}, xlabel=&#39;date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/01-ARCH_19_1.png" src="../../_images/01-ARCH_19_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arch.univariate</span> <span class="kn">import</span> <span class="n">ARX</span>
+
+<span class="n">arch_ar_model</span> <span class="o">=</span> <span class="n">ARX</span><span class="p">(</span><span class="n">infl_pt</span><span class="p">,</span>
+                    <span class="n">constant</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+                    <span class="n">volatility</span><span class="o">=</span><span class="n">ARCH</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1">#arch_ar_model.volatility = ARCH(p=1) # to add volatility if not specified above</span>
+
+<span class="n">arch_ar_model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>AR</strong>(<strong>constant: </strong>yes,
+<strong>lags: </strong>1, 12,
+<strong>no. of exog: </strong>0,
+<strong>volatility: </strong>ARCH(p: 1),
+<strong>distribution: </strong>Normal distribution,
+<strong>ID: </strong> 0x1f7a54a55d0)</div></div>
+</div>
+<div class="math notranslate nohighlight">
+\[z_t = \alpha + \alpha_1 z_{t-1} +  \alpha_{12} z_{t-12} + \varepsilon_t \;\;\;\;\; \varepsilon_t \sim \text{ARCH(1)}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_arch_ar_model</span> <span class="o">=</span> <span class="n">arch_ar_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">update_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_arch_ar_model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                           AR - ARCH Model Results                            
+==============================================================================
+Dep. Variable:                     PT   R-squared:                       0.920
+Mean Model:                        AR   Adj. R-squared:                  0.919
+Vol Model:                       ARCH   Log-Likelihood:               -147.565
+Distribution:                  Normal   AIC:                           305.130
+Method:            Maximum Likelihood   BIC:                           323.462
+                                        No. Observations:                  289
+Date:                Sun, Apr 03 2022   Df Residuals:                      286
+Time:                        23:43:26   Df Model:                            3
+                                 Mean Model                                
+===========================================================================
+                 coef    std err          t      P&gt;|t|     95.0% Conf. Int.
+---------------------------------------------------------------------------
+Const          0.0990  4.107e-02      2.411  1.590e-02  [1.854e-02,  0.180]
+PT[1]          1.0056  1.951e-02     51.545      0.000    [  0.967,  1.044]
+PT[12]        -0.0646  1.999e-02     -3.232  1.227e-03 [ -0.104,-2.544e-02]
+                              Volatility Model                             
+===========================================================================
+                 coef    std err          t      P&gt;|t|     95.0% Conf. Int.
+---------------------------------------------------------------------------
+omega          0.1288  1.829e-02      7.039  1.930e-12  [9.291e-02,  0.165]
+alpha[1]       0.2623      0.142      1.853  6.389e-02 [-1.515e-02,  0.540]
+===========================================================================
+
+Covariance estimator: robust
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ar_model</span> <span class="o">=</span> <span class="n">ARX</span><span class="p">(</span><span class="n">infl_pt</span><span class="p">,</span>
+                    <span class="n">constant</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+
+<span class="n">res_ar_model</span> <span class="o">=</span> <span class="n">ar_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">update_freq</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_ar_model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     AR - Constant Variance Model Results                     
+==============================================================================
+Dep. Variable:                     PT   R-squared:                       0.920
+Mean Model:                        AR   Adj. R-squared:                  0.920
+Vol Model:          Constant Variance   Log-Likelihood:               -153.943
+Distribution:                  Normal   AIC:                           315.887
+Method:            Maximum Likelihood   BIC:                           330.553
+                                        No. Observations:                  289
+Date:                Sun, Apr 03 2022   Df Residuals:                      286
+Time:                        23:43:44   Df Model:                            3
+                                  Mean Model                                  
+==============================================================================
+                 coef    std err          t      P&gt;|t|        95.0% Conf. Int.
+------------------------------------------------------------------------------
+Const          0.1315  4.353e-02      3.020  2.531e-03     [4.613e-02,  0.217]
+PT[1]          0.9882  1.919e-02     51.487      0.000       [  0.951,  1.026]
+PT[12]        -0.0574  1.891e-02     -3.037  2.386e-03 [-9.451e-02,-2.038e-02]
+                            Volatility Model                            
+========================================================================
+                 coef    std err          t      P&gt;|t|  95.0% Conf. Int.
+------------------------------------------------------------------------
+sigma2         0.1699  1.918e-02      8.859  8.041e-19 [  0.132,  0.207]
+========================================================================
+
+Covariance estimator: White&#39;s Heteroskedasticity Consistent Estimator
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span> <span class="o">=</span> <span class="n">res_arch_ar_model</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">reindex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">horizon</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">forecasts</span><span class="o">.</span><span class="n">mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h.1</th>
+      <th>h.2</th>
+      <th>h.3</th>
+      <th>h.4</th>
+      <th>h.5</th>
+      <th>h.6</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>3.498751</td>
+      <td>3.610983</td>
+      <td>3.736772</td>
+      <td>3.82449</td>
+      <td>3.983794</td>
+      <td>4.034121</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>h.1</th>
+      <th>h.2</th>
+      <th>h.3</th>
+      <th>h.4</th>
+      <th>h.5</th>
+      <th>h.6</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>0.193844</td>
+      <td>0.375625</td>
+      <td>0.555719</td>
+      <td>0.736862</td>
+      <td>0.91979</td>
+      <td>1.104713</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Lectures\06-Conditional-Heteroskedasticity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="00-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Conditional Heteroskedasticity</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../03-Assignments/HW0/main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 0</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
