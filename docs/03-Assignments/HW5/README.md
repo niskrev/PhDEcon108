@@ -11,7 +11,7 @@ See notebook [HW5-part-1.ipynb](./HW5-part-1.ipynb)
 
 ### Part 2
 
-Write a python module (a text file with .py extension) which runs the simulation and prints on the screen the results for estimation biases and MSEs for a given set of values for: $\alpha_0$, $\alpha_1$, $\sigma^2$, `n_rep`, and `n_obs`. That is, you should be able to execute
+Write a python script (a text file with .py extension) which runs the simulation and prints on the screen the results for estimation biases and MSEs for a given set of values for: $\alpha_0$, $\alpha_1$, $\sigma^2$, `n_rep`, and `n_obs`. That is, you should be able to execute
 
 ```
 python MC_ar1.py 1 0.5 1.5 500 100

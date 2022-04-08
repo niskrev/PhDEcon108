@@ -30,6 +30,7 @@ Please note that the following outline is preliminary and may be modified if nee
 * Nonstationarity
     - Unit root tests
     - ARIMA models
+* Conditional heteroskedasticity
     - ARCH, GARCH models
 * VAR models
     - estimation

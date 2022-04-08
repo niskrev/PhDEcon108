@@ -33,6 +33,16 @@ parts:
       title: 3. ARMA models
     - file: 01-Lectures/04-ARMA/04-Forecasting
       title: 3. Forecasting with ARMA models
+  - file: 01-Lectures/05-Nonstationarity/00-Introduction
+    sections:
+    - file: 01-Lectures/05-Nonstationarity/01-Unit-root
+      title: 1. Non-stationarity and unit root processes
+  - file: 01-Lectures/06-Conditional-Heteroskedasticity/00-Introduction
+    sections:
+    - file: 01-Lectures/06-Conditional-Heteroskedasticity/01-ARCH
+      title: 1. ARCH processes
+  #  - file: 01-Lectures/06-Conditional-Heteroskedasticity/02-GARCH
+  #    title: 2. GARCH processes
 - caption: Assignments
   chapters:
   - file: 03-Assignments/HW0/main
@@ -62,10 +72,10 @@ parts:
     sections:
     - file: 03-Assignments/HW5/README
     - file: 03-Assignments/HW5/HW5-part-1
-#  - file: 03-Assignments/HW6/main
+  - file: 03-Assignments/HW6/README
 #    sections:
 #    - file: 03-Assignments/HW6/README
-#  - file: 03-Assignments/HW7/main
+  - file: 03-Assignments/HW7/README
 #    sections:
 #    - file: 03-Assignments/HW7/README
 #  - file: 03-Assignments/HW8/main
