@@ -31,5 +31,6 @@ What you need to do:
 (3) Let me know what you chose and what example you will present with it (should be using a data set that is not part of the package)
 
 (4) Develop an example in a jupyter notebook within a folder containing all necessary files (data, python modules you wrote, etc) for it to be self-contained. That includes an environment file used to create a conda environment with the package you illustrate and all its dependencies. Anyone with a conda installation of python should be able to create a new conda environment in which to execute your notebook/other codes and get the same results.
+__The notebook should be self-contained as well -- the reader should be able to easily follow what you do from the notebook alone (that reader could be you in 2 months). Therefore, provide some general info about the package you chose, and for what particularly you use it in your example. Describe your data, and document each step in the subsequent analysis, especially when you use functionality provided by the chosen package. Summarize your conclusions. This is not a research paper -- just documenting your analysis!__
 
 (5) Submit as a link to a github repository in your github page.
