@@ -1,5 +1,7 @@
 # Final project
 
+__deadline: May 27th__
+
 ## Description
 The final project is to replicate, using Python, a published article containing interesting time series analysis.
 

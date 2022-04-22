@@ -1,5 +1,7 @@
 # Midterm project
 
+__deadline: April 29th__
+
 ## Description
 Develop and present an example of time series analysis using an open-source python package specialized to time series or offering interesting functionality relevant for working with time series data.
 
