@@ -1,0 +1,4 @@
+# Multivariate models
+
+:::{tableofcontents}
+:::

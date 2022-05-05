@@ -1,0 +1,1791 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multivariate time series</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/07-Multivariate/01-VAR.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 0" href="../../03-Assignments/HW0/main.html" />
+    <link rel="prev" title="Multivariate models" href="00-Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/02-Gaussian-MLE.html">
+     2. Maximum likelihood estimation of Gaussian models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/03-ARMA-part-3.html">
+     3. ARMA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/04-Forecasting.html">
+     3. Forecasting with ARMA models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05-Nonstationarity/00-Introduction.html">
+   Non-stationarity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Nonstationarity/01-Unit-root.html">
+     1. Non-stationarity and unit root processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06-Conditional-Heteroskedasticity/00-Introduction.html">
+   Conditional Heteroskedasticity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Conditional-Heteroskedasticity/01-ARCH.html">
+     1. ARCH processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Introduction.html">
+   Multivariate models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1. VARs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part1.html">
+     HW 2 Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part2.html">
+     HW 2 Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part3.html">
+     HW 2 Part 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     Readme HW3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/HW3-part2-2.html">
+     HW 3 Part 2-2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW4/main.html">
+   Homework 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/README.html">
+     README HW4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-1.html">
+     Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-2.html">
+     Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW5/main.html">
+   Homework 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/README.html">
+     README HW5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/HW5-part-1.html">
+     HW 5 part 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW6/README.html">
+   Homework 6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW7/README.html">
+   Homework 7
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/04-Python-working-with-paths-and-files.html">
+     Paths
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/03-Multivariate-Normal.html">
+     Multivariate Normal in Numpy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/03-Conda/Resources.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   1. APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/01-ECB.html">
+     Download data from ECB’s SDW
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/02-Eurostat.html">
+     Download data from EUROSTAT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/03-FRED.html">
+     Download data from FRED
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/01-Lectures/07-Multivariate/01-VAR.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/07-Multivariate/01-VAR.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stationarity">
+   Stationarity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#varma-p-q-model">
+   VARMA(p, q) model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#var-model">
+   VAR§ model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Stationarity
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#var-1-representation-of-var-process">
+       VAR(1) representation of VAR§ process
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eigenvalue-decomposition">
+     Eigenvalue decomposition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#var-1-process">
+       VAR(1) process
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-var-parameters-to-moments-of-mathbf-z-t">
+       From VAR parameters to moments of
+       <span class="math notranslate nohighlight">
+        \(\mathbf{z}_t\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-moments-of-mathbf-z-t-to-var-parameters">
+       From moments of
+       <span class="math notranslate nohighlight">
+        \(\mathbf{z}_t\)
+       </span>
+       to VAR parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#non-zero-mean-operatorname-e-mathbf-z-t-mathbf-mu-neq-0">
+       Non-zero mean
+       <span class="math notranslate nohighlight">
+        \(\operatorname{E} \mathbf{z}_t = \mathbf{\mu} \neq 0\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation">
+   Estimation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ols-estimation">
+     OLS estimation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asymptotic-distribution">
+       Asymptotic distribution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choice-of-p">
+     Choice of
+     <span class="math notranslate nohighlight">
+      \(p\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting">
+   Forecasting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impulse-response-functions">
+     Impulse response functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#orthogonalized-impulse-response-functions">
+     (orthogonalized ) impulse response functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-var-to-structural-var-and-vice-versa">
+       From VAR§ to Structural VAR§ (and vice versa)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#identification">
+       Identification
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#types-of-identifying-restrictions">
+       Types of identifying restrictions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#short-run-restrictions">
+       Short-run restrictions:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#long-run-restrictions">
+       Long-run restrictions:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sign-restrictions">
+       Sign restrictions:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Multivariate time series</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stationarity">
+   Stationarity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#varma-p-q-model">
+   VARMA(p, q) model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#var-model">
+   VAR§ model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Stationarity
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#var-1-representation-of-var-process">
+       VAR(1) representation of VAR§ process
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eigenvalue-decomposition">
+     Eigenvalue decomposition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#var-1-process">
+       VAR(1) process
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-var-parameters-to-moments-of-mathbf-z-t">
+       From VAR parameters to moments of
+       <span class="math notranslate nohighlight">
+        \(\mathbf{z}_t\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-moments-of-mathbf-z-t-to-var-parameters">
+       From moments of
+       <span class="math notranslate nohighlight">
+        \(\mathbf{z}_t\)
+       </span>
+       to VAR parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#non-zero-mean-operatorname-e-mathbf-z-t-mathbf-mu-neq-0">
+       Non-zero mean
+       <span class="math notranslate nohighlight">
+        \(\operatorname{E} \mathbf{z}_t = \mathbf{\mu} \neq 0\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation">
+   Estimation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ols-estimation">
+     OLS estimation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asymptotic-distribution">
+       Asymptotic distribution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choice-of-p">
+     Choice of
+     <span class="math notranslate nohighlight">
+      \(p\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting">
+   Forecasting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impulse-response-functions">
+     Impulse response functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#orthogonalized-impulse-response-functions">
+     (orthogonalized ) impulse response functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#from-var-to-structural-var-and-vice-versa">
+       From VAR§ to Structural VAR§ (and vice versa)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#identification">
+       Identification
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#types-of-identifying-restrictions">
+       Types of identifying restrictions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#short-run-restrictions">
+       Short-run restrictions:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#long-run-restrictions">
+       Long-run restrictions:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sign-restrictions">
+       Sign restrictions:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="multivariate-time-series">
+<h1>Multivariate time series<a class="headerlink" href="#multivariate-time-series" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>univariate - temporal dependence between components of a single series</p></li>
+<li><p>multivariate - temporal (inter)-dependence between components of different series</p></li>
+</ul>
+<p><strong>Definition</strong>: A time series process is a sequence of random <strong>vectors</strong> indexed by time:</p>
+<div class="math notranslate nohighlight">
+\[
+\{\mathbf{z}_t: t =~ ..., -2, -1, ~0,~1, ~2,~ ... \} = \{\mathbf{z}_t \}_{t=-\infty}^{\infty} \tag{1}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{z}_t\)</span> is <span class="math notranslate nohighlight">\(n \geq 1\)</span>-dimensional vector</p>
+<div class="section" id="stationarity">
+<h2>Stationarity<a class="headerlink" href="#stationarity" title="Permalink to this headline">¶</a></h2>
+<p><strong>Definition</strong>:  The process <span class="math notranslate nohighlight">\(\{\mathbf{z}_t\}_{t=-\infty}^{\infty}\)</span> is <em><strong>covariance stationary</strong></em> if the first two moments of the joint distribution <u>exist</u> and are <u>time-invariant</u></p>
+<ul class="simple">
+<li><p>mean</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\operatorname{E}\mathbf{z}_t = \mathbf{\mu}_t = \begin{bmatrix} \mu_{1t} \\ \mu_{2t} \\\vdots  \\\mu_{nt} \end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>covariance</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{cov}(\mathbf{z}_t, \mathbf{z}_{t-k})  &amp; = \operatorname{E}(\mathbf{z}_t - \mathbf{\mu}_t)(\mathbf{z}_{t-k} - \mathbf{\mu}_{t-k} )'\\\\ &amp; = \Gamma(t, t-k) =
+\begin{pmatrix}
+\gamma_{11}(t, t-k) &amp;  \cdots &amp; \gamma_{1n}(t, t-k)\\
+\vdots &amp;  \ddots &amp;  \vdots\\ 
+\gamma_{n1}(t, t-k) &amp;   \cdots &amp; \gamma_{nn}(t, t-k)\\
+\end{pmatrix}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{\mathbf{z}_t\}_{t=-\infty}^{\infty}\)</span> is <em><strong>covariance stationary</strong></em> if</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{\mu}_t &amp; = \mathbf{\mu}
+\\
+\Gamma(t, t-k) &amp; = \Gamma(k) 
+\end{align}
+\end{split}\]</div>
+<p>are <strong>not</strong> functions of <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><strong>Note</strong>:</p>
+<div class="math notranslate nohighlight">
+\[    
+    \Gamma(k) = \operatorname{cov}(\mathbf{z}_t, \mathbf{z}_{t-k}) = \operatorname{cov}(\mathbf{z}_{t+k}, \mathbf{z}_{t}) \neq 
+    \operatorname{cov}(\mathbf{z}_{t}, \mathbf{z}_{t+k}) = \Gamma(-k)
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Gamma(k)\)</span> is <strong>not</strong> symmetric (unless <span class="math notranslate nohighlight">\(k=0\)</span>)</p></li>
+<li><p>but since <span class="math notranslate nohighlight">\(\operatorname{cov}(\mathbf{z}_{t+k}, \mathbf{z}_{t})' = \operatorname{cov}(\mathbf{z}_{t}, \mathbf{z}_{t+k})\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[    
+    \Gamma(k) = \Gamma(-k)'
+\]</div>
+<p>follows from (set <span class="math notranslate nohighlight">\(\mathbf{\mu}=0\)</span> w.l.g.)</p>
+<div class="math notranslate nohighlight">
+\[\Gamma(k) =\operatorname{cov}(\mathbf{z}_{t+k}, \mathbf{z}_{t}) = \operatorname{E}(\mathbf{z}_{t+k} \mathbf{z}_{t}')= \operatorname{E}(\mathbf{z}_{t}\mathbf{z}_{t+k}')' = \left(\operatorname{cov}(\mathbf{z}_{t}, \mathbf{z}_{t+k}) \right)'=\Gamma(-k)' 
+\]</div>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{Z}_T =  \begin{bmatrix}\mathbf{z}_{1}\\ \mathbf{z}_{2}\\ \vdots\\ \mathbf{z}_{T}\end{bmatrix}\end{split}\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\operatorname{E}(\mathbf{Z}_T) =  \begin{bmatrix}\mathbf{\mu}\\ \mathbf{\mu}\\ \vdots\\ \mathbf{\mu}\end{bmatrix},\;\;\;\;\;
+\operatorname{cov}(\mathbf{Z}_T) =  
+\begin{pmatrix}
+\Gamma(0) &amp;  \Gamma(1)' &amp; \cdots &amp; \Gamma(T-1)'\\
+\Gamma(1) &amp; \Gamma(0) &amp; \cdots &amp; \Gamma(T-2)'\\
+\vdots &amp;  \vdots &amp;  \vdots&amp;  \vdots\\ 
+\Gamma(T-1) &amp; \Gamma(T-2) &amp; \cdots &amp; \Gamma(0)\\
+\end{pmatrix} \;\;\; (\text{symmetric block Toeplitz matrix})
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Multivariate Gaussian tme series</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \mathbf{Z}_T \sim \mathcal{N} \left(\boldsymbol \mu, \boldsymbol \Sigma \right) \]</div>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix}\mathbf{z}_{1}\\ \mathbf{z}_{2}\\ \vdots\\ \mathbf{z}_{T}\end{bmatrix}
+\sim \mathcal{N} \left(
+\begin{bmatrix}\mathbf{\mu}\\ \mathbf{\mu}\\ \vdots\\ \mathbf{\mu}\end{bmatrix},
+\begin{pmatrix}
+\Gamma(0) &amp;  \Gamma(1)' &amp; \cdots &amp; \Gamma(T-1)'\\
+\Gamma(1) &amp; \Gamma(0) &amp; \cdots &amp; \Gamma(T-2)'\\
+\vdots &amp;  \vdots &amp;  \vdots&amp;  \vdots\\ 
+\Gamma(T-1) &amp; \Gamma(T-2) &amp; \cdots &amp; \Gamma(0)\\
+\end{pmatrix}
+\right)
+\end{split}\]</div>
+<p>Number of unique parameters</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\Gamma(0) &amp; : n(n+1)/2 \\
+    &amp;+\\
+\Gamma(1) &amp; : n^2 \\
+    &amp;+\\
+ &amp; \vdots \\
+     &amp;+\\
+\Gamma(T-1) &amp; : n^2
+\end{align}
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(n = 5, T = 200 =&gt; 4990\)</span></p>
+<ul class="simple">
+<li><p>time series <strong>models</strong> allow to represent temporal (inter)dependence parsimoniously</p></li>
+<li><p>by imposing restrictions - reducing the number of unique parameters</p></li>
+<li><p>making estimation feasible</p></li>
+</ul>
+</div>
+<div class="section" id="varma-p-q-model">
+<h2>VARMA(p, q) model<a class="headerlink" href="#varma-p-q-model" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+ A(L) \mathbf{z}_t &amp;=  B(L) \boldsymbol \varepsilon_t, \;\;\;\;\; \boldsymbol \varepsilon_t \sim \operatorname{WN} \left( 0, \;\mathbf{\Sigma}\right) \;\;\; (\text{vector white noise, i.e. } \operatorname{E}(\boldsymbol \varepsilon_t, \boldsymbol \varepsilon_{t-k}') = 0)\\\\
+ A(L) &amp;=  I  -  A_1 L - \cdots -  A_p L^p \\
+ B(L) &amp;=  I  +  B_1 L + \cdots +  B_q L^q \\
+\end{align}
+\end{split}\]</div>
+<p>zero auto and cross-auto correlations of the innovations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ A_i = 
+\begin{pmatrix}
+a_{11, i} &amp;  \cdots &amp; a_{1n, i}\\
+\vdots &amp;  \ddots &amp;  \vdots\\ 
+a_{n1, i} &amp;  \cdots &amp; a_{nn, i}\\
+\end{pmatrix}, \;\;\;
+ B_j = 
+\begin{pmatrix}
+b_{11, j} &amp;  \cdots &amp; b_{1n, j}\\
+\vdots &amp;  \ddots &amp;  \vdots\\ 
+b_{n1, j} &amp;  \cdots &amp; b_{nn, j}\\
+\end{pmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n^2(p+q) + n(n+1)/2\)</span> unknown parameters</p></li>
+</ul>
+<ul class="simple">
+<li><p>in general, difficult to estimate</p>
+<ul>
+<li><p>not all parameters are identified</p></li>
+<li><p>have to use numerical optimization</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="var-model">
+<h2>VAR§ model<a class="headerlink" href="#var-model" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\mathbf{z}_t =  A_1 \mathbf{z}_{t-1} + \cdots +  A_p \mathbf{z}_{t-p} +  \boldsymbol \varepsilon_t, \;\;\;\;\; \boldsymbol \varepsilon_t \sim \operatorname{WN} \left( 0, \;\mathbf{\Sigma}\right)\\\\
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+ A(L) \mathbf{z}_t &amp;=  \boldsymbol \varepsilon_t, \;\;\;\;\; \boldsymbol \varepsilon_t \sim \operatorname{WN} \left( 0, \;\mathbf{\Sigma}\right)\\\\
+ A(L) =  I &amp; -  A_1 L - \cdots -  A_p L^p \\
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{ij}\)</span> captures all contemporaneous (time <span class="math notranslate nohighlight">\(t\)</span>) relationships between <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol \{A_k\}_{ij}\)</span> captures all dynamic interactions between <span class="math notranslate nohighlight">\(z_{it}\)</span> and <span class="math notranslate nohighlight">\(z_{j, t-k}\)</span></p></li>
+</ul>
+<div class="section" id="id1">
+<h3>Stationarity<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>VAR§ is <strong>stationary</strong> if all roots of the equation</p>
+<div class="math notranslate nohighlight">
+\[| A(x)| = | I -  A_1 x - \cdots -  A_p x^p|=0\]</div>
+<p>are outside the unit circle (<span class="math notranslate nohighlight">\(|x|&gt;1\)</span>)</p>
+<div class="section" id="var-1-representation-of-var-process">
+<h4>VAR(1) representation of VAR§ process<a class="headerlink" href="#var-1-representation-of-var-process" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{Z}_{t} =  \boldsymbol \Phi \mathbf{Z}_{t-1}  +  \boldsymbol E_t
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\underset{\mathbf{Z}_t}{\underbrace{\left[\begin{array}{c}
+\mathbf{z}_{t}\\
+\mathbf{z}_{t-1}\\
+\vdots\\
+\mathbf{z}_{t-p+1}
+\end{array}\right]}}
+=
+\underset{ \boldsymbol \Phi}{\underbrace{\left[\begin{array}{cccccccc}
+ A_1 &amp;  A_2 &amp; \cdots &amp;  A_{p-1} &amp;  A_p\\
+ I &amp;  0 &amp; \cdots &amp; 0 &amp; 0\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0  &amp; 0  &amp; \cdots &amp;  I &amp; 0
+\end{array}\right]}}
+\underset{\mathbf{Z}_{t-1}}{\underbrace{\left[\begin{array}{c}
+\mathbf{z}_{t-1}\\
+\mathbf{z}_{t-2}\\
+\vdots\\
+\mathbf{z}_{t-p}
+\end{array}\right]}}
++
+\underset{ \boldsymbol E_{t}}{\underbrace{\left[\begin{array}{c}
+ \varepsilon_{t}\\
+0\\
+\vdots\\
+0
+\end{array}\right]}}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \boldsymbol \Phi\)</span> - companion matrix</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\mathbf{Z}_{t}\)</span> is stationary if all roots <span class="math notranslate nohighlight">\(x\)</span> of</p>
+<div class="math notranslate nohighlight">
+\[|\boldsymbol I - \boldsymbol \Phi x|=0\]</div>
+<p>are outside the unit circle (<span class="math notranslate nohighlight">\(|x|&gt;1\)</span>), which is equivalent to all solutions of</p>
+<div class="math notranslate nohighlight">
+\[|\boldsymbol I \lambda - \boldsymbol \Phi|=0\]</div>
+<p>being <span class="math notranslate nohighlight">\(|\lambda|&lt;1\)</span>, i.e. all <strong>eigenvalues</strong> of <span class="math notranslate nohighlight">\(\boldsymbol \Phi\)</span> being less than 1 in absolute value.</p>
+</div>
+</div>
+<div class="section" id="eigenvalue-decomposition">
+<h3>Eigenvalue decomposition<a class="headerlink" href="#eigenvalue-decomposition" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Lambda\)</span> - diagonal matrix of the eigenvalues of <span class="math notranslate nohighlight">\( A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( V\)</span> - matrix of the eigenvectors of <span class="math notranslate nohighlight">\( A\)</span></p></li>
+</ul>
+<p>from</p>
+<div class="math notranslate nohighlight">
+\[  A  V =  V  \Lambda \]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+ A &amp; =  V  \Lambda  V^{-1}\\
+ A^2 &amp; =  A  A =  V  \Lambda  V^{-1}  V  \Lambda  V^{-1} =  V  \Lambda^2  V^{-1}\\
+ A^h &amp; =  V  \Lambda^h  V^{-1}\\
+\end{align}
+\end{split}\]</div>
+<p>if for all eigenvalues <span class="math notranslate nohighlight">\(|\lambda_i| &lt; 1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ \Lambda^h \longrightarrow 0 \;\; \text{  and  } \;\;  A^h \longrightarrow 0 \;\;\; \text{as } h \longrightarrow \infty\]</div>
+<ul class="simple">
+<li><p>similar to <span class="math notranslate nohighlight">\(|\alpha|&lt;1\)</span> in <span class="math notranslate nohighlight">\(z_t = \alpha z_{t-1} + \varepsilon_t\)</span></p></li>
+</ul>
+<div class="section" id="var-1-process">
+<h4>VAR(1) process<a class="headerlink" href="#var-1-process" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{z}_{t} =  A \mathbf{z}_{t-1}  + \boldsymbol \varepsilon_{t}
+\]</div>
+</div>
+<div class="section" id="from-var-parameters-to-moments-of-mathbf-z-t">
+<h4>From VAR parameters to moments of <span class="math notranslate nohighlight">\(\mathbf{z}_t\)</span><a class="headerlink" href="#from-var-parameters-to-moments-of-mathbf-z-t" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>what are the VAR parameters?</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>mean</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\operatorname{E} \mathbf{z}_{t} &amp;=  A \operatorname{E} \mathbf{z}_{t-1}  + \operatorname{E} \boldsymbol \varepsilon_{t}\\
+&amp; = 0
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>covariance</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathbf{z}_{t} = A \mathbf{z}_{t-1}  + \boldsymbol \varepsilon_{t} \;\; \Rightarrow \;\; \mathbf{z}_{t}\mathbf{z}_{t}^{\prime} =  \left(A \mathbf{z}_{t-1}  + \boldsymbol \varepsilon_{t}\right)\left(A \mathbf{z}_{t-1}  + \boldsymbol \varepsilon_{t}\right)^{\prime}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\operatorname{E}(\mathbf{z}_{t-1} \varepsilon_{t}') = 0 \)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E}(\mathbf{z}_{t} \mathbf{z}'_{t}) =  A \operatorname{E}(\mathbf{z}_{t-1} \mathbf{z}^{\prime}_{t-1})  A'  + \operatorname{E}( \varepsilon_{t} \varepsilon_{t}')
+\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\Gamma(0) =\; &amp;  A \Gamma(0)   A ' + \Sigma\\\\
+\;\;\; &amp;\text{and}\\\\
+\operatorname{vec}\left(\Gamma(0) \right) =\; &amp;  \left( I -  A \otimes  A  \right)^{-1} \operatorname{vec}( \Sigma)\\
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>follows from <span class="math notranslate nohighlight">\(\operatorname{vec}(ABC) = (C' \otimes A) \operatorname{vec}(B)\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>autocovariances</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E}(\mathbf{z}_{t} \mathbf{z}'_{t-1}) =  A \operatorname{E}(\mathbf{z}_{t-1} \mathbf{z}^{\prime}_{t-1})  + \operatorname{E}( \varepsilon_{t} \mathbf{z}_{t-1}')
+\]</div>
+<ul class="simple">
+<li><p>lag 1</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Gamma(1) =  A \Gamma(0) \]</div>
+<ul class="simple">
+<li><p>lag 2</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Gamma(2) =  A \Gamma(1) =  A^2 \Gamma(0)  \]</div>
+<ul class="simple">
+<li><p>lag h</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Gamma(h) =  A^h \Gamma(0)  \]</div>
+</div>
+<div class="section" id="from-moments-of-mathbf-z-t-to-var-parameters">
+<h4>From moments of <span class="math notranslate nohighlight">\(\mathbf{z}_t\)</span> to VAR parameters<a class="headerlink" href="#from-moments-of-mathbf-z-t-to-var-parameters" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\Gamma(1) =  A \Gamma(0)  \;\;\;  &amp; \Rightarrow \;\;\;  A = \Gamma(1)\Gamma(0)^{-1}
+\\\\
+\Gamma(0) =  A \Gamma(0)   A ' + \Sigma  \;\;\;  &amp; \Rightarrow  \;\;\;  \Sigma = \Gamma(0)-\Gamma(1)\Gamma(0)^{-1} \Gamma(1)'
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="non-zero-mean-operatorname-e-mathbf-z-t-mathbf-mu-neq-0">
+<h4>Non-zero mean <span class="math notranslate nohighlight">\(\operatorname{E} \mathbf{z}_t = \mathbf{\mu} \neq 0\)</span><a class="headerlink" href="#non-zero-mean-operatorname-e-mathbf-z-t-mathbf-mu-neq-0" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{z}_{t} &amp; =  \boldsymbol a_0 +   A \mathbf{z}_{t-1}  +  \varepsilon_{t}\\\\
+\mathbf{\mu} &amp; =  \boldsymbol a_0 +  A \mathbf{\mu}\\\\
+\mathbf{\mu} &amp; = \left( I -   A \right)^{-1}  \boldsymbol a_0 
+\end{align}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{E} \bar{\mathbf{z}}_t = \operatorname{E} (\mathbf{z}_t- \mathbf{\mu}) = 0\]</div>
+<p><strong>Note</strong> For the moments of a VAR§ model, use the VAR(1) representation, and apply the <strong>selection matrix</strong></p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol s = \left[ I,  0, \cdots,  0 \right] \]</div>
+<p>to obtain the autocovariances of <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span> from the autocovariances of <span class="math notranslate nohighlight">\(\mathbf{Z}_{t}\)</span></p>
+<p>since</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{z}_{t} = \boldsymbol s \mathbf{Z}_{t}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \operatorname{E} \mathbf{z}_{t} = \boldsymbol s \operatorname{E} \mathbf{Z}_{t}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \operatorname{var} (\mathbf{z}_{t}) = \boldsymbol s \operatorname{var} (\mathbf{Z}_{t}) \boldsymbol s'\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \operatorname{cov} (\mathbf{z}_{t}, \mathbf{z}_{t-k}) = \boldsymbol s \operatorname{cov} (\mathbf{Z}_{t}, \mathbf{Z}_{t-k}) \boldsymbol s'\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="estimation">
+<h2>Estimation<a class="headerlink" href="#estimation" title="Permalink to this headline">¶</a></h2>
+<p>We can write VAR§</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align}
+\mathbf{z}_t = \boldsymbol a_0 + A_1 \mathbf{z}_{t-1} + \cdots +  A_p \mathbf{z}_{t-p} +  \boldsymbol \varepsilon_t, \;\;\;\;\; \boldsymbol \varepsilon_t \sim \operatorname{WN} \left( 0, \;\mathbf{\Sigma}\right)
+\end{align}
+\]</div>
+<p>as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{z}_t = \boldsymbol A \boldsymbol x_{t-1} + \boldsymbol \varepsilon_t \]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol A = [\boldsymbol a_0, A_1, \cdots, A_p ]\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol x_{t-1} = [1, \mathbf{z}_{t-1}', \cdots, \mathbf{z}_{t-p}' ]'\)</span></p>
+<p>Assume a pre-sample <span class="math notranslate nohighlight">\(\mathbf{z}_{0}, \mathbf{z}_{1}, \cdots, \mathbf{z}_{-p+1}\)</span> is given. (alternatively, re-define <span class="math notranslate nohighlight">\(T\)</span>)</p>
+<p>Then, we have</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol Z =  \boldsymbol A \boldsymbol X + \boldsymbol U \]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol Z = [\mathbf{z}_{1}, \cdots, \mathbf{z}_T] \)</span> is <span class="math notranslate nohighlight">\(n \times T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol X = [\mathbf{x}_{0}, \cdots, \mathbf{x}_{T-1}] \)</span> is <span class="math notranslate nohighlight">\(n(p+1) \times T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol U = [\boldsymbol \varepsilon_{1}, \cdots, \boldsymbol \varepsilon_T] \)</span> is <span class="math notranslate nohighlight">\(n \times T\)</span></p></li>
+</ul>
+<div class="section" id="ols-estimation">
+<h3>OLS estimation<a class="headerlink" href="#ols-estimation" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\hat{\boldsymbol A} &amp;=  \boldsymbol Z \boldsymbol X' (\boldsymbol X \boldsymbol X')^{-1} \\\\
+\hat{\boldsymbol \Sigma} &amp; = \frac{1}{T - np - 1} \hat{\boldsymbol U} \hat{\boldsymbol U}' \\\\
+\hat{\boldsymbol U} &amp; =  \boldsymbol Z - \hat{\boldsymbol A} \boldsymbol X
+\end{align}
+\end{split}\]</div>
+<div class="section" id="asymptotic-distribution">
+<h4>Asymptotic distribution<a class="headerlink" href="#asymptotic-distribution" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{vec}\left(\hat{\boldsymbol A}  \right) \overset{a}{\sim}  \mathcal{N} \left( \operatorname{vec}\left(\boldsymbol A \right),\;  (\boldsymbol X \boldsymbol X')^{-1} \otimes \hat{\boldsymbol \Sigma}   \right)  
+\]</div>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>the rows of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> can be estimated with OLS equation by equation</p></li>
+<li><p>also equivalent to conditional MLE, assuming that <span class="math notranslate nohighlight">\(\boldsymbol \varepsilon_t \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}\right)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\boldsymbol A}\)</span> has a small-sample bias, which can be corrected for analytically (when the VAR has only intercept) or using bootstrap (when a deterministic trand is included)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="choice-of-p">
+<h3>Choice of <span class="math notranslate nohighlight">\(p\)</span><a class="headerlink" href="#choice-of-p" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>define a set of models - select <span class="math notranslate nohighlight">\(p_{min}\)</span> and <span class="math notranslate nohighlight">\(p_{max}\)</span></p></li>
+<li><p>estimate each one and compute <strong>IC§</strong></p></li>
+<li><p>pick the one with lowest <strong>IC§</strong> value</p></li>
+</ul>
+<p>Most commonly used ICs:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+AIC &amp;= \operatorname{ln}|\hat{\boldsymbol \Sigma}^{ml}(p)| + \frac{2}{T}(pn^2 + n) \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \text{Akaike’s Information Criterion} \\
+BIC &amp;= \operatorname{ln}|\hat{\boldsymbol \Sigma}^{ml}(p)| + + \frac{\operatorname{ln}(T)}{T}(pn^2 + n) \;\;\;\;\;\;\;\;\; \text{Bayesian Information Criterion}
+\end{align}
+\end{split}\]</div>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>For ICs to be comparable for different <span class="math notranslate nohighlight">\(p\)</span>, the sample has to be the same (set <span class="math notranslate nohighlight">\(t = p_{max}+1,\cdots, T\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\boldsymbol \Sigma}^{ml}(p) =  \frac{1}{T} \hat{\boldsymbol U} \hat{\boldsymbol U}' = \frac{T-np-1}{T} \hat{\boldsymbol \Sigma}^{ols}(p)\)</span></p></li>
+<li><p>typically, <span class="math notranslate nohighlight">\(p_{min}=12\)</span> for monthly and <span class="math notranslate nohighlight">\(p_{min}=4\)</span> for quarterly data</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="forecasting">
+<h2>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\mathbf{z}_t &amp;= A \mathbf{z}_{t-1} + \boldsymbol \varepsilon_t, \\\\
+\mathbf{z}_{t+1} &amp;= A \mathbf{z}_{t} + \boldsymbol \varepsilon_{t+1}\\\\
+\mathbf{z}_{t+2} &amp;= A^2 \mathbf{z}_{t} + A \boldsymbol \varepsilon_{t+1}+ \boldsymbol \varepsilon_{t+2}\\
+&amp;\;\vdots \\
+\mathbf{z}_{t+h} &amp;= A^h \mathbf{z}_{t} + A^{h-1} \boldsymbol \varepsilon_{t+1} + \cdots + \boldsymbol \varepsilon_{t+h}
+\end{align}
+\end{split}\]</div>
+<p>Optimal forecast given information at <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{E}(\mathbf{z}_{T+1} | \mathbf{z}_{T} )  &amp; = A \mathbf{z}_{T}\\
+\operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} )  &amp; = \boldsymbol A^h \mathbf{z}_{T}
+\end{align}
+\end{split}\]</div>
+<p>Optimal forecast given information at <span class="math notranslate nohighlight">\(T+1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T+1} )  &amp; = \boldsymbol A^{h-1} \mathbf{z}_{T+1}\\
+ &amp; = \boldsymbol A^{h-1} \left( A\mathbf{z}_{T} + \boldsymbol \varepsilon_{T+1}\right)\\
+ &amp; = \boldsymbol A^{h}\mathbf{z}_{T} + A^{h-1} \boldsymbol \varepsilon_{T+1} \\
+ &amp; = \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} ) + A^{h-1} (\mathbf{z}_{T+1} - A \mathbf{z}_{T}  )\\ 
+ &amp; = \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} ) + A^{h-1} (\mathbf{z}_{T+1} - \operatorname{E}(\mathbf{z}_{T+1} | \mathbf{z}_{T} )  )\\
+\end{align}
+\end{split}\]</div>
+<p>Optimal forecast <strong>update</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T+1} ) - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} ) =  A^{h-1} \underbrace{(\mathbf{z}_{T+1} - \operatorname{E}(\mathbf{z}_{T+1} | \mathbf{z}_{T} )  )}_{\text{1-step ahead forecast error}}
+\]</div>
+<p><span class="math notranslate nohighlight">\(h\)</span>-step-ahead forecast error:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{z}_{T+h} - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} ) = A^{h-1} \boldsymbol \varepsilon_{t+1} +  \cdots + A \boldsymbol \varepsilon_{t+h-1} + \boldsymbol \varepsilon_{t+h}
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\operatorname{E} \left(\mathbf{z}_{T+h} - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} )\right) &amp;= 0 \\
+\operatorname{cov} \left(\mathbf{z}_{T+h} - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} )\right) &amp;=  A^{h-1} \Sigma (A^{h-1})'  + \cdots +  A \Sigma A' + \Sigma
+\end{align}
+\end{split}\]</div>
+<p><strong>Note:</strong> as in the univariate case, we can write VAR<span class="math notranslate nohighlight">\((p)\)</span> as VMA<span class="math notranslate nohighlight">\((\infty)\)</span>. For <strong>VAR(1)</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\mathbf{z}_t &amp;= A(L)^{-1} \boldsymbol \varepsilon_t\\
+    &amp;= \varepsilon_t + A\varepsilon_{t-1} + A^2\varepsilon_{t-2} + \cdots
+\end{align} \end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{cov} (\mathbf{z}_{t}) = \Gamma(0) = \Sigma + A \Sigma A' + A^2 \Sigma (A^2)' + \cdots
+\]</div>
+<p>As <span class="math notranslate nohighlight">\(h \longrightarrow \infty\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} )  &amp;\longrightarrow 0 \;\;\;(\text{unconditional mean of } \mathbf{z}_{t} ) \\
+\operatorname{cov} \left(\mathbf{z}_{T+h} - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{z}_{T} )\right) &amp; \longrightarrow \Gamma(0) \;\;\;(\text{unconditional covariance of } \mathbf{z}_{t} ) 
+\end{align}
+\end{split}\]</div>
+<p>For <strong>VAR§</strong> - use the <strong>VAR(1)</strong> representation</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{Z}_{t} =  \boldsymbol \Phi \mathbf{Z}_{t-1}  +  \boldsymbol E_t
+\]</div>
+<ul class="simple">
+<li><p>forecast of <span class="math notranslate nohighlight">\(\mathbf{z}_{T+h}\)</span> (using the selection matrix <span class="math notranslate nohighlight">\(\boldsymbol s\)</span>)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\operatorname{E}(\mathbf{z}_{T+h} | \mathbf{Z}_{T} ) =  \boldsymbol s  \operatorname{E}(\mathbf{Z}_{T+h} | \mathbf{Z}_{T} ) \]</div>
+<ul class="simple">
+<li><p>variance of forecast errors</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{cov} \left(\mathbf{z}_{T+h} - \operatorname{E}(\mathbf{z}_{T+h} | \mathbf{Z}_{T} )\right) = \boldsymbol s\operatorname{cov} \left(\mathbf{Z}_{T+h} - \operatorname{E}(\mathbf{Z}_{T+h} | \mathbf{Z}_{T} )\right)\boldsymbol s'
+\]</div>
+<div class="section" id="impulse-response-functions">
+<h3>Impulse response functions<a class="headerlink" href="#impulse-response-functions" title="Permalink to this headline">¶</a></h3>
+<p>From the <strong>VMA</strong> representation of of <strong>VAR(1)</strong> model</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\mathbf{z}_{t+h} = \mathbf{\varepsilon}_{t+h} + A \mathbf{\varepsilon}_{t+h-1} + A^2 \mathbf{\varepsilon}_{t+h-2} + \cdots + A^h \mathbf{\varepsilon}_{t} + \cdots
+\end{align}\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\partial \mathbf{z}_{t+h} }{\partial \mathbf{\varepsilon}_{t}} = A^h
+\]</div>
+<ul class="simple">
+<li><p>Note that <span class="math notranslate nohighlight">\(\mathbf{\varepsilon}_{t}\)</span> is a vector</p></li>
+<li><p>typically, we want to know the effect of <strong>a</strong> shock on <strong>a</strong> variable (for example monetary policy on inflation)</p></li>
+<li><p>here <span class="math notranslate nohighlight">\(\operatorname{cov}(\mathbf{\varepsilon}_t) = \Sigma\)</span>, i.e. <span class="math notranslate nohighlight">\(\varepsilon_{it}\)</span> and  <span class="math notranslate nohighlight">\(\varepsilon_{jt}\)</span> are correlated</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{\varepsilon}_t\)</span> are <strong>not</strong> shocks (statistical innovations, residuals, forecast errors)</p></li>
+</ul>
+</div>
+<div class="section" id="orthogonalized-impulse-response-functions">
+<h3>(orthogonalized ) impulse response functions<a class="headerlink" href="#orthogonalized-impulse-response-functions" title="Permalink to this headline">¶</a></h3>
+<p>Since <span class="math notranslate nohighlight">\(\Sigma\)</span> is positive definite matrix, there exists a matrix <span class="math notranslate nohighlight">\(B_0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[B_0^{-1} (B_0^{-1})^{\prime} = \Sigma \;\;\; \Rightarrow \;\;\; B_0\Sigma B_0' = I\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{u}_t = B_0 \mathbf{\varepsilon}_t  \;\;\; \Rightarrow \;\;\; \mathbf{u}_t \sim \operatorname{WN} \left( 0, \;I\right)
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u_{it}\)</span> and  <span class="math notranslate nohighlight">\(u_{jt}\)</span> are uncorrelated (<strong>orthogonal</strong>) for all <span class="math notranslate nohighlight">\(i \neq j\)</span></p></li>
+</ul>
+<p>Using <span class="math notranslate nohighlight">\(\mathbf{\varepsilon}_t = B_0^{-1} \mathbf{u}_t\)</span> in the MA representation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\mathbf{z}_{t+h} &amp; = \mathbf{\varepsilon}_{t+h} + A \mathbf{\varepsilon}_{t+h-1} + A^2 \mathbf{\varepsilon}_{t+h-2} + \cdots + A^h \mathbf{\varepsilon}_{t} + \cdots \\\\
+&amp; = B_0^{-1} \mathbf{u}_{t+h} + A B_0^{-1} \mathbf{u}_{t+h-1} + A^2 B_0^{-1} \mathbf{u}_{t+h-2} + \cdots + A^h B_0^{-1} \mathbf{u}_{t} + \cdots
+\end{align} \end{split}\]</div>
+<p>and therefore</p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\partial \mathbf{z}_{t+h} }{\partial \mathbf{u}_{t}} = A^h B_0^{-1} \equiv \Psi_h
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(u_{it}\)</span> and  <span class="math notranslate nohighlight">\(u_{jt}\)</span> are uncorrelated, the <span class="math notranslate nohighlight">\(k,l\)</span> element of <span class="math notranslate nohighlight">\(\Psi_h\)</span> gives the response of <span class="math notranslate nohighlight">\(z_{k,t+h}\)</span> to a (one standard deviation shock to <span class="math notranslate nohighlight">\(u_{l,t})\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\partial z_{k,t+h} }{\partial u_{lt}} = \psi_{kl,h}
+\]</div>
+<p>and the <span class="math notranslate nohighlight">\(l\)</span> column of <span class="math notranslate nohighlight">\(\Psi_h\)</span> gives the response of <span class="math notranslate nohighlight">\(\mathbf{z}_{t+h}\)</span> to a one standard deviation shock to <span class="math notranslate nohighlight">\(u_{l,t}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\partial \mathbf{z}_{t+h} }{\partial u_{lt}} = \boldsymbol \psi_{l,h}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\boldsymbol \psi_{l,h}\)</span> is the <span class="math notranslate nohighlight">\(l\)</span>-th column of <span class="math notranslate nohighlight">\(A^h B_0^{-1}\)</span></p>
+<div class="section" id="from-var-to-structural-var-and-vice-versa">
+<h4>From VAR§ to Structural VAR§ (and vice versa)<a class="headerlink" href="#from-var-to-structural-var-and-vice-versa" title="Permalink to this headline">¶</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\mathbf{z}_t &amp; = \boldsymbol a_0 + A_1 \mathbf{z}_{t-1} + \cdots +  A_p \mathbf{z}_{t-p} +  \boldsymbol \varepsilon_t, \;\;\;\;\; \boldsymbol \varepsilon_t \sim \operatorname{WN} \left( 0, \;\mathbf{\Sigma}\right)\\\\
+\mathbf{z}_t &amp; = \boldsymbol a_0 + A_1 \mathbf{z}_{t-1} + \cdots +  A_p \mathbf{z}_{t-p} +  B_0^{-1}\boldsymbol u_t\;\;\;\;\; (\text{using } \mathbf{u}_t = B_0 \mathbf{\varepsilon}_t) \\
+&amp; \downarrow\\
+B_0\mathbf{z}_t &amp; = B_0\boldsymbol a_0 + B_0 A_1 \mathbf{z}_{t-1} + \cdots +  B_0 A_p \mathbf{z}_{t-p} +  \mathbf{u}_t, \;\;\;\;\; (\text{pre-multiply by } B_0)\\\\  
+B_0\mathbf{z}_t &amp; = \boldsymbol b_0 + B_1 \mathbf{z}_{t-1} + \cdots +  B_p \mathbf{z}_{t-p} +  \mathbf{u}_t, \;\;\;\;\; \boldsymbol u_t \sim \operatorname{WN} \left( 0, \;I\right)
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(B_0\)</span> captures contemporaneous (time <span class="math notranslate nohighlight">\(t\)</span>) interactions among  variables</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{u}_t\)</span> are orthogonal shocks: <span class="math notranslate nohighlight">\(u_{i, t}\)</span> only affects <span class="math notranslate nohighlight">\(z_{i, t}\)</span> contemporaneously</p></li>
+<li><p>impulse responses</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+ \frac{\partial \mathbf{z}_{t+h} }{\partial u_{it}}
+\]</div>
+</div>
+<div class="section" id="identification">
+<h4>Identification<a class="headerlink" href="#identification" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>We can estimate the reduced-form coefficients <span class="math notranslate nohighlight">\(a_0\)</span>, <span class="math notranslate nohighlight">\(A_1\)</span>, … <span class="math notranslate nohighlight">\(A_p\)</span> and <span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
+<li><p>and compute reduced-form MA representation of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p></li>
+<li><p>to compute impulse responses to structura shocks we need <span class="math notranslate nohighlight">\(B_0^{-1}\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(B_0^{-1}\)</span> is <strong>not</strong> identified from</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[B_0^{-1} (B_0^{-1})^{\prime} = \Sigma \]</div>
+<p>by symmetry <span class="math notranslate nohighlight">\(\Sigma\)</span> has <span class="math notranslate nohighlight">\(n(n+1)/2\)</span> unique elements <span class="math notranslate nohighlight">\(\Rightarrow n(n+1)/2\)</span> equations, but <span class="math notranslate nohighlight">\(B_0\)</span> has <span class="math notranslate nohighlight">\(n^2\)</span> unknown elements</p>
+<ul class="simple">
+<li><p>need to impose restrictions on either <span class="math notranslate nohighlight">\(B_0\)</span> or <span class="math notranslate nohighlight">\(B_0^{-1}\)</span> in order to identify it</p></li>
+<li><p>the restrictions must be implied by economic theory.</p></li>
+</ul>
+</div>
+<div class="section" id="types-of-identifying-restrictions">
+<h4>Types of identifying restrictions<a class="headerlink" href="#types-of-identifying-restrictions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>short-run restrictions</p></li>
+<li><p>long-run restrictions</p></li>
+<li><p>sign restrictions</p></li>
+<li><p>combinations of short/long-run restrictions, sign restrictions</p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<div class="section" id="short-run-restrictions">
+<h4>Short-run restrictions:<a class="headerlink" href="#short-run-restrictions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>time <span class="math notranslate nohighlight">\(t\)</span> impact of structural shocks
+<span class="math notranslate nohighlight">\(\mathbf{\varepsilon}_t = B_0^{-1} \mathbf{u}_t\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{c}
+\varepsilon_{1, t}\\
+\varepsilon_{2, t}\\
+\vdots\\
+\varepsilon_{n, t}
+\end{array}\right]
+=
+\underset{ B_0^{-1}}{\underbrace{\left[\begin{array}{cccccccc}
+ b^{1,1}_0 &amp;  b^{1,2}_0 &amp; \cdots &amp;  b^{1,n}_0\\
+ b^{2,1}_0 &amp;  b^{2,2}_0 &amp; \cdots &amp;  b^{2,n}_0\\
+\vdots &amp; \vdots &amp; \vdots  \\
+ b^{n,1}_0 &amp;  b^{n,2}_0 &amp; \cdots &amp;  b^{n,n}_0\\
+\end{array}\right]}}
+\left[\begin{array}{c}
+u_{1, t}\\
+u_{2, t}\\
+\vdots\\
+u_{n, t}
+\end{array}\right]
+\end{split}\]</div>
+<ul class="simple">
+<li><p>time <span class="math notranslate nohighlight">\(t\)</span> interactions among variables
+<span class="math notranslate nohighlight">\(B_0\mathbf{z}_t =  \cdots  +  \mathbf{u}_t,\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\underset{B_0}{\underbrace{\left[\begin{array}{cccccccc}
+ b_{0,11} &amp;  b_{0,12} &amp; \cdots &amp;  b_{0,1n}\\
+ b_{0,21} &amp;  b_{0,22} &amp; \cdots &amp;  b_{0,2n}\\
+\vdots &amp; \vdots &amp; \vdots  \\
+ b_{0,n1} &amp;  b_{0,n2} &amp; \cdots &amp;  b_{0,nn}\\
+\end{array}\right]}}
+\left[\begin{array}{c}
+z_{1, t}\\
+z_{2, t}\\
+\vdots\\
+z_{n, t}
+\end{array}\right]
+= \cdots + 
+\left[\begin{array}{c}
+u_{1, t}\\
+u_{2, t}\\
+\vdots\\
+u_{n, t}
+\end{array}\right]
+\end{split}\]</div>
+</div>
+<div class="section" id="long-run-restrictions">
+<h4>Long-run restrictions:<a class="headerlink" href="#long-run-restrictions" title="Permalink to this headline">¶</a></h4>
+<p>MA representation of <span class="math notranslate nohighlight">\(\mathbf{z}_t\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\mathbf{z}_{t+h} &amp; = \mathbf{\varepsilon}_{t+h} + A \mathbf{\varepsilon}_{t+h-1} + A^2 \mathbf{\varepsilon}_{t+h-2} + \cdots + A^h \mathbf{\varepsilon}_{t} + \cdots \\\\
+&amp; = B_0^{-1} \mathbf{u}_{t+h} + A B_0^{-1} \mathbf{u}_{t+h-1} + A^2 B_0^{-1} \mathbf{u}_{t+h-2} + \cdots + A^h B_0^{-1} \mathbf{u}_{t} + \cdots
+\end{align} \end{split}\]</div>
+<p>The cumulative impuse responses of shocks in <span class="math notranslate nohighlight">\(t\)</span> on <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{z}_{t+1}\)</span>, … are given by</p>
+<div class="math notranslate nohighlight">
+\[
+(I + A + A^2 + A^3 + \cdots ) B^{-1} = A(1)^{-1} B_0^{-1}
+\]</div>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span> contains growth rates (e.g. of GDP), the cumulative response givs the permanent effect on the level</p></li>
+<li><p>common long-run restrictions: some shocks don’t have permanent effect on some variables (nominal shocks on real variabls)</p>
+<ul>
+<li><p>some elements of <span class="math notranslate nohighlight">\(A(1)^{-1} B_0^{-1}\)</span> are 0</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sign-restrictions">
+<h4>Sign restrictions:<a class="headerlink" href="#sign-restrictions" title="Permalink to this headline">¶</a></h4>
+<p>If <span class="math notranslate nohighlight">\(B_0\)</span> is such that</p>
+<div class="math notranslate nohighlight">
+\[B_0^{-1} (B_0^{-1})^{\prime} = \Sigma \]</div>
+<p>then for any orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> (<span class="math notranslate nohighlight">\( QQ^{\prime} =Q^{\prime}Q = I \)</span>)</p>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[(B_0^{-1} Q) (B_0^{-1} Q)^{\prime} = \Sigma \]</div>
+<p>There are inifitely many such matrices.</p>
+<ul class="simple">
+<li><p>find the set of solutions that satisfy sign restrictions implied by theory (monetary policy shock raises <span class="math notranslate nohighlight">\(i_t\)</span> and lowers <span class="math notranslate nohighlight">\(\pi_t\)</span> and <span class="math notranslate nohighlight">\(y_t\)</span>)</p></li>
+<li><p>find all matrices <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(B_0^{-1} = P Q \)</span> meets those restrictions, where <span class="math notranslate nohighlight">\(P\)</span> is the Cholesky factor of <span class="math notranslate nohighlight">\(\Sigma\)</span>, and <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal matrix.</p>
+<ul>
+<li><p>every real-valued symmetric positive-definite matrix has a unique Cholesky decomposition:</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Sigma = P P^{\prime}\]</div>
+<p>There are different ways to generate <span class="math notranslate nohighlight">\(Q\)</span></p>
+<p>For example, for <span class="math notranslate nohighlight">\(n=2\)</span> candidates <span class="math notranslate nohighlight">\(Q\)</span> can be generated using</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} Q =  \left[\begin{array}{cc}
+\cos(\theta) &amp; -\sin(\theta)\\
+\sin(\theta) &amp; \cos(\theta) \\
+\end{array}\right]\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\theta \in (0, 2 \pi)\)</span></p>
+<p>Can also use the QR decomposition of a random matrix <span class="math notranslate nohighlight">\(H\)</span> such that <span class="math notranslate nohighlight">\(H_{ij} \sim N(0, 1)\)</span></p>
+<ul class="simple">
+<li><p>with sign restrictions we get a set of impulse responses for each shock and variable (set vs point identfication)</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Lectures\07-Multivariate"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="00-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Multivariate models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../03-Assignments/HW0/main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 0</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
