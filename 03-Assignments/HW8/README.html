@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework 6</title>
+    <title>Homework 8</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -49,12 +49,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW6/README.html" />
+    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW8/README.html" />
     <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Homework 7" href="../HW7/README.html" />
-    <link rel="prev" title="HW 5 part 1" href="../HW5/HW5-part-1.html" />
+    <link rel="next" title="Midterm project" href="../../04-Projects/01-Midterm/main.html" />
+    <link rel="prev" title="Homework 7" href="../HW7/README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -412,8 +412,8 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../HW6/README.html">
    Homework 6
   </a>
  </li>
@@ -422,8 +422,8 @@
    Homework 7
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../HW8/README.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Homework 8
   </a>
  </li>
@@ -639,7 +639,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW6/README.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW8/README.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -685,11 +685,6 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3">
-     Part 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#submission">
      Submission
     </a>
@@ -706,7 +701,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Homework 6</h1>
+                <h1>Homework 8</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -732,11 +727,6 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#part-3">
-     Part 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#submission">
      Submission
     </a>
@@ -752,26 +742,36 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="homework-6">
-<h1>Homework 6<a class="headerlink" href="#homework-6" title="Permalink to this headline">¶</a></h1>
-<p><strong>Important:</strong> If you struggle with any part of this assignments, raise an issue in the repo (see the section below on how to submit)</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="homework-8">
+<h1>Homework 8<a class="headerlink" href="#homework-8" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="part-1">
 <h3>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
-<p>Load the data from data/data.txt in your HW6 directory (check the <code class="docutils literal notranslate"><span class="pre">loadtxt()</span></code> function in <code class="docutils literal notranslate"><span class="pre">numpy</span></code>). Using the first 500 observations (training sample) and the <code class="docutils literal notranslate"><span class="pre">ARIMA</span></code> function of statsmodels, estimate ARMA(p,q) models for all combinations of AR and MA lags of between 0 and 4, with and without a constant. Find out and report which specifications minimize the AIC and the BIC criteria. Plot the ACFs and PACFs of the residuals of those specifications in a 2x2 plot with titles indicating the order and whether a constant is included.</p>
+<p>Use the data in <code class="docutils literal notranslate"><span class="pre">data_clean.csv</span></code> from <a class="reference external" href="https://github.com/PhDEcon108/econ108-practice/blob/main/06-Multivariate/data_clean.csv">this link</a></p>
+<p>1.1</p>
+<ul class="simple">
+<li><p>Divide the sample into train and test subsumples of 192 and 8 observations respectively.</p></li>
+<li><p>select VAR orders p_aic and p_bic for the training sample according to AIC and BIC</p></li>
+<li><p>Estimate VAR§ for p=p_aic and p=p_bic</p></li>
+<li><p>Forecast variable ‘a’ 1 to 8 steps ahead with each VAR model</p></li>
+</ul>
+<p>1.2</p>
+<ul class="simple">
+<li><p>select ARMA(p,q) orders for variable ‘a’ using AIC and BIC (again for the training sample)</p></li>
+<li><p>Estimate the selected ARMA(p,q) models using training sample.</p></li>
+<li><p>Forecast 1 to 8 steps ahead with each ARMA model</p></li>
+</ul>
+<p>1.3</p>
+<p>Make a plot with variable ‘a’ showing the actual data for the full sample and the forecasts produced with each model.</p>
 </div>
 <div class="section" id="part-2">
 <h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
-<p>Using the selected model or models from Part 1, make and store forecasts for 1 and 2 periods ahead. In addition, construct 1 and 2 steps ahead forecasts using the following naive models: (1) the last data point used for estimation, (2) the average value of the sample used for estimation. Adding one observation at a time from the part of the sample which was not used during the estimation in Part 1 (testing sample), re-estimate each ARMA model and produce and store forecasts for 1 and 2 periods ahead. Do the same with the two naive models, taking into account the added observation. Repeat until there are only two observations left in the testing sample. Construct the forecast errors and compute the root mean squared errors for each horizon and each model. Which model/models has the lowest errors?</p>
-</div>
-<div class="section" id="part-3">
-<h3>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
-<p>Write down what difficulties, questions, or points of confusion (if any) you had about this assignment.</p>
+<p>Under construction, stay tuned :)</p>
 </div>
 <div class="section" id="submission">
 <h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h3>
-<p>Submit as a python script <code class="docutils literal notranslate"><span class="pre">main.py</span></code> in the folder <strong>HW6</strong> in your repository at <a class="reference external" href="https://github.com/PhDEcon108">https://github.com/PhDEcon108</a>.  When run in the terminal with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span></code> it should produce the figure from Part 1 (as a png file), and print in the terminal the final answer from Part 2. The folder should contain a <a class="reference external" href="http://README.md">README.md</a> file describing the content of the repository and your answer to Part 3.</p>
+<p>Submit as a jupyter notebook in the folder <strong>HW8</strong> in your repository at <a class="reference external" href="https://github.com/PhDEcon108">https://github.com/PhDEcon108</a>.</p>
 </div>
 </div>
 </div>
@@ -789,7 +789,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03-Assignments\HW6"
+            path: "./03-Assignments\HW8"
         },
         predefinedOutput: true
     }
@@ -801,17 +801,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../HW5/HW5-part-1.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../HW7/README.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">HW 5 part 1</p>
+            <p class="prev-next-title">Homework 7</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../HW7/README.html" title="next page">
+    <a class='right-next' id="next-link" href="../../04-Projects/01-Midterm/main.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Homework 7</p>
+        <p class="prev-next-title">Midterm project</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
