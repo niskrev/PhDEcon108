@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Readme HW3</title>
+    <title>HW8 Part 2</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -49,12 +51,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW3/README.html" />
+    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW8/HW8-part2.html" />
     <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="HW 3 Part 2-2" href="HW3-part2-2.html" />
-    <link rel="prev" title="Homework 3" href="main.html" />
+    <link rel="next" title="Midterm project" href="../../04-Projects/01-Midterm/main.html" />
+    <link rel="prev" title="Homework 8" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -341,23 +343,23 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="main.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../HW3/main.html">
    Homework 3
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../HW3/README.html">
      Readme HW3
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="HW3-part2-2.html">
+    <a class="reference internal" href="../HW3/HW3-part2-2.html">
      HW 3 Part 2-2
     </a>
    </li>
@@ -422,18 +424,18 @@
    Homework 7
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../HW8/README.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
    Homework 8
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
   <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../HW8/HW8-part2.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      HW8 Part 2
     </a>
    </li>
@@ -651,9 +653,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW3/README.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW8/HW8-part2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -671,39 +673,28 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/03-Assignments/HW8/HW8-part2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-1">
-   PART 1
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-2">
-   Part 2
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3">
-   Part 3
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#submission">
-   Submission
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -711,74 +702,220 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Readme HW3</h1>
+                <h1>HW8 Part 2</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-1">
-   PART 1
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-2">
-   Part 2
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#part-3">
-   Part 3
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#submission">
-   Submission
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="readme-hw3">
-<h1>Readme HW3<a class="headerlink" href="#readme-hw3" title="Permalink to this headline">¶</a></h1>
-<p><strong>Important:</strong> If you struggle with any part of this assignments, raise an issue in the repo (see the section below on how to submit)</p>
-<div class="section" id="part-1">
-<h2>PART 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h2>
-<p>Create a notebook <code class="docutils literal notranslate"><span class="pre">HW3-part-1.ipynb</span></code> and do the following in it:</p>
-<p>(1) Write a function which takes three inputs - (1) an HICP item code (a string), (2)  a boolean (True or False) indicating if the series is seasonally adjusted or not, and (3) an indicator whether the series is in levels or as annual rate of change (for example, the parameter can be a string with one of two options - “INX” or “ANR”). The function should download the indicated adjusted or unadjusted HICP series in level (“INX”) or as rate of change (“ANR”) and returns a dataframe with datetime index and one series whose column name shows the item description, geo, and whether it is seasonally adjusted or unadjusted.</p>
-<p><strong>Note:</strong> You should use the function you wrote in HW2, making the necessary changes to allow for data in levels and with seasonal adjustments.</p>
-<p>(2) Using the function from (1) download HICP in levels for U2, seasonally adjusted <strong>and</strong> unadjusted</p>
-<p>(3) Compute year on year inflation rates as per cent change from the previous year</p>
-<p>(4) Compute year on year inflation rates as the 12-month difference in the log of the series</p>
-<p><strong>Hint:</strong> <a class="reference external" href="https://niskrev.github.io/PhDEcon108/02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">this</a> may be helpful</p>
-<p>(5) Using the function from (1) download HICP in annual rate of change for U2, seasonally unadjusted.</p>
-<p>(6) Make a 2 by 2 plot showing <strong>each one</strong> of the four inflation series you calculated in (3) and (4) (per cent change adjusted and unadjusted, log-diff adjusted and unadjusted) and the ANR series you downloaded in (5).</p>
-<p><strong>Hint:</strong> <a class="reference external" href="https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html">check this out</a></p>
-<p>(7) Which of the two methods you used produces inflation series that is closer to the official inflation data?</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="hw8-part-2">
+<h1>HW8 Part 2<a class="headerlink" href="#hw8-part-2" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports here</span>
+</pre></div>
 </div>
-<div class="section" id="part-2">
-<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
-<p>(1) Read/work through the examples in <a class="reference external" href="https://niskrev.github.io/PhDEcon108/02-Tutorials/01-Numpy/00-Numpy.html">Numpy tutorials</a></p>
-<p>(2) See notebook <a class="reference internal" href="HW3-part2-2.html"><span class="doc std std-doc">HW3-part-2-2.ipynb</span></a></p>
 </div>
-<div class="section" id="part-3">
-<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h2>
-<p>Write down what difficulties, questions, or points of confusion you had or still have about this or previous assignments.</p>
 </div>
-<div class="section" id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h2>
-<p>Submit as a folder with name <strong>HW3</strong> in your repository at <a class="reference external" href="https://github.com/PhDEcon108">https://github.com/PhDEcon108</a>. In addition to the the two notebooks, the folder should contain a <a class="reference external" href="http://README.md">README.md</a> file describing the content of the repository. It should also have a section where you write your answer to Part 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># import the data from sign_svar_data.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># The series are the logs of quarterly US real GDP and CPI, from 1950 until 2009.</span>
+<span class="c1"># Create a pandas dataframe with proper datetime index and column labels</span>
+<span class="c1"># make a plot. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Transform the data into annualized growth rates (first difference multiplied by 400)</span>
+<span class="c1"># create a new dataframe with the growth rates, and label the columns accordingly</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Create a VAR model for the growth rates</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># estimate the model with p=2 including a constant and a time trend </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Compute and print the covariance matrix of the residuals, call it Sigma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Sigma = </span>
+<span class="c1">#array([[12.17167405, -0.30910097],</span>
+<span class="c1">#       [-0.30910097,  5.92258163]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Compute the companion matrix of the estimated VAR</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Compute and store in variable MA_VAR1 the first 10 coefficients of </span>
+<span class="c1"># the MA representation of the VAR(1) representaton of the estimated VAR</span>
+
+<span class="c1"># Note: use a loop. The function np.linalg.matrix_power may be helpful. The dimensions of MA_VAR1 must be (10, 4, 4)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO from MA_VAR1 compute the coefficients of the MA representation of the estimated VAR. Store in MA_VAR2</span>
+
+<span class="c1"># Note: use a selection matrix. The dimensions of MA_VAR2 must be (10, 2, 2)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># confirm that MA_VAR2 is identical to the output from results.ma_rep(maxn=10) (results is the estimated VAR)</span>
+
+<span class="c1"># Note: you can use numpy&#39;s testing.assert_allclose</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose that we want to identify aggregate supply and demand shocks.
+We could impose the following sign restrictions:</p>
+<ul class="simple">
+<li><p>a supply shock has a positive effect on output and a negative effect on prices</p></li>
+<li><p>a demand shock has a positive effect on both output and prices.</p></li>
+</ul>
+<p>Note that these are restrictions on the effect of the shocks on the <strong>levels</strong> of our variable. We can transform impulse responses of growth rates into impulse  responses of levels by computing the cumulative sums.</p>
+<p>To impose the sign restrictions we need to find an orthogonal matrix <span class="math notranslate nohighlight">\(Q\)</span> such that the matrix</p>
+<div class="math notranslate nohighlight">
+\[B_0^{-1} = PQ\]</div>
+<p>results in reponses with the right signs, where <span class="math notranslate nohighlight">\(P\)</span> is any matrix such that $<span class="math notranslate nohighlight">\(P P^{\prime} = \Sigma\)</span>$</p>
+<p>We can use the Cholesky factor of <span class="math notranslate nohighlight">\(\Sigma\)</span> as our <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># One trivial candidate for Q is the identity matrix.</span>
+<span class="c1"># Check if it results in impulse responses satisfying our sign restrictions.</span>
+
+<span class="c1"># Tip: Remember that we need the cumulative impulse responses. You should make a plot and </span>
+<span class="c1"># think whether the two orthogonal shocks identified with the Cholesky factor satisfy the sign restrictions</span>
+<span class="c1"># Also, make sure you understand the order of variables and shocks in the impulse responses you computed. </span>
+<span class="c1"># At this point we just ask if the shocks could be a supply and a demand shock, but dont impose an order.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define <span class="math notranslate nohighlight">\(Q(\theta)\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} Q(\theta) =  \left[\begin{array}{cc}
+\cos(\theta) &amp; \sin(\theta)\\
+-\sin(\theta) &amp; \cos(\theta) \\
+\end{array}\right]\end{split}\]</div>
+<p>for <span class="math notranslate nohighlight">\(\theta \in (0, 2 \pi)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+
+<span class="c1"># Compute Q for theta = 0.2*np.pi. Confirm that it is an orthogonal matrix. Confirm that (P@Q)@(P@Q).T = Sigma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Check if this choice of Q results in impulse responses satisfying our sign restrictions.</span>
+<span class="c1"># Again, make sure you understand the order of variables and shocks in the impulse responses you computed. </span>
+
+<span class="c1">#Tip: You should see responses consistent with our sign restrictions. This can be used to fix the order - which shock is supply and which demand.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given a 10x2x2 array of impulse responses, we want to be able to check if our sign restroctions are satisfied. That is, see if all responses of output to a supply and demand shocks are positive,  all responses of prices to a supply shock are negative, and all responses of prices to a demand shock are positive.</p>
+<p>Some ideas of usefuls way to index numpy arrays can be explored <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/02.07-fancy-indexing.html">here</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+
+<span class="c1">#Generate 1000 sets of impulse responses that satisfy the sign restrictions as follows</span>
+
+<span class="c1">#- draw theta from the interval (0, 2*pi) </span>
+<span class="c1">#- compute Q(theta) </span>
+<span class="c1">#- compute the impulse responses and check if the sign restrictions are satisfied. If yes keep them, otherwise dont.</span>
+<span class="c1">#- continue until you have 1000 valid sets of impulse responses</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Make a 2x2 plot of all impulse responses for each variable and shock. </span>
+<span class="c1"># Label each subplot (which variable and shock)</span>
+<span class="c1"># use the same color for each line, and some small value for transparancy (e.g. alpha=0.01) </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another method for generating candidates for Q is based on the QR decomposition.
+One common approach is to apply it to a random matrix <span class="math notranslate nohighlight">\(H\)</span> with that <span class="math notranslate nohighlight">\(H_{ij} \sim N(0, 1)\)</span>, which guarantees that <span class="math notranslate nohighlight">\(H\)</span> is invertable with probability 1. The QR factorization of <span class="math notranslate nohighlight">\(H\)</span> will be unique if the diagonal elements of <span class="math notranslate nohighlight">\(R\)</span> are positive. This can be enforced by reversing the signs of the elements of the i-th column of <span class="math notranslate nohighlight">\(Q\)</span> if the i-th diagonal element of <span class="math notranslate nohighlight">\(R\)</span> is negative. Here is one way to generate such <span class="math notranslate nohighlight">\(Q\)</span> in python</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="p">[</span><span class="n">Q</span><span class="p">,</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">Q</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO</span>
+<span class="c1"># Generate another 1000 sets of impulse responses that satisfy the sign restrictions using the QR approach.</span>
+<span class="c1"># Make another 2x2 plot of all impulse responses for each variable and shock.</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -795,7 +932,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03-Assignments\HW3"
+            path: "./03-Assignments\HW8"
         },
         predefinedOutput: true
     }
@@ -807,17 +944,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="main.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Homework 3</p>
+            <p class="prev-next-title">Homework 8</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="HW3-part2-2.html" title="next page">
+    <a class='right-next' id="next-link" href="../../04-Projects/01-Midterm/main.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">HW 3 Part 2-2</p>
+        <p class="prev-next-title">Midterm project</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

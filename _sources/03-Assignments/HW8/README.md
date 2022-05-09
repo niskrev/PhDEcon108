@@ -27,7 +27,8 @@ Make a plot with variable 'a' showing the actual data for the full sample and th
 
 
 ### Part 2
-Under construction, stay tuned :)
+Use the data in `sign_svar_data.txt` from [this link](https://github.com/PhDEcon108/econ108-practice/blob/main/06-Multivariate/sign_svar_data.txt).
+Follow the instructions and complete the tasks in [HW8-part2.ipynb](./HW8-part2.ipynb) 
 
 ### Submission
-Submit as a jupyter notebook in the folder __HW8__ in your repository at https://github.com/PhDEcon108.  
+Submit as jupyter notebooks in the folder __HW8__ in your repository at https://github.com/PhDEcon108.  
