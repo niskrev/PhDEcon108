@@ -1,0 +1,1460 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>State space models</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/07-Multivariate/02-StateSpace.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 0" href="../../03-Assignments/HW0/main.html" />
+    <link rel="prev" title="Multivariate time series" href="01-VAR.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/02-Gaussian-MLE.html">
+     2. Maximum likelihood estimation of Gaussian models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/03-ARMA-part-3.html">
+     3. ARMA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/04-Forecasting.html">
+     3. Forecasting with ARMA models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05-Nonstationarity/00-Introduction.html">
+   Non-stationarity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Nonstationarity/01-Unit-root.html">
+     1. Non-stationarity and unit root processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06-Conditional-Heteroskedasticity/00-Introduction.html">
+   Conditional Heteroskedasticity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Conditional-Heteroskedasticity/01-ARCH.html">
+     1. ARCH processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Introduction.html">
+   Multivariate models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-VAR.html">
+     1. VARs
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2. State space models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part1.html">
+     HW 2 Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part2.html">
+     HW 2 Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part3.html">
+     HW 2 Part 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     Readme HW3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/HW3-part2-2.html">
+     HW 3 Part 2-2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW4/main.html">
+   Homework 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/README.html">
+     README HW4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-1.html">
+     Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-2.html">
+     Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW5/main.html">
+   Homework 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/README.html">
+     README HW5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/HW5-part-1.html">
+     HW 5 part 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW6/README.html">
+   Homework 6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW7/README.html">
+   Homework 7
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW8/README.html">
+   Homework 8
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW8/HW8-part2.html">
+     HW8 Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/04-Python-working-with-paths-and-files.html">
+     Paths
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/03-Multivariate-Normal.html">
+     Multivariate Normal in Numpy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/03-Conda/Resources.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   1. APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/01-ECB.html">
+     Download data from ECB’s SDW
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/02-Eurostat.html">
+     Download data from EUROSTAT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/03-FRED.html">
+     Download data from FRED
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/01-Lectures/07-Multivariate/02-StateSpace.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/07-Multivariate/02-StateSpace.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gaussian-linear-state-space-model">
+   Gaussian linear state space model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marginal-distribution-of-boldsymbol-x-mathbf-x-prime-1-mathbf-x-prime-2-cdots-mathbf-x-prime-t-prime">
+     Marginal distribution of
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol X = [\mathbf{x}^{\prime}_{1}, \mathbf{x}^{\prime}_{2}, \cdots, \mathbf{x}^{\prime}_{T}]^{\prime}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marginal-distribution-of-boldsymbol-z-left-mathbf-z-prime-1-mathbf-z-prime-2-cdots-mathbf-z-prime-t-right-prime">
+     Marginal distribution of
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol Z = \left[\mathbf{z}^{\prime}_{1}, \mathbf{z}^{\prime}_{2}, \cdots, \mathbf{z}^{\prime}_{T} \right]^{\prime}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applications">
+     Applications:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joint-distribution-of-left-boldsymbol-x-prime-boldsymbol-z-prime-right-prime">
+     Joint distribution of
+     <span class="math notranslate nohighlight">
+      \(\left[\boldsymbol X^{\prime}, \boldsymbol Z^{\prime} \right]^{\prime}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moments-of-the-conditional-distribution-of-boldsymbol-x-given-boldsymbol-z">
+     Moments of the conditional distribution of
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol X\)
+     </span>
+     given
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol Z\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moments-of-the-conditional-distribution">
+     Moments of the conditional distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Applications:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-filter">
+     Kalman filter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#likelihood-function-with-the-kalman-filter">
+     Likelihood function with the Kalman filter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-smoother">
+     Kalman smoother
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation">
+   Estimation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identification">
+     Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting">
+   Forecasting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accounting-for-parameter-uncertainty">
+     Accounting for parameter uncertainty
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-state-space-model">
+     Linear state space model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>State space models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gaussian-linear-state-space-model">
+   Gaussian linear state space model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marginal-distribution-of-boldsymbol-x-mathbf-x-prime-1-mathbf-x-prime-2-cdots-mathbf-x-prime-t-prime">
+     Marginal distribution of
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol X = [\mathbf{x}^{\prime}_{1}, \mathbf{x}^{\prime}_{2}, \cdots, \mathbf{x}^{\prime}_{T}]^{\prime}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marginal-distribution-of-boldsymbol-z-left-mathbf-z-prime-1-mathbf-z-prime-2-cdots-mathbf-z-prime-t-right-prime">
+     Marginal distribution of
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol Z = \left[\mathbf{z}^{\prime}_{1}, \mathbf{z}^{\prime}_{2}, \cdots, \mathbf{z}^{\prime}_{T} \right]^{\prime}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applications">
+     Applications:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joint-distribution-of-left-boldsymbol-x-prime-boldsymbol-z-prime-right-prime">
+     Joint distribution of
+     <span class="math notranslate nohighlight">
+      \(\left[\boldsymbol X^{\prime}, \boldsymbol Z^{\prime} \right]^{\prime}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moments-of-the-conditional-distribution-of-boldsymbol-x-given-boldsymbol-z">
+     Moments of the conditional distribution of
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol X\)
+     </span>
+     given
+     <span class="math notranslate nohighlight">
+      \(\boldsymbol Z\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moments-of-the-conditional-distribution">
+     Moments of the conditional distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Applications:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-filter">
+     Kalman filter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#likelihood-function-with-the-kalman-filter">
+     Likelihood function with the Kalman filter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-smoother">
+     Kalman smoother
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation">
+   Estimation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identification">
+     Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting">
+   Forecasting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accounting-for-parameter-uncertainty">
+     Accounting for parameter uncertainty
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-state-space-model">
+     Linear state space model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="state-space-models">
+<h1>State space models<a class="headerlink" href="#state-space-models" title="Permalink to this headline">¶</a></h1>
+<p>Consider <span class="math notranslate nohighlight">\(n_{x}\)</span>-dimensional VAR(1) process:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{t} =  A \mathbf{x}_{t-1}  + \boldsymbol \varepsilon_{t}, \;\;\; \boldsymbol \varepsilon_t \sim \operatorname{WN} \left( 0, \;\mathbf{\Sigma}\right) 
+\]</div>
+<p>However, some variables of <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span> are not observed, i.e. no data exists for them</p>
+<p>We can define a matrix <span class="math notranslate nohighlight">\(C\)</span> that maps <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span> into a <span class="math notranslate nohighlight">\(n_{z}\)</span>-dimensional <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span> collecting the observed variables in <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{z}_{t} = C \mathbf{x}_{t}\]</div>
+<p><strong>Example:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}_{t} = [x_{1,t}, x_{2,t}]^{\prime}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{1,t}\)</span> - unobserved, <span class="math notranslate nohighlight">\(x_{2,t}\)</span> - observed</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}z_t = \underset{C}{\underbrace{\left[\begin{array}{cc} 0, 1 \end{array} \right]}}
+\left[\begin{array}{c}
+ x_{1,t}\\
+ x_{2,t}\\
+\end{array}\right]
+\end{split}\]</div>
+<p>The case where <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span> is a subset of <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span> is one example of  <strong>linear state space model</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t} &amp;=  A \mathbf{x}_{t-1}  + \boldsymbol \varepsilon_{t}, \\
+\mathbf{z}_{t} &amp;= C \mathbf{x}_{t} + \boldsymbol \nu_{t}
+\end{align}
+\end{split}\]</div>
+<p>which, in turn, is a special case of the class of (non-linear) <strong>state space models</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t} &amp;=  f\left(\mathbf{x}_{t-1}, \boldsymbol \varepsilon_{t} \right), \\
+\mathbf{z}_{t} &amp;=  g\left( \mathbf{x}_{t}, \boldsymbol \nu_{t} \right)
+\end{align}
+\end{split}\]</div>
+<p><strong>Simplest example</strong>: AR(1) model with measurement error:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+x_{t} &amp;=  \alpha x_{t-1}  +  \varepsilon_{t}, \\
+z_{t} &amp;= x_{t} +  \nu_{t}
+\end{align}
+\end{split}\]</div>
+<div class="section" id="gaussian-linear-state-space-model">
+<h2>Gaussian linear state space model<a class="headerlink" href="#gaussian-linear-state-space-model" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t} &amp;=  A \mathbf{x}_{t-1}  + \boldsymbol \varepsilon_{t}, \;\;\;\;\; \varepsilon_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\varepsilon}\right) \;\;\; \text{state (transition) equation}\\\\
+\mathbf{z}_{t} &amp;= C \mathbf{x}_{t} + \boldsymbol \nu_{t}, \;\;\;\;\;\;\; \nu_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\nu}\right)  \;\;\; \text{observation equation} \\\\
+\mathbf{x}_{0}  &amp; \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{0} \right),  \;\;\; \text{initial state}
+\end{align}
+\end{split}\]</div>
+<p><strong>Note 1:</strong> This is a time-invariant model. This can be relaxed with some or all of the matrices <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\varepsilon}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\nu}\)</span> being functions of <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p><strong>Note 2:</strong> We can add an intercept in one or both of the state and observation equations.</p>
+<p><strong>Note 3:</strong> <span class="math notranslate nohighlight">\(A\)</span> can be a companion matrix, so the unobserved variables could follow a general VAR§</p>
+<p><strong>Note 4:</strong> <span class="math notranslate nohighlight">\(\varepsilon_{t}\)</span> and <span class="math notranslate nohighlight">\(\nu_t\)</span> are assumed to be independent, but that can be relaxed.</p>
+<p><strong>Note 5:</strong> <span class="math notranslate nohighlight">\(\mathbf{x}_{0}\)</span> is independent from all <span class="math notranslate nohighlight">\(\varepsilon_{t}\)</span> and <span class="math notranslate nohighlight">\(\nu_t\)</span></p>
+<p><strong>Autocovariances of</strong> <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\Gamma_{z}(0) &amp; = \operatorname{cov}(\mathbf{z}_t, \mathbf{z}_{t})\\
+ &amp; = \operatorname{cov}(C\mathbf{x}_t, C \mathbf{x}_{t}) + \mathbf{\Sigma}_{\nu} \\
+ &amp; = C \Gamma_{x}(0) C^{\prime} + \mathbf{\Sigma}_{\nu} 
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\Gamma_{z}(k) &amp; = \operatorname{cov}(\mathbf{z}_t, \mathbf{z}_{t-k})\\
+ &amp; = \operatorname{cov}(C\mathbf{x}_t, C \mathbf{x}_{t-k}) \\
+ &amp; = C \Gamma_{x}(k) C^{\prime} 
+\end{align}
+\end{split}\]</div>
+<p><strong>Note:</strong> We get <span class="math notranslate nohighlight">\(\Gamma_{x}(0)\)</span> and <span class="math notranslate nohighlight">\(\Gamma_{x}(k)\)</span> as in the last lecture</p>
+<p><strong>Stationarity of</strong> <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{0}\sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{0} \right),  
+\]</div>
+<p>requres</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{\Sigma}_{0} =  \Gamma_{x}(0)\]</div>
+<div class="section" id="marginal-distribution-of-boldsymbol-x-mathbf-x-prime-1-mathbf-x-prime-2-cdots-mathbf-x-prime-t-prime">
+<h3>Marginal distribution of <span class="math notranslate nohighlight">\(\boldsymbol X = [\mathbf{x}^{\prime}_{1}, \mathbf{x}^{\prime}_{2}, \cdots, \mathbf{x}^{\prime}_{T}]^{\prime}\)</span><a class="headerlink" href="#marginal-distribution-of-boldsymbol-x-mathbf-x-prime-1-mathbf-x-prime-2-cdots-mathbf-x-prime-t-prime" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\underset{\boldsymbol X}{\underbrace{
+\left[\begin{array}{c}
+\mathbf{x}_{1}\\
+\mathbf{x}_{2}\\
+\mathbf{x}_{3}\\
+\mathbf{x}_{4}\\
+\vdots\\
+\mathbf{x}_{T}
+\end{array}\right]}}
+=
+\underset{\boldsymbol A}{\underbrace{
+\left[\begin{array}{cccccccc}
+A &amp; I &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0\\
+A^2 &amp; A &amp; I &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0\\
+A^3  &amp; A^2  &amp; A &amp; I &amp; \cdots &amp; 0 &amp; 0 &amp; 0\\
+A^4 &amp; A^3 &amp; A^2 &amp; A &amp; \cdots &amp; 0 &amp; 0 &amp; 0\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \cdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+A^T  &amp; A^{T-1}  &amp; A^{T-2} &amp; A^{T-3} &amp; \cdots &amp; A^2 &amp; A &amp; I
+\end{array}\right]}}
+\underset{\boldsymbol E}{\underbrace{
+\left[\begin{array}{c}
+\mathbf{x}_{0}\\
+\boldsymbol \varepsilon_{1}\\
+\boldsymbol \varepsilon_{2}\\
+\boldsymbol \varepsilon_{3}\\
+\vdots\\
+\boldsymbol \varepsilon_{T-1}\\
+\boldsymbol \varepsilon_{T}
+\end{array}\right]}}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol X \sim \mathcal{N} \left( 0, \; \boldsymbol A \mathbf{\Sigma}_{\boldsymbol E} \boldsymbol A^{\prime}\right)
+\]</div>
+<p><strong>Note:</strong> see HW4 part 1 for an alternative way to write the system. Check <a class="reference external" href="https://espace.library.uq.edu.au/data/UQ_205502/statespace.pdf?Expires=1651576231&amp;Key-Pair-Id=APKAJKNBJ4MJBJNC6NLQ&amp;Signature=bINv5XkfLj8ybxSSBgSXSUlqpRQItDalU~N1fGuD7wg8zhXgGnUq~d3aF~iNQ2C0V4Q2Bmy-5Meo3TtXL6QQkkDy5BSm~WPq~w849rkOLDwXMsImFHSOy27O67yWshTilbjiOS4oDmfaoq0yTO11wm3nngu5cj4pb5qX4UIYPoA-4X5J-b-aCm95FdeZArGw77IGCzE2TbbeSMh9RrBLlNOAZnwW5WDSh7fdrW3nIdTvdbJRRfS5V2Hf7ZkXHMR2ylj7jA1lM~f1R7rOmCvBb011346KDSlBiwaDpFj-ZMidjB2aZsmxl5DEOGlvreMw-6O0s2lf1VOdrNHzf5PW2g__">Efficient simulation and integrated likelihood
+estimation in state space models</a> for applications of that approach.</p>
+</div>
+<div class="section" id="marginal-distribution-of-boldsymbol-z-left-mathbf-z-prime-1-mathbf-z-prime-2-cdots-mathbf-z-prime-t-right-prime">
+<h3>Marginal distribution of <span class="math notranslate nohighlight">\(\boldsymbol Z = \left[\mathbf{z}^{\prime}_{1}, \mathbf{z}^{\prime}_{2}, \cdots, \mathbf{z}^{\prime}_{T} \right]^{\prime}\)</span><a class="headerlink" href="#marginal-distribution-of-boldsymbol-z-left-mathbf-z-prime-1-mathbf-z-prime-2-cdots-mathbf-z-prime-t-right-prime" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\underset{\boldsymbol Z}{\underbrace{
+\left[\begin{array}{c}
+\mathbf{z}_{1}\\
+\mathbf{z}_{2}\\
+\vdots\\
+\mathbf{z}_{T}
+\end{array}\right]}}
+=
+\underset{\boldsymbol C}{\underbrace{
+\left[\begin{array}{cccc}
+C &amp;  0 &amp; \cdots &amp; 0\\
+0 &amp;  C &amp; \cdots &amp; 0\\
+\vdots &amp; \vdots &amp; \cdots &amp; \vdots\\
+0 &amp;  0 &amp; \cdots &amp; C\\
+\end{array}\right]}}
+\underset{\boldsymbol X}{\underbrace{
+\left[\begin{array}{c}
+\mathbf{x}_{1}\\
+\mathbf{x}_{2}\\
+\vdots\\
+\mathbf{x}_{T}
+\end{array}\right]}}
++
+\underset{\boldsymbol V}{\underbrace{
+\left[\begin{array}{c}
+\boldsymbol \nu_{1}\\
+\boldsymbol \nu_{2}\\
+\vdots\\
+\boldsymbol \nu_{T}
+\end{array}\right]}}
+\end{split}\]</div>
+<p><strong>Question:</strong> How would you compute <span class="math notranslate nohighlight">\(\boldsymbol C\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol Z \sim \mathcal{N} \left( 0, \; \boldsymbol C \mathbf{\Sigma}_{\boldsymbol X} \boldsymbol C^{\prime} +  \mathbf{\Sigma}_{\boldsymbol V}\right)
+\]</div>
+</div>
+<div class="section" id="applications">
+<h3>Applications:<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>likelihood function</strong>: distribution of <span class="math notranslate nohighlight">\(Z\)</span></p></li>
+<li><p><strong>forecasting</strong>: distribution of <span class="math notranslate nohighlight">\(\mathbf{z}_{t+h}\)</span>, given <span class="math notranslate nohighlight">\(Z_{1:t} = [\mathbf{z}^{\prime}_{1}, \mathbf{z}^{\prime}_{2}, \cdots, \mathbf{z}^{\prime}_{t}]^{\prime}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="joint-distribution-of-left-boldsymbol-x-prime-boldsymbol-z-prime-right-prime">
+<h3>Joint distribution of <span class="math notranslate nohighlight">\(\left[\boldsymbol X^{\prime}, \boldsymbol Z^{\prime} \right]^{\prime}\)</span><a class="headerlink" href="#joint-distribution-of-left-boldsymbol-x-prime-boldsymbol-z-prime-right-prime" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \boldsymbol X \\
+      \boldsymbol Z
+    \end{bmatrix}
+    \sim \mathcal{N} \left( 0,
+\begin{bmatrix}
+         \mathbf{\Sigma}_{\boldsymbol X} &amp; \mathbf{\Sigma}_{\boldsymbol X \boldsymbol Z} \\
+         \mathbf{\Sigma}_{\boldsymbol Z \boldsymbol X} &amp; \mathbf{\Sigma}_{\boldsymbol Z}
+    \end{bmatrix}
+\right)
+\end{split}\]</div>
+</div>
+<div class="section" id="moments-of-the-conditional-distribution-of-boldsymbol-x-given-boldsymbol-z">
+<h3>Moments of the conditional distribution of <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> given <span class="math notranslate nohighlight">\(\boldsymbol Z\)</span><a class="headerlink" href="#moments-of-the-conditional-distribution-of-boldsymbol-x-given-boldsymbol-z" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{E}(\boldsymbol X | \boldsymbol Z) = \mathbf{\Sigma}_{\boldsymbol X \boldsymbol Z} \mathbf{\Sigma}^{-1}_{\boldsymbol Z} \boldsymbol Z\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{cov}(\boldsymbol X | \boldsymbol Z) = \mathbf{\Sigma}_{\boldsymbol X \boldsymbol X} - \mathbf{\Sigma}_{\boldsymbol X \boldsymbol Z}\mathbf{\Sigma}_{\boldsymbol Z}^{-1}\mathbf{\Sigma}_{\boldsymbol Z \boldsymbol X }\)</span></p></li>
+</ul>
+<p><strong>Note:</strong> The conditional variance of <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> given <span class="math notranslate nohighlight">\(\boldsymbol Z\)</span> does not depend on the data <span class="math notranslate nohighlight">\(\boldsymbol Z\)</span></p>
+</div>
+<div class="section" id="moments-of-the-conditional-distribution">
+<h3>Moments of the conditional distribution<a class="headerlink" href="#moments-of-the-conditional-distribution" title="Permalink to this headline">¶</a></h3>
+<p>of <span class="math notranslate nohighlight">\(\boldsymbol X_{t_1:t_2}=[\mathbf{x}^{\prime}_{t_1}, \cdots, \mathbf{x}^{\prime}_{t_2}]^{\prime}\)</span> <strong>given</strong> <span class="math notranslate nohighlight">\(\boldsymbol Z_{t_3:t_4} = [\mathbf{z}^{\prime}_{t_3}, \cdots, \mathbf{z}^{\prime}_{t_4}]^{\prime}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\{\mathbf{\Sigma}_{\boldsymbol X \boldsymbol X}\}_{(t_1:t_2), (t_1:t_1)}, \;\;
+\{\mathbf{\Sigma}_{\boldsymbol Z \boldsymbol Z}\}_{(t_3:t_4), (t_3:t_4)}, \;\;
+\{\mathbf{\Sigma}_{\boldsymbol X \boldsymbol Z}\}_{(t_1:t_2), (t_3:t_4)} \;\;
+\{\mathbf{\Sigma}_{\boldsymbol Z \boldsymbol X}\}_{(t_3:t_4), (t_1:t_2)}
+\]</div>
+</div>
+<div class="section" id="id1">
+<h3>Applications:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>filtering</strong>: distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span>, given <span class="math notranslate nohighlight">\(\boldsymbol Z_{1:t} = [\mathbf{z}^{\prime}_{1}, \mathbf{z}^{\prime}_{2}, \cdots, \mathbf{z}^{\prime}_{t}]^{\prime}\)</span></p></li>
+<li><p><strong>state prediction</strong>: distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_{t+h}\)</span>, given <span class="math notranslate nohighlight">\(\boldsymbol Z_{1:t}\)</span></p></li>
+<li><p><strong>smoothing</strong>: distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span>, given <span class="math notranslate nohighlight">\(\boldsymbol Z_{1:T}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="kalman-filter">
+<h3>Kalman filter<a class="headerlink" href="#kalman-filter" title="Permalink to this headline">¶</a></h3>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t|t-1} &amp;= \operatorname{E}(\mathbf{x}_t | \mathbf{Z}_{1:t-1}), \;\; \mathbf{\Sigma}^{x}_{t|t-1} = \operatorname{cov}(\mathbf{x}_t | \mathbf{Z}_{1:t-1}) \\
+\mathbf{x}_{t|t} &amp;= \operatorname{E}(\mathbf{x}_t | \mathbf{Z}_{1:t}), \;\; \mathbf{\Sigma}^{x}_{t|t} = \operatorname{cov}(\mathbf{x}_t | \mathbf{Z}_{1:t}) \\
+\mathbf{z}_{t|t-1} &amp;= \operatorname{E}(\mathbf{z}_t | \mathbf{Z}_{1:t-1}), \;\; \mathbf{\Sigma}^{z}_{t|t-1} = \operatorname{cov}(\mathbf{z}_t | \mathbf{Z}_{1:t-1}) \\
+\end{align}
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}_{0|0} =  0, \;\; \mathbf{\Sigma}^{x}_{0|0} = \mathbf{\Sigma}_{0}\]</div>
+<ul class="simple">
+<li><p>optimal one-step ahead forecast of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t|t-1} &amp;= A \mathbf{x}_{t-1|t-1} \\
+\mathbf{\Sigma}^{x}_{t|t-1} &amp;= A \mathbf{\Sigma}^{x}_{t-1|t-1} A^{\prime} + \mathbf{\Sigma}_{\varepsilon}\\
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>optimal one-step ahead forecast of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{z}_{t|t-1} &amp;= C \mathbf{x}_{t|t-1}
+\\
+\mathbf{\Sigma}^{z}_{t|t-1} &amp;= A \mathbf{\Sigma}^{x}_{t|t-1} A^{\prime} + \mathbf{\Sigma}_{\nu}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>optimal update of the forecast of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t|t} &amp;= \mathbf{x}_{t|t-1} + \mathbf{K}_{t}\left(\mathbf{z}_{t} - \mathbf{z}_{t|t-1}  \right)
+\\
+\mathbf{\Sigma}^{x}_{t|t} &amp;= \mathbf{\Sigma}^{x}_{t|t-1} - \mathbf{K}_{t} \mathbf{\Sigma}^{z}_{t|t-1}  \mathbf{K}_{t}^{\prime}
+\end{align}
+\end{split}\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(
+\mathbf{K}_{t} = \mathbf{\Sigma}^{x}_{t|t-1} C^{\prime} (\mathbf{\Sigma}^{z}_{t|t-1})^{-1}
+\)</span>
+is called <strong>Kalman gain</strong> - it shows how to optimally update the forecast of <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span> after the new observation of <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span> is seen</p>
+<p>Derivation for <span class="math notranslate nohighlight">\(t=1\)</span></p>
+<ul class="simple">
+<li><p>step 1 Compute joint distribution of <span class="math notranslate nohighlight">\([\mathbf{x}_1^{\prime}, \mathbf{z}_1^{\prime}]^{\prime}\)</span> using</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{bmatrix}
+        \mathbf{x}_1\\
+      \mathbf{z}_1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        A\\
+      C A
+    \end{bmatrix}   \mathbf{x}_0 + 
+\begin{bmatrix}
+         I &amp; 0 \\
+         C &amp; A
+    \end{bmatrix}
+    \begin{bmatrix}
+        \boldsymbol \varepsilon_{1}\\
+      \boldsymbol \nu_{1}
+    \end{bmatrix}    
+\end{split}\]</div>
+<p><strong>Note</strong> that <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol \varepsilon_{1}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol \nu_{1}\)</span> are independent</p>
+<ul class="simple">
+<li><p>step 2 Compute the marginal distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbf{z}_1\)</span></p></li>
+<li><p>step 3 Compute the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> given <span class="math notranslate nohighlight">\(\mathbf{z}_1\)</span></p></li>
+</ul>
+<p>Derivation for any <span class="math notranslate nohighlight">\(t\)</span>: use <strong>induction</strong>: assume the optimal update formulae hold for <span class="math notranslate nohighlight">\(t-1\)</span> and show that the one-step ahead ones are true:</p>
+<ul class="simple">
+<li><p>write  <span class="math notranslate nohighlight">\([\mathbf{x}_t, \mathbf{z}_t]\)</span> in terms of <span class="math notranslate nohighlight">\(\mathbf{x}_{t-1}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol \varepsilon_{t}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol \nu_{t}\)</span></p></li>
+<li><p>using the assumed conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_{t-1}\)</span> given <span class="math notranslate nohighlight">\(Z_{1:t-1}\)</span>, compute the joint and marginal conditional disrtibutions of <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> and <span class="math notranslate nohighlight">\(\mathbf{z}_t\)</span>  given <span class="math notranslate nohighlight">\(Z_{1:t-1}\)</span>.</p></li>
+<li><p>from the joint (conditional) distribution compute the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> given <span class="math notranslate nohighlight">\(\mathbf{z}_t\)</span>. This will give you the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> given <span class="math notranslate nohighlight">\(Z_{1:t} = [Z_{1:t-1}, \mathbf{z}_t]\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="likelihood-function-with-the-kalman-filter">
+<h3>Likelihood function with the Kalman filter<a class="headerlink" href="#likelihood-function-with-the-kalman-filter" title="Permalink to this headline">¶</a></h3>
+<p>joint distribution of <span class="math notranslate nohighlight">\( Z = \left[\mathbf{z}^{\prime}_{1}, \mathbf{z}^{\prime}_{2}, \cdots, \mathbf{z}^{\prime}_{T} \right]^{\prime}\)</span></p>
+<div class="math notranslate nohighlight">
+\[ p(\boldsymbol Z; \boldsymbol \theta) = p(\mathbf{z}_{0}; \boldsymbol \theta) \prod_{t=1}^{T} p(\mathbf{z}_{t}|Z_{1:t-1}; \boldsymbol \theta) \]</div>
+<p>where <span class="math notranslate nohighlight">\(p(\mathbf{z}_{t}|Z_{1:t-1}; \boldsymbol \theta)\)</span> is Gaussian with moments <span class="math notranslate nohighlight">\(\mathbf{z}_{t|t-1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\Sigma}^{z}_{t|t-1} \)</span> given by the Kalman Filter.</p>
+<p><strong>Note:</strong> equivalent to, but much more efficient than computing the joint distribution of <span class="math notranslate nohighlight">\(Z\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol Z \sim \mathcal{N} \left( 0, \; \boldsymbol C \mathbf{\Sigma}_{\boldsymbol X} \boldsymbol C^{\prime} +  \mathbf{\Sigma}_{\boldsymbol V}\right)
+\]</div>
+</div>
+<div class="section" id="kalman-smoother">
+<h3>Kalman smoother<a class="headerlink" href="#kalman-smoother" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t-1|T} &amp;= \mathbf{x}_{t-1|t-1} + \mathbf{J}_{t-1}\left(\mathbf{x}_{t|T} - \mathbf{x}_{t|t-1}  \right)
+\\
+\mathbf{\Sigma}^{x}_{t-1|T} &amp;= \mathbf{\Sigma}^{x}_{t-1|t-1} + \mathbf{J}_{t-1} \left( \mathbf{\Sigma}^{x}_{t|T} -  \mathbf{\Sigma}^{x}_{t|t-1} \right) \mathbf{J}_{t-1}^{\prime}
+\end{align}
+\end{split}\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(
+\mathbf{J}_{t-1} = \mathbf{\Sigma}^{x}_{t-1|t-1} A^{\prime} (\mathbf{\Sigma}^{x}_{t|t-1})^{-1}
+\)</span></p>
+<p><strong>Note 1:</strong> for <span class="math notranslate nohighlight">\(t=T+1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}_{t-1|T}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\Sigma}^{x}_{t-1|T}\)</span> are given by the Kalman fitler. After that, going <strong>backwards</strong>, all necessary objects are provided by the previous smoothing step, and by the Kalman filter</p>
+<p><strong>Note 2:</strong> equivalent to, but much more efficient than computing the <strong>block diagonal</strong> of conditional distribution of <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> given <span class="math notranslate nohighlight">\(\boldsymbol Z\)</span></p>
+</div>
+</div>
+<div class="section" id="estimation">
+<h2>Estimation<a class="headerlink" href="#estimation" title="Permalink to this headline">¶</a></h2>
+<p>What are we estimating?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t} &amp;=  A \mathbf{x}_{t-1}  + \boldsymbol \varepsilon_{t}, \;\;\;\;\; \varepsilon_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\varepsilon}\right) \;\;\; \text{state (transition) equation}\\
+\mathbf{z}_{t} &amp;= C \mathbf{x}_{t} + \boldsymbol \nu_{t}, \;\;\;\;\;\;\; \nu_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\nu}\right)  \;\;\; \text{observation equation} \\
+\end{align}
+\end{split}\]</div>
+<p>Collect the unknown parameters of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\varepsilon}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\nu}\)</span> in <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span></p>
+<p><strong>MLE</strong></p>
+<div class="math notranslate nohighlight">
+\[ \ell(\boldsymbol \theta | \boldsymbol Z) =  \operatorname{log}(\mathcal{L}(\boldsymbol \theta | \boldsymbol Z) = p(\boldsymbol Z; \boldsymbol \theta)  \]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\hat {\boldsymbol \theta}&amp;= \underset{\boldsymbol \theta}{\mathrm{argmax}}~~\ell(\boldsymbol \theta | \boldsymbol Z) 
+\end{align}                          
+\]</div>
+<div class="section" id="identification">
+<h3>Identification<a class="headerlink" href="#identification" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t} &amp;=  A \mathbf{x}_{t-1}  + \boldsymbol \varepsilon_{t}, \;\;\;\;\; \varepsilon_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\varepsilon}\right) \;\;\; \text{state (transition) equation}\\
+\mathbf{z}_{t} &amp;= C \mathbf{x}_{t} + \boldsymbol \nu_{t}, \;\;\;\;\;\;\; \nu_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\nu}\right)  \;\;\; \text{observation equation} \\
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>If we replace <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{x}_{t}^{*} = T  \mathbf{x}_{t}\)</span>, <span class="math notranslate nohighlight">\(\varepsilon_{t}\)</span> with  <span class="math notranslate nohighlight">\(\varepsilon_{t}^{*} = T  \varepsilon_{t}\)</span>, <span class="math notranslate nohighlight">\(A\)</span> with <span class="math notranslate nohighlight">\(A^{*} = T A T^{-1}\)</span>,  <span class="math notranslate nohighlight">\(C\)</span> with <span class="math notranslate nohighlight">\(C^{*} = C T^{-1}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\varepsilon}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\varepsilon}^{*} = T\mathbf{\Sigma}_{\varepsilon}T'\)</span> the process for <span class="math notranslate nohighlight">\(\mathbf{z}_{t}\)</span> remains unchanged, and the likelihood function remain the same.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Therefore, unless there are (sufficient) restrictions on <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\varepsilon}\)</span>, their parameter cannot be identified - multiple values of <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> imply the same value of the likelihood.</p></li>
+</ul>
+<ul class="simple">
+<li><p>a simple way to check for <strong>local</strong> identification at a given value of <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> is to compute the Jacobian matrix of <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\boldsymbol Z}\)</span> w.r.t <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> and check that it has full rank.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="forecasting">
+<h2>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this headline">¶</a></h2>
+<p>Optimal forecast given information at <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\operatorname{E}(\mathbf{z}_{T+1} | \boldsymbol Z )  &amp; = C \operatorname{E}(\mathbf{x}_{T+1} | \boldsymbol Z ) = C \mathbf{x}_{T+1|T} =   CA \mathbf{x}_{T|T} \\
+\operatorname{E}(\mathbf{z}_{T+h} | \boldsymbol Z )  &amp; = C \boldsymbol A^h \mathbf{x}_{T|T}
+\end{align}
+\end{split}\]</div>
+<p><strong>Computing the variance of the forecast erros</strong></p>
+<p>Using that <span class="math notranslate nohighlight">\(\mathbf{x}_{t}\)</span>  is VAR(1)</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{T+h} = A^{h}\mathbf{x}_{T} + A^{h-1}\boldsymbol \varepsilon_{T+1} + \cdots + A\boldsymbol \varepsilon_{T+h-1} + \boldsymbol \varepsilon_{T+h}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{T+h|T} = A^{h}\mathbf{x}_{T|T}
+\]</div>
+<p>Therefore, the forecast error is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{T+h} - \mathbf{x}_{T+h|T} = A^{h}\left(\mathbf{x}_{T} - \mathbf{x}_{T|T} \right)  + A^{h-1}\boldsymbol \varepsilon_{T+1} + \cdots + A\boldsymbol \varepsilon_{T+h-1} + \boldsymbol \varepsilon_{T+h}
+\]</div>
+<p>The MSE of <span class="math notranslate nohighlight">\(\mathbf{x}_{T+h|T}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{\Sigma}^{x}_{T+h|T} = A^{h} \mathbf{\Sigma}^{x}_{T|T} (A^{h})^{\prime} + A^{h-1} \Sigma_{\varepsilon} (A^{h-1})^{\prime} + \cdots + A \Sigma_{\varepsilon} A^{\prime} + \Sigma_{\varepsilon}
+\]</div>
+<p>and the MSE of <span class="math notranslate nohighlight">\(\mathbf{z}_{T+h|T}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{\Sigma}^{z}_{T+h|T} = C \mathbf{\Sigma}^{x}_{T+h|T} C^{\prime} + \Sigma_{\nu}
+\]</div>
+<div class="section" id="accounting-for-parameter-uncertainty">
+<h3>Accounting for parameter uncertainty<a class="headerlink" href="#accounting-for-parameter-uncertainty" title="Permalink to this headline">¶</a></h3>
+<p>So far, forecast errors were always computed assuming that parameters were <strong>known</strong>. However, they are estimated and parameter uncertainty is also present (it disappears only asymptotically)</p>
+<p><strong>total uncertainty</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\operatorname{E}\left([\mathbf{x}_{T+h} -  \mathbf{x}_{T+h|T} (\hat{\theta})][\mathbf{x}_{T+h} -  \mathbf{x}_{T+h|T} (\hat{\theta})]^{\prime} \right) &amp;= \operatorname{E}\left([\mathbf{x}_{T+h} -  \mathbf{x}_{T+h|T}(\theta)][\mathbf{x}_{T+h} -  \mathbf{x}_{T+h|T}(\theta)]^{\prime}  \right) \\
+&amp; + \operatorname{E}\left([\mathbf{x}_{T+h|T}(\hat{\theta}) -  \mathbf{x}_{T+h|T} (\hat{\theta})][\mathbf{x}_{T+h|T}(\hat{\theta}) -  \mathbf{x}_{T+h|T} (\hat{\theta})]^{\prime} \right) \\
+&amp;= \operatorname{E}\left(\mathbf{\Sigma}^{x}_{T+h|T} \right) 
++ \operatorname{E}\left([\mathbf{x}_{T+h|T}(\theta) -  \mathbf{x}_{T+h|T} (\hat{\theta})][\mathbf{x}_{T+h|T}(\theta) -  \mathbf{x}_{T+h|T} (\hat{\theta})]^{\prime} \right)
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Evaluate <span class="math notranslate nohighlight">\(\operatorname{E}\left(\mathbf{\Sigma}^{x}_{T+h|T} \right)\)</span> by generating <span class="math notranslate nohighlight">\(N\)</span> draws from the asymptotic distribution of <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> and compute the average value of <span class="math notranslate nohighlight">\(\mathbf{\Sigma}^{x}_{T+h|T}\)</span></p></li>
+<li><p>Evaluate <span class="math notranslate nohighlight">\(\operatorname{E}\left([\mathbf{x}_{T+h|T}(\theta) -  \mathbf{x}_{T+h|T} (\hat{\theta})][\mathbf{x}_{T+h|T}(\theta) -  \mathbf{x}_{T+h|T} (\hat{\theta})]^{\prime} \right) \)</span> as the average of <span class="math notranslate nohighlight">\(\left([\mathbf{x}_{T+h|T}(\theta_i) -  \mathbf{x}_{T+h|T} (\hat{\theta})][\mathbf{x}_{T+h|T}(\theta_i) -  \mathbf{x}_{T+h|T} (\hat{\theta})]^{\prime} \right)\)</span> using the <span class="math notranslate nohighlight">\(N\)</span> draws <span class="math notranslate nohighlight">\(\theta_i\)</span> from the asymptotic distribution of <span class="math notranslate nohighlight">\(\hat{\theta}\)</span></p></li>
+<li><p>see <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/0304407686900047">Hamilton, James D. “A standard error for the estimated state vector of a state-space model.” Journal of Econometrics 33.3 (1986)</a></p></li>
+</ul>
+</div>
+<div class="section" id="linear-state-space-model">
+<h3>Linear state space model<a class="headerlink" href="#linear-state-space-model" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{x}_{t} &amp;=  A \mathbf{x}_{t-1}  + \boldsymbol \varepsilon_{t}, \;\;\;\;\; \varepsilon_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\varepsilon}\right) \\
+\mathbf{z}_{t} &amp;= C \mathbf{x}_{t} + \boldsymbol \nu_{t}, \;\;\;\;\;\;\; \nu_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{\nu}\right)  \\
+\mathbf{x}_{0}  &amp; \sim \mathcal{N} \left( 0, \;\mathbf{\Sigma}_{0} \right),
+\end{align}
+\end{split}\]</div>
+<p><strong>reduced-form (statistical) models</strong></p>
+<ul class="simple">
+<li><p>the parameters are the unrestricted elements of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\varepsilon}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{\Sigma}_{\nu}\)</span></p></li>
+<li><p>of little (no) interest on their ow</p></li>
+</ul>
+<p><strong>structural (theoretical) models</strong></p>
+<ul class="simple">
+<li><p>reduced-form model parameters are functions of (often much) smaller number of structural parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> have economic meaning and are (or could be) of interest on their own</p></li>
+<li><p>estimation is usually harder (non-linear functions)</p></li>
+</ul>
+<p><a class="reference external" href="https://nchopin.github.io/books/">Non-linear state space models in Python</a></p>
+<p><a class="reference external" href="https://particles-sequential-monte-carlo-in-python.readthedocs.io/en/latest/">docs</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Lectures\07-Multivariate"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01-VAR.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Multivariate time series</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../03-Assignments/HW0/main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 0</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
