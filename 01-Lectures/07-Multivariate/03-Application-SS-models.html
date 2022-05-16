@@ -1,0 +1,1509 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appilcations of state space models</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/07-Multivariate/03-Application-SS-models.html" />
+    <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homework 0" href="../../03-Assignments/HW0/main.html" />
+    <link rel="prev" title="State space models" href="02-StateSpace.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo-econ108.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Econometrics II (Time Series Analysis)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Computer-Setup.html">
+   Computer Setup
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+     1. Time series vs cross-section
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+     2. Time Series concepts and models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+   Multivariate normal distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+     1. Multivariate normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+   Review of maximum likelihood estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/01-MLE.html">
+     1. Maximum likelihood estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-MLE/02-Gaussian-MLE.html">
+     2. Maximum likelihood estimation of Gaussian models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-ARMA/00-Introduction.html">
+   ARMA models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/01-ARMA-part-1.html">
+     1. Introduction to AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/02-ARMA-part-2.html">
+     2. Algebra of AR and MA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/03-ARMA-part-3.html">
+     3. ARMA models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-ARMA/04-Forecasting.html">
+     3. Forecasting with ARMA models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05-Nonstationarity/00-Introduction.html">
+   Non-stationarity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Nonstationarity/01-Unit-root.html">
+     1. Non-stationarity and unit root processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06-Conditional-Heteroskedasticity/00-Introduction.html">
+   Conditional Heteroskedasticity
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Conditional-Heteroskedasticity/01-ARCH.html">
+     1. ARCH processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-Introduction.html">
+   Multivariate models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-VAR.html">
+     1. VARs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-StateSpace.html">
+     2. State space models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3. Applications of state space models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+   Homework 0
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+     README HW0
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+   Homework 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+     README HW1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+     HW1-empty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+   Homework 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+     README HW2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part1.html">
+     HW 2 Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part2.html">
+     HW 2 Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part3.html">
+     HW 2 Part 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+   Homework 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+     Readme HW3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW3/HW3-part2-2.html">
+     HW 3 Part 2-2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW4/main.html">
+   Homework 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/README.html">
+     README HW4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-1.html">
+     Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-2.html">
+     Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW5/main.html">
+   Homework 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/README.html">
+     README HW5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW5/HW5-part-1.html">
+     HW 5 part 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW6/README.html">
+   Homework 6
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW7/README.html">
+   Homework 7
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-Assignments/HW8/README.html">
+   Homework 8
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-Assignments/HW8/HW8-part2.html">
+     HW8 Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../03-Assignments/HW9/README.html">
+   Homework 9
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/01-Midterm/main.html">
+   Midterm project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../04-Projects/02-Final/main.html">
+   Final project
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/00-Python/00-Python.html">
+   1. Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/01-Python-intro.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/02-Python-functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/03-Python-modules.html">
+     Modules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/00-Python/04-Python-working-with-paths-and-files.html">
+     Paths
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/01-Numpy/00-Numpy.html">
+   2. Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/01-Numpy-examples.html">
+     Numpy exampes I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/02-Numpy-exercises-I-solutions.html">
+     Numpy exercises I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/01-Numpy/03-Multivariate-Normal.html">
+     Multivariate Normal in Numpy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/02-Pandas/00-Pandas.html">
+   3. Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/01-Pandas-examples-I.html">
+     Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/02-Pandas/02-Pandas-for-time-series.html">
+     Pandas for time series data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../02-Tutorials/03-Matplotlib/01-Resources.html">
+   4. Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-Tutorials/Other/Intro.html">
+   Other tools
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/01-Command-line/Resources.html">
+     Command line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/02-Git-and-Github/Resources.html">
+     Git and GitHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-Tutorials/Other/03-Conda/Resources.html">
+     Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../00-Data/00-Data.html">
+   1. APIs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/01-ECB.html">
+     Download data from ECB’s SDW
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/02-Eurostat.html">
+     Download data from EUROSTAT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../00-Data/03-FRED.html">
+     Download data from FRED
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/01-Lectures/07-Multivariate/03-Application-SS-models.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/01-Lectures/07-Multivariate/03-Application-SS-models.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arma-p-q-models">
+   ARMA(p,q) models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unobserved-components-models">
+   Unobserved-components models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-varying-parameters">
+   Time-varying parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-factor-models">
+   Dynamic Factor models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-hodrick-prescott-filter">
+   The Hodrick-Prescott filter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequency-domain-filters">
+   Frequency-domain filters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-domain-log-likelihood">
+     Frequency domain log-likelihood
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Appilcations of state space models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arma-p-q-models">
+   ARMA(p,q) models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unobserved-components-models">
+   Unobserved-components models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-varying-parameters">
+   Time-varying parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-factor-models">
+   Dynamic Factor models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-hodrick-prescott-filter">
+   The Hodrick-Prescott filter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequency-domain-filters">
+   Frequency-domain filters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequency-domain-log-likelihood">
+     Frequency domain log-likelihood
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="appilcations-of-state-space-models">
+<h1>Appilcations of state space models<a class="headerlink" href="#appilcations-of-state-space-models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="arma-p-q-models">
+<h2>ARMA(p,q) models<a class="headerlink" href="#arma-p-q-models" title="Permalink to this headline">¶</a></h2>
+<p><strong>Example</strong></p>
+<p>MA(1)</p>
+<div class="math notranslate nohighlight">
+\[
+z_{t} = \varepsilon_{t} + \beta  \varepsilon_{t-1} 
+\]</div>
+<p>State space form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\left[\begin{array}{c}
+\varepsilon_{t}\\
+\varepsilon_{t-1}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         0 &amp; 0 \\
+         1 &amp; 0
+    \end{bmatrix}
+\left[\begin{array}{c}
+\varepsilon_{t-1}\\
+\varepsilon_{t-2}\\
+\end{array}\right] 
++
+\left[\begin{array}{c}
+\varepsilon_{t}\\
+0\\
+\end{array}\right]
+\\\\
+z_t &amp; = \left[\begin{array}{cc} 1 \; \beta \end{array} \right]
+\left[\begin{array}{c}
+\varepsilon_{t}\\
+\varepsilon_{t-1}\\
+\end{array}\right]
+\end{align}
+\end{split}\]</div>
+<p><strong>Example</strong>  ARMA(2,1)</p>
+<div class="math notranslate nohighlight">
+\[
+z_{t} = \alpha_1 z_{t-1} + \alpha_2 z_{t-2} + \varepsilon_{t} + \beta  \varepsilon_{t-1} 
+\]</div>
+<p>State space form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\left[\begin{array}{c}
+x_{1,t}\\
+x_{2,t}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         \alpha_1 &amp; \alpha_2 \\
+         1 &amp; 0
+    \end{bmatrix}
+\left[\begin{array}{c}
+x_{1,t-1}\\
+x_{2,t-1}\\
+\end{array}\right] 
++
+\left[\begin{array}{c}
+\varepsilon_{t}\\
+0\\
+\end{array}\right]
+\\
+z_t &amp; = \left[\begin{array}{cc} 1 \; \beta \end{array} \right]
+\left[\begin{array}{c}
+x_{1,t}\\
+x_{2,t}\\
+\end{array}\right]
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+z_t &amp;= \beta(L) x_{1,t}\\
+x_{1,t} &amp;= \alpha(L)^{-1} w_{t}\\
+\alpha(L)z_t &amp;= \beta(L)w_{t}
+\end{align}
+\end{split}\]</div>
+<p>Generalizes to ARMA(p,q)</p>
+</div>
+<div class="section" id="unobserved-components-models">
+<h2>Unobserved-components models<a class="headerlink" href="#unobserved-components-models" title="Permalink to this headline">¶</a></h2>
+<p><strong>Example</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+z_t &amp; = \tau_t + c_t \\
+\tau_t &amp; = \tau_{t-1} + \eta_t \\
+c_t &amp;= \phi_1 c_{t-1} + \phi_2 c_{t-2} + \varepsilon_t
+\end{aligned}
+\end{split}\]</div>
+<p>State space form</p>
+<div class="math notranslate nohighlight">
+\[\Delta z_t =  \eta_t + \Delta c_t \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\left[\begin{array}{c}
+c_{t}\\
+c_{t-1}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         \phi_1 &amp; \phi_2 \\
+         1 &amp; 0
+    \end{bmatrix}
+\left[\begin{array}{c}
+c_{t-1}\\
+c_{t-2}\\
+\end{array}\right] 
++
+\left[\begin{array}{c}
+\varepsilon_{t}\\
+0\\
+\end{array}\right]
+\\\\
+\Delta z_t &amp; = \left[\begin{array}{cc} 1 \; -1 \end{array} \right]
+\left[\begin{array}{c}
+c_{t}\\
+c_{t-1}\\
+\end{array}\right] + \eta_t \\\\
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+z_t &amp; = \tau_t + c_t \\
+\tau_t &amp; = \tau_{t-1} + \eta_t \\
+c_t &amp;= \phi_1 c_{t-1} + \phi_2 c_{t-2} + \varepsilon_t
+\end{aligned}
+\end{split}\]</div>
+<p>State space form for the <strong>level</strong> of <span class="math notranslate nohighlight">\(z_t\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\left[\begin{array}{c}
+\tau_t\\
+c_{t}\\
+c_{t-1}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         1 &amp; 0 &amp; 0 \\
+         0 &amp; \phi_1 &amp; \phi_2 \\
+         0 &amp; 1 &amp; 0
+    \end{bmatrix}
+\left[\begin{array}{c}
+\tau_{t-1}\\
+c_{t-1}\\
+c_{t-2}\\
+\end{array}\right] 
++
+\left[\begin{array}{c}
+\eta_{t}\\
+\varepsilon_{t}\\
+\end{array}\right]
+\\\\
+z_t &amp; = \left[\begin{array}{ccc} 1 \; 1 \; 0 \end{array} \right]
+\left[\begin{array}{c}
+\tau_t\\
+c_{t}\\
+c_{t-1}\\
+\end{array}\right] \\\\
+\end{align}
+\end{split}\]</div>
+<p><a class="reference external" href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.structural.UnobservedComponents.html">Unobserved-components models in Statsmodels</a></p>
+</div>
+<div class="section" id="time-varying-parameters">
+<h2>Time-varying parameters<a class="headerlink" href="#time-varying-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+z_t &amp;= x_t \beta_t  + \varepsilon_t\\
+\beta_t  &amp;=  \beta_{t-1} + \eta_t\\
+\end{align}
+\end{split}\]</div>
+</div>
+<div class="section" id="dynamic-factor-models">
+<h2>Dynamic Factor models<a class="headerlink" href="#dynamic-factor-models" title="Permalink to this headline">¶</a></h2>
+<p><strong>Example</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \text{observed variables}\\
+z_{1,t} &amp; = \lambda_1 f_t + u_{1,t} \\
+z_{2,t} &amp; = \lambda_1 f_t + u_{2,t} \\\\
+&amp; \text{common factor}
+\\
+f_t &amp; = \alpha f_{t-1} + \eta_t \\\\
+&amp; \text{idiosyncratic components}
+\\
+u_{1,t} &amp;= \phi_1 u_{1, t-1}  + \varepsilon_{1,t}\\
+u_{2,t} &amp;= \phi_2 u_{2, t-1}  + \varepsilon_{2,t}
+\end{aligned}
+\end{split}\]</div>
+<p>State Space form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\left[\begin{array}{c}
+f_t\\
+u_{1,t}\\
+u_{2,t}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         \alpha &amp; 0 &amp; 0 \\
+         0 &amp; \phi_1 &amp; 0 \\
+         0 &amp; 0 &amp; \phi_2
+    \end{bmatrix}
+\left[\begin{array}{c}
+f_{t-1}\\
+u_{1,t-1}\\
+u_{2,t-1}\\
+\end{array}\right] 
++
+\left[\begin{array}{c}
+\eta_{t}\\
+\varepsilon_{1,t}\\
+\varepsilon_{2,t}\\
+\end{array}\right]
+\\\\
+\left[\begin{array}{c}
+z_{1,t}\\
+z_{2,t}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         \lambda_1 &amp; 1 &amp; 0 \\
+         \lambda_2 &amp; 0 &amp; 1 \\
+    \end{bmatrix}
+\left[\begin{array}{c}
+f_t\\
+u_{1,t}\\
+u_{2,t}\\
+\end{array}\right] 
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>can be extended to multiple factors evolving as VAR(q)</p></li>
+<li><p>and more general AR processes for the idiosyncratic components</p></li>
+</ul>
+<p>DFM are a parsimoneous alternative to VARs with many series</p>
+<p><a class="reference external" href="https://www.statsmodels.org/dev/examples/notebooks/generated/statespace_dfm_coincident.html">Dynamic factor models in Statsmodels</a></p>
+<p>related <strong>common trend model</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \text{observed variables}\\
+z_{1,t} &amp; =  f_t + u_{1,t} \\
+z_{2,t} &amp; =  f_t + u_{2,t} \\\\
+&amp; \text{common trend}
+\\
+f_t &amp; = f_{t-1} + \eta_t \\\\
+&amp; \text{stationary terms}
+\\
+u_{1,t} &amp;= \phi_1 u_{1, t-1}  + \varepsilon_{1,t}\\
+u_{2,t} &amp;= \phi_2 u_{2, t-1}  + \varepsilon_{2,t}
+\end{aligned}
+\end{split}\]</div>
+<p>State Space form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\left[\begin{array}{c}
+f_t\\
+u_{1,t}\\
+u_{2,t}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         1 &amp; 0 &amp; 0 \\
+         0 &amp; \phi_1 &amp; 0 \\
+         0 &amp; 0 &amp; \phi_2
+    \end{bmatrix}
+\left[\begin{array}{c}
+f_{t-1}\\
+u_{1,t-1}\\
+u_{2,t-1}\\
+\end{array}\right] 
++
+\left[\begin{array}{c}
+\eta_{t}\\
+\varepsilon_{1,t}\\
+\varepsilon_{2,t}\\
+\end{array}\right]
+\\\\
+\left[\begin{array}{c}
+z_{1,t}\\
+z_{2,t}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         \lambda_1 &amp; 1 &amp; 0 \\
+         \lambda_2 &amp; 0 &amp; 1 \\
+    \end{bmatrix}
+\left[\begin{array}{c}
+f_t\\
+u_{1,t}\\
+u_{2,t}\\
+\end{array}\right] 
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z_{1,t}\)</span> and <span class="math notranslate nohighlight">\(z_{2,t}\)</span> share a common stochastic trend - <strong>cointegrated</strong></p></li>
+<li><p>the stationary terms can have more complicated dynamics, and may be correlated (e.g VAR instead of AR processes)</p></li>
+</ul>
+</div>
+<div class="section" id="the-hodrick-prescott-filter">
+<h2>The Hodrick-Prescott filter<a class="headerlink" href="#the-hodrick-prescott-filter" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+z_t &amp; = \tau_t + c_t \\\\
+\underset{\tau_t}{\mathrm{min}} ( \sum_{t=1}^{T}(z_t - \tau_t)^2 &amp; + \lambda \sum_{t=1}^{T}(\tau_{t} - 2\tau_{t-1} + \tau_{t-2})^2 )
+\end{aligned}
+\end{split}\]</div>
+<p>Unobserved components model</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+z_t &amp; = \tau_t + c_t \\
+\tau_t &amp; = \tau_{t-1} + \beta_{t-1}+ \eta_t \\
+\beta_t &amp;= \beta_{t-1}  + \varepsilon_t
+\end{aligned}
+\end{split}\]</div>
+<p>State space form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align}
+\left[\begin{array}{c}
+\tau_{t}\\
+\beta_{t}\\
+\end{array}\right]
+ &amp;=
+\begin{bmatrix}
+         1 &amp; 1 \\
+         0 &amp; 1
+    \end{bmatrix}
+\left[\begin{array}{c}
+\tau_{t-1}\\
+\beta_{t-1}\\
+\end{array}\right] 
++
+\left[\begin{array}{c}
+\eta_{t}\\
+\varepsilon_{t}\\
+\end{array}\right]
+\\\\
+z_t &amp; = \left[\begin{array}{cc} 1 \; 0 \end{array} \right]
+\left[\begin{array}{c}
+\tau_{t}\\
+\beta_{t}\\
+\end{array}\right] + c_t \\\\
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+c_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\sigma}^2_{c}\right),\;\;\;\varepsilon_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\sigma}^2_{\varepsilon}\right),\;\;\; \eta_{t} \sim \mathcal{N} \left( 0, \;\mathbf{\sigma}^2_{\eta}\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{HP-filter restrictions: }\;\;\; \mathbf{\sigma}^2_{\eta} = 0, \;\;\; \frac{\mathbf{\sigma}^2_{c}}{\mathbf{\sigma}^2_{\varepsilon}} = \lambda
+\]</div>
+<ul class="simple">
+<li><p>no parameters are estimated</p></li>
+</ul>
+<ul class="simple">
+<li><p>the parameters can be estimated and the restrictions tested</p></li>
+</ul>
+<p><a class="reference external" href="https://direct.mit.edu/rest/article/100/5/831/58479/Why-You-Should-Never-Use-the-Hodrick-Prescott">Why You Should Never Use the Hodrick-Prescott Filter</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.tsa.api</span> <span class="k">as</span> <span class="nn">tsa</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">fredapi</span> <span class="kn">import</span> <span class="n">Fred</span>
+<span class="n">fred</span> <span class="o">=</span> <span class="n">Fred</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">your_api_key</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;1948-01&#39;</span>
+<span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2022-01&#39;</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">fred</span><span class="o">.</span><span class="n">get_series</span><span class="p">(</span><span class="s1">&#39;GNPC96&#39;</span><span class="p">,</span>  <span class="n">observation_start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">observation_end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;QS&#39;</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;gdpc1&#39;</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gdpc1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1948-01-01</th>
+      <td>2102.422</td>
+    </tr>
+    <tr>
+      <th>1948-04-01</th>
+      <td>2137.588</td>
+    </tr>
+    <tr>
+      <th>1948-07-01</th>
+      <td>2149.832</td>
+    </tr>
+    <tr>
+      <th>1948-10-01</th>
+      <td>2152.212</td>
+    </tr>
+    <tr>
+      <th>1949-01-01</th>
+      <td>2122.155</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp_cycle</span><span class="p">,</span> <span class="n">hp_trend</span> <span class="o">=</span> <span class="n">tsa</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">hpfilter</span><span class="p">(</span><span class="n">df_raw</span><span class="p">[[</span><span class="s1">&#39;gdpc1&#39;</span><span class="p">]],</span> <span class="n">lamb</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">tsa</span><span class="o">.</span><span class="n">UnobservedComponents</span><span class="p">(</span><span class="n">df_raw</span><span class="p">[[</span><span class="s1">&#39;gdpc1&#39;</span><span class="p">]],</span> <span class="s1">&#39;lltrend&#39;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">smooth</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.</span> <span class="o">/</span> <span class="mi">1600</span><span class="p">])</span> <span class="c1"># &#39;sigma2.irregular&#39;, &#39;sigma2.level&#39;, &#39;sigma2.trend&#39;</span>
+<span class="c1">#print(res.summary())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ucm_trend</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">level</span><span class="o">.</span><span class="n">smoothed</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_raw</span><span class="p">[[</span><span class="s1">&#39;gdpc1&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_raw</span><span class="p">[[</span><span class="s1">&#39;gdpc1&#39;</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real GDP&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hp_trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;HP trend&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ucm_trend</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;UC Model trend&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/03-Application-SS-models_34_0.png" src="../../_images/03-Application-SS-models_34_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="frequency-domain-filters">
+<h2>Frequency-domain filters<a class="headerlink" href="#frequency-domain-filters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>time series can be thought of as the sum of periodic functions (fluctuations)</p>
+<ul>
+<li><p>frequency domain, spectral analysis of time series</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>business cycle components of time series correspond a <strong>subset</strong> of those fluctuations</p>
+<ul>
+<li><p>those with period greater than 1.5 (or 2) years and less than 8 years</p></li>
+<li><p>faster (shorter period) or slower (longer period) fluctuations are interpreted as being outside the business cycle</p>
+<ul>
+<li><p>low, business cycle, high frequencies</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>frequency-domain filters aim to extract the business cycle components</p>
+<ul>
+<li><p>Baxter-King, Christiano-Fitzgerald</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>periodic functions?</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\cos(x) = \cos(x + 2 k \pi), \;\;\; k = 1, 2, \cdots\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sin(x) = \sin(x + 2 k \pi), \;\;\; k = 1, 2, \cdots\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>as function of time: <span class="math notranslate nohighlight">\(\cos(t \omega), \;\;\;t = t_1, \; t_2, \cdots \)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>periodicity means that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\cos(\omega t_1) &amp;= \cos(\omega t_h)\\
+\\
+ \omega t_h &amp;= \omega t_1  + 2 \pi \\\\
+t_h - t_1 &amp;= \frac{2 \pi}{\omega}
+\end{align}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\omega\)</span> is the <strong>frequency</strong>, <span class="math notranslate nohighlight">\(t_h - t_1\)</span> is the <strong>period</strong></p></li>
+</ul>
+<ul class="simple">
+<li><p>a time series <span class="math notranslate nohighlight">\(z_t\)</span> can be represented as a sum (integral) of</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\\
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a(\omega) \cos(\omega t) + b(\omega) \sin(\omega t), \;\;\; \omega \in (0, \pi)\\
+\end{split}\]</div>
+<ul class="simple">
+<li><p>business cycle component contains only those components with period between 1.5 and 8 years</p>
+<ul>
+<li><p>with quarterly data: <span class="math notranslate nohighlight">\(\frac{2 \pi}{32} \leq \omega\leq \frac{2 \pi}{6}\)</span></p></li>
+<li><p>with monthly data: <span class="math notranslate nohighlight">\(\frac{2 \pi}{96} \leq \omega\leq \frac{2 \pi}{18}\)</span></p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>band-pass filter: keep only a subset (band) of <span class="math notranslate nohighlight">\(\omega\)</span>’s in <span class="math notranslate nohighlight">\((0, \pi)\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>both Baxter-King and Christiano-Fitzgerald filters are computed as weighted moving averages of the series, the difference is in what the weights are</p>
+<ul>
+<li><p>symmetric (BK) vs asymmetric (CF) weights</p></li>
+<li><p>truncated on both ends (BK) vs using the full sample (CF)</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bk_cycle</span> <span class="o">=</span> <span class="n">tsa</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">bkfilter</span><span class="p">(</span><span class="n">df_raw</span><span class="p">[[</span><span class="s1">&#39;gdpc1&#39;</span><span class="p">]])</span>
+<span class="n">cf_cycle</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">tsa</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">cffilter</span><span class="p">(</span><span class="n">df_raw</span><span class="p">[[</span><span class="s1">&#39;gdpc1&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cf_cycle</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;CF cycle&#39;</span>
+<span class="n">bk_cycle</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BK cycle&#39;</span><span class="p">]</span>
+<span class="n">hp_cycle</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;HP cycle&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">cf_cycle</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bk_cycle</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b-&quot;</span><span class="p">,</span> <span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hp_cycle</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;g-.&quot;</span><span class="p">,</span> <span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/03-Application-SS-models_49_1.png" src="../../_images/03-Application-SS-models_49_1.png" />
+</div>
+</div>
+<div class="section" id="frequency-domain-log-likelihood">
+<h3>Frequency domain log-likelihood<a class="headerlink" href="#frequency-domain-log-likelihood" title="Permalink to this headline">¶</a></h3>
+<p><strong>Whittle log-likelihood</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\ell(\boldsymbol \theta | \mathbf{z}) &amp; = \sum_{\omega} \ell_{\omega}(\boldsymbol \theta | \mathbf{z}), \;\;\; \omega \in \left(\frac{2 \pi j}{T}, j=1, 2, \cdots, T\right)\\
+\\
+\ell_{\omega}(\boldsymbol \theta | \mathbf{z}) = -\ln(2 \pi) &amp;- \frac{1}{2} \ln\left(\det(f_{\mathbf{z}}(\omega, \boldsymbol \theta)) \right) - \frac{1}{2} \operatorname{tr}\left(f_{\mathbf{z}}(\omega, \boldsymbol \theta)^{-1} I(\omega, \mathbf{z}) \right)
+\end{align}
+\end{split}\]</div>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(f_{\mathbf{z}}(\omega, \boldsymbol \theta)\)</span> is the model-implied spectral density of <span class="math notranslate nohighlight">\(\mathbf{z} \)</span> at <span class="math notranslate nohighlight">\(\omega\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(I(\omega, \mathbf{z})\)</span> is the periodogram of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> at <span class="math notranslate nohighlight">\(\omega\)</span></p></li>
+<li><p>it is like a Gaussian log-likelihood for independent observations</p></li>
+<li><p>can be derived by approximating the covariance matrix of <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> by a block circulant matrix, which can be diagonalized using DFT</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf{z}^{\prime} \mathbf{\Sigma}^{-1}(\mathbf{\theta}) \mathbf{z} \approx \operatorname{tr}\left( \mathbf{z}^{\prime} \mathbf{C}^{-1}(\mathbf{\theta}) \mathbf{z} \right) = \operatorname{tr}\left( \mathbf{z}^{\prime} V^{\prime}\mathbf{F}^{-1}(\mathbf{\theta}) V \mathbf{z} \right) = 
+    \sum_{\omega}\operatorname{tr}\left(f(\omega, \boldsymbol \theta)^{-1} I(\omega, \mathbf{z}) \right)
+    \]</div>
+</li>
+</ul>
+<p>Block circulant matrix</p>
+<p><img alt="Circ" src="../../_images/Circulant.png" /></p>
+<p>The Whittle log-likelihood can be used as</p>
+<ul class="simple">
+<li><p>an alternative to the Kalman filter</p></li>
+<li><p>a way to estimate a model using only a subset of frequencies, e.g. BC frequencies</p>
+<ul>
+<li><p><a class="reference external" href="https://economics.mit.edu/files/14924"><em>QUANTIFYING CONFIDENCE</em></a> (2018) by Angeletos, Collard, Dellas</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01-Lectures\07-Multivariate"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02-StateSpace.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">State space models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../03-Assignments/HW0/main.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 0</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Nikolay Iskrev<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
