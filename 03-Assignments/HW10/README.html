@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARMA models</title>
+    <title>Homework 10</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmax": "arg\\,max", "argmin": "arg\\,min"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -49,12 +51,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://niskrev.github.io/econ108/01-Lectures/04-ARMA/00-Introduction.html" />
+    <link rel="canonical" href="https://niskrev.github.io/econ108/03-Assignments/HW10/README.html" />
     <link rel="shortcut icon" href="../../_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction to AR and MA models" href="01-ARMA-part-1.html" />
-    <link rel="prev" title="MLE of Gaussian models" href="../03-MLE/02-Gaussian-MLE.html" />
+    <link rel="next" title="Midterm project" href="../../04-Projects/01-Midterm/main.html" />
+    <link rel="prev" title="Homework 9" href="../HW9/README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,9 +120,9 @@
   Lectures
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01-Introduction/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/01-Introduction/00-Introduction.html">
    Introduction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -130,19 +132,19 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../01-Introduction/01-Introduction.html">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/01-Introduction.html">
      1. Time series vs cross-section
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../01-Introduction/02-Time-series.html">
+    <a class="reference internal" href="../../01-Lectures/01-Introduction/02-Time-series.html">
      2. Time Series concepts and models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02-Gaussian/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/02-Gaussian/00-Introduction.html">
    Multivariate normal distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -152,14 +154,14 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../02-Gaussian/01-Multivariate-normal-distribution.html">
+    <a class="reference internal" href="../../01-Lectures/02-Gaussian/01-Multivariate-normal-distribution.html">
      1. Multivariate normal distribution
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03-MLE/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/03-MLE/00-Introduction.html">
    Review of maximum likelihood estimation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -169,51 +171,51 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../03-MLE/01-MLE.html">
+    <a class="reference internal" href="../../01-Lectures/03-MLE/01-MLE.html">
      1. Maximum likelihood estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../03-MLE/02-Gaussian-MLE.html">
+    <a class="reference internal" href="../../01-Lectures/03-MLE/02-Gaussian-MLE.html">
      2. Maximum likelihood estimation of Gaussian models
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-Lectures/04-ARMA/00-Introduction.html">
    ARMA models
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01-ARMA-part-1.html">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/01-ARMA-part-1.html">
      1. Introduction to AR and MA models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02-ARMA-part-2.html">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/02-ARMA-part-2.html">
      2. Algebra of AR and MA models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03-ARMA-part-3.html">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/03-ARMA-part-3.html">
      3. ARMA models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04-Forecasting.html">
+    <a class="reference internal" href="../../01-Lectures/04-ARMA/04-Forecasting.html">
      3. Forecasting with ARMA models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05-Nonstationarity/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/05-Nonstationarity/00-Introduction.html">
    Non-stationarity
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -223,14 +225,14 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05-Nonstationarity/01-Unit-root.html">
+    <a class="reference internal" href="../../01-Lectures/05-Nonstationarity/01-Unit-root.html">
      1. Non-stationarity and unit root processes
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06-Conditional-Heteroskedasticity/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/06-Conditional-Heteroskedasticity/00-Introduction.html">
    Conditional Heteroskedasticity
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -240,14 +242,14 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06-Conditional-Heteroskedasticity/01-ARCH.html">
+    <a class="reference internal" href="../../01-Lectures/06-Conditional-Heteroskedasticity/01-ARCH.html">
      1. ARCH processes
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07-Multivariate/00-Introduction.html">
+  <a class="reference internal" href="../../01-Lectures/07-Multivariate/00-Introduction.html">
    Multivariate models
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -257,17 +259,17 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Multivariate/01-VAR.html">
+    <a class="reference internal" href="../../01-Lectures/07-Multivariate/01-VAR.html">
      1. VARs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Multivariate/02-StateSpace.html">
+    <a class="reference internal" href="../../01-Lectures/07-Multivariate/02-StateSpace.html">
      2. State space models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Multivariate/03-Application-SS-models.html">
+    <a class="reference internal" href="../../01-Lectures/07-Multivariate/03-Application-SS-models.html">
      3. Applications of state space models
     </a>
    </li>
@@ -279,9 +281,9 @@
   Assignments
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW0/main.html">
+  <a class="reference internal" href="../HW0/main.html">
    Homework 0
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -291,14 +293,14 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW0/README.html">
+    <a class="reference internal" href="../HW0/README.html">
      README HW0
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW1/main.html">
+  <a class="reference internal" href="../HW1/main.html">
    Homework 1
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -308,19 +310,19 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW1/README.html">
+    <a class="reference internal" href="../HW1/README.html">
      README HW1
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW1/HW1-empty.html">
+    <a class="reference internal" href="../HW1/HW1-empty.html">
      HW1-empty
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW2/main.html">
+  <a class="reference internal" href="../HW2/main.html">
    Homework 2
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
@@ -330,29 +332,29 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW2/README.html">
+    <a class="reference internal" href="../HW2/README.html">
      README HW2
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part1.html">
+    <a class="reference internal" href="../HW2/HW2-part1.html">
      HW 2 Part 1
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part2.html">
+    <a class="reference internal" href="../HW2/HW2-part2.html">
      HW 2 Part 2
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW2/HW2-part3.html">
+    <a class="reference internal" href="../HW2/HW2-part3.html">
      HW 2 Part 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW3/main.html">
+  <a class="reference internal" href="../HW3/main.html">
    Homework 3
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
@@ -362,19 +364,19 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW3/README.html">
+    <a class="reference internal" href="../HW3/README.html">
      Readme HW3
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW3/HW3-part2-2.html">
+    <a class="reference internal" href="../HW3/HW3-part2-2.html">
      HW 3 Part 2-2
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW4/main.html">
+  <a class="reference internal" href="../HW4/main.html">
    Homework 4
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -384,24 +386,24 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW4/README.html">
+    <a class="reference internal" href="../HW4/README.html">
      README HW4
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-1.html">
+    <a class="reference internal" href="../HW4/HW4-part-1.html">
      Part 1
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW4/HW4-part-2.html">
+    <a class="reference internal" href="../HW4/HW4-part-2.html">
      Part 2
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW5/main.html">
+  <a class="reference internal" href="../HW5/main.html">
    Homework 5
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
@@ -411,29 +413,29 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW5/README.html">
+    <a class="reference internal" href="../HW5/README.html">
      README HW5
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW5/HW5-part-1.html">
+    <a class="reference internal" href="../HW5/HW5-part-1.html">
      HW 5 part 1
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../03-Assignments/HW6/README.html">
+  <a class="reference internal" href="../HW6/README.html">
    Homework 6
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../03-Assignments/HW7/README.html">
+  <a class="reference internal" href="../HW7/README.html">
    Homework 7
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../03-Assignments/HW8/README.html">
+  <a class="reference internal" href="../HW8/README.html">
    Homework 8
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
@@ -443,19 +445,19 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../03-Assignments/HW8/HW8-part2.html">
+    <a class="reference internal" href="../HW8/HW8-part2.html">
      HW8 Part 2
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../03-Assignments/HW9/README.html">
+  <a class="reference internal" href="../HW9/README.html">
    Homework 9
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../03-Assignments/HW10/README.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Homework 10
   </a>
  </li>
@@ -671,7 +673,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/01-Lectures/04-ARMA/00-Introduction.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/03-Assignments/HW10/README.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -696,6 +698,36 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tasks">
+   Tasks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1">
+     Part 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2">
+     Part 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submission">
+     Submission
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -703,26 +735,75 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>ARMA models</h1>
+                <h1>Homework 10</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tasks">
+   Tasks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-1">
+     Part 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-2">
+     Part 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submission">
+     Submission
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="arma-models">
-<h1>ARMA models<a class="headerlink" href="#arma-models" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="01-ARMA-part-1.html">1. Introduction to AR and MA models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-ARMA-part-2.html">2. Algebra of AR and MA models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-ARMA-part-3.html">3. ARMA models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04-Forecasting.html">3. Forecasting with ARMA models</a></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="homework-10">
+<h1>Homework 10<a class="headerlink" href="#homework-10" title="Permalink to this headline">¶</a></h1>
+<p><strong>Important:</strong> If you struggle with any part of this assignments, raise an issue in the repo.</p>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="part-1">
+<h3>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
+<p>Read Chapter 29 of <a class="reference external" href="https://www.kevinsheppard.com/files/teaching/python/notes/python_introduction_2021.pdf">this notes</a> for an accessible intro to OOP in Python.</p>
+</div>
+<div class="section" id="part-2">
+<h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
+<p>Consider the following state space model.</p>
+<figure><center><img src="model.PNG"></center><figure>
+<p>and the following parameters (<span class="math notranslate nohighlight">\(\mu, \sigma_{\eta}, \sigma_{\epsilon}, \phi_1, \phi_2, \sigma_{\eta \epsilon}\)</span>)</p>
+<figure><center><img src="parameters.PNG"></center><figure>
+<p>a) Find a state space representation for <span class="math notranslate nohighlight">\(z_t = \Delta y_t\)</span> with a stationary state vector <span class="math notranslate nohighlight">\(x_t\)</span>. Use the notation <a class="reference external" href="https://niskrev.github.io/PhDEcon108/01-Lectures/07-Multivariate/02-StateSpace.html">here</a>. Use <span class="math notranslate nohighlight">\(d\)</span> for the intercept in the observation equation (This term is missing in the representation in the link, you can think of <span class="math notranslate nohighlight">\(z\)</span> being de-meaned: <span class="math notranslate nohighlight">\(z_t = \bar{z}_t - d\)</span>)</p>
+<p>b)  Write a python function which takes values for the model parameters as input and returns the matrices of the state space representation as output.</p>
+<p>c) Construct the covariance matrix of the marginal distribution of <span class="math notranslate nohighlight">\(X\)</span> for T=2 (the following image is from the lecture notes, see there for more details)</p>
+<figure><center><img src="Marginal_X.PNG"></center><figure>
+<p>d) Construct the mean vector and covariance matrix of the marginal distribution of <span class="math notranslate nohighlight">\(Z\)</span> for T=2 (the following image is from the lecture notes, see there for more details)</p>
+<figure><center><img src="Marginal_Z.PNG"></center><figure>
+<p>e) Write a function which takes model parameter values and a sample size T as inputs and returns the mean vector and covariance matrix of the marginal distribution of <span class="math notranslate nohighlight">\(Z\)</span>. (See HW4)</p>
+<p>f) Draw a sample from the distribution of <span class="math notranslate nohighlight">\(Z\)</span> for T=100 and compute the log-likelihood of <span class="math notranslate nohighlight">\(Z\)</span>. (See HW3)</p>
+</div>
+<div class="section" id="submission">
+<h3>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h3>
+<p>Submit as a jupyter notebook in the folder <strong>HW10</strong> in your repository at <a class="reference external" href="https://github.com/PhDEcon108">https://github.com/PhDEcon108</a>.</p>
+</div>
 </div>
 </div>
 
@@ -739,7 +820,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01-Lectures\04-ARMA"
+            path: "./03-Assignments\HW10"
         },
         predefinedOutput: true
     }
@@ -751,17 +832,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../03-MLE/02-Gaussian-MLE.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../HW9/README.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">MLE of Gaussian models</p>
+            <p class="prev-next-title">Homework 9</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="01-ARMA-part-1.html" title="next page">
+    <a class='right-next' id="next-link" href="../../04-Projects/01-Midterm/main.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to AR and MA models</p>
+        <p class="prev-next-title">Midterm project</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
